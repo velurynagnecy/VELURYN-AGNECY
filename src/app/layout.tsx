@@ -8,6 +8,11 @@ export const metadata: Metadata = {
     'Veluryn Agnecy is a full-service global digital agency. Home to VA Mgmt — Influencer Marketing Management — and VASD — Veluryn Agnecy Service Digital, advanced email filtering and management.',
   keywords:
     'influencer marketing agency, email management service, digital agency India, VA Mgmt, VASD',
+  icons: {
+    icon: '/assets/logo.png',
+    shortcut: '/assets/logo.png',
+    apple: '/assets/logo.png',
+  },
   openGraph: {
     title: 'Veluryn Agnecy',
     description: 'Trust First. Everything Follows.',
