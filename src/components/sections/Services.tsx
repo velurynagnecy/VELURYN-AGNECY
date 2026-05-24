@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Megaphone, Globe2, PenTool, Share2, SearchCheck, Newspaper, UserCheck, ArrowRight } from 'lucide-react'
+import { Megaphone, Mail, PenTool, Share2, Shield, Newspaper, UserCheck, ArrowRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { Reveal } from '@/components/motion/Reveal'
 import { useRevealInView } from '@/hooks/useRevealInView'
@@ -9,10 +9,10 @@ import { sectionHeadingStyle } from '@/lib/typography'
 
 const services = [
   { n: '01', icon: Megaphone, title: 'Marketing & Advertising', arm: 'VA Mgmt', armColor: '#E8E8F0', desc: 'Full-funnel marketing campaigns — paid, organic, and influencer-led.' },
-  { n: '02', icon: Globe2, title: 'Web Design & Development', arm: 'VASD', armColor: '#4A6580', desc: 'High-performance websites built for conversion and credibility.' },
+  { n: '02', icon: Mail, title: 'Email Filtering & Protection', arm: 'VASD', armColor: '#4A6580', desc: 'AI-powered email filtering, threat detection, and inbox management for individuals and enterprises.' },
   { n: '03', icon: PenTool, title: 'Branding & Identity', arm: 'VA Mgmt', armColor: '#E8E8F0', desc: 'Brand systems that last. Strategy, identity, and guidelines.' },
   { n: '04', icon: Share2, title: 'Social Media Management', arm: 'VA Mgmt', armColor: '#E8E8F0', desc: 'Content, community, and consistency across every platform.' },
-  { n: '05', icon: SearchCheck, title: 'SEO & Digital Marketing', arm: 'VASD', armColor: '#4A6580', desc: 'Search visibility that compounds. Technical and content SEO.' },
+  { n: '05', icon: Shield, title: 'Inbox Security & Compliance', arm: 'VASD', armColor: '#4A6580', desc: 'End-to-end encryption, phishing protection, and compliance across GDPR, HIPAA, and SOC2.' },
   { n: '06', icon: Newspaper, title: 'PR & Communications', arm: 'VA Mgmt', armColor: '#E8E8F0', desc: 'Media relations, press strategy, and crisis communications.' },
   { n: '07', icon: UserCheck, title: 'Influencer Marketing', arm: 'VA Mgmt', armColor: '#E8E8F0', desc: 'End-to-end influencer campaign management with audited talent.' },
 ]
