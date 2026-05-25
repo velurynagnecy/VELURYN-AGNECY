@@ -6,7 +6,7 @@ import { useRevealInView } from '@/hooks/useRevealInView'
 
 const pillars = [
   { num: '01', title: 'Radical Transparency', desc: 'No hidden fees. No inflated metrics. No vanity reporting. Ever.' },
-  { num: '02', title: 'Remote-First Global', desc: 'India-based, worldwide reach. Every timezone is our timezone.' },
+  { num: '02', title: 'Remote-First Global', desc: 'Asia-based, worldwide reach. Every timezone is our timezone.' },
   { num: '03', title: 'Precision Execution', desc: 'Small enough to care. Structured enough to scale. Always.' },
 ]
 
@@ -101,7 +101,7 @@ export function Manifesto() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <Reveal delay={0.1}>
             <p className="font-body text-base text-silver-dim leading-relaxed">
-              We are a remote-first global digital agency headquartered in India.
+              We are a remote-first global digital agency headquartered in Asia.
               We believe the most powerful thing an agency can offer a client is not a strategy deck —
               it&apos;s the truth. Honest assessment. Transparent execution. Measurable results.
             </p>

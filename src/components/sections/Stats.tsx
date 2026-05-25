@@ -115,7 +115,7 @@ export function Stats() {
 
       <div className="bleed-full grid grid-cols-2 lg:grid-cols-4 border-t border-b border-silver-dim/10 relative z-10">
         <StatCell end={150} suffix="+" label="Campaigns Executed" sub="Across VA Mgmt verticals" />
-        <StatCell end={40} suffix="+" label="Global Clients" sub="From India to worldwide" />
+        <StatCell end={40} suffix="+" label="Global Clients" sub="From Asia to worldwide" />
         <StatCell end={99.9} suffix="%" label="VASD Uptime SLA" sub="Enterprise reliability" decimals={1} />
         <StatCell end={7} suffix="" label="Core Disciplines" sub="One roof, full coverage" />
       </div>

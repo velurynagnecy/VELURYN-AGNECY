@@ -54,7 +54,7 @@ export function Footer() {
             </p>
 
             <p className="font-body text-sm text-silver-dim leading-relaxed max-w-sm mb-10">
-              A full-service global digital agency built on radical transparency. Remote-first. India-based. Worldwide in reach.
+              A full-service global digital agency built on radical transparency. Remote-first. Asia-based. Worldwide in reach.
             </p>
 
             <div className="flex flex-col gap-3 mb-10">

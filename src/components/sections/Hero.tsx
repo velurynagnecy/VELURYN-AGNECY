@@ -84,7 +84,7 @@ export function Hero() {
           <div className="grid grid-cols-12 gap-6 items-end">
             <div className="hidden xl:flex col-span-1 flex-col items-center justify-end gap-3 pb-2">
               <div className="w-px h-20 bg-gradient-to-b from-transparent to-silver-dim/50" />
-              <span className="vertical-label">Est. 2024 · India</span>
+              <span className="vertical-label">Est. 2024 · Asia</span>
             </div>
 
             <div className="col-span-12 xl:col-span-7">
@@ -194,7 +194,7 @@ export function Hero() {
                   <p className="font-body text-[0.65rem] tracking-[0.3em] uppercase text-silver-dim mb-2">
                     Operating From
                   </p>
-                  <p className="font-body text-sm text-silver">India — Worldwide</p>
+                  <p className="font-body text-sm text-silver">Asia — Worldwide</p>
                 </div>
               </div>
             </motion.div>
