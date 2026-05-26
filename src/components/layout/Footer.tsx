@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Instagram, Linkedin, Twitter, Youtube, Facebook, Mail, Phone } from 'lucide-react'
+import { Instagram, Linkedin, Twitter, Youtube, Facebook, Mail } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { EllipseImage } from '@/components/ui/EllipseImage'
 
@@ -39,7 +39,7 @@ export function Footer() {
           <div className="md:col-span-5">
             <Link href="/" className="flex items-center gap-3 mb-8">
               <div className="logo-circle border border-silver-dim/15">
-                <Image src="/assets/logo.png" alt="Veluryn Agnecy" fill sizes="38px" className="object-cover" />
+                <Image src="/assets/logo.png" alt="VELURYN AGNECY" fill sizes="38px" className="object-cover" />
               </div>
               <span
                 className="font-display text-base font-medium text-platinum uppercase"
@@ -59,25 +59,11 @@ export function Footer() {
 
             <div className="flex flex-col gap-3 mb-10">
               <a
-                href="mailto:velurynandoc@gmail.com"
-                className="flex items-center gap-3 font-body text-sm text-silver-dim hover:text-platinum transition-colors"
-              >
-                <Mail size={13} className="text-silver shrink-0" />
-                velurynandoc@gmail.com
-              </a>
-              <a
                 href="mailto:vivin.b@velurynagnecy.com"
                 className="flex items-center gap-3 font-body text-sm text-silver-dim hover:text-platinum transition-colors"
               >
                 <Mail size={13} className="text-silver shrink-0" />
                 vivin.b@velurynagnecy.com
-              </a>
-              <a
-                href="tel:+919677533281"
-                className="flex items-center gap-3 font-body text-sm text-silver-dim hover:text-platinum transition-colors"
-              >
-                <Phone size={13} className="text-silver shrink-0" />
-                +91 96775 33281
               </a>
             </div>
 
@@ -126,7 +112,7 @@ export function Footer() {
             <div>
               <p className="font-body text-[0.65rem] tracking-widest uppercase text-platinum mb-0.5">VA Mgmt</p>
               <p className="font-body text-xs text-silver-dim">
-                Veluryn Agnecy Management — Influencer Marketing
+                VELURYN AGNECY Management — Talent & Influencer Marketing
               </p>
             </div>
           </div>
@@ -135,7 +121,7 @@ export function Footer() {
             <div>
               <p className="font-body text-[0.65rem] tracking-widest uppercase text-steel-blue mb-0.5">VASD</p>
               <p className="font-body text-xs text-silver-dim">
-                Veluryn Agnecy Service Digital — Email Solutions
+                VELURYN AGNECY Service Digital — Inbox Validation & Protection
               </p>
             </div>
           </div>
@@ -144,7 +130,7 @@ export function Footer() {
         <div className="border-t border-silver-dim/10 pt-8 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
           <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
             <p className="font-body text-xs text-silver-dim shrink-0" style={{ opacity: 0.4 }}>
-              © {new Date().getFullYear()} Veluryn Agnecy. All rights reserved.
+              © {new Date().getFullYear()} VELURYN AGNECY. All rights reserved.
             </p>
 
             <div className="hidden sm:block w-px h-8 bg-silver-dim/15 shrink-0" aria-hidden />
