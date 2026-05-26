@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Mail, Phone, Instagram, Linkedin, Twitter, Youtube, Facebook } from 'lucide-react'
+import { Mail, Instagram, Linkedin, Twitter, Youtube, Facebook } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Reveal } from '@/components/motion/Reveal'
@@ -99,7 +99,7 @@ export function Contact() {
 
             <Reveal delay={0.15}>
               <p className="font-body text-base text-silver-dim leading-relaxed mb-10 max-w-md">
-                Whether you&apos;re a brand looking for influencer strategy through VA Mgmt, or an enterprise needing email infrastructure from VASD — we want to hear from you.
+                Whether you&apos;re a creator looking for inbox protection through VASD, or a brand seeking influencer strategy through VA Mgmt — we want to hear from you.
               </p>
             </Reveal>
 
@@ -113,27 +113,21 @@ export function Contact() {
               <div>
                 <p className="font-display text-xl font-medium text-platinum">Vivin Bharathi</p>
                 <p className="font-body text-[0.65rem] tracking-[0.22em] uppercase text-silver-dim mt-1">
-                  CEO &amp; Founder · Veluryn Agnecy
+                  CEO &amp; Founder · VELURYN AGNECY
                 </p>
               </div>
             </Reveal>
 
             <Reveal delay={0.2} className="flex flex-col gap-5 mb-14">
-              {[
-                { icon: Mail, label: 'Business', value: 'velurynandoc@gmail.com', href: 'mailto:velurynandoc@gmail.com' },
-                { icon: Mail, label: 'Admin / CEO', value: 'vivin.b@velurynagnecy.com', href: 'mailto:vivin.b@velurynagnecy.com' },
-                { icon: Phone, label: 'Phone', value: '+91 96775 33281', href: 'tel:+919677533281' },
-              ].map(({ icon: Icon, label, value, href }) => (
-                <a key={label} href={href} className="flex items-center gap-5 group">
-                  <div className="w-11 h-11 rounded-icon border border-silver-dim/15 flex items-center justify-center group-hover:border-silver transition-colors shrink-0">
-                    <Icon size={15} className="text-silver-dim group-hover:text-platinum transition-colors" />
-                  </div>
-                  <div>
-                    <p className="font-body text-[0.6rem] tracking-[0.25em] uppercase text-silver-dim mb-0.5">{label}</p>
-                    <p className="font-body text-sm text-platinum group-hover:text-silver transition-colors">{value}</p>
-                  </div>
-                </a>
-              ))}
+              <a href="mailto:vivin.b@velurynagnecy.com" className="flex items-center gap-5 group">
+                <div className="w-11 h-11 rounded-icon border border-silver-dim/15 flex items-center justify-center group-hover:border-silver transition-colors shrink-0">
+                  <Mail size={15} className="text-silver-dim group-hover:text-platinum transition-colors" />
+                </div>
+                <div>
+                  <p className="font-body text-[0.6rem] tracking-[0.25em] uppercase text-silver-dim mb-0.5">Admin</p>
+                  <p className="font-body text-sm text-platinum group-hover:text-silver transition-colors">vivin.b@velurynagnecy.com</p>
+                </div>
+              </a>
             </Reveal>
 
             <Reveal delay={0.25}>
@@ -203,7 +197,7 @@ export function Contact() {
                     exit={{ opacity: 0, y: -20 }}
                     className="flex flex-col gap-5"
                   >
-                    <input type="hidden" name="_subject" value="New enquiry — Veluryn Agnecy website" />
+                    <input type="hidden" name="_subject" value="New enquiry — VELURYN AGNECY website" />
                     <input type="hidden" name="_template" value="table" />
                     <input type="hidden" name="_captcha" value="false" />
 
@@ -251,9 +245,7 @@ export function Contact() {
                         }
                         className={fieldClass}
                       >
-                        <option value="" disabled>
-                          Select one
-                        </option>
+                        <option value="" disabled>Select one</option>
                         <option value="Influencer / Individual">Influencer / Individual</option>
                         <option value="Company">Company</option>
                       </select>
@@ -304,11 +296,9 @@ export function Contact() {
                         onChange={(e) => setForm({ ...form, service: e.target.value })}
                         className={fieldClass}
                       >
-                        <option value="" disabled>
-                          Select a service
-                        </option>
+                        <option value="" disabled>Select a service</option>
                         <option value="VA Mgmt — Influencer Marketing">VA Mgmt — Influencer Marketing</option>
-                        <option value="VASD — Email Filtering & Management">VASD — Email Filtering & Management</option>
+                        <option value="VASD — Inbox Validation & Protection">VASD — Inbox Validation & Protection</option>
                         <option value="Both Verticals">Both Verticals</option>
                         <option value="General Enquiry">General Enquiry</option>
                       </select>
