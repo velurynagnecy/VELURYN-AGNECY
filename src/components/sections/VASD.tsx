@@ -199,6 +199,18 @@ export function VASD() {
         </div>
 
         <Reveal>
+          <blockquote
+            className="font-display font-light italic text-platinum border-l-2 border-silver-dim/30 pl-8 py-2 mb-16"
+            style={{ fontSize: 'clamp(1.1rem, 2vw, 1.5rem)', lineHeight: 1.6, maxWidth: '860px' }}
+          >
+            &ldquo;AI is incredibly powerful for processing data, but it is deeply stupid when it lacks human intuition, context, and real-world awareness. It doesn&apos;t have the grit, the creative vision, or the skin in the game that it takes to actually build a brand.&rdquo;
+            <footer className="mt-4 font-body text-[0.65rem] tracking-[0.25em] uppercase text-silver-dim not-italic">
+              Vivin Bharathi &mdash; Founder &amp; CEO, VELURYN AGNECY
+            </footer>
+          </blockquote>
+        </Reveal>
+
+        <Reveal>
           <div className="relative border border-silver-dim/12 bg-charcoal-2/50 overflow-hidden rounded-panel">
             <div className="absolute top-0 left-0 w-24 h-px bg-steel-blue" />
             <div className="absolute bottom-0 right-0 w-24 h-px bg-steel-blue" />
