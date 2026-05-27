@@ -3,7 +3,7 @@
 import { useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Shield, Filter, Mail, Zap, Lock, BarChart } from 'lucide-react'
+import { Shield, Filter, Mail, Zap, Lock, BarChart, FileText, Download } from 'lucide-react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Reveal } from '@/components/motion/Reveal'
 import { sectionHeadingStyle, subHeadingStyle } from '@/lib/typography'
@@ -15,6 +15,31 @@ const services = [
   { n: '04', icon: Zap, title: 'Zero Latency Delivery', desc: 'Critical mail reaches its recipient instantly. Filtering never slows your workflow.' },
   { n: '05', icon: Lock, title: 'Compliance & Encryption', desc: 'End-to-end encryption with audit trail reporting. GDPR, HIPAA, and SOC2 aligned.' },
   { n: '06', icon: BarChart, title: 'Analytics Dashboard', desc: 'Full visibility into email traffic, threat vectors, and inbox health — real time.' },
+]
+
+const caseStudies = [
+  {
+    num: '001',
+    category: 'Leadership & Coaching Platform',
+    type: 'Unsolicited Email Outreach',
+    verdict: 'SUSPICIOUS',
+    verdictColor: '#B7770D',
+    borderColor: 'rgba(183,119,13,0.4)',
+    summary: 'A real, operational entity with verified physical presence — but carrying multiple credibility inflation signals including unverifiable accreditations, contradicting nation counts, and a pattern of curated reviews.',
+    flags: 9,
+    file: '/case-studies/VASD_Case001.pdf',
+  },
+  {
+    num: '002',
+    category: 'Creator Affiliate Network',
+    type: 'Unsolicited Partner Program Email',
+    verdict: 'HIGH RISK',
+    verdictColor: '#C0392B',
+    borderColor: 'rgba(192,57,43,0.4)',
+    summary: 'An entity with zero verifiable external footprint presenting itself as a creator-sponsor platform. Business model structured to extract creator labor and referrals under the guise of a recurring income opportunity.',
+    flags: 16,
+    file: '/case-studies/VASD_Case002.pdf',
+  },
 ]
 
 export function VASD() {
@@ -215,10 +240,7 @@ export function VASD() {
                     <motion.span
                       key={tag}
                       className="rounded-pill font-body text-[0.6rem] tracking-widest uppercase text-steel-blue border border-steel-blue/40 px-4 py-2 cursor-default"
-                      whileHover={{
-                        scale: 1.05,
-                        backgroundColor: 'rgba(74,101,128,0.15)',
-                      }}
+                      whileHover={{ scale: 1.05, backgroundColor: 'rgba(74,101,128,0.15)' }}
                       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                     >
                       {tag}
@@ -229,6 +251,130 @@ export function VASD() {
             </div>
           </div>
         </Reveal>
+
+        {/* ── Our Case Studies ─────────────────────────────────────────────── */}
+        <div className="mt-28">
+          <Reveal className="flex items-center gap-4 mb-4">
+            <div className="h-px w-12 bg-steel-blue" />
+            <span className="font-body text-[0.65rem] tracking-[0.3em] uppercase text-steel-blue">
+              Proof of Work
+            </span>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <h2
+              className="font-display font-light text-platinum mb-4"
+              style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', letterSpacing: '-0.02em', lineHeight: 1.1 }}
+            >
+              Our Case Studies
+            </h2>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <p className="font-body text-sm text-silver-dim leading-relaxed max-w-xl mb-14">
+              Real validation sessions. Real findings. Entity names withheld. Every report is produced using VASD&apos;s three-layer system — Initial Screening, Real-World Presence, and Deep Verification.
+            </p>
+          </Reveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {caseStudies.map((cs, i) => (
+              <Reveal key={cs.num} delay={i * 0.08}>
+                <motion.div
+                  className="relative bg-charcoal rounded-card overflow-hidden border p-8 md:p-10 flex flex-col gap-6"
+                  style={{ borderColor: 'rgba(255,255,255,0.06)' }}
+                  whileHover={{ y: -5 }}
+                  transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+                >
+                  {/* top accent bar */}
+                  <motion.div
+                    className="absolute top-0 left-0 right-0 h-0.5 origin-left"
+                    style={{ backgroundColor: cs.verdictColor }}
+                    initial={{ scaleX: 0 }}
+                    whileHover={{ scaleX: 1 }}
+                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  />
+
+                  {/* header row */}
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex items-center gap-4">
+                      <div
+                        className="w-10 h-10 rounded-icon border flex items-center justify-center shrink-0"
+                        style={{ borderColor: cs.borderColor }}
+                      >
+                        <FileText size={15} style={{ color: cs.verdictColor }} />
+                      </div>
+                      <div>
+                        <p className="font-body text-[0.6rem] tracking-[0.25em] uppercase text-silver-dim">
+                          Case Study #{cs.num}
+                        </p>
+                        <p className="font-body text-sm font-medium text-platinum mt-0.5">{cs.category}</p>
+                      </div>
+                    </div>
+                    <span
+                      className="font-body text-[0.6rem] tracking-[0.2em] uppercase font-bold px-3 py-1.5 rounded-full shrink-0"
+                      style={{
+                        color: cs.verdictColor,
+                        backgroundColor: cs.borderColor,
+                        border: `1px solid ${cs.borderColor}`,
+                      }}
+                    >
+                      {cs.verdict}
+                    </span>
+                  </div>
+
+                  {/* meta */}
+                  <div className="flex items-center gap-6">
+                    <div>
+                      <p className="font-body text-[0.58rem] tracking-widest uppercase text-silver-dim mb-0.5">Type</p>
+                      <p className="font-body text-xs text-silver">{cs.type}</p>
+                    </div>
+                    <div className="w-px h-8 bg-silver-dim/15" />
+                    <div>
+                      <p className="font-body text-[0.58rem] tracking-widest uppercase text-silver-dim mb-0.5">Total Flags</p>
+                      <p className="font-body text-xs font-bold" style={{ color: cs.verdictColor }}>{cs.flags}</p>
+                    </div>
+                    <div className="w-px h-8 bg-silver-dim/15" />
+                    <div>
+                      <p className="font-body text-[0.58rem] tracking-widest uppercase text-silver-dim mb-0.5">System</p>
+                      <p className="font-body text-xs text-silver">VASD v1.0</p>
+                    </div>
+                  </div>
+
+                  {/* summary */}
+                  <p className="font-body text-sm text-silver-dim leading-relaxed">{cs.summary}</p>
+
+                  {/* layer badges */}
+                  <div className="flex flex-wrap gap-2">
+                    {['Layer 1 — Initial Screening', 'Layer 2 — Real-World Presence', 'Layer 3 — Deep Verification'].map((l) => (
+                      <span
+                        key={l}
+                        className="font-body text-[0.58rem] tracking-[0.15em] uppercase text-silver-dim border border-silver-dim/15 px-3 py-1 rounded-full"
+                      >
+                        {l}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* download */}
+                  <a
+                    href={cs.file}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2.5 self-start font-body text-[0.68rem] tracking-[0.2em] uppercase font-medium text-platinum border px-5 py-2.5 rounded-pill hover:bg-white/5 transition-colors mt-auto"
+                    style={{ borderColor: cs.borderColor }}
+                  >
+                    <Download size={12} />
+                    Download Full Report
+                  </a>
+                </motion.div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={0.1}>
+            <p className="font-body text-[0.65rem] tracking-[0.2em] uppercase text-silver-dim/50 mt-8 text-center">
+              Entity names withheld from public distribution. Full documentation available under NDA upon request.
+            </p>
+          </Reveal>
+        </div>
       </div>
     </section>
   )
