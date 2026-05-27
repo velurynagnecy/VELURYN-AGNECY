@@ -40,6 +40,17 @@ const caseStudies = [
     flags: 16,
     file: '/case-studies/VASD_Case002.pdf',
   },
+  {
+    num: '003',
+    category: 'Online Learning Platform',
+    type: 'Fake Sponsorship — Malware Contract Link',
+    verdict: 'HIGH RISK — MALWARE',
+    verdictColor: '#C0392B',
+    borderColor: 'rgba(192,57,43,0.5)',
+    summary: 'Confirmed impersonation of a globally recognized brand. Email directs creators to sign a contract via a Windows-only link — a documented malware delivery mechanism. The impersonated platform has published an official scam warning about this exact pattern.',
+    flags: 12,
+    file: '/case-studies/VASD_Case003.pdf',
+  },
 ]
 
 export function VASD() {
