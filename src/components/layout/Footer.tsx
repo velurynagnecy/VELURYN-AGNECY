@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Instagram, Linkedin, Twitter, Youtube, Facebook, Mail } from 'lucide-react'
+import { Instagram, Linkedin, Twitter, Youtube, Mail } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { EllipseImage } from '@/components/ui/EllipseImage'
 
@@ -11,7 +11,6 @@ const socials = [
   { icon: Linkedin, href: 'https://linkedin.com/company/velurynagnecy', label: 'LinkedIn' },
   { icon: Twitter, href: 'https://x.com/velurynagnecy', label: 'X / Twitter' },
   { icon: Youtube, href: 'https://youtube.com/@velurynagnecy', label: 'YouTube' },
-  { icon: Facebook, href: 'https://facebook.com/velurynagnecy', label: 'Facebook' },
 ]
 
 const navGroups = {
