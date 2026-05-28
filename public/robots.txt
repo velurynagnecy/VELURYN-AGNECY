@@ -1,26 +1,24 @@
-# VELURYN AGNECY — robots.txt
+# VELURYN AGNECY robots.txt
 
-# All standard crawlers
 User-agent: *
+Content-Signal: search=yes,ai-train=no
 Allow: /
 
 # Google
 User-agent: Googlebot
 Allow: /
 
-# Google AI (Gemini training)
 User-agent: Google-Extended
 Allow: /
 
-# OpenAI / ChatGPT
+# OpenAI
 User-agent: GPTBot
 Allow: /
 
-# OpenAI browsing (ChatGPT live browsing)
 User-agent: ChatGPT-User
 Allow: /
 
-# Anthropic / Claude
+# Anthropic
 User-agent: ClaudeBot
 Allow: /
 
@@ -34,10 +32,6 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-# Meta AI
-User-agent: FacebookBot
-Allow: /
-
 # Apple
 User-agent: Applebot
 Allow: /
@@ -45,15 +39,15 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-# Microsoft / Copilot
+# Microsoft
 User-agent: Bingbot
 Allow: /
 
-# Common AI research crawlers
+# AI research
 User-agent: CCBot
 Allow: /
 
 User-agent: cohere-ai
 Allow: /
 
-Sitemap: https://velurynagnecy.com/sitemap.xml
+Sitemap: https://velurynagnecy.com/sitemap.xmlmap.xml
