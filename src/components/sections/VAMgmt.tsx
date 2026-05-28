@@ -202,26 +202,7 @@ export function VAMgmt() {
         </div>
       </div>
 
-      <div className="bleed-full grid grid-cols-2 md:grid-cols-4 border-t border-silver-dim/10 bg-charcoal">
-        {[
-          { n: '150+', l: 'Campaigns' },
-          { n: '40+', l: 'Global Brands' },
-          { n: '20+', l: 'Countries' },
-          { n: '100%', l: 'Transparent' },
-        ].map((s, i) => (
-          <Reveal key={s.l} delay={i * 0.08}>
-            <div className="px-8 py-10 md:py-14 border-r border-silver-dim/10 last:border-r-0 text-center rounded-card md:rounded-none">
-              <p
-                className="font-display font-light text-platinum"
-                style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', letterSpacing: '-0.03em' }}
-              >
-                {s.n}
-              </p>
-              <p className="font-body text-[0.65rem] tracking-widest uppercase text-silver-dim mt-2">{s.l}</p>
-            </div>
-          </Reveal>
-        ))}
-      </div>
+
     </section>
   )
 }
