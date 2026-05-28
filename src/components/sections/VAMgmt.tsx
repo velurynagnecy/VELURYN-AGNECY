@@ -13,7 +13,7 @@ const services = [
   { n: '01', icon: Users, title: 'Talent Scouting', desc: 'We identify and vet influencers who align with your brand values, not just follower counts.' },
   { n: '02', icon: Target, title: 'Campaign Strategy', desc: 'Custom campaign architecture from brief to delivery. No templates. Every client is different.' },
   { n: '03', icon: TrendingUp, title: 'Performance Tracking', desc: 'Real-time analytics dashboards. ROI reporting. Zero vanity metrics.' },
-  { n: '04', icon: Globe, title: 'Global Reach', desc: 'Influencer networks across 20+ countries. Regional nuance at scale.' },
+  { n: '04', icon: Globe, title: 'Global Reach', desc: 'Influencer networks built for regional nuance and cultural fit — wherever your audience is.' },
   { n: '05', icon: BarChart2, title: 'Content Amplification', desc: 'Paid + organic amplification strategies to maximise campaign longevity.' },
   { n: '06', icon: Star, title: 'Brand Safety Audit', desc: 'Every influencer is audited for authenticity, brand safety, and audience quality.' },
 ]
