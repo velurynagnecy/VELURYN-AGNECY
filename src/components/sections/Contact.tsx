@@ -137,7 +137,7 @@ export function Contact() {
               <div className="flex items-center gap-3">
                 {[
                   { icon: Instagram, href: 'https://instagram.com/velurynagnecy' },
-                  { icon: Linkedin, href: 'https://linkedin.com/company/velurynagnecy' },
+                  { icon: Linkedin, href: 'https://linkedin.com/company/veluryn-agnecy' },
                   { icon: Twitter, href: 'https://x.com/velurynagnecy' },
                   { icon: Youtube, href: 'https://youtube.com/@velurynagnecy' },
                 ].map(({ icon: Icon, href }) => (
