@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Mail, Instagram, Linkedin, Twitter, Youtube, Facebook } from 'lucide-react'
+import { Mail, Instagram, Linkedin, Twitter, Youtube } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Reveal } from '@/components/motion/Reveal'
@@ -140,7 +140,6 @@ export function Contact() {
                   { icon: Linkedin, href: 'https://linkedin.com/company/velurynagnecy' },
                   { icon: Twitter, href: 'https://x.com/velurynagnecy' },
                   { icon: Youtube, href: 'https://youtube.com/@velurynagnecy' },
-                  { icon: Facebook, href: 'https://facebook.com/velurynagnecy' },
                 ].map(({ icon: Icon, href }) => (
                   <motion.a
                     key={href}
