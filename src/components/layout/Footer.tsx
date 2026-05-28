@@ -8,7 +8,7 @@ import { EllipseImage } from '@/components/ui/EllipseImage'
 
 const socials = [
   { icon: Instagram, href: 'https://instagram.com/velurynagnecy', label: 'Instagram' },
-  { icon: Linkedin, href: 'https://linkedin.com/company/velurynagnecy', label: 'LinkedIn' },
+  { icon: Linkedin, href: 'https://linkedin.com/company/veluryn-agnecy', label: 'LinkedIn' },
   { icon: Twitter, href: 'https://x.com/velurynagnecy', label: 'X / Twitter' },
   { icon: Youtube, href: 'https://youtube.com/@velurynagnecy', label: 'YouTube' },
 ]
