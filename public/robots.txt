@@ -1,24 +1,20 @@
 # VELURYN AGNECY robots.txt
 
 User-agent: *
-Content-Signal: search=yes,ai-train=no
 Allow: /
 
-# Google
 User-agent: Googlebot
 Allow: /
 
 User-agent: Google-Extended
 Allow: /
 
-# OpenAI
 User-agent: GPTBot
 Allow: /
 
 User-agent: ChatGPT-User
 Allow: /
 
-# Anthropic
 User-agent: ClaudeBot
 Allow: /
 
@@ -28,26 +24,22 @@ Allow: /
 User-agent: anthropic-ai
 Allow: /
 
-# Perplexity
 User-agent: PerplexityBot
 Allow: /
 
-# Apple
 User-agent: Applebot
 Allow: /
 
 User-agent: Applebot-Extended
 Allow: /
 
-# Microsoft
 User-agent: Bingbot
 Allow: /
 
-# AI research
 User-agent: CCBot
 Allow: /
 
 User-agent: cohere-ai
 Allow: /
 
-Sitemap: https://velurynagnecy.com/sitemap.xmlmap.xml
+Sitemap: https://velurynagnecy.com/sitemap.xml
