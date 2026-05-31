@@ -28,6 +28,7 @@ const caseStudies = [
     borderColor: 'rgba(183,119,13,0.4)',
     summary: 'A real, operational entity with verified physical presence — but carrying multiple credibility inflation signals including unverifiable accreditations, contradicting nation counts across the same website, and a pattern of curated reviews inconsistent with organic behavior.',
     flags: 9,
+    fileName: 'VASD Case Study 001 — Credibility Inflation',
     file: '/case-studies/VASD_Case001.pdf',
   },
   {
@@ -40,6 +41,7 @@ const caseStudies = [
     borderColor: 'rgba(192,57,43,0.4)',
     summary: 'An entity with zero verifiable external footprint presenting itself as a creator-sponsor directory. Business model structured to extract creator labor and referrals — including a ready-made promotional script — under the guise of a recurring income opportunity.',
     flags: 16,
+    fileName: 'VASD Case Study 002 — Labor Extraction',
     file: '/case-studies/VASD_Case002.pdf',
   },
   {
@@ -52,6 +54,7 @@ const caseStudies = [
     borderColor: 'rgba(192,57,43,0.5)',
     summary: 'Confirmed impersonation of a globally recognized brand. Directs creators to sign a contract through a Windows-only link — a documented malware delivery mechanism. The impersonated platform has published an official help center warning about this exact email pattern.',
     flags: 12,
+    fileName: 'VASD Case Study 003 — Malware Delivery',
     file: '/case-studies/VASD_Case003.pdf',
   },
   {
@@ -64,7 +67,21 @@ const caseStudies = [
     borderColor: 'rgba(192,57,43,0.5)',
     summary: 'Domain registered 24 hours before the email was sent. Website behind the domain displays a completely different brand and a data collection form requesting channel name, link, subscriber count, and email. Infrastructure built to harvest creator profiles for future targeted scam campaigns.',
     flags: 14,
+    fileName: 'VASD Case Study 004 — Data Harvesting',
     file: '/case-studies/VASD_Case004.pdf',
+  },
+  {
+    num: '005',
+    title: 'Financial Platform Impersonation',
+    category: 'Educational Email Infrastructure',
+    type: 'Fake Financial Rewards — Two Stage Attack',
+    verdict: 'HIGH RISK — FINANCIAL FRAUD',
+    verdictColor: '#C0392B',
+    borderColor: 'rgba(192,57,43,0.5)',
+    summary: 'Two emails claiming to represent a financial platform — sent from an Italian university alumni account and a US charter school student account. A two-stage trigger: the first creates financial anticipation, the second creates withdrawal panic. Both sent to BCC, confirming mass automated distribution.',
+    flags: 17,
+    fileName: 'VASD Case Study 005 — Financial Platform Impersonation',
+    file: '/case-studies/VASD_Case005.pdf',
   },
 ]
 
@@ -394,6 +411,7 @@ export function VASD() {
                   {/* download */}
                   <a
                     href={cs.file}
+                    download={cs.fileName}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2.5 self-start font-body text-[0.68rem] tracking-[0.2em] uppercase font-medium text-platinum border px-5 py-2.5 rounded-pill hover:bg-white/5 transition-colors mt-auto"
@@ -413,6 +431,103 @@ export function VASD() {
             </p>
           </Reveal>
         </div>
+
+        {/* ── How To Spot A Scam ───────────────────────────────────────────── */}
+        <div className="mt-28">
+          <Reveal className="flex items-center gap-4 mb-4">
+            <div className="h-px w-12 bg-steel-blue" />
+            <span className="font-body text-[0.65rem] tracking-[0.3em] uppercase text-steel-blue">
+              Public Trust Guide
+            </span>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <h2
+              className="font-display font-light text-platinum mb-4"
+              style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', letterSpacing: '-0.02em', lineHeight: 1.1 }}
+            >
+              How To Spot A Scam
+            </h2>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <p className="font-body text-sm text-silver-dim leading-relaxed max-w-xl mb-10">
+              A public guide produced by VELURYN AGNECY using VASD Trust Authority Infrastructure. Based on 11 real scam cases observed across LinkedIn, Threads, X, WhatsApp, Facebook Messenger, Email, and SMS. Every pattern documented is real. Once you know them, they become impossible to miss.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <motion.div
+              className="relative bg-charcoal rounded-card overflow-hidden border p-8 md:p-10"
+              style={{ borderColor: 'rgba(255,255,255,0.06)' }}
+              whileHover={{ y: -4 }}
+              transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+            >
+              <motion.div
+                className="absolute top-0 left-0 right-0 h-0.5 origin-left bg-steel-blue"
+                initial={{ scaleX: 0 }}
+                whileHover={{ scaleX: 1 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              />
+
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                <div className="md:col-span-8">
+                  <p className="font-body text-[0.6rem] tracking-[0.28em] uppercase text-steel-blue mb-3">
+                    VASD — VELURYN AGNECY
+                  </p>
+                  <h3 className="font-display font-light text-platinum text-2xl mb-4">
+                    How To Spot A Scam
+                  </h3>
+                  <p className="font-body text-sm text-silver-dim leading-relaxed mb-6">
+                    11 real scam cases. 6 universal mechanics that appear in every single one. Fake job offers, platform impersonation, government authority fraud, celebrity scams, advance fee schemes, and more — all analysed using VASD&apos;s three layer verification system. The patterns repeat. The techniques are identical. This guide makes them impossible to miss.
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {['6 Universal Scam Mechanics', '8 Documented Scam Types', '6-Step Action Guide', 'Real Cases Only'].map((tag) => (
+                      <span
+                        key={tag}
+                        className="font-body text-[0.58rem] tracking-[0.15em] uppercase text-silver-dim border border-silver-dim/15 px-3 py-1 rounded-full"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <a
+                    href="/VASD_Public_Scam_Guide.pdf"
+                    download="VASD Public Trust Guide — How To Spot A Scam"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2.5 font-body text-[0.68rem] tracking-[0.2em] uppercase font-medium text-platinum border border-steel-blue/40 px-5 py-2.5 rounded-pill hover:bg-steel-blue/10 transition-colors"
+                  >
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <path d="M6 1v7M3 5l3 3 3-3M1 10h10" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    View Full Guide
+                  </a>
+                </div>
+
+                <div className="md:col-span-4 flex flex-col gap-3">
+                  {[
+                    'Pretends to be someone you trust',
+                    'Creates pressure so you do not think',
+                    'Moves you away from the safe environment',
+                    'Uses a fake sender address',
+                    'Hits you in the feelings',
+                    'Creates fake evidence',
+                  ].map((mechanic, i) => (
+                    <div key={mechanic} className="flex items-start gap-3">
+                      <span
+                        className="font-display font-light shrink-0 mt-0.5"
+                        style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.15)', lineHeight: 1 }}
+                      >
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <p className="font-body text-xs text-silver-dim leading-relaxed">{mechanic}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </Reveal>
+        </div>
+
       </div>
     </section>
   )
