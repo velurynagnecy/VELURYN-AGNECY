@@ -528,6 +528,34 @@ export function VASD() {
           </Reveal>
         </div>
 
+        {/* ── Submit CTA ────────────────────────────────────────────────── */}
+        <Reveal>
+          <div className="mt-20 relative border border-silver-dim/12 bg-charcoal-2/50 rounded-panel overflow-hidden p-10 md:p-14 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+            <div className="absolute top-0 left-0 w-24 h-px bg-steel-blue" />
+            <div className="absolute bottom-0 right-0 w-24 h-px bg-steel-blue" />
+            <div>
+              <p className="font-body text-[0.65rem] tracking-[0.3em] uppercase text-steel-blue mb-3">
+                VASD Case Submission
+              </p>
+              <h3
+                className="font-display font-light text-platinum mb-3"
+                style={{ fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', lineHeight: 1.1 }}
+              >
+                Received something suspicious?
+              </h3>
+              <p className="font-body text-sm text-silver-dim leading-relaxed max-w-lg">
+                Submit it to VASD. We run a full three-layer verification, document the findings, and publish the case study. No cost. Your identity is never published.
+              </p>
+            </div>
+            <a
+              href="/submit-case"
+              className="shrink-0 inline-flex items-center gap-3 font-body text-[0.7rem] tracking-[0.22em] uppercase font-medium text-charcoal bg-platinum px-8 py-4 hover:bg-silver transition-colors rounded-none"
+            >
+              Submit a Case
+            </a>
+          </div>
+        </Reveal>
+
       </div>
     </section>
   )
