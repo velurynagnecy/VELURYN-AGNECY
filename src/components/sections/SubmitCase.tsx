@@ -49,16 +49,17 @@ export function SubmitCase() {
     setErrorMsg('')
 
     const formData = new FormData(e.currentTarget)
+    formData.append('_subject', 'VASD Case Submission — VELURYN AGNECY')
+    formData.append('_captcha', 'false')
+    formData.append('_template', 'table')
 
     try {
-      const res = await fetch(FORMSUBMIT_AJAX, {
+      const res = await fetch('https://formsubmit.co/ajax/vivin.b@velurynagnecy.com', {
         method: 'POST',
         body: formData,
-        headers: { Accept: 'application/json' },
       })
-      const data = await res.json().catch(() => ({}))
 
-      if (res.ok && data.success !== 'false') {
+      if (res.ok) {
         setForm(emptyForm)
         setState('done')
       } else {
@@ -67,7 +68,7 @@ export function SubmitCase() {
       }
     } catch {
       setState('error')
-      setErrorMsg('Network error. Please try again.')
+      setErrorMsg('Network error. Please try again or email vivin.b@velurynagnecy.com.')
     }
   }
 
@@ -205,9 +206,7 @@ export function SubmitCase() {
                       exit={{ opacity: 0, y: -20 }}
                       className="flex flex-col gap-5"
                     >
-                      <input type="hidden" name="_subject" value="VASD Case Submission — VELURYN AGNECY" />
-                      <input type="hidden" name="_template" value="table" />
-                      <input type="hidden" name="_captcha" value="false" />
+
 
                       {/* Submitter info */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
