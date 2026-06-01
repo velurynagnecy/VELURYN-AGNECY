@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Shield, AlertTriangle, Mail, Globe, FileText, Send } from 'lucide-react'
+import { Shield, AlertTriangle, FileText, Send } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Reveal } from '@/components/motion/Reveal'
 import { cn } from '@/lib/utils'
@@ -35,7 +35,6 @@ const emptyForm = {
   entityClaimed: '',
   description: '',
   additionalDetails: '',
-  consent: false,
 }
 
 export function SubmitCase() {
@@ -49,23 +48,22 @@ export function SubmitCase() {
     setErrorMsg('')
 
     const formData = new FormData(e.currentTarget)
-    formData.append('_subject', 'VASD Case Submission — VELURYN AGNECY')
-    formData.append('_captcha', 'false')
-    formData.append('_template', 'table')
 
     try {
-      const res = await fetch('https://formsubmit.co/ajax/vivin.b@velurynagnecy.com', {
+      const res = await fetch(FORMSUBMIT_AJAX, {
         method: 'POST',
         body: formData,
+        headers: { Accept: 'application/json' },
       })
+      const data = await res.json().catch(() => ({}))
 
-      if (res.ok) {
+      if (res.ok && data.success !== 'false') {
         setForm(emptyForm)
         setState('done')
-      } else {
-        setState('error')
-        setErrorMsg('Unable to submit. Please email vivin.b@velurynagnecy.com directly.')
+        return
       }
+      setState('error')
+      setErrorMsg('Unable to submit. Please email vivin.b@velurynagnecy.com directly.')
     } catch {
       setState('error')
       setErrorMsg('Network error. Please try again or email vivin.b@velurynagnecy.com.')
@@ -99,18 +97,16 @@ export function SubmitCase() {
           </Reveal>
           <Reveal delay={0.12}>
             <p className="font-body text-base text-silver-dim leading-relaxed max-w-2xl mb-10">
-              Received something that felt off? A suspicious email, a brand deal that does not check out,
-              a domain that was registered yesterday, a message from an entity you cannot verify.
-              Submit it here. VASD will run a full three-layer verification and document the findings.
+              Received something that felt off? Submit it here. VASD will run a full three-layer
+              verification and document the findings.
             </p>
           </Reveal>
-
           <Reveal delay={0.15}>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl">
               {[
-                { icon: Shield, label: 'Three Layer Verification', desc: 'Every submission reviewed in full' },
-                { icon: AlertTriangle, label: 'No Cost', desc: 'Free during the case study phase' },
-                { icon: FileText, label: 'Confidential', desc: 'Your identity is never published' },
+                { icon: Shield,        label: 'Three Layer Verification', desc: 'Every submission reviewed in full' },
+                { icon: AlertTriangle, label: 'No Cost',                  desc: 'Free during the case study phase' },
+                { icon: FileText,      label: 'Confidential',             desc: 'Your identity is never published' },
               ].map(({ icon: Icon, label, desc }) => (
                 <div key={label} className="flex items-start gap-3 bg-charcoal px-4 py-4 rounded-card border border-silver-dim/10">
                   <Icon size={14} className="text-steel-blue shrink-0 mt-0.5" strokeWidth={1.5} />
@@ -129,7 +125,7 @@ export function SubmitCase() {
       <div className="max-w-7xl mx-auto px-6 py-20 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
 
-          {/* Left — what happens next */}
+          {/* Left */}
           <div className="lg:col-span-4">
             <Reveal>
               <h2
@@ -141,10 +137,10 @@ export function SubmitCase() {
             </Reveal>
             <div className="flex flex-col gap-8">
               {[
-                { n: '01', title: 'Layer One', desc: 'We run surface verification — domain age, WHOIS, DNS, mail infrastructure, and text analysis. If the case is obvious, it concludes here.' },
-                { n: '02', title: 'Layer Two', desc: 'We verify whether the entity actually exists and operates as it claims — cross-platform, real-world presence, payment structure, and reputation.' },
-                { n: '03', title: 'Layer Three', desc: 'Deep trust intelligence — behavioral analysis, relationship mapping, infrastructure consistency, and a complete trust classification.' },
-                { n: '04', title: 'Report Published', desc: 'If the case becomes a case study, it is published on this site with all identifying details removed. You are never named.' },
+                { n: '01', title: 'Layer One',         desc: 'Surface verification — domain age, WHOIS, DNS, mail infrastructure, and text analysis.' },
+                { n: '02', title: 'Layer Two',         desc: 'Entity presence — cross-platform existence, real-world presence, payment structure, and reputation.' },
+                { n: '03', title: 'Layer Three',       desc: 'Deep trust intelligence — behavioral analysis, relationship mapping, and full trust classification.' },
+                { n: '04', title: 'Report Published',  desc: 'If the case becomes a case study, it is published with all identifying details removed. You are never named.' },
               ].map(({ n, title, desc }) => (
                 <Reveal key={n}>
                   <div className="flex gap-5">
@@ -193,8 +189,8 @@ export function SubmitCase() {
                         </svg>
                       </div>
                       <h3 className="font-display text-3xl font-light text-platinum">Case Submitted.</h3>
-                      <p className="font-body text-sm text-silver-dim max-w-sm">
-                        We have received your submission. VASD will begin verification and reach out if we need more information. Your identity will never be published.
+                      <p className="font-body text-sm text-silver-dim">
+                        We have received your submission. VASD will begin verification shortly. Your identity will never be published.
                       </p>
                     </motion.div>
                   ) : (
@@ -206,9 +202,11 @@ export function SubmitCase() {
                       exit={{ opacity: 0, y: -20 }}
                       className="flex flex-col gap-5"
                     >
+                      <input type="hidden" name="_subject" value="VASD Case Submission — VELURYN AGNECY" />
+                      <input type="hidden" name="_template" value="table" />
+                      <input type="hidden" name="_captcha" value="false" />
+                      <input type="hidden" name="_next" value="https://velurynagnecy.com/submit-case" />
 
-
-                      {/* Submitter info */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div className="flex flex-col gap-1.5">
                           <label className="font-body text-[0.6rem] tracking-[0.22em] uppercase text-silver-dim">
@@ -238,7 +236,6 @@ export function SubmitCase() {
                         </div>
                       </div>
 
-                      {/* Scam type + platform */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div className="flex flex-col gap-1.5">
                           <label className="font-body text-[0.6rem] tracking-[0.22em] uppercase text-silver-dim">
@@ -273,7 +270,6 @@ export function SubmitCase() {
                         </div>
                       </div>
 
-                      {/* Sender address + entity claimed */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div className="flex flex-col gap-1.5">
                           <label className="font-body text-[0.6rem] tracking-[0.22em] uppercase text-silver-dim">
@@ -304,7 +300,6 @@ export function SubmitCase() {
                         </div>
                       </div>
 
-                      {/* Description */}
                       <div className="flex flex-col gap-1.5">
                         <label className="font-body text-[0.6rem] tracking-[0.22em] uppercase text-silver-dim">
                           What Did the Message Say? <span className="text-silver-dim/60">*</span>
@@ -320,7 +315,6 @@ export function SubmitCase() {
                         />
                       </div>
 
-                      {/* Additional */}
                       <div className="flex flex-col gap-1.5">
                         <label className="font-body text-[0.6rem] tracking-[0.22em] uppercase text-silver-dim">
                           Additional Context <span className="text-silver-dim/40">(optional)</span>
@@ -330,25 +324,10 @@ export function SubmitCase() {
                           value={form.additionalDetails}
                           onChange={(e) => setForm({ ...form, additionalDetails: e.target.value })}
                           rows={3}
-                          placeholder="Any links, domain names, phone numbers, or other details that may help."
+                          placeholder="Any links, domain names, phone numbers, or other details."
                           className={cn(fieldClass, 'resize-none')}
                         />
                       </div>
-
-                      {/* Consent */}
-                      <label className="flex items-start gap-3 cursor-pointer group">
-                        <input
-                          type="checkbox"
-                          name="consent"
-                          required
-                          checked={form.consent}
-                          onChange={(e) => setForm({ ...form, consent: e.target.checked })}
-                          className="mt-1 shrink-0 accent-platinum"
-                        />
-                        <span className="font-body text-xs text-silver-dim leading-relaxed">
-                          I confirm this is a genuine submission. I understand that VASD may publish the findings as a case study with all identifying details removed. My name and email will never be published.
-                        </span>
-                      </label>
 
                       {state === 'error' && errorMsg && (
                         <p className="font-body text-sm text-silver text-center px-2" role="alert">
@@ -375,7 +354,7 @@ export function SubmitCase() {
                       </button>
                       <p className="font-body text-[0.65rem] text-silver-dim text-center">
                         Confidential. Your identity is never published. VASD classifications are probabilistic assessments, not legal determinations.
-      </p>
+                      </p>
                     </motion.form>
                   )}
                 </AnimatePresence>
