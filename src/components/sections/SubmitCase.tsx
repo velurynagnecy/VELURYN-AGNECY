@@ -6,12 +6,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Reveal } from '@/components/motion/Reveal'
 import { cn } from '@/lib/utils'
 
-const FORMSUBMIT_ACTION = 'https://formsubmit.co/vivin.b@velurynagnecy.com'
-const FORMSUBMIT_AJAX   = 'https://formsubmit.co/ajax/vivin.b@velurynagnecy.com'
-
-const fieldClass =
-  'form-input w-full bg-charcoal-2 text-platinum font-body text-sm px-4 py-3.5 placeholder:text-silver-dim/35'
-
 const scamTypes = [
   'Fake Brand Deal / Sponsorship',
   'Platform Impersonation',
@@ -26,47 +20,34 @@ const scamTypes = [
   'Other / Unknown',
 ]
 
-const emptyForm = {
-  submitterName: '',
-  submitterEmail: '',
-  scamType: '',
-  platform: '',
-  senderAddress: '',
-  entityClaimed: '',
-  description: '',
-  additionalDetails: '',
-}
+const fieldClass =
+  'form-input w-full bg-charcoal-2 text-platinum font-body text-sm px-4 py-3.5 placeholder:text-silver-dim/35 border-0 outline-none focus:ring-0'
 
 export function SubmitCase() {
-  const [form, setForm] = useState(emptyForm)
-  const [state, setState] = useState<'idle' | 'sending' | 'done' | 'error'>('idle')
-  const [errorMsg, setErrorMsg] = useState('')
+  const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle')
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setState('sending')
-    setErrorMsg('')
+    setStatus('sending')
 
-    const formData = new FormData(e.currentTarget)
+    const form = e.currentTarget
+    const data = new FormData(form)
 
     try {
-      const res = await fetch(FORMSUBMIT_AJAX, {
+      const res = await fetch('https://formsubmit.co/ajax/vivin.b@velurynagnecy.com', {
         method: 'POST',
-        body: formData,
-        headers: { Accept: 'application/json' },
+        headers: { 'Accept': 'application/json' },
+        body: data,
       })
-      const data = await res.json().catch(() => ({}))
 
-      if (res.ok && data.success !== 'false') {
-        setForm(emptyForm)
-        setState('done')
-        return
+      if (res.ok) {
+        setStatus('done')
+        form.reset()
+      } else {
+        setStatus('error')
       }
-      setState('error')
-      setErrorMsg('Unable to submit. Please email vivin.b@velurynagnecy.com directly.')
     } catch {
-      setState('error')
-      setErrorMsg('Network error. Please try again or email vivin.b@velurynagnecy.com.')
+      setStatus('error')
     }
   }
 
@@ -74,7 +55,7 @@ export function SubmitCase() {
     <section className="relative bg-charcoal overflow-hidden min-h-screen">
 
       {/* Hero */}
-      <div className="relative bg-charcoal-2 border-b border-silver-dim/10 overflow-hidden">
+      <div className="relative bg-charcoal-2 border-b border-silver-dim/10">
         <div className="max-w-7xl mx-auto px-6 pt-36 pb-20 relative z-10">
           <Reveal className="flex items-center gap-4 mb-8">
             <div className="w-px h-10 bg-steel-blue" />
@@ -121,7 +102,7 @@ export function SubmitCase() {
         </div>
       </div>
 
-      {/* Form */}
+      {/* Body */}
       <div className="max-w-7xl mx-auto px-6 py-20 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
 
@@ -138,9 +119,9 @@ export function SubmitCase() {
             <div className="flex flex-col gap-8">
               {[
                 { n: '01', title: 'Layer One',         desc: 'Surface verification — domain age, WHOIS, DNS, mail infrastructure, and text analysis.' },
-                { n: '02', title: 'Layer Two',         desc: 'Entity presence — cross-platform existence, real-world presence, payment structure, and reputation.' },
+                { n: '02', title: 'Layer Two',         desc: 'Entity presence — whether the entity actually exists and operates as it claims.' },
                 { n: '03', title: 'Layer Three',       desc: 'Deep trust intelligence — behavioral analysis, relationship mapping, and full trust classification.' },
-                { n: '04', title: 'Report Published',  desc: 'If the case becomes a case study, it is published with all identifying details removed. You are never named.' },
+                { n: '04', title: 'Report Published',  desc: 'If the case becomes a case study, findings are published with all identifying details removed.' },
               ].map(({ n, title, desc }) => (
                 <Reveal key={n}>
                   <div className="flex gap-5">
@@ -166,7 +147,7 @@ export function SubmitCase() {
             <Reveal direction="scale" delay={0.1}>
               <div className="contact-form-panel relative bg-charcoal-2 p-8 md:p-12 glow-silver">
                 <AnimatePresence mode="wait">
-                  {state === 'done' ? (
+                  {status === 'done' ? (
                     <motion.div
                       key="success"
                       initial={{ opacity: 0, y: 40 }}
@@ -189,117 +170,69 @@ export function SubmitCase() {
                         </svg>
                       </div>
                       <h3 className="font-display text-3xl font-light text-platinum">Case Submitted.</h3>
-                      <p className="font-body text-sm text-silver-dim">
-                        We have received your submission. VASD will begin verification shortly. Your identity will never be published.
+                      <p className="font-body text-sm text-silver-dim max-w-sm">
+                        We have received your submission. VASD will begin verification and reach out if we need more information. Your identity will never be published.
                       </p>
                     </motion.div>
                   ) : (
                     <motion.form
                       key="form"
-                      action={FORMSUBMIT_ACTION}
-                      method="POST"
                       onSubmit={handleSubmit}
                       exit={{ opacity: 0, y: -20 }}
                       className="flex flex-col gap-5"
                     >
-                      <input type="hidden" name="_subject" value="VASD Case Submission — VELURYN AGNECY" />
-                      <input type="hidden" name="_template" value="table" />
-                      <input type="hidden" name="_captcha" value="false" />
-                      <input type="hidden" name="_next" value="https://velurynagnecy.com/submit-case" />
-
+                      {/* Submitter info */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div className="flex flex-col gap-1.5">
                           <label className="font-body text-[0.6rem] tracking-[0.22em] uppercase text-silver-dim">
-                            Your Name <span className="text-silver-dim/40">(optional)</span>
+                            Your Name <span className="opacity-40">(optional)</span>
                           </label>
-                          <input
-                            name="submitter_name"
-                            type="text"
-                            value={form.submitterName}
-                            onChange={(e) => setForm({ ...form, submitterName: e.target.value })}
-                            placeholder="Your name"
-                            className={fieldClass}
-                          />
+                          <input name="submitter_name" type="text" placeholder="Your name" className={fieldClass} />
                         </div>
                         <div className="flex flex-col gap-1.5">
                           <label className="font-body text-[0.6rem] tracking-[0.22em] uppercase text-silver-dim">
-                            Your Email <span className="text-silver-dim/40">(for follow-up)</span>
+                            Your Email <span className="opacity-40">(for follow-up)</span>
                           </label>
-                          <input
-                            name="submitter_email"
-                            type="email"
-                            value={form.submitterEmail}
-                            onChange={(e) => setForm({ ...form, submitterEmail: e.target.value })}
-                            placeholder="your@email.com"
-                            className={fieldClass}
-                          />
+                          <input name="submitter_email" type="email" placeholder="your@email.com" className={fieldClass} />
                         </div>
                       </div>
 
+                      {/* Scam type + platform */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div className="flex flex-col gap-1.5">
                           <label className="font-body text-[0.6rem] tracking-[0.22em] uppercase text-silver-dim">
                             Scam Type <span className="text-silver-dim/60">*</span>
                           </label>
-                          <select
-                            name="scam_type"
-                            required
-                            value={form.scamType}
-                            onChange={(e) => setForm({ ...form, scamType: e.target.value })}
-                            className={fieldClass}
-                          >
-                            <option value="" disabled>Select type</option>
-                            {scamTypes.map((t) => (
-                              <option key={t} value={t}>{t}</option>
-                            ))}
+                          <select name="scam_type" required className={fieldClass}>
+                            <option value="">Select type</option>
+                            {scamTypes.map((t) => <option key={t} value={t}>{t}</option>)}
                           </select>
                         </div>
                         <div className="flex flex-col gap-1.5">
                           <label className="font-body text-[0.6rem] tracking-[0.22em] uppercase text-silver-dim">
                             Platform / Channel <span className="text-silver-dim/60">*</span>
                           </label>
-                          <input
-                            name="platform"
-                            type="text"
-                            required
-                            value={form.platform}
-                            onChange={(e) => setForm({ ...form, platform: e.target.value })}
-                            placeholder="e.g. Email, Instagram DM, SMS"
-                            className={fieldClass}
-                          />
+                          <input name="platform" type="text" required placeholder="e.g. Email, Instagram DM, SMS" className={fieldClass} />
                         </div>
                       </div>
 
+                      {/* Sender + entity */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div className="flex flex-col gap-1.5">
                           <label className="font-body text-[0.6rem] tracking-[0.22em] uppercase text-silver-dim">
                             Actual Sender Address <span className="text-silver-dim/60">*</span>
                           </label>
-                          <input
-                            name="sender_address"
-                            type="text"
-                            required
-                            value={form.senderAddress}
-                            onChange={(e) => setForm({ ...form, senderAddress: e.target.value })}
-                            placeholder="e.g. hello@poecontact.com"
-                            className={fieldClass}
-                          />
+                          <input name="sender_address" type="text" required placeholder="e.g. hello@poecontact.com" className={fieldClass} />
                         </div>
                         <div className="flex flex-col gap-1.5">
                           <label className="font-body text-[0.6rem] tracking-[0.22em] uppercase text-silver-dim">
                             Entity Claimed to Be
                           </label>
-                          <input
-                            name="entity_claimed"
-                            type="text"
-                            value={form.entityClaimed}
-                            onChange={(e) => setForm({ ...form, entityClaimed: e.target.value })}
-                            placeholder="e.g. Skillshare, Land Transport Authority"
-                            className={fieldClass}
-                          />
+                          <input name="entity_claimed" type="text" placeholder="e.g. Skillshare, Land Transport Authority" className={fieldClass} />
                         </div>
                       </div>
 
+                      {/* Description */}
                       <div className="flex flex-col gap-1.5">
                         <label className="font-body text-[0.6rem] tracking-[0.22em] uppercase text-silver-dim">
                           What Did the Message Say? <span className="text-silver-dim/60">*</span>
@@ -307,40 +240,45 @@ export function SubmitCase() {
                         <textarea
                           name="description"
                           required
-                          value={form.description}
-                          onChange={(e) => setForm({ ...form, description: e.target.value })}
                           rows={5}
                           placeholder="Paste the message or describe what was sent. The more detail, the more thorough the verification."
                           className={cn(fieldClass, 'resize-none')}
                         />
                       </div>
 
+                      {/* Additional */}
                       <div className="flex flex-col gap-1.5">
                         <label className="font-body text-[0.6rem] tracking-[0.22em] uppercase text-silver-dim">
-                          Additional Context <span className="text-silver-dim/40">(optional)</span>
+                          Additional Context <span className="opacity-40">(optional)</span>
                         </label>
                         <textarea
                           name="additional_details"
-                          value={form.additionalDetails}
-                          onChange={(e) => setForm({ ...form, additionalDetails: e.target.value })}
                           rows={3}
                           placeholder="Any links, domain names, phone numbers, or other details."
                           className={cn(fieldClass, 'resize-none')}
                         />
                       </div>
 
-                      {state === 'error' && errorMsg && (
-                        <p className="font-body text-sm text-silver text-center px-2" role="alert">
-                          {errorMsg}
+                      {/* Consent */}
+                      <label className="flex items-start gap-3 cursor-pointer">
+                        <input type="checkbox" name="consent" required className="mt-1 shrink-0 accent-platinum" />
+                        <span className="font-body text-xs text-silver-dim leading-relaxed">
+                          I confirm this is a genuine submission. I understand VASD may publish the findings as a case study with all identifying details removed. My name and email will never be published.
+                        </span>
+                      </label>
+
+                      {status === 'error' && (
+                        <p className="font-body text-sm text-silver text-center" role="alert">
+                          Something went wrong. Please email vivin.b@velurynagnecy.com directly.
                         </p>
                       )}
 
                       <button
                         type="submit"
-                        disabled={state === 'sending'}
+                        disabled={status === 'sending'}
                         className="btn-submit w-full bg-platinum text-charcoal font-body text-[0.7rem] tracking-[0.22em] uppercase font-medium py-4 hover:bg-silver disabled:opacity-60 flex items-center justify-center gap-3 mt-2"
                       >
-                        {state === 'sending' ? (
+                        {status === 'sending' ? (
                           <>
                             <span className="btn-spinner" />
                             Submitting...
@@ -352,6 +290,7 @@ export function SubmitCase() {
                           </>
                         )}
                       </button>
+
                       <p className="font-body text-[0.65rem] text-silver-dim text-center">
                         Confidential. Your identity is never published. VASD classifications are probabilistic assessments, not legal determinations.
                       </p>
