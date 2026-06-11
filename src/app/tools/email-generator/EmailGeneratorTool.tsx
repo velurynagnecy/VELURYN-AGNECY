@@ -65,7 +65,8 @@ const DEMO_TEMPLATES: Template[] = [
 
 function extractPlaceholders(text: string): string[] {
   const matches = text.match(/\[([^\]]+)\]/g) || []
-  return [...new Set(matches.map((m) => m.slice(1, -1)))]
+  const keys = matches.map((m) => m.slice(1, -1))
+  return keys.filter((item, index) => keys.indexOf(item) === index)
 }
 
 function fillPlaceholders(text: string, values: Record<string, string>): string {
