@@ -83,8 +83,8 @@ To make it functional, connect to one of these free services:
 ## Deploy
 
 ```bash
-# Push to GitHub, then connect repo to Vercel
-# Vercel detects Next.js automatically — zero config
+# Push to GitHub, then connect repo to Cloudflare Pages
+# Cloudflare detects Next.js automatically — zero config
 npm run build  # test build locally first
 ```
 
