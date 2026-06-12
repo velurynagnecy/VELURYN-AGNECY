@@ -37,7 +37,7 @@ export default function EmailGeneratorPage() {
           </p>
           <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-border bg-charcoal-2 font-body text-[0.65rem] tracking-[0.15em] uppercase text-silver-dim">
             <span className="w-1.5 h-1.5 rounded-full bg-platinum/40 inline-block" />
-            Pro: CSV bulk generation + 30 templates
+            Pro: Unlimited generations + CSV bulk import
             <a href="/contact" className="text-platinum hover:underline ml-1">Upgrade</a>
           </div>
         </section>
@@ -64,13 +64,13 @@ export default function EmailGeneratorPage() {
             Scale Without Limits
           </h2>
           <p className="font-body text-silver-dim text-sm max-w-lg mx-auto mb-14 leading-relaxed">
-            The free demo lets you generate one email at a time. Pro unlocks everything &mdash; CSV uploads, 30 templates, and 5 export formats.
+            The free demo includes 3 generations across 9 templates. Pro unlocks unlimited generations, CSV bulk import, and export to TXT, CSV, or JSON.
           </p>
           <div className="grid sm:grid-cols-3 gap-4 text-left mb-12">
             {[
-              { title: '30 Templates', desc: 'Across Sales, HR, Marketing, Customer Success, Networking and Internal.' },
-              { title: 'CSV Bulk Generation', desc: 'Upload thousands of contacts and personalise every single email instantly.' },
-              { title: '5 Export Formats', desc: 'CSV, Excel, JSON, ZIP text files, or copy all to clipboard in one click.' },
+              { title: 'Unlimited Generations', desc: 'No daily limits. Generate as many personalised emails as you need.' },
+              { title: 'CSV Bulk Generation', desc: 'Upload a CSV of contacts and personalise every single email instantly.' },
+              { title: 'Export Formats', desc: 'Download as TXT, CSV, or JSON, or copy everything to clipboard in one click.' },
             ].map(f => (
               <div key={f.title} className="glass-dark border border-border rounded-[20px] p-6">
                 <h3 className="font-body font-medium text-platinum text-sm mb-2">{f.title}</h3>
