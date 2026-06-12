@@ -38,7 +38,7 @@ export default function EmailGeneratorPage() {
           <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-border bg-charcoal-2 font-body text-[0.65rem] tracking-[0.15em] uppercase text-silver-dim">
             <span className="w-1.5 h-1.5 rounded-full bg-platinum/40 inline-block" />
             Pro: Unlimited generations + CSV bulk import
-            <a href="/contact" className="text-platinum hover:underline ml-1">Upgrade</a>
+            <a href="/#contact" className="text-platinum hover:underline ml-1">Upgrade</a>
           </div>
         </section>
 
@@ -79,7 +79,7 @@ export default function EmailGeneratorPage() {
             ))}
           </div>
           <a
-            href="/contact"
+            href="/#contact"
             className="inline-flex items-center gap-2 bg-platinum text-charcoal font-body font-medium text-xs tracking-widest uppercase px-8 py-4 rounded-full hover:bg-silver transition-colors"
           >
             Get Pro Access
