@@ -398,7 +398,12 @@ export function EmailGeneratorTool() {
                   <div key={c} className="w-2.5 h-2.5 rounded-full" style={{ background: c }} />
                 ))}
               </div>
-              <div className="border-b border-border pb-3 mb-4">
+              <div
+                className="border-b border-border pb-3 mb-4 select-none"
+                style={{ userSelect: 'none' }}
+                onCopy={(e) => e.preventDefault()}
+                onContextMenu={(e) => e.preventDefault()}
+              >
                 <p className="font-body text-[0.6rem] tracking-[0.15em] uppercase text-silver-dim/60 mb-0.5">
                   Subject
                 </p>
@@ -408,11 +413,19 @@ export function EmailGeneratorTool() {
                   )}
                 </p>
               </div>
-              <div className="font-body text-silver text-sm leading-relaxed whitespace-pre-wrap max-h-72 overflow-y-auto min-h-16">
+              <div
+                className="font-body text-silver text-sm leading-relaxed whitespace-pre-wrap max-h-72 overflow-y-auto min-h-16 select-none"
+                style={{ userSelect: 'none' }}
+                onCopy={(e) => e.preventDefault()}
+                onContextMenu={(e) => e.preventDefault()}
+              >
                 {previewBody || (
                   <span className="text-silver-dim/40 italic">Fill in the details to see your email.</span>
                 )}
               </div>
+              <p className="font-body text-[0.55rem] tracking-[0.2em] uppercase text-silver-dim/40 mt-3 text-center">
+                Preview only &mdash; click Generate Email to copy
+              </p>
             </div>
           </div>
         </div>
@@ -485,7 +498,7 @@ export function EmailGeneratorTool() {
               </p>
               <div className="flex flex-wrap items-center justify-center gap-3">
                 <a
-                  href="/contact"
+                  href="/#contact"
                   className="inline-flex items-center gap-2 bg-platinum text-charcoal font-body font-medium text-xs tracking-widest uppercase px-8 py-3.5 rounded-full hover:bg-silver transition-colors"
                 >
                   Get Pro Access
@@ -603,7 +616,7 @@ export function EmailGeneratorTool() {
                       </p>
                     </div>
                     <a
-                      href="/contact"
+                      href="/#contact"
                       className="flex-shrink-0 bg-platinum text-charcoal font-body font-medium text-[0.65rem] tracking-widest uppercase px-5 py-2.5 rounded-full hover:bg-silver transition-colors"
                     >
                       Get Pro
@@ -633,7 +646,7 @@ export function EmailGeneratorTool() {
               Pro unlocks unlimited generations, CSV bulk import, and export to TXT, CSV, or JSON.
             </p>
             <a
-              href="/contact"
+              href="/#contact"
               className="inline-flex items-center gap-2 bg-platinum text-charcoal font-body font-medium text-xs tracking-widest uppercase px-8 py-3.5 rounded-full hover:bg-silver transition-colors"
             >
               Get Pro Access
