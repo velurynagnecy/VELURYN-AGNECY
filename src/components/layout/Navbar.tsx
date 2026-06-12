@@ -12,6 +12,7 @@ const navLinks = [
   { label: 'About', href: '/#about' },
   { label: 'VA Mgmt', href: '/va-mgmt' },
   { label: 'VASD', href: '/vasd' },
+  { label: 'Email Tool', href: '/tools/email-generator' },
   { label: 'Submit a Case', href: '/submit-case' },
   { label: 'Services', href: '/#services' },
   { label: 'Contact', href: '/#contact' },
