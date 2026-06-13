@@ -16,6 +16,7 @@ const navLinks = [
   { label: 'VASD', href: '/vasd' },
   { label: 'Email Tool', href: '/tools/email-generator' },
   { label: 'Submit a Case', href: '/submit-case' },
+  { label: 'Pricing', href: '/pricing' },
   { label: 'Services', href: '/#services' },
   { label: 'Contact', href: '/#contact' },
 ]
@@ -106,6 +107,13 @@ export function Navbar() {
           </ul>
 
           <div className="hidden md:flex items-center gap-3">
+            {user && (
+              <Link href="/dashboard"
+                className={cn('font-body uppercase font-medium transition-colors', scrolled ? 'text-[0.65rem] px-3 py-1.5' : 'text-[0.7rem] px-4 py-2', 'text-silver-dim hover:text-platinum border border-border hover:border-border-md rounded-full')}
+                style={{ letterSpacing: '0.2em' }}>
+                Dashboard
+              </Link>
+            )}
             <Link
               href="/account"
               className={cn(
