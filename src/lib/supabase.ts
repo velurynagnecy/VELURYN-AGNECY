@@ -6,7 +6,7 @@ const SUPABASE_ANON_KEY =
 
 export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 
-export type Plan = 'free' | 'pro'
+export type Plan = 'free' | 'pro' | 'ultimate'
 
 export interface Profile {
   id: string
