@@ -13,7 +13,6 @@ const navLinks = [
   { label: 'VA Mgmt', href: '/va-mgmt' },
   { label: 'VASD', href: '/vasd' },
   { label: 'Case Studies', href: '/case-studies' },
-  { label: 'Submit a Case', href: '/submit-case' },
   { label: 'Services', href: '/#services' },
   { label: 'Contact', href: '/#contact' },
 ]

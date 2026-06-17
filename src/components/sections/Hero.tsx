@@ -14,11 +14,7 @@ const WORDS = [
   { text: 'Overdeliver.', italic: false, grad: false },
 ]
 
-const STATS = [
-  { value: '150+', label: 'Campaigns' },
-  { value: '40+', label: 'Global Clients' },
-  { value: '7', label: 'Disciplines' },
-]
+
 
 export function Hero() {
   const [ready, setReady] = useState(false)
@@ -158,46 +154,7 @@ export function Hero() {
               </motion.div>
             </div>
 
-            <motion.div
-              className="hidden xl:flex col-span-4 gap-10 pb-2 pl-12 items-stretch"
-              initial={ready ? { opacity: 0, x: 40 } : false}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: ready ? 0.5 : 0, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <motion.div
-                className="w-px bg-silver-dim/20 shrink-0"
-                initial={ready ? { height: 0 } : false}
-                animate={{ height: '100%' }}
-                transition={{ duration: 1.2, delay: ready ? 0.4 : 0, ease: [0.22, 1, 0.36, 1] }}
-              />
-              <div className="flex flex-col gap-10 flex-1">
-                {STATS.map((s) => (
-                  <div key={s.label}>
-                    <p
-                      style={{
-                        fontFamily: 'Cormorant Garamond, serif',
-                        fontSize: 'clamp(2.5rem, 4vw, 3.5rem)',
-                        fontWeight: 300,
-                        lineHeight: 1,
-                        letterSpacing: '-0.03em',
-                        color: '#E8E8F0',
-                      }}
-                    >
-                      {s.value}
-                    </p>
-                    <p className="font-body text-[0.65rem] tracking-[0.25em] uppercase text-silver-dim mt-2">
-                      {s.label}
-                    </p>
-                  </div>
-                ))}
-                <div className="mt-4">
-                  <p className="font-body text-[0.65rem] tracking-[0.3em] uppercase text-silver-dim mb-2">
-                    Operating From
-                  </p>
-                  <p className="font-body text-sm text-silver">Asia — Worldwide</p>
-                </div>
-              </div>
-            </motion.div>
+
           </div>
         </div>
 
