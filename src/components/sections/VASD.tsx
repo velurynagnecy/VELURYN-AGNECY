@@ -3,86 +3,16 @@
 import { useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Shield, Filter, Mail, Zap, Lock, BarChart, FileText, Download } from 'lucide-react'
+import { Shield, Target, Search, CheckCircle, Activity, FileText } from 'lucide-react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Reveal } from '@/components/motion/Reveal'
 import { sectionHeadingStyle, subHeadingStyle } from '@/lib/typography'
 
-const services = [
-  { n: '01', icon: Filter, title: 'Intelligent Filtering', desc: 'AI-powered spam and threat detection that learns from your email patterns.' },
-  { n: '02', icon: Shield, title: 'Threat Protection', desc: 'Real-time phishing, malware, and spoofing protection across all enterprise inboxes.' },
-  { n: '03', icon: Mail, title: 'Inbox Management', desc: 'Priority sorting, category management, and automated routing at enterprise scale.' },
-  { n: '04', icon: Zap, title: 'Zero Latency Delivery', desc: 'Critical mail reaches its recipient instantly. Filtering never slows your workflow.' },
-  { n: '05', icon: Lock, title: 'Compliance & Encryption', desc: 'End-to-end encryption with audit trail reporting. GDPR, HIPAA, and SOC2 aligned.' },
-  { n: '06', icon: BarChart, title: 'Analytics Dashboard', desc: 'Full visibility into email traffic, threat vectors, and inbox health — real time.' },
-]
-
-const caseStudies = [
-  {
-    num: '001',
-    title: 'Credibility Inflation',
-    category: 'Leadership & Coaching Platform',
-    type: 'Unsolicited Email Outreach',
-    verdict: 'SUSPICIOUS',
-    verdictColor: '#B7770D',
-    borderColor: 'rgba(183,119,13,0.4)',
-    summary: 'A real, operational entity with verified physical presence — but carrying multiple credibility inflation signals including unverifiable accreditations, contradicting nation counts across the same website, and a pattern of curated reviews inconsistent with organic behavior.',
-    flags: 9,
-    fileName: 'VASD Case Study 001 — Credibility Inflation',
-    file: '/case-studies/VASD_Case001.pdf',
-  },
-  {
-    num: '002',
-    title: 'Labor Extraction',
-    category: 'Creator Affiliate Network',
-    type: 'Unsolicited Partner Program Email',
-    verdict: 'HIGH RISK',
-    verdictColor: '#C0392B',
-    borderColor: 'rgba(192,57,43,0.4)',
-    summary: 'An entity with zero verifiable external footprint presenting itself as a creator-sponsor directory. Business model structured to extract creator labor and referrals — including a ready-made promotional script — under the guise of a recurring income opportunity.',
-    flags: 16,
-    fileName: 'VASD Case Study 002 — Labor Extraction',
-    file: '/case-studies/VASD_Case002.pdf',
-  },
-  {
-    num: '003',
-    title: 'Malware Delivery',
-    category: 'Online Learning Platform',
-    type: 'Fake Sponsorship — Windows-Only Contract Link',
-    verdict: 'HIGH RISK — MALWARE',
-    verdictColor: '#C0392B',
-    borderColor: 'rgba(192,57,43,0.5)',
-    summary: 'Confirmed impersonation of a globally recognized brand. Directs creators to sign a contract through a Windows-only link — a documented malware delivery mechanism. The impersonated platform has published an official help center warning about this exact email pattern.',
-    flags: 12,
-    fileName: 'VASD Case Study 003 — Malware Delivery',
-    file: '/case-studies/VASD_Case003.pdf',
-  },
-  {
-    num: '004',
-    title: 'Data Harvesting',
-    category: 'AI Platform Impersonation',
-    type: 'Fake Creator Partnership — One Day Old Domain',
-    verdict: 'HIGH RISK — DATA HARVESTING',
-    verdictColor: '#C0392B',
-    borderColor: 'rgba(192,57,43,0.5)',
-    summary: 'Domain registered 24 hours before the email was sent. Website behind the domain displays a completely different brand and a data collection form requesting channel name, link, subscriber count, and email. Infrastructure built to harvest creator profiles for future targeted scam campaigns.',
-    flags: 14,
-    fileName: 'VASD Case Study 004 — Data Harvesting',
-    file: '/case-studies/VASD_Case004.pdf',
-  },
-  {
-    num: '005',
-    title: 'Financial Platform Impersonation',
-    category: 'Educational Email Infrastructure',
-    type: 'Fake Financial Rewards — Two Stage Attack',
-    verdict: 'HIGH RISK — FINANCIAL FRAUD',
-    verdictColor: '#C0392B',
-    borderColor: 'rgba(192,57,43,0.5)',
-    summary: 'Two emails claiming to represent a financial platform — sent from an Italian university alumni account and a US charter school student account. A two-stage trigger: the first creates financial anticipation, the second creates withdrawal panic. Both sent to BCC, confirming mass automated distribution.',
-    flags: 17,
-    fileName: 'VASD Case Study 005 — Financial Platform Impersonation',
-    file: '/case-studies/VASD_Case005.pdf',
-  },
+const layers = [
+  { n: 'L1', icon: Search, title: 'Initial Screening', desc: 'Identifies and validates basic trust signals including email authenticity, domain legitimacy, website presence, public business information, contact consistency, and technical verification indicators.' },
+  { n: 'L2', icon: Target, title: 'Entity Validation', desc: 'Evaluates whether an entity presents a consistent and verifiable business identity by assessing business footprint, brand consistency, operational presence, public reputation, platform activity, and cross-source validation.' },
+  { n: 'L3', icon: Activity, title: 'Intelligence Analysis', desc: 'Focuses on identifying patterns, inconsistencies, and risk indicators through behavioral indicators, credibility signals, risk factors, trust indicators, consistency analysis, and verification findings.' },
+  { n: 'L4', icon: CheckCircle, title: 'Final Classification', desc: 'Consolidates findings into a final assessment. Classifications include Trusted, Suspicious, or High Risk, each supported by documented observations and verification findings.' },
 ]
 
 export function VASD() {
@@ -139,73 +69,50 @@ export function VASD() {
         </span>
       </div>
 
-      <div className="bleed-full relative h-40 md:h-56 image-cover scan-lines rounded-none overflow-hidden">
-        <Image
-          src="/assets/vasd-fiber.jpg"
-          alt=""
-          fill
-          sizes="100vw"
-          className="section-bg-image"
-          style={{ opacity: 0.55 }}
-        />
-        <div
-          className="absolute inset-0 z-[1]"
-          style={{
-            background:
-              'linear-gradient(to bottom, rgba(26,28,36,0.6) 0%, rgba(26,28,36,0.3) 50%, rgba(26,28,36,0.6) 100%)',
-          }}
-        />
-        <div className="absolute inset-0 z-[2] flex items-center">
-          <div className="max-w-7xl mx-auto px-6 w-full">
-            <div className="flex flex-col md:flex-row gap-6 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-silver-dim/20">
-              {[
-                { n: '94%', l: 'Of cyberattacks start with email' },
-                { n: '$4.9M', l: 'Average cost of a data breach' },
-                { n: '83%', l: 'Of companies face phishing weekly' },
-              ].map((s, i) => (
-                <Reveal key={s.l} delay={i * 0.1} className="px-0 md:px-10 first:md:pl-0 py-3 md:py-0 flex-1">
-                  <p
-                    className="font-display font-light text-platinum"
-                    style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)', letterSpacing: '-0.02em' }}
-                  >
-                    {s.n}
-                  </p>
-                  <p className="font-body text-xs text-silver-dim mt-1">{s.l}</p>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div className="max-w-7xl mx-auto px-6 py-20 md:py-28 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
           <Reveal>
             <blockquote className="font-display font-light italic text-platinum" style={subHeadingStyle}>
-              &ldquo;Your inbox is your command centre. Most companies don&apos;t protect it. We do.&rdquo;
+              &ldquo;VASD is a trust intelligence and verification infrastructure designed to evaluate entities, communications, and business credibility.&rdquo;
             </blockquote>
           </Reveal>
           <Reveal delay={0.1} className="flex flex-col gap-6 pt-2">
             <p className="font-body text-base text-silver-dim leading-relaxed">
-              VASD is not a plugin. It is a fully managed service. We monitor, tune, and optimise your email infrastructure around the clock — so you never have to think about it.
+              Through a structured multi-layer assessment process, VASD helps founders, investors, agencies, creators, and organizations make more informed decisions before entering business relationships.
             </p>
             <p className="font-body text-sm text-silver-dim leading-relaxed">
-              Enterprise email filtering, threat protection, and inbox management. Intelligent. Secure. Invisible.
+              Trust should be evaluated through evidence, not assumptions. We prioritize consistency, transparency, and verification over claims alone.
             </p>
             <Link
-              href="#contact"
+              href="/submit-case"
               className="rounded-pill inline-flex self-start font-body text-[0.7rem] tracking-[0.22em] uppercase font-medium text-platinum border border-steel-blue px-7 py-3.5 hover:bg-steel-blue/15 transition-colors mt-2"
             >
-              Get Protected
+              Submit a Case
             </Link>
           </Reveal>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-20">
-          {services.map(({ n, icon: Icon, title, desc }, i) => (
+        {/* ── Core Framework ─────────────────────────────────────────────── */}
+        <Reveal className="mb-12">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="h-px w-12 bg-steel-blue" />
+            <span className="font-body text-[0.65rem] tracking-[0.3em] uppercase text-steel-blue">
+              Core Framework
+            </span>
+          </div>
+          <h2 className="font-display font-light text-platinum mb-4" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
+            Layered Verification Methodology
+          </h2>
+          <p className="font-body text-sm text-silver-dim leading-relaxed max-w-2xl">
+            VASD operates through a structured four-layer methodology, rigorously validating signals and extracting findings.
+          </p>
+        </Reveal>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-28">
+          {layers.map(({ n, icon: Icon, title, desc }, i) => (
             <Reveal key={title} delay={i * 0.05}>
               <motion.div
-                className="service-card service-card--steel bg-charcoal p-8 md:p-10 rounded-card relative overflow-hidden"
+                className="service-card service-card--steel bg-charcoal p-8 md:p-10 rounded-card relative overflow-hidden h-full"
                 whileHover={{ y: -6 }}
                 transition={{ type: 'spring', stiffness: 200, damping: 25 }}
               >
@@ -230,84 +137,64 @@ export function VASD() {
           ))}
         </div>
 
-        <Reveal>
-          <blockquote
-            className="font-display font-light italic text-platinum border-l-2 border-silver-dim/30 pl-8 py-2 mb-16"
-            style={{ fontSize: 'clamp(1.1rem, 2vw, 1.5rem)', lineHeight: 1.6, maxWidth: '860px' }}
-          >
-            &ldquo;AI is incredibly powerful for processing data, but it is deeply stupid when it lacks human intuition, context, and real-world awareness. It doesn&apos;t have the grit, the creative vision, or the skin in the game that it takes to actually build a brand.&rdquo;
-            <footer className="mt-4 font-body text-[0.65rem] tracking-[0.25em] uppercase text-silver-dim not-italic">
-              Vivin Bharathi &mdash; Founder &amp; CEO, VELURYN AGNECY
-            </footer>
-          </blockquote>
-        </Reveal>
-
-        <Reveal>
-          <div className="relative border border-silver-dim/12 bg-charcoal-2/50 overflow-hidden rounded-panel">
-            <div className="absolute top-0 left-0 w-24 h-px bg-steel-blue" />
-            <div className="absolute bottom-0 right-0 w-24 h-px bg-steel-blue" />
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 divide-y lg:divide-y-0 lg:divide-x divide-silver-dim/10">
-              <div className="p-10 md:p-14">
-                <p className="font-body text-[0.65rem] tracking-[0.3em] uppercase text-steel-blue mb-6">
-                  Technical Specs
-                </p>
-                <div className="grid grid-cols-2 gap-3">
-                  {[
-                    { val: '99.9%', label: 'Uptime SLA' },
-                    { val: '<0.1%', label: 'False Positive Rate' },
-                    { val: '24/7', label: 'Active Monitoring' },
-                    { val: '10ms', label: 'Avg Filter Latency' },
-                  ].map((s) => (
-                    <div
-                      key={s.label}
-                      className="bg-charcoal p-5 text-center rounded-[14px]"
-                      style={{ borderRadius: '14px' }}
-                    >
-                      <p
-                        className="font-display font-light text-platinum"
-                        style={{ fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', letterSpacing: '-0.02em' }}
-                      >
-                        {s.val}
-                      </p>
-                      <p className="font-body text-[0.6rem] tracking-widest uppercase text-silver-dim mt-2">
-                        {s.label}
-                      </p>
-                    </div>
-                  ))}
+        {/* ── Infrastructure Principles & Use Cases ─────────────────────── */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-28">
+          <Reveal>
+            <div className="relative border border-silver-dim/12 bg-charcoal-2/50 overflow-hidden rounded-panel p-10 md:p-14 h-full">
+              <div className="absolute top-0 left-0 w-24 h-px bg-steel-blue" />
+              <div className="absolute bottom-0 right-0 w-24 h-px bg-steel-blue" />
+              <p className="font-body text-[0.65rem] tracking-[0.3em] uppercase text-steel-blue mb-6">
+                Infrastructure Principles
+              </p>
+              <h3 className="font-display font-light text-platinum mb-8" style={{ fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', lineHeight: 1.1 }}>
+                Built on Verification
+              </h3>
+              <div className="flex flex-col gap-8">
+                <div>
+                  <h4 className="font-body text-xs tracking-[0.15em] uppercase text-platinum mb-2">Evidence First</h4>
+                  <p className="font-body text-sm text-silver-dim leading-relaxed">Conclusions are based on observable information and verification findings.</p>
                 </div>
-              </div>
-              <div className="p-10 md:p-14 flex flex-col justify-center">
-                <p className="font-body text-[0.65rem] tracking-[0.3em] uppercase text-steel-blue mb-6">
-                  Compliance
-                </p>
-                <h3
-                  className="font-display font-light text-platinum mb-5"
-                  style={{ fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', lineHeight: 1.1 }}
-                >
-                  Built for regulated industries.
-                </h3>
-                <p className="font-body text-sm text-silver-dim leading-relaxed mb-6">
-                  VASD is aligned with GDPR, HIPAA, and SOC2 requirements. Full audit trail. End-to-end encryption. Zero data retention policies available on request.
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {['GDPR', 'HIPAA', 'SOC2'].map((tag) => (
-                    <motion.span
-                      key={tag}
-                      className="rounded-pill font-body text-[0.6rem] tracking-widest uppercase text-steel-blue border border-steel-blue/40 px-4 py-2 cursor-default"
-                      whileHover={{ scale: 1.05, backgroundColor: 'rgba(74,101,128,0.15)' }}
-                      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                    >
-                      {tag}
-                    </motion.span>
-                  ))}
+                <div>
+                  <h4 className="font-body text-xs tracking-[0.15em] uppercase text-platinum mb-2">Consistency Validation</h4>
+                  <p className="font-body text-sm text-silver-dim leading-relaxed">Information is reviewed across multiple sources to identify alignment or discrepancies.</p>
+                </div>
+                <div>
+                  <h4 className="font-body text-xs tracking-[0.15em] uppercase text-platinum mb-2">Risk Awareness</h4>
+                  <p className="font-body text-sm text-silver-dim leading-relaxed">Potential concerns are documented to support informed decision making.</p>
                 </div>
               </div>
             </div>
-          </div>
-        </Reveal>
+          </Reveal>
 
-        {/* ── Our Case Studies ─────────────────────────────────────────────── */}
+          <Reveal delay={0.1}>
+            <div className="p-10 md:p-14 h-full flex flex-col justify-center">
+              <p className="font-body text-[0.65rem] tracking-[0.3em] uppercase text-steel-blue mb-6">
+                Intended Use Cases
+              </p>
+              <h3 className="font-display font-light text-platinum mb-8" style={{ fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', lineHeight: 1.1 }}>
+                Who relies on VASD?
+              </h3>
+              <ul className="flex flex-col gap-4">
+                {[
+                  'Agency Evaluation',
+                  'Partnership Assessment',
+                  'Vendor Screening',
+                  'Founder Due Diligence',
+                  'Creator & Influencer Verification',
+                  'Business Trust Assessments',
+                  'Outreach & Proposal Reviews',
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-4">
+                    <Shield size={14} className="text-steel-blue shrink-0" />
+                    <span className="font-body text-sm text-silver-dim">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
+        </div>
+
+        {/* ── Short Preview of Case Studies ──────────────────────────────── */}
         <div className="mt-28">
           <Reveal className="flex items-center gap-4 mb-4">
             <div className="h-px w-12 bg-steel-blue" />
@@ -320,115 +207,20 @@ export function VASD() {
               className="font-display font-light text-platinum mb-4"
               style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', letterSpacing: '-0.02em', lineHeight: 1.1 }}
             >
-              Our Case Studies
+              Case Studies Overview
             </h2>
           </Reveal>
           <Reveal delay={0.08}>
-            <p className="font-body text-sm text-silver-dim leading-relaxed max-w-xl mb-14">
-              Real validation sessions. Real findings. Entity names withheld. Every report is produced using VASD&apos;s three-layer system — Initial Screening, Real-World Presence, and Deep Verification.
+            <p className="font-body text-sm text-silver-dim leading-relaxed max-w-xl mb-10">
+              We have compiled deep dive verdicts on several high-risk cases including Labor Extraction, Malware Delivery, and Data Harvesting campaigns.
             </p>
-          </Reveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {caseStudies.map((cs, i) => (
-              <Reveal key={cs.num} delay={i * 0.08}>
-                <motion.div
-                  className="relative bg-charcoal rounded-card overflow-hidden border p-8 md:p-10 flex flex-col gap-6"
-                  style={{ borderColor: 'rgba(255,255,255,0.06)' }}
-                  whileHover={{ y: -5 }}
-                  transition={{ type: 'spring', stiffness: 200, damping: 25 }}
-                >
-                  {/* top accent bar */}
-                  <motion.div
-                    className="absolute top-0 left-0 right-0 h-0.5 origin-left"
-                    style={{ backgroundColor: cs.verdictColor }}
-                    initial={{ scaleX: 0 }}
-                    whileHover={{ scaleX: 1 }}
-                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  />
-
-                  {/* header row */}
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex items-center gap-4">
-                      <div
-                        className="w-10 h-10 rounded-icon border flex items-center justify-center shrink-0"
-                        style={{ borderColor: cs.borderColor }}
-                      >
-                        <FileText size={15} style={{ color: cs.verdictColor }} />
-                      </div>
-                      <div>
-                        <p className="font-body text-[0.6rem] tracking-[0.25em] uppercase text-silver-dim">
-                          Case Study #{cs.num}
-                        </p>
-                        <p className="font-body text-sm font-medium text-platinum mt-0.5">{cs.category}</p>
-                      </div>
-                    </div>
-                    <span
-                      className="font-body text-[0.6rem] tracking-[0.2em] uppercase font-bold px-3 py-1.5 rounded-full shrink-0"
-                      style={{
-                        color: cs.verdictColor,
-                        backgroundColor: cs.borderColor,
-                        border: `1px solid ${cs.borderColor}`,
-                      }}
-                    >
-                      {cs.verdict}
-                    </span>
-                  </div>
-
-                  {/* meta */}
-                  <div className="flex items-center gap-6">
-                    <div>
-                      <p className="font-body text-[0.58rem] tracking-widest uppercase text-silver-dim mb-0.5">Type</p>
-                      <p className="font-body text-xs text-silver">{cs.type}</p>
-                    </div>
-                    <div className="w-px h-8 bg-silver-dim/15" />
-                    <div>
-                      <p className="font-body text-[0.58rem] tracking-widest uppercase text-silver-dim mb-0.5">Total Flags</p>
-                      <p className="font-body text-xs font-bold" style={{ color: cs.verdictColor }}>{cs.flags}</p>
-                    </div>
-                    <div className="w-px h-8 bg-silver-dim/15" />
-                    <div>
-                      <p className="font-body text-[0.58rem] tracking-widest uppercase text-silver-dim mb-0.5">System</p>
-                      <p className="font-body text-xs text-silver">VASD v1.0</p>
-                    </div>
-                  </div>
-
-                  {/* summary */}
-                  <p className="font-body text-sm text-silver-dim leading-relaxed">{cs.summary}</p>
-
-                  {/* layer badges */}
-                  <div className="flex flex-wrap gap-2">
-                    {['Layer 1 — Initial Screening', 'Layer 2 — Real-World Presence', 'Layer 3 — Deep Verification'].map((l) => (
-                      <span
-                        key={l}
-                        className="font-body text-[0.58rem] tracking-[0.15em] uppercase text-silver-dim border border-silver-dim/15 px-3 py-1 rounded-full"
-                      >
-                        {l}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* download */}
-                  <a
-                    href={cs.file}
-                    download={cs.fileName}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2.5 self-start font-body text-[0.68rem] tracking-[0.2em] uppercase font-medium text-platinum border px-5 py-2.5 rounded-pill hover:bg-white/5 transition-colors mt-auto"
-                    style={{ borderColor: cs.borderColor }}
-                  >
-                    <Download size={12} />
-                    Download Full Report
-                  </a>
-                </motion.div>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal delay={0.1}>
-            <p className="font-body text-[0.65rem] tracking-[0.2em] uppercase text-silver-dim/50 mt-8 text-center">
-              Entity names withheld from public distribution. Full documentation available under NDA upon request.
-            </p>
+            <Link
+              href="/case-studies"
+              className="inline-flex items-center gap-3 font-body text-[0.7rem] tracking-[0.22em] uppercase font-medium text-platinum border border-steel-blue px-8 py-4 hover:bg-steel-blue/15 transition-colors rounded-pill"
+            >
+              <FileText size={14} />
+              View All Trust Verdicts
+            </Link>
           </Reveal>
         </div>
 
@@ -477,7 +269,7 @@ export function VASD() {
                     How To Spot A Scam
                   </h3>
                   <p className="font-body text-sm text-silver-dim leading-relaxed mb-6">
-                    11 real scam cases. 6 universal mechanics that appear in every single one. Fake job offers, platform impersonation, government authority fraud, celebrity scams, advance fee schemes, and more — all analysed using VASD&apos;s three layer verification system. The patterns repeat. The techniques are identical. This guide makes them impossible to miss.
+                    11 real scam cases. 6 universal mechanics that appear in every single one. Fake job offers, platform impersonation, government authority fraud, celebrity scams, advance fee schemes, and more — all analysed using VASD&apos;s multi layer verification system.
                   </p>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {['6 Universal Scam Mechanics', '8 Documented Scam Types', '6-Step Action Guide', 'Real Cases Only'].map((tag) => (
@@ -544,7 +336,7 @@ export function VASD() {
                 Received something suspicious?
               </h3>
               <p className="font-body text-sm text-silver-dim leading-relaxed max-w-lg">
-                Submit it to VASD. We run a full three-layer verification, document the findings, and publish the case study. No cost. Your identity is never published.
+                Submit it to VASD. We run a full multi-layer verification, document the findings, and publish the case study. No cost. Your identity is never published.
               </p>
             </div>
             <a
@@ -554,6 +346,13 @@ export function VASD() {
               Submit a Case
             </a>
           </div>
+        </Reveal>
+
+        {/* ── Disclaimer ────────────────────────────────────────────────── */}
+        <Reveal delay={0.1}>
+          <p className="font-body text-[0.65rem] tracking-[0.1em] text-silver-dim/50 mt-16 text-center max-w-4xl mx-auto border-t border-silver-dim/10 pt-8">
+            <strong>Disclaimer:</strong> VASD provides verification and trust intelligence assessments based on available information at the time of review. Assessments are informational and should be considered alongside independent business, legal, and financial due diligence.
+          </p>
         </Reveal>
 
       </div>

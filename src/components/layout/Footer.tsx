@@ -23,6 +23,7 @@ const navGroups = {
   Verticals: [
     { label: 'VA Mgmt', href: '/va-mgmt' },
     { label: 'VASD', href: '/vasd' },
+    { label: 'Case Studies', href: '/case-studies' },
   ],
   Connect: [
     { label: 'Contact', href: '/#contact' },

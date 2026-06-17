@@ -7,16 +7,13 @@ import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
-import { supabase } from '@/lib/supabase'
-import type { User } from '@supabase/supabase-js'
 
 const navLinks = [
   { label: 'About', href: '/#about' },
   { label: 'VA Mgmt', href: '/va-mgmt' },
   { label: 'VASD', href: '/vasd' },
-  { label: 'Email Tool', href: '/tools/email-generator' },
+  { label: 'Case Studies', href: '/case-studies' },
   { label: 'Submit a Case', href: '/submit-case' },
-  { label: 'Pricing', href: '/pricing' },
   { label: 'Services', href: '/#services' },
   { label: 'Contact', href: '/#contact' },
 ]
@@ -25,7 +22,6 @@ export function Navbar() {
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const [user, setUser] = useState<User | null>(null)
   const contactHref =
     pathname === '/va-mgmt' || pathname === '/vasd' ? '#contact' : '/#contact'
 
@@ -40,12 +36,6 @@ export function Navbar() {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => setUser(data.session?.user ?? null))
-    const { data: listener } = supabase.auth.onAuthStateChange((_e, session) => setUser(session?.user ?? null))
-    return () => { listener.subscription.unsubscribe() }
-  }, [])
 
   return (
     <>
@@ -107,24 +97,6 @@ export function Navbar() {
           </ul>
 
           <div className="hidden md:flex items-center gap-3">
-            {user && (
-              <Link href="/dashboard"
-                className={cn('font-body uppercase font-medium transition-colors', scrolled ? 'text-[0.65rem] px-3 py-1.5' : 'text-[0.7rem] px-4 py-2', 'text-silver-dim hover:text-platinum border border-border hover:border-border-md rounded-full')}
-                style={{ letterSpacing: '0.2em' }}>
-                Dashboard
-              </Link>
-            )}
-            <Link
-              href="/account"
-              className={cn(
-                'font-body uppercase font-medium transition-colors',
-                scrolled ? 'text-[0.65rem] px-3 py-1.5' : 'text-[0.7rem] px-4 py-2',
-                'text-silver-dim hover:text-platinum border border-border hover:border-border-md rounded-full'
-              )}
-              style={{ letterSpacing: '0.2em' }}
-            >
-              {user ? 'Account' : 'Sign In'}
-            </Link>
             <Link
               href={contactHref}
               className={cn(
@@ -181,15 +153,6 @@ export function Navbar() {
                   </Link>
                 </motion.li>
               ))}
-              <motion.li variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }}>
-                <Link
-                  href="/account"
-                  className="inline-flex rounded-full font-body text-xs tracking-widest uppercase font-medium text-silver border border-border-md px-6 py-3"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {user ? 'My Account' : 'Sign In'}
-                </Link>
-              </motion.li>
               <motion.li variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }}>
                 <Link
                   href={contactHref}
