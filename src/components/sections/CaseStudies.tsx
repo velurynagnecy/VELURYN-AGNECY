@@ -1,6 +1,6 @@
 'use client'
 
-import { FileText, Download } from 'lucide-react'
+import { FileText, Download, Mail } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { Reveal } from '@/components/motion/Reveal'
 
@@ -69,6 +69,19 @@ export const caseStudies = [
     flags: 17,
     fileName: 'VASD Case Study 005 — Financial Platform Impersonation',
     file: '/case-studies/VASD_Case005.pdf',
+  },
+  {
+    num: '006',
+    title: 'VASD — Trust Verdict',
+    category: 'Zoona AI',
+    type: 'Trust Factor Analysis — Entity Verification',
+    verdict: 'TRUST VERDICT',
+    verdictColor: '#4A6580',
+    borderColor: 'rgba(74,101,128,0.4)',
+    summary: 'A structured trust factor analysis conducted on Zoona AI using VASD\'s multi-layer verification methodology. Assessment covers entity legitimacy, operational presence, digital footprint consistency, and credibility signals across all available public-facing channels.',
+    flags: 0,
+    fileName: 'VASD Trust Factor Analysis — Zoona AI',
+    file: '/case-studies/VASD_Trust_Factor_Analysis_Zoona_AI.pdf',
   },
 ]
 
@@ -148,11 +161,15 @@ export function CaseStudies() {
                     <p className="font-body text-[0.58rem] tracking-widest uppercase text-silver-dim mb-0.5">Type</p>
                     <p className="font-body text-xs text-silver">{cs.type}</p>
                   </div>
-                  <div className="w-px h-8 bg-silver-dim/15" />
-                  <div>
-                    <p className="font-body text-[0.58rem] tracking-widest uppercase text-silver-dim mb-0.5">Total Flags</p>
-                    <p className="font-body text-xs font-bold" style={{ color: cs.verdictColor }}>{cs.flags}</p>
-                  </div>
+                  {cs.flags > 0 && (
+                    <>
+                      <div className="w-px h-8 bg-silver-dim/15" />
+                      <div>
+                        <p className="font-body text-[0.58rem] tracking-widest uppercase text-silver-dim mb-0.5">Total Flags</p>
+                        <p className="font-body text-xs font-bold" style={{ color: cs.verdictColor }}>{cs.flags}</p>
+                      </div>
+                    </>
+                  )}
                   <div className="w-px h-8 bg-silver-dim/15" />
                   <div>
                     <p className="font-body text-[0.58rem] tracking-widest uppercase text-silver-dim mb-0.5">System</p>
@@ -196,6 +213,42 @@ export function CaseStudies() {
           <p className="font-body text-[0.65rem] tracking-[0.2em] uppercase text-silver-dim/50 mt-12 text-center">
             Entity names withheld from public distribution. Full documentation available under NDA upon request.
           </p>
+        </Reveal>
+
+        {/* ── Entity Verification CTA ─────────────────────────────────── */}
+        <Reveal delay={0.1}>
+          <div className="mt-20 relative border border-steel-blue/25 bg-charcoal-2/60 rounded-panel overflow-hidden p-10 md:p-14 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+            <div className="absolute top-0 left-0 w-24 h-px bg-steel-blue" />
+            <div className="absolute bottom-0 right-0 w-24 h-px bg-steel-blue" />
+
+            <div className="flex items-start gap-6">
+              <div className="w-12 h-12 rounded-icon border border-steel-blue/30 flex items-center justify-center shrink-0 mt-1">
+                <Mail size={18} className="text-steel-blue" strokeWidth={1.5} />
+              </div>
+              <div>
+                <p className="font-body text-[0.65rem] tracking-[0.3em] uppercase text-steel-blue mb-3">
+                  VASD Entity Verification
+                </p>
+                <h3
+                  className="font-display font-light text-platinum mb-3"
+                  style={{ fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', lineHeight: 1.1 }}
+                >
+                  Need to verify your entity?
+                </h3>
+                <p className="font-body text-sm text-silver-dim leading-relaxed max-w-lg">
+                  Drop us an email. We&apos;ll run a full VASD multi-layer trust assessment and issue a formal Trust Verdict.
+                </p>
+              </div>
+            </div>
+
+            <a
+              href="mailto:vivin.b@velurynagnecy.com?subject=VASD%20Entity%20Verification%20Request"
+              className="shrink-0 inline-flex items-center gap-3 font-body text-[0.7rem] tracking-[0.22em] uppercase font-medium text-platinum border border-steel-blue px-8 py-4 hover:bg-steel-blue/15 transition-colors rounded-pill whitespace-nowrap"
+            >
+              <Mail size={14} />
+              Contact Us
+            </a>
+          </div>
         </Reveal>
       </div>
     </section>
