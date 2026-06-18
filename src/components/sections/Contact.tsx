@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Mail, ArrowRight, ShieldCheck, HelpCircle } from 'lucide-react'
+import { Mail, ArrowRight, ShieldCheck, HelpCircle, CheckCircle } from 'lucide-react'
 import { Reveal } from '@/components/motion/Reveal'
 import { sectionHeadingStyle } from '@/lib/typography'
 
