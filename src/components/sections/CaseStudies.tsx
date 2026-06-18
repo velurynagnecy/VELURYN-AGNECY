@@ -7,6 +7,7 @@ import { Reveal } from '@/components/motion/Reveal'
 export const caseStudies = [
   {
     num: '001',
+    section: 'layer-check',
     title: 'Credibility Inflation',
     category: 'Leadership & Coaching Platform',
     type: 'Unsolicited Email Outreach',
@@ -20,6 +21,7 @@ export const caseStudies = [
   },
   {
     num: '002',
+    section: 'layer-check',
     title: 'Labor Extraction',
     category: 'Creator Affiliate Network',
     type: 'Unsolicited Partner Program Email',
@@ -33,6 +35,7 @@ export const caseStudies = [
   },
   {
     num: '003',
+    section: 'layer-check',
     title: 'Malware Delivery',
     category: 'Online Learning Platform',
     type: 'Fake Sponsorship — Windows-Only Contract Link',
@@ -46,6 +49,7 @@ export const caseStudies = [
   },
   {
     num: '004',
+    section: 'layer-check',
     title: 'Data Harvesting',
     category: 'AI Platform Impersonation',
     type: 'Fake Creator Partnership — One Day Old Domain',
@@ -59,6 +63,7 @@ export const caseStudies = [
   },
   {
     num: '005',
+    section: 'layer-check',
     title: 'Financial Platform Impersonation',
     category: 'Educational Email Infrastructure',
     type: 'Fake Financial Rewards — Two Stage Attack',
@@ -72,10 +77,11 @@ export const caseStudies = [
   },
   {
     num: '006',
-    title: 'VASD — Trust Verdict',
+    section: 'trust-verification',
+    title: 'VASD-Trust Verification',
     category: 'Zoona AI',
     type: 'Trust Factor Analysis — Entity Verification',
-    verdict: 'TRUST VERDICT',
+    verdict: 'TRUST VERIFIED',
     verdictColor: '#4A6580',
     borderColor: 'rgba(74,101,128,0.4)',
     summary: 'A structured trust factor analysis conducted on Zoona AI using VASD\'s multi-layer verification methodology. Assessment covers entity legitimacy, operational presence, digital footprint consistency, and credibility signals across all available public-facing channels.',
@@ -86,6 +92,9 @@ export const caseStudies = [
 ]
 
 export function CaseStudies() {
+  const layerChecks = caseStudies.filter((cs) => cs.section === 'layer-check')
+  const trustVerifications = caseStudies.filter((cs) => cs.section === 'trust-verification')
+
   return (
     <section className="relative overflow-hidden bg-charcoal">
       <div className="max-w-7xl mx-auto px-6 py-28 md:py-36 relative z-10">
@@ -104,13 +113,34 @@ export function CaseStudies() {
           </h1>
         </Reveal>
         <Reveal delay={0.08}>
-          <p className="font-body text-sm text-silver-dim leading-relaxed max-w-xl mb-14">
+          <p className="font-body text-sm text-silver-dim leading-relaxed max-w-xl mb-20">
             Real validation sessions. Real findings. Entity names withheld. Every report is produced using VASD&apos;s multi-layer system — Initial Screening, Entity Validation, Intelligence Analysis, and Final Classification.
           </p>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {caseStudies.map((cs, i) => (
+        {/* ── VASD-Layer Check ─────────────────────────────────────────── */}
+        <Reveal className="flex items-center gap-4 mb-4">
+          <div className="h-px w-8 bg-[#C0392B]/60" />
+          <span className="font-body text-[0.6rem] tracking-[0.3em] uppercase" style={{ color: '#C0392B' }}>
+            Threat Intelligence
+          </span>
+        </Reveal>
+        <Reveal delay={0.04}>
+          <h2
+            className="font-display font-light text-platinum mb-3"
+            style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', letterSpacing: '-0.02em', lineHeight: 1.1 }}
+          >
+            VASD-Layer Check
+          </h2>
+        </Reveal>
+        <Reveal delay={0.06}>
+          <p className="font-body text-sm text-silver-dim leading-relaxed max-w-xl mb-10">
+            Entities flagged through unsolicited contact. Investigated without prior consent using VASD&apos;s full threat assessment framework.
+          </p>
+        </Reveal>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24">
+          {layerChecks.map((cs, i) => (
             <Reveal key={cs.num} delay={i * 0.08}>
               <motion.div
                 className="relative bg-charcoal-2 rounded-card overflow-hidden border p-8 md:p-10 flex flex-col gap-6 h-full"
@@ -210,10 +240,113 @@ export function CaseStudies() {
         </div>
 
         <Reveal delay={0.1}>
-          <p className="font-body text-[0.65rem] tracking-[0.2em] uppercase text-silver-dim/50 mt-12 text-center">
+          <p className="font-body text-[0.65rem] tracking-[0.2em] uppercase text-silver-dim/50 mt-8 text-center">
             Entity names withheld from public distribution. Full documentation available under NDA upon request.
           </p>
         </Reveal>
+
+        {/* ── VASD-Trust Verification ──────────────────────────────── */}
+        <div className="mt-24 pt-20 border-t border-silver-dim/10">
+          <Reveal className="flex items-center gap-4 mb-4">
+            <div className="h-px w-8 bg-steel-blue" />
+            <span className="font-body text-[0.6rem] tracking-[0.3em] uppercase text-steel-blue">
+              Voluntary Trust Assessment
+            </span>
+          </Reveal>
+          <Reveal delay={0.04}>
+            <h2
+              className="font-display font-light text-platinum mb-3"
+              style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', letterSpacing: '-0.02em', lineHeight: 1.1 }}
+            >
+              VASD-Trust Verification
+            </h2>
+          </Reveal>
+          <Reveal delay={0.06}>
+            <p className="font-body text-sm text-silver-dim leading-relaxed max-w-xl mb-10">
+              Entities that voluntarily engaged VASD for a formal trust assessment. Conducted with full cooperation and entity approval.
+            </p>
+          </Reveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {trustVerifications.map((cs, i) => (
+              <Reveal key={cs.num} delay={i * 0.08}>
+                <motion.div
+                  className="relative bg-charcoal-2 rounded-card overflow-hidden border p-8 md:p-10 flex flex-col gap-6 h-full"
+                  style={{ borderColor: 'rgba(255,255,255,0.06)' }}
+                  whileHover={{ y: -5 }}
+                  transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+                >
+                  <motion.div
+                    className="absolute top-0 left-0 right-0 h-0.5 origin-left"
+                    style={{ backgroundColor: cs.verdictColor }}
+                    initial={{ scaleX: 0 }}
+                    whileHover={{ scaleX: 1 }}
+                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  />
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex items-center gap-4">
+                      <div
+                        className="w-10 h-10 rounded-icon border flex items-center justify-center shrink-0"
+                        style={{ borderColor: cs.borderColor }}
+                      >
+                        <FileText size={15} style={{ color: cs.verdictColor }} />
+                      </div>
+                      <div>
+                        <p className="font-body text-[0.6rem] tracking-[0.25em] uppercase text-silver-dim">
+                          VASD-Trust Verification
+                        </p>
+                        <p className="font-body text-sm font-medium text-platinum mt-0.5">{cs.category}</p>
+                      </div>
+                    </div>
+                    <span
+                      className="font-body text-[0.6rem] tracking-[0.2em] uppercase font-bold px-3 py-1.5 rounded-full shrink-0"
+                      style={{
+                        color: cs.verdictColor,
+                        backgroundColor: cs.borderColor,
+                        border: `1px solid ${cs.borderColor}`,
+                      }}
+                    >
+                      {cs.verdict}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-6">
+                    <div>
+                      <p className="font-body text-[0.58rem] tracking-widest uppercase text-silver-dim mb-0.5">Type</p>
+                      <p className="font-body text-xs text-silver">{cs.type}</p>
+                    </div>
+                    <div className="w-px h-8 bg-silver-dim/15" />
+                    <div>
+                      <p className="font-body text-[0.58rem] tracking-widest uppercase text-silver-dim mb-0.5">System</p>
+                      <p className="font-body text-xs text-silver">VASD v2.0</p>
+                    </div>
+                  </div>
+                  <p className="font-body text-sm text-silver-dim leading-relaxed flex-grow">{cs.summary}</p>
+                  <div className="flex flex-wrap gap-2 mt-auto pt-4">
+                    {['Layer 1 — Screening', 'Layer 2 — Validation', 'Layer 3 — Intelligence', 'Layer 4 — Classification'].map((l) => (
+                      <span
+                        key={l}
+                        className="font-body text-[0.58rem] tracking-[0.15em] uppercase text-silver-dim border border-silver-dim/15 px-3 py-1 rounded-full"
+                      >
+                        {l}
+                      </span>
+                    ))}
+                  </div>
+                  <a
+                    href={cs.file}
+                    download={cs.fileName}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2.5 self-start font-body text-[0.68rem] tracking-[0.2em] uppercase font-medium text-platinum border px-5 py-2.5 rounded-pill hover:bg-white/5 transition-colors mt-4"
+                    style={{ borderColor: cs.borderColor }}
+                  >
+                    <Download size={12} />
+                    Download Full Report
+                  </a>
+                </motion.div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
 
         {/* ── Entity Verification CTA ─────────────────────────────────── */}
         <Reveal delay={0.1}>
