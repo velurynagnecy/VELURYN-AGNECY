@@ -1,25 +1,25 @@
 export const heroHeadingStyle: React.CSSProperties = {
   fontFamily: 'Cormorant Garamond, Georgia, serif',
-  fontSize: 'clamp(5rem, 13vw, 11rem)',
+  fontSize: 'clamp(4.5rem, 11vw, 9rem)',
   fontWeight: 300,
-  lineHeight: 0.88,
+  lineHeight: 0.92,
   letterSpacing: '-0.04em',
 }
 
 export const sectionHeadingStyle: React.CSSProperties = {
-  fontFamily: 'Cormorant Garamond, Georgia, serif',
-  fontSize: 'clamp(3rem, 7vw, 6rem)',
-  fontWeight: 300,
-  lineHeight: 0.92,
-  letterSpacing: '-0.035em',
+  fontFamily: 'Outfit, system-ui, sans-serif',
+  fontSize: 'clamp(1.75rem, 3vw, 2.4rem)',
+  fontWeight: 600,
+  lineHeight: 1.15,
+  letterSpacing: '-0.01em',
 }
 
 export const subHeadingStyle: React.CSSProperties = {
-  fontFamily: 'Cormorant Garamond, Georgia, serif',
-  fontSize: 'clamp(2rem, 4vw, 3.5rem)',
-  fontWeight: 300,
-  lineHeight: 1.05,
-  letterSpacing: '-0.02em',
+  fontFamily: 'Outfit, system-ui, sans-serif',
+  fontSize: 'clamp(1.2rem, 2vw, 1.6rem)',
+  fontWeight: 500,
+  lineHeight: 1.4,
+  letterSpacing: '-0.005em',
 }
 
 export const revealStyle: React.CSSProperties = {}

@@ -5,8 +5,8 @@ import { VASD } from '@/components/sections/VASD'
 import { Contact } from '@/components/sections/Contact'
 
 export const metadata: Metadata = {
-  title: 'VASD — Veluryn Agnecy Service Digital',
-  description: 'Enterprise email filtering, threat protection, and inbox management.',
+  title: 'VASD — Trust Intelligence & Entity Verification',
+  description: 'Multi-layer assessment framework for evaluating business entities and communications. Trust first, verified through evidence.',
 }
 
 export default function VASDPage() {

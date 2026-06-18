@@ -5,9 +5,9 @@ import { AppShell } from '@/components/motion/AppShell'
 export const metadata: Metadata = {
   title: 'Veluryn Agnecy — Trust First. Everything Follows.',
   description:
-    'Veluryn Agnecy is a full-service global digital agency. Home to VA Mgmt — Influencer Marketing Management — and VASD — Veluryn Agnecy Service Digital, advanced email filtering and management.',
+    'Veluryn Agnecy is a global business intelligence and digital services firm. We operate across two distinct verticals: digital management and trust infrastructure.',
   keywords:
-    'influencer marketing agency, email management service, digital agency Asia, VA Mgmt, VASD',
+    'trust intelligence, entity verification, enterprise security, digital agency, business intelligence, VA Mgmt, VASD',
   icons: {
     icon: '/assets/logo.png',
     shortcut: '/assets/logo.png',
@@ -28,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
       </head>

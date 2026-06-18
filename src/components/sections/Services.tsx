@@ -2,9 +2,7 @@
 
 import Link from 'next/link'
 import { Megaphone, Mail, PenTool, Share2, Shield, Newspaper, UserCheck, ArrowRight } from 'lucide-react'
-import { motion } from 'framer-motion'
 import { Reveal } from '@/components/motion/Reveal'
-import { useRevealInView } from '@/hooks/useRevealInView'
 import { sectionHeadingStyle } from '@/lib/typography'
 
 const services = [
@@ -17,127 +15,85 @@ const services = [
   { n: '07', icon: UserCheck, title: 'Influencer Marketing', arm: 'VA Mgmt', armColor: '#E8E8F0', desc: 'End-to-end influencer campaign management with audited talent.' },
 ]
 
-const rowVariants = {
-  hidden: { opacity: 0, y: 28 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] },
-  },
-}
-
 export function Services() {
-  const { ref: rowsRef, show: rowsShow } = useRevealInView({ margin: '-40px 0px' })
-
   return (
-    <section id="services" className="relative bg-charcoal overflow-hidden">
-      <span className="ambient-text right-[-4%] top-20 hidden lg:block" aria-hidden>
-        WORK
-      </span>
-
-      <div className="max-w-7xl mx-auto px-6 pt-32 pb-20 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end mb-20">
+    <section id="services" className="relative bg-charcoal border-t border-[rgba(200,200,220,0.06)]">
+      <div className="max-w-7xl mx-auto px-6 py-20 md:py-28 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end mb-16">
           <div>
-            <Reveal className="flex items-center gap-4 mb-10">
-              <div className="h-px w-12 bg-silver-dim" />
-              <span className="font-body text-[0.65rem] tracking-[0.3em] uppercase text-silver-dim">
-                What We Do
+            <Reveal className="flex items-center gap-3 mb-6">
+              <div className="h-px w-8 bg-silver-dim" />
+              <span className="font-body text-[0.6rem] tracking-[0.28em] uppercase text-silver-dim font-medium">
+                Service Architecture
               </span>
             </Reveal>
-            <Reveal delay={0.1}>
-              <h2 className="font-display font-light text-platinum" style={sectionHeadingStyle}>
-                Full-Service.
-                <span className="block italic">No Compromises.</span>
+            <Reveal delay={0.06}>
+              <h2 className="text-platinum" style={sectionHeadingStyle}>
+                Comprehensive Capabilities.
               </h2>
             </Reveal>
           </div>
-          <Reveal delay={0.15} className="lg:text-right">
+          <Reveal delay={0.12} className="lg:text-right">
             <p className="font-body text-sm text-silver-dim leading-relaxed max-w-sm lg:ml-auto mb-6">
-              Seven disciplines. Two verticals. One standard: excellence or nothing.
+              Seven distinct disciplines deployed across two vertical operations. We execute with precision and report with radical transparency.
             </p>
-            <div className="flex items-center gap-6 lg:justify-end">
-              <span className="flex items-center gap-2 font-body text-[0.65rem] tracking-widest uppercase text-silver">
-                <span className="w-6 h-px bg-platinum inline-block" /> VA Mgmt
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 lg:justify-end">
+              <span className="flex items-center gap-2 font-body text-[0.6rem] tracking-widest uppercase text-platinum font-semibold">
+                <span className="w-4 h-px bg-platinum inline-block" /> VA Mgmt
               </span>
-              <span className="flex items-center gap-2 font-body text-[0.65rem] tracking-widest uppercase text-steel-blue">
-                <span className="w-6 h-px bg-steel-blue inline-block" /> VASD
+              <span className="flex items-center gap-2 font-body text-[0.6rem] tracking-widest uppercase text-steel-blue font-semibold">
+                <span className="w-4 h-px bg-steel-blue inline-block" /> VASD
               </span>
             </div>
           </Reveal>
         </div>
 
-        <motion.div
-          ref={rowsRef}
-          className="border-t border-silver-dim/10"
-          initial="hidden"
-          animate={rowsShow ? 'visible' : 'hidden'}
-          variants={{
-            hidden: {},
-            visible: { transition: { staggerChildren: 0.06 } },
-          }}
-        >
-          {services.map(({ n, icon: Icon, title, arm, armColor, desc }) => (
-            <motion.div
+        <div className="border border-[rgba(200,200,220,0.07)]" style={{ borderRadius: '4px', overflow: 'hidden' }}>
+          {services.map(({ n, icon: Icon, title, arm, armColor, desc }, i) => (
+            <div
               key={title}
-              variants={rowVariants}
-              className="group relative flex items-center gap-6 md:gap-10 py-7 md:py-8 border-b border-silver-dim/10 px-4 cursor-default rounded-lg"
-              whileHover={{
-                backgroundColor: 'rgba(42, 45, 56, 1)',
-                borderLeft: '2px solid rgba(232,232,240,0.3)',
-                paddingLeft: '1.25rem',
-              }}
-              transition={{ duration: 0.25 }}
+              className={`group flex flex-col md:flex-row md:items-center gap-4 md:gap-8 p-6 bg-charcoal-2 hover:bg-charcoal-3 transition-colors ${i < services.length - 1 ? 'border-b border-[rgba(200,200,220,0.05)]' : ''}`}
             >
-              <motion.span
-                className="font-body text-[0.65rem] text-silver-dim/40 w-6 shrink-0 hidden md:block tabular-nums"
-                whileHover={{ color: 'rgba(232,232,240,1)' }}
-              >
-                {n}
-              </motion.span>
+              <div className="flex items-center gap-4 shrink-0 md:w-48">
+                <span className="font-body text-[0.6rem] text-silver-dim/60 w-5 tabular-nums">{n}</span>
+                <Icon size={16} strokeWidth={1.5} className="text-silver-dim group-hover:text-platinum transition-colors" />
+                <h3 className="font-body text-xs tracking-[0.08em] uppercase text-silver group-hover:text-platinum transition-colors font-medium">
+                  {title}
+                </h3>
+              </div>
 
-              <motion.div whileHover={{ scale: 1.2 }} transition={{ type: 'spring', stiffness: 300, damping: 18 }}>
-                <Icon size={17} strokeWidth={1.5} className="text-silver-dim group-hover:text-platinum transition-colors shrink-0" />
-              </motion.div>
-
-              <h3
-                className="font-body text-sm md:text-base tracking-wide uppercase text-silver group-hover:text-platinum transition-colors flex-1"
-                style={{ letterSpacing: '0.08em' }}
-              >
-                {title}
-              </h3>
-
-              <p className="font-body text-sm text-silver-dim leading-relaxed max-w-xs hidden lg:block flex-1">
+              <p className="font-body text-xs text-silver-dim leading-relaxed flex-1 md:pl-6 md:border-l border-[rgba(200,200,220,0.05)]">
                 {desc}
               </p>
 
-              <span
-                className="rounded-pill font-body text-[0.6rem] tracking-[0.22em] uppercase shrink-0 px-3 py-1.5 hidden md:block"
-                style={{
-                  color: armColor,
-                  background: `${armColor}18`,
-                  border: `1px solid ${armColor}4D`,
-                }}
-              >
-                {arm}
-              </span>
-
-              <motion.div whileHover={{ x: 12 }} transition={{ type: 'spring', stiffness: 200, damping: 20 }}>
-                <ArrowRight size={14} className="text-silver-dim/30 group-hover:text-silver shrink-0 hidden md:block" />
-              </motion.div>
-            </motion.div>
+              <div className="shrink-0 flex items-center justify-between md:justify-end gap-6 mt-2 md:mt-0">
+                <span
+                  className="font-body text-[0.58rem] tracking-[0.2em] uppercase font-bold px-2.5 py-1"
+                  style={{
+                    color: armColor,
+                    background: `${armColor}12`,
+                    border: `1px solid ${armColor}30`,
+                    borderRadius: '3px'
+                  }}
+                >
+                  {arm}
+                </span>
+                <ArrowRight size={14} className="text-[rgba(200,200,220,0.1)] group-hover:text-silver-dim transition-colors" />
+              </div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
-        <Reveal className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mt-14 pt-10 border-t border-silver-dim/10">
+        <Reveal className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mt-12">
           <p className="font-body text-sm text-silver-dim">
-            Not sure which service fits? We&apos;ll tell you honestly.
+            Not sure which architecture fits your needs?
           </p>
           <Link
             href="/#contact"
-            className="rounded-pill inline-flex items-center gap-3 font-body text-[0.7rem] tracking-[0.22em] uppercase font-medium text-charcoal bg-platinum px-7 py-3.5 hover:bg-silver transition-colors"
+            className="inline-flex items-center justify-center gap-2 font-body text-[0.7rem] tracking-[0.18em] uppercase font-semibold text-charcoal bg-platinum px-6 py-3 hover:bg-silver transition-colors"
+            style={{ borderRadius: '3px' }}
           >
-            Talk to Us
-            <ArrowRight size={13} />
+            Request Consultation
           </Link>
         </Reveal>
       </div>

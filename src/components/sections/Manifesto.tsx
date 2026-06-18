@@ -1,165 +1,128 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { Reveal } from '@/components/motion/Reveal'
-import { useRevealInView } from '@/hooks/useRevealInView'
 
-const pillars = [
-  { num: '01', title: 'Radical Transparency', desc: 'No hidden fees. No inflated metrics. No vanity reporting. Ever.' },
-  { num: '02', title: 'Remote-First Global', desc: 'Asia-based, worldwide reach. Every timezone is our timezone.' },
-  { num: '03', title: 'Precision Execution', desc: 'Small enough to care. Structured enough to scale. Always.' },
+const principles = [
+  {
+    id: '01',
+    title: 'Evidence First',
+    desc: 'Every claim, partnership, and assessment is evaluated on verifiable evidence, not reputation or assumption.',
+  },
+  {
+    id: '02',
+    title: 'Structural Consistency',
+    desc: 'Business identity must be consistent across all surfaces — digital, operational, and reputational.',
+  },
+  {
+    id: '03',
+    title: 'Transparent Execution',
+    desc: 'No inflated metrics. No hidden fees. No vanity reporting. Honest delivery at every engagement.',
+  },
 ]
 
-const QUOTE =
-  'The agency world is full of promises. We built Veluryn to be the exception.'
-
-function WordReveal({ text }: { text: string }) {
-  const words = text.split(' ')
-  const { ref, show } = useRevealInView({ margin: '-80px 0px' })
-
-  return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={show ? 'visible' : 'hidden'}
-      variants={{
-        hidden: {},
-        visible: { transition: { staggerChildren: 0.04 } },
-      }}
-    >
-    <blockquote
-      className="font-display font-light italic text-platinum relative z-10"
-      style={{
-        fontFamily: 'Cormorant Garamond, Georgia, serif',
-        fontSize: 'clamp(2.8rem, 7vw, 6.5rem)',
-        lineHeight: 1.0,
-        letterSpacing: '-0.03em',
-        maxWidth: '1400px',
-      }}
-    >
-      &ldquo;
-      {words.map((word, i) => (
-        <motion.span
-          key={i}
-          className="inline-block mr-[0.22em]"
-          variants={{
-            hidden: { opacity: 0, y: 16, filter: 'blur(4px)' },
-            visible: {
-              opacity: 1,
-              y: 0,
-              filter: 'blur(0px)',
-              transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-            },
-          }}
-        >
-          {word}
-        </motion.span>
-      ))}
-      &rdquo;
-    </blockquote>
-    </motion.div>
-  )
-}
-
-function DividerReveal() {
-  const { ref, show } = useRevealInView()
-  return (
-    <motion.div
-      ref={ref}
-      className="bleed-full h-px bg-silver-dim/15 mb-20 max-w-7xl mx-auto origin-left"
-      initial={{ scaleX: 0 }}
-      animate={{ scaleX: show ? 1 : 0 }}
-      transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-      style={{ transformOrigin: 'left' }}
-    />
-  )
-}
+const divisions = [
+  {
+    tag: 'VA Mgmt',
+    color: '#E8E8F0',
+    borderColor: 'rgba(232,232,240,0.15)',
+    full: 'Veluryn Agnecy Management',
+    desc: 'Full-service talent and influencer marketing. Campaign strategy, talent scouting, and performance reporting without inflated numbers.',
+    href: '/va-mgmt',
+  },
+  {
+    tag: 'VASD',
+    color: '#4A6580',
+    borderColor: 'rgba(74,101,128,0.3)',
+    full: 'Veluryn Agnecy Service Digital',
+    desc: 'Trust intelligence and entity verification infrastructure. Multi-layer assessment framework for founders, investors, and organisations.',
+    href: '/vasd',
+  },
+]
 
 export function Manifesto() {
   return (
-    <section id="about" className="relative bg-charcoal overflow-hidden">
-      <span className="ambient-text left-[-4%] top-0 hidden lg:block" aria-hidden>
-        TRUST
-      </span>
+    <section id="about" className="relative bg-charcoal border-t border-[rgba(200,200,220,0.06)]">
+      <div className="max-w-7xl mx-auto px-6 py-20 md:py-28">
 
-      <div className="bleed-full h-px bg-gradient-to-r from-transparent via-silver-dim/15 to-transparent" />
-
-      <div className="py-24 md:py-40 px-6 md:px-16 xl:px-24 relative z-10">
-        <Reveal className="flex items-start gap-4 mb-16 max-w-7xl mx-auto">
-          <div className="h-px w-12 bg-silver-dim mt-3 shrink-0" />
-          <span className="font-body text-[0.65rem] tracking-[0.3em] uppercase text-silver-dim">
-            Our Philosophy
+        {/* Header */}
+        <Reveal className="flex items-center gap-3 mb-12">
+          <div className="h-px w-8 bg-silver-dim" />
+          <span className="font-body text-[0.6rem] tracking-[0.28em] uppercase text-silver-dim font-medium">
+            Company Overview
           </span>
         </Reveal>
 
-        <div className="mb-16">
-          <WordReveal text={QUOTE} />
-        </div>
-
-        <DividerReveal />
-
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          <Reveal delay={0.1}>
-            <p className="font-body text-base text-silver-dim leading-relaxed">
-              We are a remote-first global digital agency headquartered in Asia.
-              We believe the most powerful thing an agency can offer a client is not a strategy deck —
-              it&apos;s the truth. Honest assessment. Transparent execution. Measurable results.
+        {/* Two-column overview */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+          <Reveal>
+            <h2
+              className="font-body font-semibold text-platinum mb-5"
+              style={{ fontSize: 'clamp(1.6rem, 2.8vw, 2.2rem)', lineHeight: 1.2, letterSpacing: '-0.01em' }}
+            >
+              A trust intelligence and digital services firm built on radical transparency.
+            </h2>
+            <p className="font-body text-sm text-silver-dim leading-relaxed">
+              VELURYN AGNECY is a remote-first global organisation headquartered in Asia. We operate across two verticals — digital services management and trust infrastructure — delivering measurable results under a single standard: honesty over optics.
             </p>
           </Reveal>
-          <Reveal delay={0.2}>
-            <p className="font-body text-base text-silver-dim leading-relaxed">
-              That philosophy is the foundation of both our verticals — VA Mgmt, where we match brands
-              with authentic voices, and VASD, where we protect and manage enterprise email infrastructure.
-              Trust first. Everything follows.
-            </p>
+
+          <Reveal delay={0.08}>
+            <div className="border-l border-[rgba(200,200,220,0.08)] pl-8">
+              <p className="font-body text-[0.6rem] tracking-[0.25em] uppercase text-silver-dim mb-4 font-semibold">Mission</p>
+              <p className="font-body text-sm text-silver leading-relaxed mb-6">
+                To make every business relationship more trustworthy by providing the tools, assessments, and frameworks that replace assumption with evidence.
+              </p>
+              <p className="font-body text-[0.6rem] tracking-[0.25em] uppercase text-silver-dim mb-3 font-semibold">Founding Principle</p>
+              <p className="font-body text-sm font-semibold text-platinum">
+                &ldquo;Trust First. Everything Follows.&rdquo;
+              </p>
+            </div>
           </Reveal>
         </div>
-      </div>
 
-      <div className="bleed-full border-t border-silver-dim/8">
-        <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-silver-dim/8">
-          {pillars.map((item, i) => (
-            <Reveal key={item.num} delay={i * 0.1}>
-              <motion.div
-                className="group relative overflow-hidden bg-charcoal-2 px-10 py-14 md:px-14 md:py-16 rounded-card md:rounded-none"
-                whileHover={{
-                  y: -6,
-                  transition: { duration: 0.3 },
-                }}
-                style={{ borderRadius: '20px' }}
-              >
-                <motion.span
-                  className="absolute top-4 right-6 font-display text-platinum pointer-events-none select-none"
-                  style={{
-                    fontSize: '8rem',
-                    lineHeight: 1,
-                    letterSpacing: '-0.05em',
-                  }}
-                  initial={{ opacity: 0.04 }}
-                  whileHover={{ opacity: 0.1 }}
-                  aria-hidden
-                >
-                  {item.num}
-                </motion.span>
-
-                <div className="w-8 h-px bg-silver mb-8 relative z-10" />
-                <h3
-                  className="font-body uppercase text-platinum mb-4 relative z-10"
-                  style={{ letterSpacing: '0.15em', fontSize: '0.72rem' }}
-                >
-                  {item.title}
-                </h3>
-                <p className="font-body text-sm text-silver-dim leading-relaxed relative z-10">
-                  {item.desc}
-                </p>
-                <motion.div
-                  className="absolute inset-0 pointer-events-none rounded-[20px] opacity-0 group-hover:opacity-100 transition-opacity duration-400"
-                  style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.4)' }}
-                />
-              </motion.div>
+        {/* Core Principles */}
+        <Reveal>
+          <p className="font-body text-[0.6rem] tracking-[0.28em] uppercase text-silver-dim mb-6 font-semibold">Core Principles</p>
+        </Reveal>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-[rgba(200,200,220,0.07)] mb-16" style={{ borderRadius: '4px', overflow: 'hidden' }}>
+          {principles.map((p, i) => (
+            <Reveal key={p.id} delay={i * 0.06}>
+              <div className={`p-6 h-full ${i < principles.length - 1 ? 'border-b md:border-b-0 md:border-r border-[rgba(200,200,220,0.07)]' : ''}`}>
+                <p className="font-body text-[0.58rem] tracking-[0.2em] uppercase text-steel-blue mb-3 font-semibold">{p.id}</p>
+                <p className="font-body text-sm font-semibold text-platinum mb-2">{p.title}</p>
+                <p className="font-body text-xs text-silver-dim leading-relaxed">{p.desc}</p>
+              </div>
             </Reveal>
           ))}
         </div>
+
+        {/* Operating Divisions */}
+        <Reveal>
+          <p className="font-body text-[0.6rem] tracking-[0.28em] uppercase text-silver-dim mb-6 font-semibold">Operating Divisions</p>
+        </Reveal>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {divisions.map((d, i) => (
+            <Reveal key={d.tag} delay={i * 0.07}>
+              <a
+                href={d.href}
+                className="block p-6 border bg-charcoal-2 hover:bg-charcoal-3 transition-colors group"
+                style={{ borderColor: d.borderColor, borderRadius: '4px' }}
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <span
+                    className="font-body text-[0.6rem] tracking-[0.2em] uppercase font-bold px-2.5 py-1"
+                    style={{ color: d.color, background: `${d.color}12`, border: `1px solid ${d.borderColor}`, borderRadius: '3px' }}
+                  >
+                    {d.tag}
+                  </span>
+                  <p className="font-body text-[0.6rem] text-silver-dim uppercase tracking-[0.15em]">{d.full}</p>
+                </div>
+                <p className="font-body text-sm text-silver-dim leading-relaxed">{d.desc}</p>
+              </a>
+            </Reveal>
+          ))}
+        </div>
+
       </div>
     </section>
   )
