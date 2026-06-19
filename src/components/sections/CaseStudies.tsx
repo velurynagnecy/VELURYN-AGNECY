@@ -9,7 +9,7 @@ type CaseStudy = {
   vector: string
   scope: string
   findings: string[]
-  verdict: 'Fraudulent Activity' | 'Verified Entity' | 'Suspicious' | 'High Risk'
+  verdict: 'Fraudulent Activity' | 'Verified Entity' | 'Suspicious' | 'High Risk' | 'Trusted'
   date: string
   pdfUrl: string
 }
@@ -108,9 +108,29 @@ const verifiedStudies: CaseStudy[] = [
   },
 ]
 
+const independentStudies: CaseStudy[] = [
+  {
+    id: 'TV-001',
+    title: 'Tesla, Inc.',
+    vector: 'Independent Trust Assessment',
+    scope: 'Public presence only',
+    findings: [
+      '16+ year track record, S&P-tracked, deep market presence',
+      'Disclosed HQ, factories & offices across US, EU, China, India, APAC',
+      'Active, dense, independently reported media coverage',
+      'Polarised consumer sentiment (~471 one-star vs ~162 five-star)',
+      'Customer Support Flag: recurring complaints regarding unresolved post-sale issues'
+    ],
+    verdict: 'Trusted',
+    date: '2026.06',
+    pdfUrl: '/case-studies/VASD_Trust_Verdict_Tesla.pdf',
+  },
+]
+
 function CaseStudyCard({ study }: { study: CaseStudy }) {
   const isFraud = study.verdict === 'Fraudulent Activity' || study.verdict === 'High Risk'
   const isSuspicious = study.verdict === 'Suspicious'
+  const isTrusted = study.verdict === 'Trusted' || study.verdict === 'Verified Entity'
 
   return (
     <div className="flex flex-col border border-gray-200 bg-white transition-shadow hover:shadow-md rounded-sm h-full">
@@ -235,6 +255,22 @@ export function CaseStudies() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
           {verifiedStudies.map((study, i) => (
+            <Reveal key={study.id} delay={i * 0.1}>
+              <CaseStudyCard study={study} />
+            </Reveal>
+          ))}
+        </div>
+
+        {/* Section: Independent Case Studies */}
+        <Reveal>
+          <div className="flex items-center gap-6 mb-10">
+            <h2 className="font-body text-sm font-bold text-gray-900 uppercase tracking-widest">Unverified: Independent Case Studies</h2>
+            <div className="h-px flex-1 bg-gray-200" />
+          </div>
+        </Reveal>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+          {independentStudies.map((study, i) => (
             <Reveal key={study.id} delay={i * 0.1}>
               <CaseStudyCard study={study} />
             </Reveal>
