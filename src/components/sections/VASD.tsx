@@ -2,7 +2,6 @@
 
 import { Shield, Search, Database, Lock, ArrowRight, Eye, CheckCircle } from 'lucide-react'
 import { Reveal } from '@/components/motion/Reveal'
-import { sectionHeadingStyle } from '@/lib/typography'
 
 const coreLayers = [
   {
@@ -33,24 +32,24 @@ const coreLayers = [
 
 export function VASD() {
   return (
-    <section className="bg-charcoal pt-32 pb-24 border-t border-[rgba(200,200,220,0.06)]">
+    <section className="bg-white pt-32 pb-24 border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* ── Header ────────────────────────────────────────────────────── */}
         <div className="max-w-3xl mb-24">
-          <Reveal className="flex items-center gap-3 mb-6">
-            <div className="h-px w-8 bg-steel-blue" />
-            <span className="font-body text-[0.6rem] tracking-[0.28em] uppercase text-steel-blue font-medium">
-              Veluryn Agnecy Service Digital
+          <Reveal className="flex items-center gap-4 mb-8">
+            <div className="h-px w-10 bg-gray-300" />
+            <span className="font-body text-[0.65rem] tracking-[0.2em] uppercase text-gray-500 font-bold">
+              Division: VASD
             </span>
           </Reveal>
           <Reveal delay={0.06}>
-            <h1 className="text-platinum mb-6" style={sectionHeadingStyle}>
+            <h1 className="font-body text-4xl md:text-5xl font-semibold text-gray-900 tracking-tight mb-8">
               Trust Intelligence & Entity Verification Infrastructure.
             </h1>
           </Reveal>
           <Reveal delay={0.12}>
-            <p className="font-body text-base text-silver-dim leading-relaxed">
+            <p className="font-body text-lg text-gray-600 leading-relaxed">
               VASD operates as a structured multi-layer assessment system. We help founders, investors, agencies, and enterprise clients evaluate entities and communications before entering business relationships. Trust should be validated through evidence, not assumed through presentation.
             </p>
           </Reveal>
@@ -58,29 +57,29 @@ export function VASD() {
 
         {/* ── Multi-Layer Framework ─────────────────────────────────────── */}
         <Reveal>
-          <h2 className="font-body text-[1.1rem] text-platinum font-semibold mb-8">
-            The Assessment Methodology
+          <h2 className="font-body text-xl font-bold text-gray-900 mb-8 border-b border-gray-200 pb-4">
+            Assessment Methodology
           </h2>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24">
           {coreLayers.map((layer, i) => (
             <Reveal key={layer.num} delay={i * 0.08}>
-              <div className="p-8 border border-[rgba(200,200,220,0.07)] bg-charcoal-2 h-full" style={{ borderRadius: '4px' }}>
-                <div className="flex items-center gap-4 mb-4">
-                  <span className="flex items-center justify-center w-8 h-8 bg-[rgba(74,101,128,0.15)] border border-[rgba(74,101,128,0.3)] text-steel-blue font-body text-[0.6rem] font-bold tracking-widest rounded-sm">
+              <div className="p-8 border border-gray-200 bg-gray-50 h-full rounded-sm shadow-sm hover:shadow-md transition-shadow">
+                <div className="flex items-center gap-4 mb-6">
+                  <span className="flex items-center justify-center w-8 h-8 bg-[#EBF1F7] border border-[#0F3B68] text-[#0F3B68] font-body text-xs font-bold rounded-sm">
                     {layer.num}
                   </span>
-                  <h3 className="font-body text-sm font-semibold text-platinum uppercase tracking-wider">{layer.title}</h3>
+                  <h3 className="font-body text-base font-bold text-gray-900 tracking-tight">{layer.title}</h3>
                 </div>
-                <p className="font-body text-xs text-silver-dim leading-relaxed mb-6 h-10">
+                <p className="font-body text-sm text-gray-600 leading-relaxed mb-8 h-10">
                   {layer.desc}
                 </p>
-                <ul className="flex flex-col gap-2">
+                <ul className="flex flex-col gap-3 pt-4 border-t border-gray-200">
                   {layer.points.map((pt, j) => (
-                    <li key={j} className="flex items-start gap-2.5">
-                      <div className="mt-1 w-1 h-1 rounded-full bg-steel-blue shrink-0" />
-                      <span className="font-body text-xs text-silver leading-snug">{pt}</span>
+                    <li key={j} className="flex items-start gap-3">
+                      <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#0F3B68] shrink-0" />
+                      <span className="font-body text-sm font-medium text-gray-700 leading-snug">{pt}</span>
                     </li>
                   ))}
                 </ul>
@@ -90,44 +89,44 @@ export function VASD() {
         </div>
 
         {/* ── Operational Principles ────────────────────────────────────── */}
-        <div className="border-t border-[rgba(200,200,220,0.06)] pt-20 mb-20">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div className="border-t border-gray-200 pt-20 mb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
             <div className="lg:col-span-1">
               <Reveal>
-                <h2 className="font-body text-[1.1rem] text-platinum font-semibold mb-4">
-                  Operational Principles
+                <h2 className="font-body text-xl font-bold text-gray-900 mb-4">
+                  Operational Directives
                 </h2>
-                <p className="font-body text-xs text-silver-dim leading-relaxed">
-                  VASD assessments are executed under a strict set of operational directives to ensure neutrality and accuracy.
+                <p className="font-body text-sm text-gray-600 leading-relaxed">
+                  VASD assessments are executed under a strict set of operational directives to ensure institutional neutrality and accuracy.
                 </p>
               </Reveal>
             </div>
-            <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">
+            <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-12">
               <Reveal delay={0.1}>
-                <Shield size={16} className="text-steel-blue mb-4" />
-                <h4 className="font-body text-xs font-semibold text-platinum uppercase tracking-widest mb-2">Absolute Verification</h4>
-                <p className="font-body text-xs text-silver-dim leading-relaxed">
+                <Shield size={20} className="text-[#0F3B68] mb-4" />
+                <h4 className="font-body text-sm font-bold text-gray-900 uppercase tracking-widest mb-3">Absolute Verification</h4>
+                <p className="font-body text-sm text-gray-600 leading-relaxed">
                   Every claim is verified against independent public or private records. Internal documentation is considered secondary to external proof.
                 </p>
               </Reveal>
               <Reveal delay={0.15}>
-                <Eye size={16} className="text-steel-blue mb-4" />
-                <h4 className="font-body text-xs font-semibold text-platinum uppercase tracking-widest mb-2">Neutral Execution</h4>
-                <p className="font-body text-xs text-silver-dim leading-relaxed">
+                <Eye size={20} className="text-[#0F3B68] mb-4" />
+                <h4 className="font-body text-sm font-bold text-gray-900 uppercase tracking-widest mb-3">Neutral Execution</h4>
+                <p className="font-body text-sm text-gray-600 leading-relaxed">
                   Assessments are conducted without prejudice. Findings are documented factually without prescriptive emotional language.
                 </p>
               </Reveal>
               <Reveal delay={0.2}>
-                <Database size={16} className="text-steel-blue mb-4" />
-                <h4 className="font-body text-xs font-semibold text-platinum uppercase tracking-widest mb-2">Evidence Preservation</h4>
-                <p className="font-body text-xs text-silver-dim leading-relaxed">
+                <Database size={20} className="text-[#0F3B68] mb-4" />
+                <h4 className="font-body text-sm font-bold text-gray-900 uppercase tracking-widest mb-3">Evidence Preservation</h4>
+                <p className="font-body text-sm text-gray-600 leading-relaxed">
                   All signal sources are documented, archived, and referenced within the final intelligence report.
                 </p>
               </Reveal>
               <Reveal delay={0.25}>
-                <Lock size={16} className="text-steel-blue mb-4" />
-                <h4 className="font-body text-xs font-semibold text-platinum uppercase tracking-widest mb-2">Strict Confidentiality</h4>
-                <p className="font-body text-xs text-silver-dim leading-relaxed">
+                <Lock size={20} className="text-[#0F3B68] mb-4" />
+                <h4 className="font-body text-sm font-bold text-gray-900 uppercase tracking-widest mb-3">Strict Confidentiality</h4>
+                <p className="font-body text-sm text-gray-600 leading-relaxed">
                   For private client assessments, the identity of the target entity and the client remains strictly under NDA.
                 </p>
               </Reveal>
@@ -137,25 +136,24 @@ export function VASD() {
 
         {/* ── Case Studies Banner ───────────────────────────────────────── */}
         <Reveal>
-          <div className="border border-[rgba(200,200,220,0.07)] bg-charcoal-2 p-8 md:p-12 flex flex-col md:flex-row md:items-center justify-between gap-8" style={{ borderRadius: '4px' }}>
+          <div className="border border-gray-300 bg-gray-50 p-10 md:p-14 flex flex-col md:flex-row md:items-center justify-between gap-10 rounded-sm">
             <div>
-              <p className="font-body text-[0.6rem] tracking-[0.25em] uppercase text-steel-blue mb-2 font-semibold">
+              <p className="font-body text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">
                 Intelligence Reports
               </p>
-              <h3 className="font-body text-[1.4rem] font-semibold text-platinum mb-2">
+              <h3 className="font-body text-2xl font-bold text-gray-900 mb-3">
                 VASD Trust Verdicts
               </h3>
-              <p className="font-body text-xs text-silver-dim max-w-lg leading-relaxed">
+              <p className="font-body text-sm text-gray-600 max-w-xl leading-relaxed">
                 Review our public intelligence reports, covering Threat Intelligence on unsolicited scams and Voluntary Trust Assessments of verified entities.
               </p>
             </div>
             <a
               href="/case-studies"
-              className="shrink-0 inline-flex items-center gap-2 font-body text-[0.7rem] tracking-[0.18em] uppercase font-semibold text-charcoal bg-platinum px-6 py-3 hover:bg-silver transition-colors"
-              style={{ borderRadius: '3px' }}
+              className="shrink-0 inline-flex items-center gap-3 font-body text-xs font-bold uppercase tracking-widest text-white bg-[#0F3B68] px-8 py-4 hover:bg-[#1E4D82] transition-colors rounded-sm"
             >
               View Reports
-              <ArrowRight size={13} />
+              <ArrowRight size={16} />
             </a>
           </div>
         </Reveal>

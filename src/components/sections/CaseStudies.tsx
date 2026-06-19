@@ -80,67 +80,66 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
   const isFraud = study.verdict === 'Fraudulent Activity'
 
   return (
-    <div className="flex flex-col border border-[rgba(200,200,220,0.08)] bg-charcoal-2 transition-colors hover:bg-charcoal-3" style={{ borderRadius: '4px' }}>
+    <div className="flex flex-col border border-gray-200 bg-white transition-shadow hover:shadow-md rounded-sm h-full">
       
       {/* Card Header */}
-      <div className="p-6 border-b border-[rgba(200,200,220,0.06)] flex items-start justify-between gap-4">
-        <div>
-          <div className="flex items-center gap-3 mb-3">
-            <span className="font-body text-[0.6rem] tracking-[0.2em] uppercase text-silver-dim font-semibold">{study.id}</span>
-            <span className="w-1 h-1 rounded-full bg-[rgba(200,200,220,0.15)]" />
-            <span className="font-body text-[0.6rem] tracking-[0.2em] uppercase text-silver-dim">{study.date}</span>
+      <div className="p-8 border-b border-gray-100 flex flex-col gap-4">
+        <div className="flex items-center justify-between w-full">
+          <div className="flex items-center gap-3">
+            <span className="font-body text-[0.65rem] tracking-[0.15em] uppercase text-gray-500 font-bold">{study.id}</span>
+            <span className="w-1 h-1 rounded-full bg-gray-300" />
+            <span className="font-body text-[0.65rem] tracking-[0.15em] uppercase text-gray-500 font-bold">{study.date}</span>
           </div>
-          <h3 className="font-body text-lg font-semibold text-platinum mb-1">{study.title}</h3>
+          <div
+            className={`shrink-0 flex items-center gap-2 px-3 py-1 font-body text-[0.65rem] uppercase tracking-widest font-bold rounded-sm ${
+              isFraud
+                ? 'bg-red-50 text-red-700 border border-red-200'
+                : 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+            }`}
+          >
+            {isFraud ? <AlertTriangle size={14} /> : <ShieldCheck size={14} />}
+            {study.verdict}
+          </div>
         </div>
-        
-        <div
-          className={`shrink-0 flex items-center gap-1.5 px-3 py-1.5 border font-body text-[0.6rem] uppercase tracking-wider font-semibold rounded-sm ${
-            isFraud
-              ? 'bg-[rgba(220,38,38,0.05)] border-[rgba(220,38,38,0.2)] text-red-400'
-              : 'bg-[rgba(16,185,129,0.05)] border-[rgba(16,185,129,0.2)] text-emerald-400'
-          }`}
-        >
-          {isFraud ? <AlertTriangle size={12} /> : <ShieldCheck size={12} />}
-          {study.verdict}
-        </div>
+        <h3 className="font-body text-xl font-bold text-gray-900 tracking-tight">{study.title}</h3>
       </div>
 
       {/* Card Body */}
-      <div className="p-6 flex-1 flex flex-col">
-        <div className="grid grid-cols-2 gap-4 mb-6">
+      <div className="p-8 flex-1 flex flex-col bg-gray-50">
+        <div className="grid grid-cols-1 gap-6 mb-8">
           <div>
-            <p className="font-body text-[0.6rem] tracking-[0.2em] uppercase text-silver-dim mb-1 font-semibold">Investigation Vector</p>
-            <p className="font-body text-xs text-silver">{study.vector}</p>
+            <p className="font-body text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Investigation Vector</p>
+            <p className="font-body text-sm font-medium text-gray-900">{study.vector}</p>
           </div>
           <div>
-            <p className="font-body text-[0.6rem] tracking-[0.2em] uppercase text-silver-dim mb-1 font-semibold">Assessment Scope</p>
-            <p className="font-body text-xs text-silver">{study.scope}</p>
+            <p className="font-body text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Assessment Scope</p>
+            <p className="font-body text-sm font-medium text-gray-900">{study.scope}</p>
           </div>
         </div>
 
-        <div className="mb-8">
-          <p className="font-body text-[0.6rem] tracking-[0.2em] uppercase text-silver-dim mb-3 font-semibold">Key Findings</p>
-          <ul className="flex flex-col gap-2">
+        <div className="mb-10">
+          <p className="font-body text-xs font-bold uppercase tracking-widest text-gray-500 mb-4 border-b border-gray-200 pb-2">Key Findings</p>
+          <ul className="flex flex-col gap-3">
             {study.findings.map((finding, idx) => (
-              <li key={idx} className="flex items-start gap-2.5">
-                <div className={`mt-1.5 w-1 h-1 rounded-full shrink-0 ${isFraud ? 'bg-red-400/50' : 'bg-emerald-400/50'}`} />
-                <span className="font-body text-xs text-silver-dim leading-snug">{finding}</span>
+              <li key={idx} className="flex items-start gap-3">
+                <div className={`mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 ${isFraud ? 'bg-red-500' : 'bg-emerald-500'}`} />
+                <span className="font-body text-sm text-gray-700 leading-relaxed">{finding}</span>
               </li>
             ))}
           </ul>
         </div>
 
         {/* Action */}
-        <div className="mt-auto pt-6 border-t border-[rgba(200,200,220,0.06)]">
+        <div className="mt-auto pt-6 border-t border-gray-200">
           <a
             href={study.pdfUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center justify-between font-body text-xs text-silver hover:text-platinum transition-colors"
+            className="group flex items-center justify-between font-body text-xs text-gray-600 hover:text-gray-900 transition-colors"
           >
-            <span className="tracking-[0.1em] uppercase font-semibold">Download Full Report</span>
-            <div className="w-8 h-8 flex items-center justify-center bg-[rgba(200,200,220,0.05)] group-hover:bg-[rgba(200,200,220,0.1)] transition-colors rounded-sm">
-              <Download size={14} />
+            <span className="tracking-widest uppercase font-bold">Download Full Report</span>
+            <div className="w-8 h-8 flex items-center justify-center bg-white border border-gray-200 group-hover:border-gray-400 transition-colors rounded-sm">
+              <Download size={14} className="text-gray-600" />
             </div>
           </a>
         </div>
@@ -152,24 +151,24 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
 
 export function CaseStudies() {
   return (
-    <section className="bg-charcoal pt-32 pb-24 min-h-screen border-t border-[rgba(200,200,220,0.06)]">
+    <section className="bg-white pt-32 pb-24 min-h-screen border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Header */}
         <div className="max-w-3xl mb-24">
-          <Reveal className="flex items-center gap-3 mb-6">
-            <div className="h-px w-8 bg-steel-blue" />
-            <span className="font-body text-[0.6rem] tracking-[0.28em] uppercase text-steel-blue font-medium">
+          <Reveal className="flex items-center gap-4 mb-8">
+            <div className="h-px w-10 bg-gray-300" />
+            <span className="font-body text-[0.65rem] tracking-[0.2em] uppercase text-gray-500 font-bold">
               Intelligence Reports
             </span>
           </Reveal>
           <Reveal delay={0.06}>
-            <h1 className="font-body font-semibold text-platinum mb-6" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: 1.1, letterSpacing: '-0.02em' }}>
+            <h1 className="font-body text-4xl md:text-5xl font-semibold text-gray-900 tracking-tight mb-8">
               VASD Trust Verdicts
             </h1>
           </Reveal>
           <Reveal delay={0.12}>
-            <p className="font-body text-sm text-silver-dim leading-relaxed">
+            <p className="font-body text-lg text-gray-600 leading-relaxed">
               Public intelligence reports resulting from our multi-layer entity assessments. These executive briefings detail the scope, investigation vector, and key findings that inform our final trust verdict.
             </p>
           </Reveal>
@@ -177,13 +176,13 @@ export function CaseStudies() {
 
         {/* Section: Threat Intelligence */}
         <Reveal>
-          <div className="flex items-center gap-4 mb-8">
-            <h2 className="font-body text-lg font-semibold text-platinum uppercase tracking-widest">Threat Intelligence</h2>
-            <div className="h-px flex-1 bg-[rgba(200,200,220,0.06)]" />
+          <div className="flex items-center gap-6 mb-10">
+            <h2 className="font-body text-sm font-bold text-gray-900 uppercase tracking-widest">Threat Intelligence</h2>
+            <div className="h-px flex-1 bg-gray-200" />
           </div>
         </Reveal>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
           {scamStudies.map((study, i) => (
             <Reveal key={study.id} delay={i * 0.1}>
               <CaseStudyCard study={study} />
@@ -193,13 +192,13 @@ export function CaseStudies() {
 
         {/* Section: Verified Entities */}
         <Reveal>
-          <div className="flex items-center gap-4 mb-8">
-            <h2 className="font-body text-lg font-semibold text-platinum uppercase tracking-widest">Voluntary Trust Verification</h2>
-            <div className="h-px flex-1 bg-[rgba(200,200,220,0.06)]" />
+          <div className="flex items-center gap-6 mb-10">
+            <h2 className="font-body text-sm font-bold text-gray-900 uppercase tracking-widest">Voluntary Trust Verification</h2>
+            <div className="h-px flex-1 bg-gray-200" />
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
           {verifiedStudies.map((study, i) => (
             <Reveal key={study.id} delay={i * 0.1}>
               <CaseStudyCard study={study} />
@@ -209,22 +208,21 @@ export function CaseStudies() {
 
         {/* Call to Action */}
         <Reveal>
-          <div className="border border-[rgba(200,200,220,0.07)] bg-charcoal-2 p-10 flex flex-col md:flex-row md:items-center justify-between gap-8" style={{ borderRadius: '4px' }}>
+          <div className="border border-gray-300 bg-gray-50 p-10 md:p-14 flex flex-col md:flex-row md:items-center justify-between gap-10 rounded-sm">
             <div>
-              <p className="font-body text-[0.6rem] tracking-[0.25em] uppercase text-steel-blue mb-2 font-semibold">
+              <p className="font-body text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">
                 Entity Assessment
               </p>
-              <h3 className="font-body text-[1.2rem] font-semibold text-platinum mb-2">
+              <h3 className="font-body text-2xl font-bold text-gray-900 mb-3">
                 Need to verify an entity?
               </h3>
-              <p className="font-body text-xs text-silver-dim max-w-md leading-relaxed">
+              <p className="font-body text-sm text-gray-600 max-w-xl leading-relaxed">
                 Contact our intelligence team to initiate a structural assessment of a partner, vendor, or agency before committing to a contract.
               </p>
             </div>
             <a
               href="/#contact"
-              className="shrink-0 inline-flex items-center gap-2 font-body text-[0.7rem] tracking-[0.18em] uppercase font-semibold text-charcoal bg-platinum px-6 py-3 hover:bg-silver transition-colors"
-              style={{ borderRadius: '3px' }}
+              className="shrink-0 inline-flex items-center gap-3 font-body text-xs font-bold uppercase tracking-widest text-white bg-[#0F3B68] px-8 py-4 hover:bg-[#1E4D82] transition-colors rounded-sm"
             >
               Initiate Assessment
             </a>

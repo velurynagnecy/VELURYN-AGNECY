@@ -22,58 +22,54 @@ const principles = [
 
 const divisions = [
   {
-    tag: 'VA Mgmt',
-    color: '#E8E8F0',
-    borderColor: 'rgba(232,232,240,0.15)',
+    tag: 'Digital Management',
+    short: 'VA Mgmt',
     full: 'Veluryn Agnecy Management',
-    desc: 'Full-service talent and influencer marketing. Campaign strategy, talent scouting, and performance reporting without inflated numbers.',
+    desc: 'Full-service digital management. Campaign strategy, brand scaling, and performance reporting executed with strict institutional discipline.',
     href: '/va-mgmt',
   },
   {
-    tag: 'VASD',
-    color: '#4A6580',
-    borderColor: 'rgba(74,101,128,0.3)',
+    tag: 'Trust Infrastructure',
+    short: 'VASD',
     full: 'Veluryn Agnecy Service Digital',
-    desc: 'Trust intelligence and entity verification infrastructure. Multi-layer assessment framework for founders, investors, and organisations.',
+    desc: 'Entity verification and threat intelligence infrastructure. A rigorous multi-layer assessment framework for identifying structural risk.',
     href: '/vasd',
   },
 ]
 
 export function Manifesto() {
   return (
-    <section id="about" className="relative bg-charcoal border-t border-[rgba(200,200,220,0.06)]">
-      <div className="max-w-7xl mx-auto px-6 py-20 md:py-28">
+    <section id="about" className="relative bg-white border-b border-gray-200">
+      <div className="max-w-7xl mx-auto px-6 py-24 md:py-32">
 
         {/* Header */}
-        <Reveal className="flex items-center gap-3 mb-12">
-          <div className="h-px w-8 bg-silver-dim" />
-          <span className="font-body text-[0.6rem] tracking-[0.28em] uppercase text-silver-dim font-medium">
-            Company Overview
+        <Reveal className="flex items-center gap-4 mb-14">
+          <div className="h-px w-10 bg-gray-300" />
+          <span className="font-body text-[0.65rem] tracking-[0.2em] uppercase text-gray-500 font-bold">
+            Firm Overview
           </span>
         </Reveal>
 
         {/* Two-column overview */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
           <Reveal>
-            <h2
-              className="font-body font-semibold text-platinum mb-5"
-              style={{ fontSize: 'clamp(1.6rem, 2.8vw, 2.2rem)', lineHeight: 1.2, letterSpacing: '-0.01em' }}
-            >
-              A trust intelligence and digital services firm built on radical transparency.
+            <h2 className="font-body font-semibold text-gray-900 mb-6 text-3xl md:text-4xl leading-tight tracking-tight">
+              A private intelligence and digital operations firm built on radical transparency.
             </h2>
-            <p className="font-body text-sm text-silver-dim leading-relaxed">
-              VELURYN AGNECY is a remote-first global organisation headquartered in Asia. We operate across two verticals — digital services management and trust infrastructure — delivering measurable results under a single standard: honesty over optics.
+            <p className="font-body text-base text-gray-600 leading-relaxed">
+              VELURYN AGNECY is a remote-first global organisation headquartered in Asia. We operate across two distinct divisions — digital management and trust infrastructure — delivering measurable results under a single corporate standard: evidence over optics.
             </p>
           </Reveal>
 
-          <Reveal delay={0.08}>
-            <div className="border-l border-[rgba(200,200,220,0.08)] pl-8">
-              <p className="font-body text-[0.6rem] tracking-[0.25em] uppercase text-silver-dim mb-4 font-semibold">Mission</p>
-              <p className="font-body text-sm text-silver leading-relaxed mb-6">
-                To make every business relationship more trustworthy by providing the tools, assessments, and frameworks that replace assumption with evidence.
+          <Reveal delay={0.1}>
+            <div className="border-l-2 border-gray-100 pl-8 h-full flex flex-col justify-center">
+              <p className="font-body text-[0.65rem] tracking-[0.15em] uppercase text-gray-500 mb-2 font-bold">Corporate Mission</p>
+              <p className="font-body text-sm font-medium text-gray-800 leading-relaxed mb-8">
+                To establish structural integrity in digital commerce by providing the frameworks that replace assumption with verifiable evidence.
               </p>
-              <p className="font-body text-[0.6rem] tracking-[0.25em] uppercase text-silver-dim mb-3 font-semibold">Founding Principle</p>
-              <p className="font-body text-sm font-semibold text-platinum">
+              
+              <p className="font-body text-[0.65rem] tracking-[0.15em] uppercase text-gray-500 mb-2 font-bold">Founding Principle</p>
+              <p className="font-body text-lg font-semibold text-[#0F3B68] italic tracking-tight">
                 &ldquo;Trust First. Everything Follows.&rdquo;
               </p>
             </div>
@@ -82,15 +78,15 @@ export function Manifesto() {
 
         {/* Core Principles */}
         <Reveal>
-          <p className="font-body text-[0.6rem] tracking-[0.28em] uppercase text-silver-dim mb-6 font-semibold">Core Principles</p>
+          <p className="font-body text-[0.65rem] tracking-[0.15em] uppercase text-gray-500 mb-6 font-bold border-b border-gray-200 pb-2">Operational Standards</p>
         </Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-[rgba(200,200,220,0.07)] mb-16" style={{ borderRadius: '4px', overflow: 'hidden' }}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
           {principles.map((p, i) => (
-            <Reveal key={p.id} delay={i * 0.06}>
-              <div className={`p-6 h-full ${i < principles.length - 1 ? 'border-b md:border-b-0 md:border-r border-[rgba(200,200,220,0.07)]' : ''}`}>
-                <p className="font-body text-[0.58rem] tracking-[0.2em] uppercase text-steel-blue mb-3 font-semibold">{p.id}</p>
-                <p className="font-body text-sm font-semibold text-platinum mb-2">{p.title}</p>
-                <p className="font-body text-xs text-silver-dim leading-relaxed">{p.desc}</p>
+            <Reveal key={p.id} delay={i * 0.1}>
+              <div className="h-full">
+                <p className="font-body text-xs font-bold text-[#0F3B68] mb-3">{p.id}</p>
+                <h3 className="font-body text-base font-semibold text-gray-900 mb-3">{p.title}</h3>
+                <p className="font-body text-sm text-gray-600 leading-relaxed">{p.desc}</p>
               </div>
             </Reveal>
           ))}
@@ -98,26 +94,25 @@ export function Manifesto() {
 
         {/* Operating Divisions */}
         <Reveal>
-          <p className="font-body text-[0.6rem] tracking-[0.28em] uppercase text-silver-dim mb-6 font-semibold">Operating Divisions</p>
+          <p className="font-body text-[0.65rem] tracking-[0.15em] uppercase text-gray-500 mb-6 font-bold border-b border-gray-200 pb-2">Core Divisions</p>
         </Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {divisions.map((d, i) => (
-            <Reveal key={d.tag} delay={i * 0.07}>
+            <Reveal key={d.short} delay={i * 0.1}>
               <a
                 href={d.href}
-                className="block p-6 border bg-charcoal-2 hover:bg-charcoal-3 transition-colors group"
-                style={{ borderColor: d.borderColor, borderRadius: '4px' }}
+                className="block p-8 border border-gray-200 bg-gray-50 hover:bg-white hover:shadow-sm transition-all group"
               >
-                <div className="flex items-center justify-between mb-4">
-                  <span
-                    className="font-body text-[0.6rem] tracking-[0.2em] uppercase font-bold px-2.5 py-1"
-                    style={{ color: d.color, background: `${d.color}12`, border: `1px solid ${d.borderColor}`, borderRadius: '3px' }}
-                  >
-                    {d.tag}
+                <div className="flex items-center justify-between mb-6">
+                  <span className="font-body text-[0.65rem] tracking-[0.1em] uppercase font-bold text-gray-900">
+                    {d.full}
                   </span>
-                  <p className="font-body text-[0.6rem] text-silver-dim uppercase tracking-[0.15em]">{d.full}</p>
+                  <span className="font-body text-xs font-semibold text-[#0F3B68] bg-[#EBF1F7] px-3 py-1 rounded-sm">
+                    {d.short}
+                  </span>
                 </div>
-                <p className="font-body text-sm text-silver-dim leading-relaxed">{d.desc}</p>
+                <h4 className="font-body text-lg font-semibold text-gray-900 mb-3">{d.tag}</h4>
+                <p className="font-body text-sm text-gray-600 leading-relaxed">{d.desc}</p>
               </a>
             </Reveal>
           ))}

@@ -6,63 +6,65 @@ import { Instagram, Linkedin, Twitter, Youtube, Mail } from 'lucide-react'
 import { EllipseImage } from '@/components/ui/EllipseImage'
 
 const socials = [
-  { icon: Instagram, href: 'https://instagram.com/velurynagnecy', label: 'Instagram' },
   { icon: Linkedin, href: 'https://linkedin.com/company/veluryn-agnecy', label: 'LinkedIn' },
   { icon: Twitter, href: 'https://x.com/velurynagnecy', label: 'X / Twitter' },
   { icon: Youtube, href: 'https://youtube.com/@velurynagnecy', label: 'YouTube' },
+  { icon: Instagram, href: 'https://instagram.com/velurynagnecy', label: 'Instagram' },
 ]
 
 const navGroups = {
-  Company: [
-    { label: 'About', href: '/#about' },
-    { label: 'Services', href: '/#services' },
-    { label: 'Contact', href: '/#contact' },
+  Firm: [
+    { label: 'Firm Overview', href: '/#about' },
+    { label: 'Capabilities', href: '/#services' },
+    { label: 'Contact Us', href: '/#contact' },
   ],
-  Verticals: [
-    { label: 'VA Mgmt', href: '/va-mgmt' },
-    { label: 'VASD', href: '/vasd' },
-    { label: 'Case Studies', href: '/case-studies' },
+  Divisions: [
+    { label: 'Digital Management', href: '/va-mgmt' },
+    { label: 'Trust Infrastructure', href: '/vasd' },
+    { label: 'Intelligence Reports', href: '/case-studies' },
   ],
-  Connect: [
-    { label: 'Contact', href: '/#contact' },
-    { label: 'Partners', href: '/#contact' },
+  Legal: [
+    { label: 'Privacy Policy', href: '#' },
+    { label: 'Terms of Service', href: '#' },
   ],
 }
 
 export function Footer() {
   return (
-    <footer className="bg-charcoal-2 border-t border-[rgba(200,200,220,0.07)]">
-      <div className="max-w-7xl mx-auto px-6 pt-14 pb-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
+    <footer className="bg-[#111827] border-t border-gray-800">
+      <div className="max-w-7xl mx-auto px-6 pt-16 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
           <div className="md:col-span-5">
-            <Link href="/" className="flex items-center gap-2.5 mb-6">
-              <div className="logo-circle border border-[rgba(200,200,220,0.08)]">
-                <Image src="/assets/logo.png" alt="VELURYN AGNECY" fill sizes="32px" className="object-cover" />
+            <Link href="/" className="flex items-center gap-3 mb-8">
+              <div className="logo-circle bg-gray-900 border border-gray-800 p-1">
+                <Image src="/assets/logo.png" alt="VELURYN AGNECY" fill sizes="32px" className="object-contain" />
               </div>
-              <span className="font-body text-sm font-semibold text-platinum uppercase tracking-widest">
-                Veluryn <span className="text-silver-dim font-normal">Agnecy</span>
-              </span>
+              <div className="flex flex-col">
+                <span className="font-body text-[0.7rem] font-bold text-gray-100 uppercase tracking-widest leading-none mb-0.5">
+                  Veluryn Agnecy
+                </span>
+                <span className="font-body text-[0.55rem] font-medium text-gray-500 uppercase tracking-widest leading-none">
+                  Intelligence & Operations
+                </span>
+              </div>
             </Link>
 
-            <p className="font-body text-sm font-medium text-silver mb-4 leading-snug max-w-xs">
-              &ldquo;Trust First. Everything Follows.&rdquo;
+            <p className="font-body text-xs text-gray-400 leading-relaxed max-w-sm mb-8 font-medium">
+              A global business intelligence and digital services firm. <br/>
+              Remote-first. Asia-based. Worldwide in reach.
             </p>
 
-            <p className="font-body text-xs text-silver-dim leading-relaxed max-w-sm mb-8" style={{ opacity: 0.7 }}>
-              A global business intelligence and digital services firm. Remote-first. Asia-based. Worldwide in reach.
-            </p>
-
-            <div className="flex flex-col gap-2 mb-8">
+            <div className="flex flex-col gap-3 mb-8">
               <a
                 href="mailto:vivin.b@velurynagnecy.com"
-                className="flex items-center gap-2.5 font-body text-xs text-silver-dim hover:text-platinum transition-colors"
+                className="flex items-center gap-2 font-body text-xs font-semibold text-gray-300 hover:text-white transition-colors"
               >
-                <Mail size={12} className="text-silver shrink-0" />
+                <Mail size={14} className="text-gray-500 shrink-0" />
                 vivin.b@velurynagnecy.com
               </a>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               {socials.map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
@@ -70,24 +72,24 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="social-icon w-8 h-8 border border-[rgba(200,200,220,0.08)] flex items-center justify-center text-silver-dim hover:text-platinum hover:border-[rgba(200,200,220,0.2)] transition-all"
+                  className="w-8 h-8 bg-gray-800 border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-gray-500 transition-all rounded-sm"
                 >
-                  <Icon size={12} />
+                  <Icon size={14} />
                 </a>
               ))}
             </div>
           </div>
 
-          <div className="md:col-span-7 grid grid-cols-3 gap-8">
+          <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
             {Object.entries(navGroups).map(([group, links]) => (
               <div key={group}>
-                <h4 className="font-body text-[0.6rem] tracking-[0.25em] uppercase text-silver-dim mb-5 font-semibold">{group}</h4>
+                <h4 className="font-body text-xs font-bold text-gray-300 mb-5">{group}</h4>
                 <ul className="flex flex-col gap-3">
                   {links.map((link) => (
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="font-body text-xs text-silver-dim hover:text-platinum transition-colors"
+                        className="font-body text-xs font-medium text-gray-500 hover:text-gray-200 transition-colors"
                       >
                         {link.label}
                       </Link>
@@ -99,49 +101,49 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Verticals strip */}
-        <div className="border-t border-[rgba(200,200,220,0.06)] pt-8 mb-8 flex flex-col sm:flex-row gap-3">
-          <div className="flex items-center gap-3 px-4 py-3 bg-charcoal border border-[rgba(200,200,220,0.06)] flex-1">
-            <div className="w-0.5 h-8 bg-platinum shrink-0" />
+        {/* Divisions strip */}
+        <div className="border-t border-gray-800 pt-8 mb-10 flex flex-col sm:flex-row gap-4">
+          <div className="flex items-center gap-4 flex-1">
+            <div className="w-1 h-8 bg-gray-300 shrink-0" />
             <div>
-              <p className="font-body text-[0.6rem] tracking-[0.2em] uppercase text-platinum mb-0.5 font-semibold">VA Mgmt</p>
-              <p className="font-body text-xs text-silver-dim">Talent & Influencer Marketing</p>
+              <p className="font-body text-[0.65rem] tracking-[0.1em] uppercase text-gray-300 mb-1 font-bold">VA Mgmt</p>
+              <p className="font-body text-xs font-medium text-gray-500">Digital Management Division</p>
             </div>
           </div>
-          <div className="flex items-center gap-3 px-4 py-3 bg-charcoal border border-[rgba(200,200,220,0.06)] flex-1">
-            <div className="w-0.5 h-8 bg-steel-blue shrink-0" />
+          <div className="flex items-center gap-4 flex-1">
+            <div className="w-1 h-8 bg-[#60A5FA] shrink-0" />
             <div>
-              <p className="font-body text-[0.6rem] tracking-[0.2em] uppercase text-steel-blue mb-0.5 font-semibold">VASD</p>
-              <p className="font-body text-xs text-silver-dim">Trust Intelligence & Verification</p>
+              <p className="font-body text-[0.65rem] tracking-[0.1em] uppercase text-[#60A5FA] mb-1 font-bold">VASD</p>
+              <p className="font-body text-xs font-medium text-gray-500">Trust Infrastructure Division</p>
             </div>
           </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-[rgba(200,200,220,0.06)] pt-8 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
-            <p className="font-body text-xs text-silver-dim" style={{ opacity: 0.4 }}>
+        <div className="border-t border-gray-800 pt-8 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-6">
+            <p className="font-body text-xs font-medium text-gray-500">
               © {new Date().getFullYear()} VELURYN AGNECY. All rights reserved.
             </p>
 
-            <div className="hidden sm:block w-px h-6 bg-[rgba(200,200,220,0.08)] shrink-0" aria-hidden />
+            <div className="hidden sm:block w-px h-6 bg-gray-800 shrink-0" aria-hidden />
 
             <div className="flex items-center gap-3">
               <EllipseImage
                 src="/assets/vivin-bharathi.png"
                 alt="Vivin Bharathi"
-                width={44}
-                className="ring-1 ring-[rgba(200,200,220,0.1)]"
+                width={36}
+                className="ring-1 ring-gray-700"
               />
               <div>
-                <p className="font-body text-sm font-semibold text-platinum leading-tight">Vivin Bharathi</p>
-                <p className="font-body text-[0.65rem] tracking-[0.15em] uppercase text-silver-dim mt-0.5">CEO & Founder</p>
+                <p className="font-body text-xs font-bold text-gray-300 leading-tight">Vivin Bharathi</p>
+                <p className="font-body text-[0.6rem] tracking-[0.1em] uppercase font-medium text-gray-500 mt-0.5">CEO & Founder</p>
               </div>
             </div>
           </div>
 
-          <p className="font-body text-xs text-silver-dim lg:text-right" style={{ opacity: 0.35 }}>
-            Built with integrity. Delivered with precision.
+          <p className="font-body text-[0.65rem] tracking-widest font-bold uppercase text-gray-600 lg:text-right">
+            Trust First.
           </p>
         </div>
       </div>

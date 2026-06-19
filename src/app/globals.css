@@ -2,9 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
+  /* Institutional Core Colors */
+  --inst-bg-primary:   #FFFFFF;
+  --inst-bg-secondary: #F9FAFB; /* Gray 50 */
+  --inst-bg-tertiary:  #F3F4F6; /* Gray 100 */
+  
+  --inst-text-primary: #111827; /* Gray 900 */
+  --inst-text-secondary: #4B5563; /* Gray 600 */
+  --inst-text-tertiary: #6B7280; /* Gray 500 */
+  
+  --inst-border-light: #E5E7EB; /* Gray 200 */
+  --inst-border-dark:  #D1D5DB; /* Gray 300 */
+  
+  --inst-blue-primary: #0F3B68; /* Corporate Morgan Stanley/Yale Blue */
+  --inst-blue-secondary: #1E4D82;
+  --inst-blue-light: #EBF1F7;
+
+  /* Legacy Dark (preserved for Hero/Footer) */
   --charcoal:    #1A1C24;
   --charcoal-2:  #1F2129;
   --charcoal-3:  #252830;
@@ -25,33 +42,33 @@ html {
 }
 
 body {
-  background-color: var(--charcoal);
-  color: var(--platinum);
-  font-family: 'Outfit', system-ui, sans-serif;
+  background-color: var(--inst-bg-primary);
+  color: var(--inst-text-primary);
+  font-family: 'Inter', system-ui, sans-serif;
   overflow-x: hidden;
 }
 
 /* ── Scrollbar ── */
-::-webkit-scrollbar { width: 3px; }
-::-webkit-scrollbar-track { background: var(--charcoal); }
-::-webkit-scrollbar-thumb { background: #2E3140; border-radius: 2px; }
-::-webkit-scrollbar-thumb:hover { background: var(--silver-dim); }
-::selection { background: rgba(196,196,212,0.15); color: var(--platinum); }
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--inst-bg-secondary); }
+::-webkit-scrollbar-thumb { background: var(--inst-border-dark); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--inst-text-tertiary); }
+::selection { background: var(--inst-blue-light); color: var(--inst-blue-primary); }
 
-/* ── Typography — Outfit everywhere except explicit hero ── */
+/* ── Typography — Inter everywhere except explicit hero ── */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Outfit', system-ui, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
 }
-.font-display { font-family: 'Outfit', system-ui, sans-serif; }
-.font-body    { font-family: 'Outfit', system-ui, sans-serif; }
+.font-display { font-family: 'Inter', system-ui, sans-serif; }
+.font-body    { font-family: 'Inter', system-ui, sans-serif; }
 .hero-serif   { font-family: 'Cormorant Garamond', Georgia, serif; }
 
 /* ── Enterprise rounding system ── */
-.rounded-card  { border-radius: 6px; }
-.rounded-panel { border-radius: 8px; }
-.rounded-pill  { border-radius: 4px; }
-.rounded-input { border-radius: 4px; }
-.rounded-icon  { border-radius: 4px; }
+.rounded-card  { border-radius: 0px; } /* Institutional forms often use stark rectangles */
+.rounded-panel { border-radius: 0px; }
+.rounded-pill  { border-radius: 0px; }
+.rounded-input { border-radius: 2px; }
+.rounded-icon  { border-radius: 2px; }
 
 /* ── Text gradients (preserved for hero only) ── */
 .text-gradient {
@@ -59,42 +76,6 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-}
-.text-gradient-steel {
-  background: linear-gradient(135deg, #C4C4D4 0%, #4A6580 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* ── Hover underline ── */
-.hover-underline { position: relative; }
-.hover-underline::after {
-  content: '';
-  position: absolute;
-  bottom: -2px; left: 0;
-  width: 0; height: 1px;
-  background: var(--silver);
-  transition: width 0.3s ease;
-  transform-origin: left;
-}
-.hover-underline:hover::after { width: 100%; }
-
-/* ── Ambient text — hidden (enterprise) ── */
-.ambient-text {
-  display: none !important;
-}
-
-/* ── Vertical rotated label ── */
-.vertical-label {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  transform: rotate(180deg);
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.6rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--silver-dim);
 }
 
 /* ── Full bleed utilities ── */
@@ -104,79 +85,17 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
 }
-.bleed-strip {
-  width: calc(100% + 3rem);
-  margin-left: -1.5rem;
-  margin-right: -1.5rem;
-}
-@media (min-width: 768px) {
-  .bleed-strip {
-    width: 100vw;
-    max-width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
-  }
-}
 
 /* ── Image base ── */
-.image-cover { position: relative; overflow: hidden; border-radius: 6px; }
+.image-cover { position: relative; overflow: hidden; }
 .section-bg-image {
   position: absolute;
   inset: 0; width: 100%; height: 100%;
   object-fit: cover;
 }
 
-/* ── Enterprise nav — flat bar ── */
-.glass-dark {
-  background: rgba(26,28,36,0.96);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-}
-.glass {
-  background: rgba(31,33,41,0.98);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-}
-
-/* ── Glow effects — removed for enterprise ── */
-.glow-silver { box-shadow: none; }
-.glow-steel  { box-shadow: none; }
-
-/* ── Card hover — flat enterprise ── */
-.card-hover {
-  transition: background-color 0.2s ease, border-color 0.2s ease;
-  border-radius: 6px;
-}
-.card-hover:hover {
-  background-color: var(--charcoal-3);
-}
-
-/* ── Enterprise grid texture (static, no animation) ── */
-.grid-drift {
-  background-image:
-    linear-gradient(rgba(74,101,128,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(74,101,128,0.04) 1px, transparent 1px);
-  background-size: 48px 48px;
-}
-
-/* ── Scan lines removed ── */
-.scan-lines { position: relative; }
-.scan-lines::after { display: none; }
-
-/* ── Circular portrait ── */
-.mask-circle { border-radius: 50%; }
-
-/* ── Custom cursor ── */
+/* ── Custom cursor disabled for institutional ── */
 @media (hover: hover) and (pointer: fine) {
-  html.custom-cursor-active,
-  html.custom-cursor-active * { cursor: none !important; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .custom-cursor-root { display: none !important; }
   html.custom-cursor-active,
   html.custom-cursor-active * { cursor: auto !important; }
 }
@@ -186,131 +105,22 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   width: 32px !important; height: 32px !important;
   min-width: 32px; min-height: 32px;
-  border-radius: 50% !important;
+  border-radius: 0 !important; /* Square logos for institutions */
   overflow: hidden; flex-shrink: 0;
 }
 .logo-circle img {
-  object-fit: cover !important;
+  object-fit: contain !important;
   object-position: center !important;
   width: 100% !important; height: 100% !important;
-  filter: brightness(1.5) contrast(1.1);
 }
-
-/* ── Enterprise Navbar ── */
-.nav-pill {
-  background: rgba(26,28,36,0.98);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  box-shadow: none;
-}
-
-/* ── Enterprise service rows ── */
-.service-card {
-  position: relative;
-  border-radius: 4px;
-  transition: background-color 0.2s ease;
-  cursor: default;
-}
-.service-card::before {
-  content: '';
-  position: absolute; top: 0; left: 0;
-  height: 1px; width: 0;
-  background: var(--platinum);
-  transition: width 0.4s ease;
-  transform-origin: left;
-}
-.service-card--steel::before { background: var(--steel-blue); }
-.service-card:hover::before  { width: 100%; }
-.service-card:hover          { background-color: var(--charcoal-2); }
-.service-icon                { transition: color 0.2s ease; }
-.service-card:hover .service-icon     { color: var(--platinum); }
-.service-card--steel:hover .service-icon { color: var(--silver); }
-
-/* ── Stats ── */
-.stat-number {
-  font-variant-numeric: tabular-nums;
-  font-feature-settings: 'tnum';
-}
-
-/* ── Social icons ── */
-.social-icon {
-  border-radius: 4px;
-  transition: all 0.2s ease;
-}
-.social-icon:hover {
-  border-color: var(--silver) !important;
-  color: var(--platinum);
-}
-
-/* ── Enterprise form ── */
-.form-input {
-  border-radius: 4px;
-  border: 1px solid var(--border);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-.form-input:focus {
-  border-color: var(--border-md);
-  box-shadow: 0 0 0 2px rgba(74,101,128,0.1);
-  outline: none;
-}
-.contact-form-panel {
-  border-radius: 6px;
-  border: 1px solid var(--border);
-}
-.btn-submit {
-  border-radius: 4px;
-  transition: background-color 0.2s ease;
-}
-.btn-submit:hover:not(:disabled) {
-  background-color: var(--silver);
-}
-
-/* ── Spinner ── */
-@keyframes spin { to { transform: rotate(360deg); } }
-.btn-spinner {
-  width: 16px; height: 16px;
-  border-radius: 50%;
-  border: 2px solid rgba(26,28,36,0.2);
-  border-top-color: var(--charcoal);
-  animation: spin 0.7s linear infinite;
-}
-
-/* ── Divider ── */
-.divider { width: 100%; height: 1px; background: var(--border); }
 
 /* ── Form reset ── */
 input, textarea, select {
   -webkit-appearance: none; appearance: none;
-  border-radius: 4px; outline: none;
-}
-select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A8AA0' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 14px center;
-  padding-right: 36px !important;
+  border-radius: 2px; outline: none;
 }
 
 section { overflow-x: hidden; }
-
-/* ── Enterprise process table ── */
-.process-row {
-  border-bottom: 1px solid var(--border);
-  transition: background-color 0.15s ease;
-}
-.process-row:hover { background-color: var(--charcoal-2); }
-
-/* ── Enterprise badge ── */
-.verdict-badge {
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.6rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 3px;
-}
 
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {

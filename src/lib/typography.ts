@@ -7,19 +7,21 @@ export const heroHeadingStyle: React.CSSProperties = {
 }
 
 export const sectionHeadingStyle: React.CSSProperties = {
-  fontFamily: 'Outfit, system-ui, sans-serif',
-  fontSize: 'clamp(1.75rem, 3vw, 2.4rem)',
+  fontFamily: 'Inter, system-ui, sans-serif',
+  fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
   fontWeight: 600,
   lineHeight: 1.15,
-  letterSpacing: '-0.01em',
+  letterSpacing: '-0.02em',
+  color: 'var(--inst-text-primary)'
 }
 
 export const subHeadingStyle: React.CSSProperties = {
-  fontFamily: 'Outfit, system-ui, sans-serif',
-  fontSize: 'clamp(1.2rem, 2vw, 1.6rem)',
+  fontFamily: 'Inter, system-ui, sans-serif',
+  fontSize: 'clamp(1.1rem, 2vw, 1.4rem)',
   fontWeight: 500,
   lineHeight: 1.4,
-  letterSpacing: '-0.005em',
+  letterSpacing: '-0.01em',
+  color: 'var(--inst-text-secondary)'
 }
 
 export const revealStyle: React.CSSProperties = {}
