@@ -9,7 +9,7 @@ type CaseStudy = {
   vector: string
   scope: string
   findings: string[]
-  verdict: 'Fraudulent Activity' | 'Verified Entity'
+  verdict: 'Fraudulent Activity' | 'Verified Entity' | 'Suspicious'
   date: string
   pdfUrl: string
 }
@@ -57,6 +57,22 @@ const scamStudies: CaseStudy[] = [
     date: '2024.12',
     pdfUrl: '/case-studies/VASD_Case003.pdf',
   },
+  {
+    id: 'TR-26-001',
+    title: 'Leadership & Coaching Platform',
+    vector: 'Unsolicited Email Outreach',
+    scope: 'Validation & Authentication Signal Detection',
+    findings: [
+      'Nation count contradicts itself within its own domain',
+      'Accreditations claims not independently verified',
+      'Testimonials follow pattern inconsistent with organic review behavior',
+      'Founder credentials stated but not externally supported',
+      'Mentor holds a title commercially purchased, not independently conferred'
+    ],
+    verdict: 'Suspicious',
+    date: '2026.05',
+    pdfUrl: '/case-studies/VASD_Case004_Suspicious.pdf',
+  },
 ]
 
 const verifiedStudies: CaseStudy[] = [
@@ -78,6 +94,7 @@ const verifiedStudies: CaseStudy[] = [
 
 function CaseStudyCard({ study }: { study: CaseStudy }) {
   const isFraud = study.verdict === 'Fraudulent Activity'
+  const isSuspicious = study.verdict === 'Suspicious'
 
   return (
     <div className="flex flex-col border border-gray-200 bg-white transition-shadow hover:shadow-md rounded-sm h-full">
@@ -94,10 +111,12 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
             className={`shrink-0 flex items-center gap-2 px-3 py-1 font-body text-[0.65rem] uppercase tracking-widest font-bold rounded-sm ${
               isFraud
                 ? 'bg-red-50 text-red-700 border border-red-200'
+                : isSuspicious
+                ? 'bg-amber-50 text-amber-700 border border-amber-200'
                 : 'bg-emerald-50 text-emerald-700 border border-emerald-200'
             }`}
           >
-            {isFraud ? <AlertTriangle size={14} /> : <ShieldCheck size={14} />}
+            {isFraud ? <AlertTriangle size={14} /> : isSuspicious ? <AlertTriangle size={14} /> : <ShieldCheck size={14} />}
             {study.verdict}
           </div>
         </div>
@@ -122,7 +141,7 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
           <ul className="flex flex-col gap-3">
             {study.findings.map((finding, idx) => (
               <li key={idx} className="flex items-start gap-3">
-                <div className={`mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 ${isFraud ? 'bg-red-500' : 'bg-emerald-500'}`} />
+                <div className={`mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 ${isFraud ? 'bg-red-500' : isSuspicious ? 'bg-amber-500' : 'bg-emerald-500'}`} />
                 <span className="font-body text-sm text-gray-700 leading-relaxed">{finding}</span>
               </li>
             ))}
