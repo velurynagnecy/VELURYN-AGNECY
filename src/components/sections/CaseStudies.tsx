@@ -27,7 +27,7 @@ const scamStudies: CaseStudy[] = [
     ],
     verdict: 'Fraudulent Activity',
     date: '2024.10',
-    pdfUrl: '/case-studies/VASD_Trust_Factor_Analysis_Clifford_Agency.pdf',
+    pdfUrl: '/case-studies/VASD_Case001.pdf',
   },
   {
     id: 'TR-24-002',
@@ -41,7 +41,7 @@ const scamStudies: CaseStudy[] = [
     ],
     verdict: 'Fraudulent Activity',
     date: '2024.11',
-    pdfUrl: '/case-studies/VASD_Trust_Factor_Analysis_Sponsorship_Scam.pdf',
+    pdfUrl: '/case-studies/VASD_Case002.pdf',
   },
   {
     id: 'TR-24-003',
@@ -55,7 +55,7 @@ const scamStudies: CaseStudy[] = [
     ],
     verdict: 'Fraudulent Activity',
     date: '2024.12',
-    pdfUrl: '/case-studies/VASD_Trust_Factor_Analysis_Fake_Agency.pdf',
+    pdfUrl: '/case-studies/VASD_Case003.pdf',
   },
 ]
 
@@ -72,7 +72,7 @@ const verifiedStudies: CaseStudy[] = [
     ],
     verdict: 'Verified Entity',
     date: '2024.12',
-    pdfUrl: '/case-studies/VASD_Trust_Factor_Analysis_Zoona_AI(2).pdf',
+    pdfUrl: '/case-studies/VASD_Trust_Factor_Analysis_Zoona_AI.pdf',
   },
 ]
 

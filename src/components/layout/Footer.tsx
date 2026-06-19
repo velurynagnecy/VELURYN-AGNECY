@@ -13,8 +13,8 @@ const socials = [
 ]
 
 const navGroups = {
-  Firm: [
-    { label: 'Firm Overview', href: '/#about' },
+  Agency: [
+    { label: 'About Us', href: '/#about' },
     { label: 'Capabilities', href: '/#services' },
     { label: 'Contact Us', href: '/#contact' },
   ],

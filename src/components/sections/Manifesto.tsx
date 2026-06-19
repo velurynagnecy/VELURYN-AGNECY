@@ -46,7 +46,7 @@ export function Manifesto() {
         <Reveal className="flex items-center gap-4 mb-14">
           <div className="h-px w-10 bg-gray-300" />
           <span className="font-body text-[0.65rem] tracking-[0.2em] uppercase text-gray-500 font-bold">
-            Firm Overview
+            Agency Overview
           </span>
         </Reveal>
 
@@ -54,7 +54,7 @@ export function Manifesto() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
           <Reveal>
             <h2 className="font-body font-semibold text-gray-900 mb-6 text-3xl md:text-4xl leading-tight tracking-tight">
-              A private intelligence and digital operations firm built on radical transparency.
+              An intelligence and digital operations agency built on radical transparency.
             </h2>
             <p className="font-body text-base text-gray-600 leading-relaxed">
               VELURYN AGNECY is a remote-first global organisation headquartered in Asia. We operate across two distinct divisions — digital management and trust infrastructure — delivering measurable results under a single corporate standard: evidence over optics.
