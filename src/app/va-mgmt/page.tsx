@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { VAMgmt } from '@/components/sections/VAMgmt'
-import { Contact } from '@/components/sections/Contact'
 
 export const metadata: Metadata = {
   title: 'VA Mgmt — Veluryn Agnecy Management',
@@ -16,7 +15,6 @@ export default function VAMgmtPage() {
       <Navbar />
       <main>
         <VAMgmt />
-        <Contact />
       </main>
       <Footer />
     </>

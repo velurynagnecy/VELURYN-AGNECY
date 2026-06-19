@@ -5,7 +5,6 @@ import { NameSection }  from '@/components/sections/NameSection'
 import { Manifesto }    from '@/components/sections/Manifesto'
 import { VerticalsPreview } from '@/components/sections/VerticalsPreview'
 import { Services }     from '@/components/sections/Services'
-import { Contact }      from '@/components/sections/Contact'
 
 export default function Home() {
   return (
@@ -17,7 +16,6 @@ export default function Home() {
         <Manifesto />
         <VerticalsPreview />
         <Services />
-        <Contact />
       </main>
       <Footer />
     </>

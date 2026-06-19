@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
@@ -14,14 +13,12 @@ const navLinks = [
   { label: 'VASD', href: '/vasd' },
   { label: 'Intelligence Reports', href: '/case-studies' },
   { label: 'Capabilities', href: '/#services' },
+  { label: 'Contact', href: '/contact' },
 ]
 
 export function Navbar() {
-  const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const contactHref =
-    pathname === '/va-mgmt' || pathname === '/vasd' ? '#contact' : '/#contact'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10)
@@ -85,7 +82,7 @@ export function Navbar() {
           {/* CTA */}
           <div className="hidden md:flex items-center">
             <Link
-              href={contactHref}
+              href="/contact"
               className="font-body text-[0.7rem] uppercase tracking-[0.1em] font-semibold text-white bg-[#0F3B68] px-6 py-2.5 hover:bg-[#1E4D82] transition-colors"
               style={{ borderRadius: '2px' }}
             >
@@ -130,7 +127,7 @@ export function Navbar() {
               ))}
               <li className="pt-8 border-t border-[rgba(200,200,220,0.1)] mt-4">
                 <Link
-                  href={contactHref}
+                  href="/contact"
                   className="inline-flex items-center justify-center w-full font-body text-sm font-semibold uppercase tracking-[0.1em] text-white bg-[#0F3B68] px-6 py-4"
                   style={{ borderRadius: '2px' }}
                   onClick={() => setMenuOpen(false)}

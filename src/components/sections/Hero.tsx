@@ -108,7 +108,7 @@ export function Hero() {
             >
               <div className="border border-gray-800 bg-[#1F2937]" style={{ borderRadius: '2px' }}>
                 {[
-                  { label: 'Classification', value: 'Private Intelligence & Services Firm' },
+                  { label: 'Classification', value: 'Private Intelligence & Services Agency' },
                   { label: 'Coverage Area', value: 'Global Operations (Asia HQ)' },
                   { label: 'Core Capabilities', value: 'Entity Verification, Digital Management' },
                   { label: 'Operational Standard', value: 'Evidence-Based Reporting' },

@@ -16,7 +16,7 @@ const navGroups = {
   Agency: [
     { label: 'About Us', href: '/#about' },
     { label: 'Capabilities', href: '/#services' },
-    { label: 'Contact Us', href: '/#contact' },
+    { label: 'Contact Us', href: '/contact' },
   ],
   Divisions: [
     { label: 'Digital Management', href: '/va-mgmt' },
@@ -50,7 +50,7 @@ export function Footer() {
             </Link>
 
             <p className="font-body text-xs text-gray-400 leading-relaxed max-w-sm mb-8 font-medium">
-              A global business intelligence and digital services firm. <br/>
+              A global business intelligence and digital services agency. <br/>
               Remote-first. Asia-based. Worldwide in reach.
             </p>
 
