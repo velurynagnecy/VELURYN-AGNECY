@@ -24,8 +24,9 @@ const navGroups = {
     { label: 'Intelligence Reports', href: '/case-studies' },
   ],
   Legal: [
-    { label: 'Privacy Policy', href: '#' },
-    { label: 'Terms of Service', href: '#' },
+    { label: 'Terms & Conditions', href: '/legal/terms' },
+    { label: 'Privacy Policy', href: '/legal/privacy' },
+    { label: 'Disclaimer', href: '/legal/disclaimer' },
   ],
 }
 
