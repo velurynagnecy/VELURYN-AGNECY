@@ -9,7 +9,7 @@ type CaseStudy = {
   vector: string
   scope: string
   findings: string[]
-  verdict: 'Fraudulent Activity' | 'Verified Entity' | 'Suspicious'
+  verdict: 'Fraudulent Activity' | 'Verified Entity' | 'Suspicious' | 'High Risk'
   date: string
   pdfUrl: string
 }
@@ -73,6 +73,22 @@ const scamStudies: CaseStudy[] = [
     date: '2026.05',
     pdfUrl: '/case-studies/VASD_Case004_Suspicious.pdf',
   },
+  {
+    id: 'TR-26-002',
+    title: 'Zoho Billing Impersonation',
+    vector: 'Inbound Phishing Email',
+    scope: 'Digital Infrastructure / SaaS',
+    findings: [
+      'Sender domain has no verifiable connection to Zoho Corporation',
+      'Domain registered 24 hours prior to email delivery',
+      'Billing CTA routes through a shortened URL to conceal final destination',
+      'Urgency-engineered language threatening service disruption',
+      'Grammar anomalies inconsistent with corporate editorial standards'
+    ],
+    verdict: 'High Risk',
+    date: '2026.06',
+    pdfUrl: '/case-studies/VASD_Case007.pdf',
+  },
 ]
 
 const verifiedStudies: CaseStudy[] = [
@@ -93,7 +109,7 @@ const verifiedStudies: CaseStudy[] = [
 ]
 
 function CaseStudyCard({ study }: { study: CaseStudy }) {
-  const isFraud = study.verdict === 'Fraudulent Activity'
+  const isFraud = study.verdict === 'Fraudulent Activity' || study.verdict === 'High Risk'
   const isSuspicious = study.verdict === 'Suspicious'
 
   return (
