@@ -113,9 +113,10 @@ const agencyTrustStudies: CaseStudy[] = [
     id: 'TV-26-001',
     title: 'Viral Nation',
     vector: 'Agency Trust Validation',
-    scope: 'Corporate & Operational Verification',
+    scope: 'Independent Operational Verification',
     findings: [
-      'Corporate registration and agency track record verified',
+      'Independent assessment conducted without entity consent or commissioning',
+      'Corporate registration and agency track record verified via public intelligence',
       'Client rosters and talent representation cross-checked',
       'Operational footprint and scale authenticated',
     ],
