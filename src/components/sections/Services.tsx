@@ -91,7 +91,7 @@ export function Services() {
             </p>
           </div>
           <Link
-            href="/#contact"
+            href="/contact"
             className="inline-flex items-center justify-center gap-2 font-body text-xs font-bold uppercase tracking-widest text-white bg-[#0F3B68] px-8 py-3.5 hover:bg-[#1E4D82] transition-colors rounded-sm"
           >
             Request Consultation

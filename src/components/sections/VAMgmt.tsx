@@ -122,7 +122,7 @@ export function VAMgmt() {
               Every campaign begins with a rigorous brief and ends with a transparent performance report. What happens in between is where Veluryn Agnecy Management earns its name.
             </p>
             <Link
-              href="#contact"
+              href="/contact"
               className="rounded-pill inline-flex self-start font-body text-[0.7rem] tracking-[0.22em] uppercase font-medium text-charcoal bg-platinum px-7 py-3.5 hover:bg-silver transition-colors mt-2"
             >
               Start a Campaign
