@@ -108,6 +108,24 @@ const verifiedStudies: CaseStudy[] = [
   },
 ]
 
+const agencyTrustStudies: CaseStudy[] = [
+  {
+    id: 'TV-26-001',
+    title: 'Viral Nation',
+    vector: 'Agency Trust Validation',
+    scope: 'Corporate & Operational Verification',
+    findings: [
+      'Corporate registration and agency track record verified',
+      'Client rosters and talent representation cross-checked',
+      'Operational footprint and scale authenticated',
+    ],
+    verdict: 'Verified Entity',
+    date: '2026.06',
+    pdfUrl: '/case-studies/VASD_ViralNation_Trust_Assessment.pdf',
+  },
+]
+
+
 const independentStudies: CaseStudy[] = [
   {
     id: 'TV-001',
@@ -255,6 +273,22 @@ export function CaseStudies() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
           {verifiedStudies.map((study, i) => (
+            <Reveal key={study.id} delay={i * 0.1}>
+              <CaseStudyCard study={study} />
+            </Reveal>
+          ))}
+        </div>
+
+        {/* Section: Agency Trust Validation */}
+        <Reveal>
+          <div className="flex items-center gap-6 mb-10">
+            <h2 className="font-body text-sm font-bold text-gray-900 uppercase tracking-widest">Agency Trust Validation Assessment</h2>
+            <div className="h-px flex-1 bg-gray-200" />
+          </div>
+        </Reveal>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+          {agencyTrustStudies.map((study, i) => (
             <Reveal key={study.id} delay={i * 0.1}>
               <CaseStudyCard study={study} />
             </Reveal>
