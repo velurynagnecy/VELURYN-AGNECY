@@ -5,13 +5,13 @@ import { ArrowRight } from 'lucide-react'
 import { Reveal } from '@/components/motion/Reveal'
 
 const services = [
-  { n: '01', title: 'Marketing & Advertising', arm: 'VA Mgmt', desc: 'Full-funnel marketing campaigns — paid, organic, and influencer-led.' },
-  { n: '02', title: 'Email Filtering & Protection', arm: 'VASD', desc: 'AI-powered email filtering, threat detection, and inbox management for individuals and enterprises.' },
-  { n: '03', title: 'Branding & Identity', arm: 'VA Mgmt', desc: 'Brand systems that last. Strategy, identity, and guidelines.' },
-  { n: '04', title: 'Social Media Management', arm: 'VA Mgmt', desc: 'Content, community, and consistency across every platform.' },
-  { n: '05', title: 'Inbox Security & Compliance', arm: 'VASD', desc: 'End-to-end encryption, phishing protection, and compliance across GDPR, HIPAA, and SOC2.' },
-  { n: '06', title: 'PR & Communications', arm: 'VA Mgmt', desc: 'Media relations, press strategy, and crisis communications.' },
-  { n: '07', title: 'Influencer Marketing', arm: 'VA Mgmt', desc: 'End-to-end influencer campaign management with audited talent.' },
+  { n: '01', title: 'Independent Entity Assessment', arm: 'VASD', desc: 'Evidence-based evaluation of agencies, creators, and vendors before entering business relationships.' },
+  { n: '02', title: 'Credibility & Risk Analysis', arm: 'VASD', desc: 'Identification of structural risks, credential inflation, and sophisticated manipulation tactics.' },
+  { n: '03', title: 'Structural Verification', arm: 'VASD', desc: 'Cross-referencing stated corporate identity against public, corporate, and operational footprints.' },
+  { n: '04', title: 'Threat Intelligence', arm: 'VASD', desc: 'Advanced screening and intelligence reports on unsolicited inquiries and potential scams.' },
+  { n: '05', title: 'Email Filtering & Protection', arm: 'VASD', desc: 'AI-powered email filtering, threat detection, and inbox management for individuals and enterprises.' },
+  { n: '06', title: 'Inbox Security & Compliance', arm: 'VASD', desc: 'End-to-end encryption, phishing protection, and compliance across GDPR, HIPAA, and SOC2.' },
+  { n: '07', title: 'Digital Management Execution', arm: 'VA Mgmt', desc: 'Dedicated digital operations and campaign execution executed strictly under verified trust frameworks.' },
 ]
 
 export function Services() {

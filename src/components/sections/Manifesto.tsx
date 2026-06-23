@@ -92,6 +92,20 @@ export function Manifesto() {
           ))}
         </div>
 
+        {/* Leadership */}
+        <Reveal>
+          <p className="font-body text-[0.65rem] tracking-[0.15em] uppercase text-gray-500 mb-6 font-bold border-b border-gray-200 pb-2">Leadership</p>
+        </Reveal>
+        <div className="mb-24 bg-gray-50 border border-gray-200 p-8 md:p-12">
+          <Reveal>
+            <h3 className="font-body text-xl font-bold text-gray-900 mb-2">Founder & CEO: Vivin Bharathi</h3>
+            <div className="w-12 h-px bg-[#0F3B68] mb-6" />
+            <p className="font-body text-sm text-gray-600 leading-relaxed max-w-3xl">
+              Vivin Bharathi is the founder and CEO of VELURYN AGNECY. He established the company around the principle that trust should be verified rather than assumed. His focus is on helping businesses make better decisions through independent assessment, credibility analysis, risk identification, and evidence based validation. His approach prioritizes transparency, clarity, and long term business trust over traditional agency sales tactics and overpromising.
+            </p>
+          </Reveal>
+        </div>
+
         {/* Operating Divisions */}
         <Reveal>
           <p className="font-body text-[0.65rem] tracking-[0.15em] uppercase text-gray-500 mb-6 font-bold border-b border-gray-200 pb-2">Core Divisions</p>

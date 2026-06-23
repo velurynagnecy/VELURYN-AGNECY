@@ -147,6 +147,13 @@ export function Footer() {
             Trust First.
           </p>
         </div>
+
+        {/* Operational Note (Exclusion) */}
+        <div className="mt-8 pt-4 border-t border-gray-800/50 flex justify-center">
+          <p className="font-body text-[0.55rem] font-medium text-gray-800 uppercase tracking-widest text-center" style={{ opacity: 0.6 }}>
+            Operational Note: VELURYN AGNECY does not provide website design or website development services.
+          </p>
+        </div>
       </div>
     </footer>
   )
