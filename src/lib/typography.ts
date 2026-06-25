@@ -1,10 +1,3 @@
-export const heroHeadingStyle: React.CSSProperties = {
-  fontFamily: 'Cormorant Garamond, Georgia, serif',
-  fontSize: 'clamp(4.5rem, 11vw, 9rem)',
-  fontWeight: 300,
-  lineHeight: 0.92,
-  letterSpacing: '-0.04em',
-}
 
 export const sectionHeadingStyle: React.CSSProperties = {
   fontFamily: 'Inter, system-ui, sans-serif',
@@ -24,4 +17,3 @@ export const subHeadingStyle: React.CSSProperties = {
   color: 'var(--inst-text-secondary)'
 }
 
-export const revealStyle: React.CSSProperties = {}

@@ -71,7 +71,7 @@ const scamStudies: CaseStudy[] = [
     ],
     verdict: 'Suspicious',
     date: '2026.05',
-    pdfUrl: '/case-studies/VASD_Case004_Suspicious.pdf',
+    pdfUrl: '/case-studies/VASD_Case004.pdf',
   },
   {
     id: 'TR-26-002',

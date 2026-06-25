@@ -3,7 +3,7 @@ import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { Reveal } from '@/components/motion/Reveal'
 
-export type ContentBlock =
+type ContentBlock =
   | { type: 'paragraph'; text: string }
   | { type: 'list'; items: string[] }
 
@@ -13,7 +13,7 @@ export type LegalSection = {
   blocks: ContentBlock[]
 }
 
-export type CrossLink = {
+type CrossLink = {
   label: string
   href: string
 }
