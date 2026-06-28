@@ -5,9 +5,9 @@ import { AppShell } from '@/components/motion/AppShell'
 export const metadata: Metadata = {
   title: 'Veluryn Agnecy — Business Intelligence & Digital Operations.',
   description:
-    'Veluryn Agnecy is a global business intelligence and digital services firm. We operate across two distinct verticals: digital management and trust infrastructure.',
+    'Veluryn Agnecy is a global business intelligence firm. We operate a dedicated trust infrastructure delivering entity verification and risk assessment.',
   keywords:
-    'trust intelligence, entity verification, enterprise security, digital agency, business intelligence, VA Mgmt, VASD',
+    'trust intelligence, entity verification, enterprise security, business intelligence, VASD',
   icons: {
     icon: '/assets/logo.png',
     shortcut: '/assets/logo.png',

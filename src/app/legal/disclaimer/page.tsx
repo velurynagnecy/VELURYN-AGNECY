@@ -12,7 +12,7 @@ const sections: LegalSection[] = [
     number: 1,
     title: 'General',
     blocks: [
-      { type: 'paragraph', text: 'The information provided by VELURYN AGNECY through this website and our services, including VA MGMT and VASD, is for general informational and professional purposes only. By accessing this website or engaging our services, you accept the terms of this Disclaimer.' },
+      { type: 'paragraph', text: 'The information provided by VELURYN AGNECY through this website and our services, including VASD, is for general informational and professional purposes only. By accessing this website or engaging our services, you accept the terms of this Disclaimer.' },
     ],
   },
   {

@@ -12,14 +12,14 @@ const sections: LegalSection[] = [
     number: 1,
     title: 'Introduction',
     blocks: [
-      { type: 'paragraph', text: 'These Terms and Conditions govern your access to and use of the VELURYN AGNECY website and the services provided through it, including VA MGMT and VASD. By accessing this website or engaging our services, you agree to these Terms. If you do not agree, please discontinue use.' },
+      { type: 'paragraph', text: 'These Terms and Conditions govern your access to and use of the VELURYN AGNECY website and the services provided through it, including VASD. By accessing this website or engaging our services, you agree to these Terms. If you do not agree, please discontinue use.' },
     ],
   },
   {
     number: 2,
     title: 'About VELURYN AGNECY',
     blocks: [
-      { type: 'paragraph', text: 'VELURYN AGNECY is a global digital agency based in India, operating remotely. Our services include talent management, influencer marketing, and UGC management under VA MGMT, and trust authority infrastructure under VASD.' },
+      { type: 'paragraph', text: 'VELURYN AGNECY is a global digital agency based in India, operating remotely. Our services include trust authority infrastructure under VASD.' },
     ],
   },
   {

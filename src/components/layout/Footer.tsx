@@ -19,7 +19,6 @@ const navGroups = {
     { label: 'Contact Us', href: '/contact' },
   ],
   Divisions: [
-    { label: 'Digital Management', href: '/va-mgmt' },
     { label: 'Trust Infrastructure', href: '/vasd' },
     { label: 'Intelligence Reports', href: '/case-studies' },
   ],
@@ -104,13 +103,6 @@ export function Footer() {
 
         {/* Divisions strip */}
         <div className="border-t border-gray-800 pt-8 mb-10 flex flex-col sm:flex-row gap-4">
-          <div className="flex items-center gap-4 flex-1">
-            <div className="w-1 h-8 bg-gray-300 shrink-0" />
-            <div>
-              <p className="font-body text-[0.65rem] tracking-[0.1em] uppercase text-gray-300 mb-1 font-bold">VA Mgmt</p>
-              <p className="font-body text-xs font-medium text-gray-500">Digital Management Division</p>
-            </div>
-          </div>
           <div className="flex items-center gap-4 flex-1">
             <div className="w-1 h-8 bg-[#60A5FA] shrink-0" />
             <div>

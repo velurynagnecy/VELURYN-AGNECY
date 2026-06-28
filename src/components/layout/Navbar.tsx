@@ -9,7 +9,6 @@ import { cn } from '@/lib/utils'
 
 const navLinks = [
   { label: 'About Us', href: '/#about' },
-  { label: 'VA Mgmt', href: '/va-mgmt' },
   { label: 'VASD', href: '/vasd' },
   { label: 'Intelligence Reports', href: '/case-studies' },
   { label: 'Capabilities', href: '/#services' },

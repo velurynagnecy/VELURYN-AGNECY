@@ -22,13 +22,6 @@ const principles = [
 
 const divisions = [
   {
-    tag: 'Digital Management',
-    short: 'VA Mgmt',
-    full: 'Veluryn Agnecy Management',
-    desc: 'Full-service digital management. Campaign strategy, brand scaling, and performance reporting executed with strict institutional discipline.',
-    href: '/va-mgmt',
-  },
-  {
     tag: 'Trust Infrastructure',
     short: 'VASD',
     full: 'Veluryn Agnecy Service Digital',
@@ -54,10 +47,10 @@ export function Manifesto() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
           <Reveal>
             <h2 className="font-body font-semibold text-gray-900 mb-6 text-3xl md:text-4xl leading-tight tracking-tight">
-              An intelligence and digital operations agency built on radical transparency.
+              An intelligence and verification agency built on radical transparency.
             </h2>
             <p className="font-body text-base text-gray-600 leading-relaxed">
-              VELURYN AGNECY is a remote-first global organisation headquartered in Asia. We operate across two distinct divisions — digital management and trust infrastructure — delivering measurable results under a single corporate standard: evidence over optics.
+              VELURYN AGNECY is a remote-first global organisation headquartered in Asia. We operate as a dedicated trust infrastructure entity, delivering measurable results under a single corporate standard: evidence over optics.
             </p>
           </Reveal>
 
@@ -110,7 +103,7 @@ export function Manifesto() {
         <Reveal>
           <p className="font-body text-[0.65rem] tracking-[0.15em] uppercase text-gray-500 mb-6 font-bold border-b border-gray-200 pb-2">Core Divisions</p>
         </Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-1 gap-6 max-w-2xl">
           {divisions.map((d, i) => (
             <Reveal key={d.short} delay={i * 0.1}>
               <a

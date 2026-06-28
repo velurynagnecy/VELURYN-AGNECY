@@ -108,7 +108,7 @@ export default function ContactPage() {
                   Inquiry Channel
                 </p>
                 <p className="font-body text-sm text-gray-600 leading-relaxed mb-10">
-                  Whether you require entity verification, structural consulting, or full-service digital management — all inquiries are reviewed by the VELURYN AGNECY team prior to scheduling.
+                  Whether you require entity verification or structural consulting — all inquiries are reviewed by the VELURYN AGNECY team prior to scheduling.
                 </p>
               </Reveal>
 

@@ -77,17 +77,9 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               <p className="font-body text-base text-gray-400 leading-relaxed max-w-lg mb-8 font-light">
-                Veluryn Agnecy provides institutional-grade digital management and trust infrastructure for enterprise clients, founders, and investors worldwide.
+                Veluryn Agnecy provides institutional-grade trust infrastructure and entity verification for enterprise clients, founders, and investors worldwide.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="/va-mgmt"
-                  className="inline-flex items-center justify-center gap-2 font-body text-[0.7rem] tracking-[0.1em] uppercase font-semibold text-gray-900 bg-white px-8 py-3.5 hover:bg-gray-100 transition-colors"
-                  style={{ borderRadius: '2px' }}
-                >
-                  <Briefcase size={14} />
-                  Digital Management
-                </Link>
                 <Link
                   href="/vasd"
                   className="inline-flex items-center justify-center gap-2 font-body text-[0.7rem] tracking-[0.1em] uppercase font-semibold text-white border border-gray-600 px-8 py-3.5 hover:bg-gray-800 transition-all"
@@ -110,7 +102,7 @@ export function Hero() {
                 {[
                   { label: 'Classification', value: 'Private Intelligence & Services Agency' },
                   { label: 'Coverage Area', value: 'Global Operations (Asia HQ)' },
-                  { label: 'Core Capabilities', value: 'Entity Verification, Digital Management' },
+                  { label: 'Core Capabilities', value: 'Entity Verification, Threat Intelligence' },
                   { label: 'Operational Standard', value: 'Evidence-Based Reporting' },
                 ].map((item, i, arr) => (
                   <div

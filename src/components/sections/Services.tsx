@@ -11,7 +11,6 @@ const services = [
   { n: '04', title: 'Threat Intelligence', arm: 'VASD', desc: 'Advanced screening and intelligence reports on unsolicited inquiries and potential scams.' },
   { n: '05', title: 'Email Filtering & Protection', arm: 'VASD', desc: 'AI-powered email filtering, threat detection, and inbox management for individuals and enterprises.' },
   { n: '06', title: 'Inbox Security & Compliance', arm: 'VASD', desc: 'End-to-end encryption, phishing protection, and compliance across GDPR, HIPAA, and SOC2.' },
-  { n: '07', title: 'Digital Management Execution', arm: 'VA Mgmt', desc: 'Dedicated digital operations and campaign execution executed strictly under verified trust frameworks.' },
 ]
 
 export function Services() {
@@ -34,16 +33,8 @@ export function Services() {
           </div>
           <Reveal delay={0.12} className="lg:text-right">
             <p className="font-body text-base text-gray-600 leading-relaxed max-w-lg lg:ml-auto mb-6">
-              Seven distinct disciplines deployed across two vertical operations. We execute with precision and report with radical transparency.
+              Six distinct disciplines deployed across our intelligence operations. We execute with precision and report with radical transparency.
             </p>
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 lg:justify-end">
-              <span className="flex items-center gap-3 font-body text-xs tracking-[0.1em] uppercase text-gray-900 font-bold">
-                <span className="w-3 h-3 bg-[#EBF1F7] border border-[#0F3B68] rounded-sm inline-block" /> VA Mgmt
-              </span>
-              <span className="flex items-center gap-3 font-body text-xs tracking-[0.1em] uppercase text-gray-900 font-bold">
-                <span className="w-3 h-3 bg-[#0F3B68] border border-[#0F3B68] rounded-sm inline-block" /> VASD
-              </span>
-            </div>
           </Reveal>
         </div>
 
@@ -66,12 +57,7 @@ export function Services() {
 
               <div className="shrink-0 flex items-center justify-between md:justify-end gap-8 pr-4 md:pr-6 mt-2 md:mt-0">
                 <span
-                  className="font-body text-[0.65rem] tracking-[0.1em] uppercase font-bold px-3 py-1 rounded-sm"
-                  style={{
-                    color: arm === 'VASD' ? '#fff' : '#0F3B68',
-                    backgroundColor: arm === 'VASD' ? '#0F3B68' : '#EBF1F7',
-                    border: `1px solid ${arm === 'VASD' ? '#0F3B68' : '#D1D5DB'}`
-                  }}
+                  className="font-body text-[0.65rem] tracking-[0.1em] uppercase font-bold px-3 py-1 rounded-sm bg-[#0F3B68] text-white border border-[#0F3B68]"
                 >
                   {arm}
                 </span>
@@ -87,7 +73,7 @@ export function Services() {
               Determine operational alignment.
             </p>
             <p className="font-body text-sm text-gray-600">
-              Not sure which division fits your enterprise needs?
+              Not sure which assessment fits your enterprise needs?
             </p>
           </div>
           <Link
