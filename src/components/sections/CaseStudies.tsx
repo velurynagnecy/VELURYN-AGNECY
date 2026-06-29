@@ -146,6 +146,23 @@ const independentStudies: CaseStudy[] = [
   },
 ]
 
+const ifcStudies: CaseStudy[] = [
+  {
+    id: 'IFC-CC001',
+    title: 'CC Creator Campaign',
+    vector: 'Coordinated Engagement Circulation',
+    scope: 'CommunityXSeen (CXS) Network',
+    findings: [
+      'Epionce creator campaign receiving engagement traced to a single UK registered commercial agency network',
+      'Comment activity presents as organic consumer interest but is coordinated within a managed ecosystem',
+      'Material blind spot in campaign intelligence as engagement is not independent',
+    ],
+    verdict: 'Suspicious',
+    date: '2026.06',
+    pdfUrl: '/case-studies/IFC-CC001-Epionce.pdf',
+  },
+]
+
 function CaseStudyCard({ study }: { study: CaseStudy }) {
   const isFraud = study.verdict === 'Fraudulent Activity' || study.verdict === 'High Risk'
   const isSuspicious = study.verdict === 'Suspicious'
@@ -306,6 +323,22 @@ export function CaseStudies() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
           {independentStudies.map((study, i) => (
+            <Reveal key={study.id} delay={i * 0.1}>
+              <CaseStudyCard study={study} />
+            </Reveal>
+          ))}
+        </div>
+
+        {/* Section: IFC - Independent Finding Case */}
+        <Reveal>
+          <div className="flex items-center gap-6 mb-10">
+            <h2 className="font-body text-sm font-bold text-gray-900 uppercase tracking-widest">IFC - Independent Finding Case</h2>
+            <div className="h-px flex-1 bg-gray-200" />
+          </div>
+        </Reveal>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+          {ifcStudies.map((study, i) => (
             <Reveal key={study.id} delay={i * 0.1}>
               <CaseStudyCard study={study} />
             </Reveal>
