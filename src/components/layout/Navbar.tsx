@@ -10,8 +10,7 @@ import { cn } from '@/lib/utils'
 const navLinks = [
   { label: 'About Us', href: '/#about' },
   { label: 'VASD', href: '/vasd' },
-  { label: 'Intelligence Reports', href: '/case-studies' },
-  { label: 'Capabilities', href: '/#services' },
+  { label: 'Capabilities', href: '/capabilities' },
   { label: 'Contact', href: '/contact' },
 ]
 
@@ -48,7 +47,7 @@ export function Navbar() {
             <div className="logo-circle bg-[#252830] border border-[rgba(200,200,220,0.12)] p-1">
               <Image
                 src="/assets/logo.png"
-                alt="Veluryn Agnecy"
+                alt="VELURYN AGNECY"
                 fill
                 sizes="32px"
                 className="object-contain"
@@ -56,7 +55,7 @@ export function Navbar() {
             </div>
             <div className="flex flex-col">
               <span className="font-body text-[0.7rem] font-bold text-[#E8E8F0] uppercase tracking-widest leading-none mb-0.5">
-                Veluryn Agnecy
+                VELURYN AGNECY
               </span>
               <span className="font-body text-[0.55rem] font-medium text-[#8A8AA0] uppercase tracking-widest leading-none">
                 Intelligence & Operations

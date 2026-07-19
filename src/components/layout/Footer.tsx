@@ -15,12 +15,11 @@ const socials = [
 const navGroups = {
   Agency: [
     { label: 'About Us', href: '/#about' },
-    { label: 'Capabilities', href: '/#services' },
+    { label: 'Capabilities', href: '/capabilities' },
     { label: 'Contact Us', href: '/contact' },
   ],
   Divisions: [
     { label: 'Trust Infrastructure', href: '/vasd' },
-    { label: 'Intelligence Reports', href: '/case-studies' },
   ],
   Legal: [
     { label: 'Terms & Conditions', href: '/legal/terms' },
@@ -41,7 +40,7 @@ export function Footer() {
               </div>
               <div className="flex flex-col">
                 <span className="font-body text-[0.7rem] font-bold text-gray-100 uppercase tracking-widest leading-none mb-0.5">
-                  Veluryn Agnecy
+                  VELURYN AGNECY
                 </span>
                 <span className="font-body text-[0.55rem] font-medium text-gray-500 uppercase tracking-widest leading-none">
                   Intelligence & Operations
@@ -137,13 +136,6 @@ export function Footer() {
 
           <p className="font-body text-[0.65rem] tracking-widest font-bold uppercase text-gray-600 lg:text-right">
             Trust First.
-          </p>
-        </div>
-
-        {/* Operational Note (Exclusion) */}
-        <div className="mt-8 pt-4 border-t border-gray-800/50 flex justify-center">
-          <p className="font-body text-[0.55rem] font-medium text-gray-800 uppercase tracking-widest text-center" style={{ opacity: 0.6 }}>
-            Operational Note: VELURYN AGNECY does not provide website design or website development services.
           </p>
         </div>
       </div>

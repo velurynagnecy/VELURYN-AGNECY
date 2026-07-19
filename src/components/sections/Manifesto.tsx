@@ -24,7 +24,7 @@ const divisions = [
   {
     tag: 'Trust Infrastructure',
     short: 'VASD',
-    full: 'Veluryn Agnecy Service Digital',
+    full: 'VELURYN AGNECY Service Digital',
     desc: 'Entity verification and threat intelligence infrastructure. A rigorous multi-layer assessment framework for identifying structural risk.',
     href: '/vasd',
   },

@@ -33,11 +33,11 @@ export function Hero() {
           >
             <div className="h-px w-8 bg-[#60A5FA]" />
             <span className="font-body text-[0.65rem] tracking-[0.25em] uppercase text-[#60A5FA] font-semibold">
-              Business Intelligence & Digital Operations
+              Global Digital Services
             </span>
           </motion.div>
 
-          {/* Hero headline — Cormorant Garamond ONLY here */}
+          {/* Hero headline */}
           <h1
             className="text-white mb-10"
             style={{
@@ -54,7 +54,7 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="block"
             >
-              Trust verified.
+              Full-Service
             </motion.span>
             <motion.span
               initial={ready ? { opacity: 0, y: 20 } : false}
@@ -62,7 +62,7 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.3 }}
               className="block text-gray-400"
             >
-              Intelligence deployed.
+              Digital Agency.
             </motion.span>
           </h1>
 
@@ -76,17 +76,31 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <p className="font-body text-base text-gray-400 leading-relaxed max-w-lg mb-8 font-light">
-                Veluryn Agnecy provides institutional-grade trust infrastructure and entity verification for enterprise clients, founders, and investors worldwide.
+              <p className="font-body text-base text-gray-400 leading-relaxed max-w-lg mb-4 font-light">
+                VELURYN AGNECY provides institutional-grade digital services, creative design, and entity verification for enterprise clients, founders, and investors worldwide.
               </p>
+              <div className="p-4 bg-[#1F2937] border border-gray-700 mb-8 rounded-sm max-w-lg">
+                <p className="font-body text-sm font-semibold text-gray-200 mb-1">What is VASD?</p>
+                <p className="font-body text-xs text-gray-400 leading-relaxed">
+                  VASD is our trust verdict division. Before you sign a contract or send payment, we evaluate and verify the credibility, legitimacy, and trustworthiness of the brand, creator, agency, or vendor on the other side.
+                </p>
+              </div>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
-                  href="/vasd"
+                  href="/#services"
                   className="inline-flex items-center justify-center gap-2 font-body text-[0.7rem] tracking-[0.1em] uppercase font-semibold text-white border border-gray-600 px-8 py-3.5 hover:bg-gray-800 transition-all"
                   style={{ borderRadius: '2px' }}
                 >
+                  <Briefcase size={14} />
+                  Explore Capabilities
+                </Link>
+                <Link
+                  href="/vasd"
+                  className="inline-flex items-center justify-center gap-2 font-body text-[0.7rem] tracking-[0.1em] uppercase font-semibold text-gray-400 border border-transparent px-8 py-3.5 hover:text-white hover:border-gray-800 transition-all"
+                  style={{ borderRadius: '2px' }}
+                >
                   <Shield size={14} />
-                  Trust Infrastructure
+                  Trust Division (VASD)
                 </Link>
               </div>
             </motion.div>
@@ -100,10 +114,10 @@ export function Hero() {
             >
               <div className="border border-gray-800 bg-[#1F2937]" style={{ borderRadius: '2px' }}>
                 {[
-                  { label: 'Classification', value: 'Private Intelligence & Services Agency' },
+                  { label: 'Classification', value: 'Full-Service Digital Agency' },
                   { label: 'Coverage Area', value: 'Global Operations (Asia HQ)' },
-                  { label: 'Core Capabilities', value: 'Entity Verification, Threat Intelligence' },
-                  { label: 'Operational Standard', value: 'Evidence-Based Reporting' },
+                  { label: 'Core Capabilities', value: 'Web, Marketing, Intelligence' },
+                  { label: 'Operational Standard', value: 'Data-Driven & Secure' },
                 ].map((item, i, arr) => (
                   <div
                     key={item.label}

@@ -4,7 +4,7 @@ import { Footer } from '@/components/layout/Footer'
 import { VASD } from '@/components/sections/VASD'
 
 export const metadata: Metadata = {
-  title: 'VASD — Trust Intelligence & Entity Verification',
+  title: 'VASD (Trust Verdict) | VELURYN AGNECY',
   description: 'Multi-layer assessment framework for evaluating business entities and communications. Trust first, verified through evidence.',
 }
 

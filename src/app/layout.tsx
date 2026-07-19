@@ -3,20 +3,20 @@ import './globals.css'
 import { AppShell } from '@/components/motion/AppShell'
 
 export const metadata: Metadata = {
-  title: 'Veluryn Agnecy — Business Intelligence & Digital Operations.',
+  title: 'VELURYN AGNECY | Full-Service Global Digital Agency',
   description:
-    'Veluryn Agnecy is a global business intelligence firm. We operate a dedicated trust infrastructure delivering entity verification and risk assessment.',
+    'VELURYN AGNECY is a full-service global digital agency offering high-end web design, poster design, SMMA, marketing, and the VASD entity verification division.',
   keywords:
-    'trust intelligence, entity verification, enterprise security, business intelligence, VASD',
+    'digital agency, web design, SMMA, poster design, branding, VASD, entity verification',
   icons: {
     icon: '/assets/logo.png',
     shortcut: '/assets/logo.png',
     apple: '/assets/logo.png',
   },
   openGraph: {
-    title: 'Veluryn Agnecy',
-    description: 'Business Intelligence & Digital Operations.',
-    siteName: 'Veluryn Agnecy',
+    title: 'VELURYN AGNECY | Full-Service Global Digital Agency',
+    description: 'A full-service global digital agency providing design, marketing, and trust verification services.',
+    siteName: 'VELURYN AGNECY',
     type: 'website',
   },
 }
