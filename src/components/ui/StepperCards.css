@@ -1,0 +1,54 @@
+.stepper-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-white);
+  border-left: 4px solid #eaeaea;
+  padding: 2rem 2.5rem;
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  border-radius: 0 16px 16px 0;
+  box-shadow: 4px 4px 20px rgba(0,0,0,0.01);
+}
+
+.stepper-card:hover {
+  border-left-color: var(--color-burgundy);
+  background: #fafafa;
+  box-shadow: 4px 4px 24px rgba(0,0,0,0.04);
+}
+
+.stepper-card-num {
+  font-family: var(--font-headlines);
+  font-size: 4rem;
+  line-height: 1;
+  color: var(--color-burgundy);
+  opacity: 0.15;
+  margin-bottom: 1rem;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform-origin: left bottom;
+}
+
+.stepper-card:hover .stepper-card-num {
+  opacity: 0.3;
+  transform: scale(1.1);
+}
+
+.stepper-card-content {
+  z-index: 1;
+}
+
+.stepper-card-title {
+  font-family: var(--font-headlines);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--color-black);
+}
+
+.stepper-card-description {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #555;
+  margin: 0;
+}

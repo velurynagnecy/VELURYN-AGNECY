@@ -1,0 +1,42 @@
+.card-hover-reveal {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  background-color: #111; /* fallback */
+  cursor: default;
+}
+
+.card-hover-reveal-main {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+.card-hover-reveal-title {
+  position: absolute;
+  top: 3rem;
+  left: 3rem;
+  z-index: 5;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+  pointer-events: none;
+}
+
+.card-hover-reveal-content {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  right: 2rem;
+  padding: 2rem;
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  background-color: rgba(10, 10, 12, 0.85);
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.5s ease-in-out;
+  border-radius: 16px;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  will-change: transform, opacity;
+  display: flex;
+  flex-direction: column;
+}
