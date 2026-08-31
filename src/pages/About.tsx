@@ -39,7 +39,7 @@ export default function About() {
       </Helmet>
 
       {/* Hero Section */}
-      <section ref={heroRef} className="hero-padding" style={{ position: \"relative\", overflow: \"hidden\", isolation: \"isolate\", color: '#fff' }}>
+      <section ref={heroRef} style={{ position: 'relative', overflow: 'hidden', isolation: 'isolate', paddingTop: '160px', paddingBottom: '120px', paddingLeft: '4rem', paddingRight: '4rem', color: '#fff' }}>
         <div 
           ref={bgRef}
           style={{
@@ -67,7 +67,7 @@ export default function About() {
       </section>
 
       {/* Main Content */}
-      <section className="about-section" style={{ backgroundColor: '#f5f5f5' }}>
+      <section style={{ padding: '4rem 4rem 8rem 4rem', backgroundColor: '#f5f5f5' }}>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           
           <div className="fade-up" style={{ marginBottom: '4rem' }}>

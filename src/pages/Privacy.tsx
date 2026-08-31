@@ -8,7 +8,7 @@ export default function Privacy() {
         <meta name="robots" content="noindex" />
       </Helmet>
 
-      <section className="page-content-padding" style={{ maxWidth: '900px', margin: '0 auto' }}>
+      <section style={{ padding: '4rem 4rem', maxWidth: '900px', margin: '0 auto' }}>
         <h1 style={{ fontFamily: 'var(--font-headlines)', fontSize: '3rem', marginBottom: '2rem' }}>Privacy Policy</h1>
         
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', fontFamily: 'var(--font-body)', color: '#444', lineHeight: 1.6 }}>

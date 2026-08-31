@@ -111,10 +111,10 @@ export default function Home() {
       </section>
 
       {/* Split Intent Section */}
-      <section className="split-container" style={{ /* replaced padding */, backgroundColor: '#fff', color: '#000' }}>
+      <section className="split-container" style={{ padding: '8rem 4rem', backgroundColor: '#fff', color: '#000' }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '2rem' }}>
           
-          <CardHoverReveal className="split-box" style={{ height: 'clamp(400px, 60vh, 600px)', width: '100%' }}>
+          <CardHoverReveal className="split-box" style={{ height: '600px', width: '100%' }}>
             <CardHoverRevealMain>
               <img
                 src="/images/brands.jpg"
@@ -140,7 +140,7 @@ export default function Home() {
             </CardHoverRevealContent>
           </CardHoverReveal>
 
-          <CardHoverReveal className="split-box" style={{ height: 'clamp(400px, 60vh, 600px)', width: '100%' }}>
+          <CardHoverReveal className="split-box" style={{ height: '600px', width: '100%' }}>
             <CardHoverRevealMain>
               <img
                 src="/images/creators.jpg"
@@ -170,7 +170,7 @@ export default function Home() {
       </section>
 
       {/* Proof / Placeholder Section */}
-      <section style={{ /* replaced padding */, backgroundColor: 'var(--color-black)' }}>
+      <section style={{ padding: '8rem 4rem', backgroundColor: 'var(--color-black)' }}>
         <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
           <h2 style={{ fontFamily: 'var(--font-headlines)', fontSize: '2.5rem', marginBottom: '2rem', fontWeight: 'normal', color: '#fff' }}>Proven Performance</h2>
           <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.2rem', color: '#888', lineHeight: 1.6 }}>
