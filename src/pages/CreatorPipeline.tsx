@@ -41,7 +41,7 @@ export default function CreatorPipeline() {
       </Helmet>
 
       {/* Hero Section */}
-      <section ref={heroRef} style={{ position: 'relative', overflow: 'hidden', isolation: 'isolate', paddingTop: '160px', paddingBottom: '120px', paddingLeft: '4rem', paddingRight: '4rem', color: '#fff' }}>
+      <section ref={heroRef} className="hero-padding" style={{ position: \"relative\", overflow: \"hidden\", isolation: \"isolate\", color: '#fff' }}>
         <div 
           ref={bgRef}
           style={{
@@ -69,11 +69,11 @@ export default function CreatorPipeline() {
       </section>
 
       {/* What We Look For Section */}
-      <section style={{ padding: '8rem 4rem', backgroundColor: '#f5f5f5' }}>
+      <section className="section-padding" style={{ backgroundColor: '#f5f5f5' }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
           <h2 className="fade-up" style={{ fontFamily: 'var(--font-headlines)', fontSize: 'clamp(2.5rem, 4vw, 4rem)', marginBottom: '4rem', fontWeight: 'normal' }}>Who We're Looking For</h2>
           
-          <div className="fade-up" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem' }}>
+          <div className="fade-up grid-3col" style={{ gap: '3rem' }}>
             <BentoFeatureCard 
               title="The Niches"
               description="We primarily serve mobile apps in Fintech, Dating, Gaming, and Productivity. If you know how to hook an audience in these verticals, we want you."
@@ -97,8 +97,8 @@ export default function CreatorPipeline() {
       </section>
 
       {/* Details Section */}
-      <section style={{ padding: '8rem 4rem', maxWidth: '1400px', margin: '0 auto' }}>
-        <div className="fade-up" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '4rem' }}>
+      <section className="section-padding" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+        <div className="fade-up grid-2col" style={{ gap: '4rem' }}>
           
           <BentoInfoCard title="What You Get">
             <p style={{ marginBottom: '1.5rem' }}>

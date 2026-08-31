@@ -61,7 +61,7 @@ export default function HowWeWork() {
       </Helmet>
 
       {/* Hero Section */}
-      <section ref={heroRef} style={{ position: 'relative', overflow: 'hidden', isolation: 'isolate', paddingTop: '160px', paddingBottom: '120px', paddingLeft: '4rem', paddingRight: '4rem', color: '#fff' }}>
+      <section ref={heroRef} className="hero-padding" style={{ position: \"relative\", overflow: \"hidden\", isolation: \"isolate\", color: '#fff' }}>
         <div 
           ref={bgRef}
           style={{
@@ -89,7 +89,7 @@ export default function HowWeWork() {
       </section>
 
       {/* Steps Section */}
-      <section style={{ padding: '4rem 4rem 8rem 4rem', backgroundColor: '#f5f5f5' }}>
+      <section className="about-section" style={{ backgroundColor: '#f5f5f5' }}>
         <div className="steps-container" style={{ maxWidth: '800px', margin: '0 auto' }}>
           
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', paddingTop: '4rem' }}>

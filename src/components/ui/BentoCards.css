@@ -117,3 +117,16 @@
 .bento-info-card .bento-info-content p {
   color: #555;
 }
+
+@media (max-width: 768px) {
+  .bento-feature-card {
+    padding: 1.5rem;
+  }
+  .bento-info-card {
+    padding: 1.5rem;
+  }
+  .bento-info-title {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+}

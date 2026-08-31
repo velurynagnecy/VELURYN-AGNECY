@@ -19,7 +19,7 @@ export default function Footer() {
       }}>
         <h2 style={{ 
           fontFamily: 'var(--font-headlines)', 
-          fontSize: 'clamp(5rem, 23vw, 25rem)', 
+          fontSize: 'clamp(3rem, 18vw, 25rem)', 
           margin: 0, 
           lineHeight: 0.8,
           letterSpacing: '-0.02em',
