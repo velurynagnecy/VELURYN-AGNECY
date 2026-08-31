@@ -19,7 +19,7 @@ export default function Footer() {
       }}>
         <h2 style={{ 
           fontFamily: 'var(--font-headlines)', 
-          fontSize: 'clamp(5rem, 23vw, 25rem)', 
+          fontSize: 'clamp(3rem, 18vw, 25rem)', 
           margin: 0, 
           lineHeight: 0.8,
           letterSpacing: '-0.02em',
@@ -32,16 +32,7 @@ export default function Footer() {
         </h2>
       </div>
 
-      <div style={{ 
-        position: 'relative', 
-        zIndex: 1, 
-        display: 'grid', 
-        gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr', 
-        gap: '4rem', 
-        padding: '0 4rem',
-        maxWidth: '1400px', 
-        margin: '0 auto' 
-      }}>
+      <div className="footer-grid">
         
         {/* Left Column (Brand info) */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
