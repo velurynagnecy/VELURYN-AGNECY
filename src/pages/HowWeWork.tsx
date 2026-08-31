@@ -44,7 +44,7 @@ export default function HowWeWork() {
   }, []);
 
   const steps = [
-    { num: '01', title: 'Campaign Brief', desc: 'The brand submits a campaign brief detailing their app vertical, target audience, and required video volume.' },
+    { num: '01', title: 'Campaign Brief', desc: 'The brand submits a campaign brief detailing their brand vertical, target audience, and required video volume.' },
     { num: '02', title: 'Creator Match', desc: 'We tap our vetted roster and pair the campaign with creators whose niches and styles align perfectly with the brief.' },
     { num: '03', title: 'Deposit Secured', desc: 'A deposit invoice is sent to the brand and collected, securing the commitment before production begins.' },
     { num: '04', title: 'Production Begins', desc: 'Creators receive their portion of the deposit and begin scripting and filming the UGC content.' },

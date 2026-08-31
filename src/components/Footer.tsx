@@ -38,7 +38,7 @@ export default function Footer() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
           <div style={{ fontSize: '0.85rem', color: '#888', lineHeight: 1.6, fontFamily: 'var(--font-body)' }}>
             VELURYN AGNECY<br/>
-            Connecting apps with creators.<br/>
+            Connecting brands with creators.<br/>
             Global Remote
           </div>
 

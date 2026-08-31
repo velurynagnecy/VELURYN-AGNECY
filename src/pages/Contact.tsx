@@ -184,7 +184,7 @@ export default function Contact() {
 
                  {inquiryType === 'brand' && (
                    <>
-                     <input type="text" name="app_type" placeholder="App Type / Vertical *" required style={{ border: 'none', borderBottom: '1px solid #ddd', padding: '0.5rem 0', backgroundColor: 'transparent', fontSize: '0.95rem', outline: 'none', fontFamily: 'var(--font-body)' }} />
+                     <input type="text" name="app_type" placeholder="Brand Vertical / Niche *" required style={{ border: 'none', borderBottom: '1px solid #ddd', padding: '0.5rem 0', backgroundColor: 'transparent', fontSize: '0.95rem', outline: 'none', fontFamily: 'var(--font-body)' }} />
                      <input type="text" name="campaign_size" placeholder="Estimated Campaign Size (e.g. 5 videos) *" required style={{ border: 'none', borderBottom: '1px solid #ddd', padding: '0.5rem 0', backgroundColor: 'transparent', fontSize: '0.95rem', outline: 'none', fontFamily: 'var(--font-body)' }} />
                      <input type="text" name="budget" placeholder="Estimated Budget *" required style={{ border: 'none', borderBottom: '1px solid #ddd', padding: '0.5rem 0', backgroundColor: 'transparent', fontSize: '0.95rem', outline: 'none', fontFamily: 'var(--font-body)' }} />
                    </>

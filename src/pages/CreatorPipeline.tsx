@@ -37,7 +37,7 @@ export default function CreatorPipeline() {
     <div ref={containerRef} style={{ backgroundColor: 'var(--color-white)', color: 'var(--color-black)' }}>
       <Helmet>
         <title>Creator Pipeline | VELURYN AGNECY</title>
-        <meta name="description" content="Join our vetted UGC creator roster and connect with top mobile app brands." />
+        <meta name="description" content="Join our vetted UGC creator roster and connect with top performance brands." />
       </Helmet>
 
       {/* Hero Section */}
@@ -60,10 +60,10 @@ export default function CreatorPipeline() {
         <div style={{ maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <p className="fade-up" style={{ fontFamily: 'var(--font-labels)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '2rem', opacity: 0.7 }}>For Creators</p>
           <h1 className="fade-up" style={{ fontFamily: 'var(--font-headlines)', fontSize: 'clamp(3rem, 7vw, 6rem)', lineHeight: 1.1, fontWeight: 'normal', marginBottom: '3rem', maxWidth: '1000px' }}>
-            Get paid to create native video content for apps.
+            Get paid to create native video content for brands.
           </h1>
           <p className="fade-up" style={{ fontFamily: 'var(--font-body)', fontSize: '1.25rem', color: '#ccc', maxWidth: '600px', lineHeight: 1.6 }}>
-            We broker deals between talented UGC creators and consumer mobile apps. Stop pitching brands endlessly &mdash; join our roster and let the campaigns come to you.
+            We broker deals between talented UGC creators and direct-response brands. Stop pitching brands endlessly &mdash; join our roster and let the campaigns come to you.
           </p>
         </div>
       </section>
@@ -76,7 +76,7 @@ export default function CreatorPipeline() {
           <div className="fade-up" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem' }}>
             <BentoFeatureCard 
               title="The Niches"
-              description="We primarily serve mobile apps in Fintech, Dating, Gaming, and Productivity. If you know how to hook an audience in these verticals, we want you."
+              description="We primarily serve performance brands in E-Commerce, Tech, Health, and Lifestyle. If you know how to hook an audience in these verticals, we want you."
               icon={<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>}
               delay={0}
             />

@@ -37,7 +37,7 @@ export default function UGCCampaigns() {
     <div ref={containerRef} style={{ backgroundColor: 'var(--color-white)', color: 'var(--color-black)' }}>
       <Helmet>
         <title>UGC Campaigns | VELURYN AGNECY</title>
-        <meta name="description" content="Authentic UGC video packages for consumer mobile apps." />
+        <meta name="description" content="Authentic UGC video packages for direct-response brands." />
       </Helmet>
 
       {/* Hero Section */}
@@ -60,7 +60,7 @@ export default function UGCCampaigns() {
         <div style={{ maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <p className="fade-up" style={{ fontFamily: 'var(--font-labels)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '2rem', opacity: 0.7 }}>For Brands</p>
           <h1 className="fade-up" style={{ fontFamily: 'var(--font-headlines)', fontSize: 'clamp(3rem, 7vw, 6rem)', lineHeight: 1.1, fontWeight: 'normal', marginBottom: '3rem', maxWidth: '1000px' }}>
-            UGC Campaigns tailored for mobile growth.
+            UGC Campaigns tailored for brand growth.
         </h1>
         <p className="fade-up" style={{ fontFamily: 'var(--font-body)', fontSize: '1.25rem', color: '#ccc', maxWidth: '600px', lineHeight: 1.6 }}>
           We bundle vetted creators into high-volume video packages, managing the entire pipeline from brief to final delivery. Stop hunting for creators &mdash; start scaling your acquisition.
@@ -77,7 +77,7 @@ export default function UGCCampaigns() {
             <StepperCard 
               num="01"
               title="Brief & Match"
-              description="You submit your campaign goals and app verticals. We tap our roster and match you with the perfect creators for your niche."
+              description="You submit your campaign goals and brand verticals. We tap our roster and match you with the perfect creators for your niche."
             />
             <StepperCard 
               num="02"
@@ -99,7 +99,7 @@ export default function UGCCampaigns() {
           
           <BentoInfoCard title="Usage Rights">
             <p style={{ marginBottom: '1.5rem' }}>
-              We understand apps need content for performance marketing. That's why we structure usage rights clearly from the start:
+              We understand brands need content for performance marketing. That's why we structure usage rights clearly from the start:
             </p>
             <ul style={{ paddingLeft: '1.5rem' }}>
               <li style={{ marginBottom: '0.75rem' }}><strong>Organic Rights:</strong> Standard inclusion for posting on your owned social channels.</li>
@@ -109,7 +109,7 @@ export default function UGCCampaigns() {
 
           <BentoInfoCard title="Custom Packages" dark={true}>
              <p style={{ marginBottom: '2.5rem' }}>
-               Every app is different. We custom-build bundles (e.g., 2 creators &times; 3 videos) based on your exact volume needs, target audience, and required usage rights. 
+               Every brand is different. We custom-build bundles (e.g., 2 creators &times; 3 videos) based on your exact volume needs, target audience, and required usage rights. 
                Reach out for a custom quote tailored to your next campaign.
              </p>
              

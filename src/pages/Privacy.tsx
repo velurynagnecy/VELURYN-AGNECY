@@ -21,7 +21,7 @@ export default function Privacy() {
             <h2 style={{ fontFamily: 'var(--font-headlines)', fontSize: '1.5rem', marginBottom: '1rem', color: '#111' }}>1. Information We Collect</h2>
             <p>At VELURYN AGNECY, we collect information necessary to facilitate UGC campaigns. This includes:</p>
             <ul style={{ paddingLeft: '1.5rem', marginTop: '0.5rem' }}>
-              <li style={{ marginBottom: '0.5rem' }}><strong>From Brands:</strong> Company details, campaign briefs, marketing goals, app metrics, and payment/invoicing information.</li>
+              <li style={{ marginBottom: '0.5rem' }}><strong>From Brands:</strong> Company details, campaign briefs, marketing goals, campaign metrics, and payment/invoicing information.</li>
               <li><strong>From Creators:</strong> Full names, contact details, portfolio links, social media metrics, geographical location, physical appearance characteristics (for casting purposes), and payout information.</li>
             </ul>
           </div>

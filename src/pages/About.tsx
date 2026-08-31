@@ -35,7 +35,7 @@ export default function About() {
     <div ref={containerRef} style={{ backgroundColor: 'var(--color-white)', color: 'var(--color-black)' }}>
       <Helmet>
         <title>About | VELURYN AGNECY</title>
-        <meta name="description" content="Why we built VELURYN AGNECY, and why we focus on connecting apps with creators." />
+        <meta name="description" content="Why we built VELURYN AGNECY, and why we focus on connecting brands with creators." />
       </Helmet>
 
       {/* Hero Section */}
@@ -58,7 +58,7 @@ export default function About() {
         <div style={{ maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <p className="fade-up" style={{ fontFamily: 'var(--font-labels)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '2rem', opacity: 0.7 }}>About Us</p>
           <h1 className="fade-up" style={{ fontFamily: 'var(--font-headlines)', fontSize: 'clamp(3rem, 7vw, 6rem)', lineHeight: 1.1, fontWeight: 'normal', marginBottom: '3rem', maxWidth: '1000px' }}>
-            Connecting apps with creators.
+            Connecting brands with creators.
           </h1>
           <p className="fade-up" style={{ fontFamily: 'var(--font-body)', fontSize: '1.25rem', color: '#ccc', maxWidth: '600px', lineHeight: 1.6 }}>
             We bridge the gap between talented content creators and the performance marketing teams that need them.
@@ -73,7 +73,7 @@ export default function About() {
           <div className="fade-up" style={{ marginBottom: '4rem' }}>
             <h2 style={{ fontFamily: 'var(--font-headlines)', fontSize: '2rem', marginBottom: '1.5rem', fontWeight: 600 }}>The Story</h2>
             <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.1rem', color: '#555', lineHeight: 1.8, marginBottom: '1.5rem' }}>
-              VELURYN AGNECY was born out of a clear market gap: consumer mobile apps need massive volumes of authentic video content to fuel their paid acquisition engines, but managing hundreds of freelance creators is an operational nightmare.
+              VELURYN AGNECY was born out of a clear market gap: performance brands need massive volumes of authentic video content to fuel their paid acquisition engines, but managing hundreds of freelance creators is an operational nightmare.
             </p>
             <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.1rem', color: '#555', lineHeight: 1.8 }}>
               We stepped in to act as the bridge. By building a vetted roster of UGC talent and managing the entire pipeline—from brief to final delivery—we allow growth teams to focus on media buying while we handle the creative logistics.
@@ -83,7 +83,7 @@ export default function About() {
           <div className="fade-up" style={{ marginBottom: '4rem' }}>
             <h2 style={{ fontFamily: 'var(--font-headlines)', fontSize: '2rem', marginBottom: '1.5rem', fontWeight: 600 }}>Global Reach, Targeted Precision</h2>
             <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.1rem', color: '#555', lineHeight: 1.8 }}>
-              We operate internationally, connecting consumer apps with diverse creator talent across the globe. We hold particular expertise and focus in the US, UK, Canada, and Australia markets, ensuring your campaigns speak authentically to your core demographics while maintaining localized cultural relevance.
+              We operate internationally, connecting consumer brands with diverse creator talent across the globe. We hold particular expertise and focus in the US, UK, Canada, and Australia markets, ensuring your campaigns speak authentically to your core demographics while maintaining localized cultural relevance.
             </p>
           </div>
 
