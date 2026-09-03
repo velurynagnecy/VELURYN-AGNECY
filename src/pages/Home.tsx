@@ -48,7 +48,7 @@ export default function Home() {
     <div ref={containerRef} style={{ backgroundColor: 'var(--color-black)', color: 'var(--color-white)', overflowX: 'hidden' }}>
       <Helmet>
         <title>VELURYN AGNECY | Connecting Brands with Creators</title>
-        <meta name="description" content="An international UGC creator brokerage focused on the US, UK, Canada, and Australia. We connect talented creators with direct-response brands for high-performing video campaigns." />
+        <meta name="description" content="An international UGC creator brokerage focused on the US, UK, Canada, and Australia. We connect talented creators with direct response brands for high performing video campaigns." />
       </Helmet>
 
       {/* Hero Section */}
@@ -95,7 +95,7 @@ export default function Home() {
         <div className="content">
           <h1>An Agnetic Shot that Really Draws.</h1>
           <p className="hero-subhead">
-            UGC video pipelines for direct-response brands � built on conversion, not follower count.
+            UGC video pipelines for direct response brands  built on conversion, not follower count.
           </p>
           <div className="actions">
             <Link className="btn btn-primary" to="/ugc-campaigns">Brands <span aria-hidden="true">&rarr;</span></Link>
@@ -131,7 +131,7 @@ export default function Home() {
             <CardHoverRevealContent>
               <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.1rem', color: 'rgba(255,255,255,0.85)', lineHeight: 1.6, marginBottom: '2rem', flexGrow: 1 }}>
-                  Stop hunting for unreliable freelancers. We curate high-performing creators tailored to your brand vertical and manage the entire workflow. You get watermarked drafts, unlimited usage rights, and a steady stream of converting assets.
+                  Stop hunting for unreliable freelancers. We curate high performing creators tailored to your brand vertical and manage the entire workflow. You get watermarked drafts, unlimited usage rights, and a steady stream of converting assets.
                 </p>
                 <Link to="/ugc-campaigns" className="btn btn-primary" style={{ display: 'inline-flex', width: 'fit-content' }}>
                   View Campaigns <span aria-hidden="true">&rarr;</span>
@@ -174,7 +174,7 @@ export default function Home() {
         <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
           <h2 style={{ fontFamily: 'var(--font-headlines)', fontSize: '2.5rem', marginBottom: '2rem', fontWeight: 'normal', color: '#fff' }}>Proven Performance</h2>
           <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.2rem', color: '#888', lineHeight: 1.6 }}>
-            Our creators are currently fueling user acquisition for fast-growing brands across E-Commerce, Health, and Tech. 
+            Our creators are currently fueling user acquisition for fast growing brands across E-Commerce, Health, and Tech. 
             <br/><br/>
             <span style={{ opacity: 0.5, fontStyle: 'italic', fontSize: '1rem' }}>[Case studies and performance metrics will be published here as campaign data matures.]</span>
           </p>

@@ -90,7 +90,7 @@ export default function About() {
           <div className="fade-up" style={{ marginBottom: '6rem' }}>
             <h2 style={{ fontFamily: 'var(--font-headlines)', fontSize: '2rem', marginBottom: '1.5rem', fontWeight: 600 }}>Our Mission</h2>
             <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.1rem', color: '#555', lineHeight: 1.8, marginBottom: '1.5rem' }}>
-              For brands, our mission is to eliminate the friction of creative testing. We provide a reliable, scalable pipeline of high-converting assets. 
+              For brands, our mission is to eliminate the friction of creative testing. We provide a reliable, scalable pipeline of high converting assets. 
             </p>
             <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.1rem', color: '#555', lineHeight: 1.8 }}>
               For creators, our mission is to provide stability. We protect our talent with guaranteed deposits, transparent contracts, and a steady stream of incoming campaign briefs so they can focus on what they do best: creating.
@@ -106,7 +106,7 @@ export default function About() {
                   Is "AGNECY" a typo?
                 </h3>
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.05rem', color: '#555', lineHeight: 1.6, margin: 0 }}>
-                  No &mdash; it's intentional. VELURYN AGNECY is a stylized brand name; the spelling is deliberate, not an error.
+                  No it's intentional. VELURYN AGNECY is a stylized brand name; the spelling is deliberate, not an error.
                 </p>
               </div>
 
@@ -124,7 +124,7 @@ export default function About() {
                   Can I use the videos in paid ads, not just organic posts?
                 </h3>
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.05rem', color: '#555', lineHeight: 1.6, margin: 0 }}>
-                  Yes &mdash; paid usage rights (whitelisting, spark ads, boosted posts) are available and scoped separately from organic usage. Let us know your intended use when you reach out.
+                  Yes paid usage rights (whitelisting, spark ads, boosted posts) are available and scoped separately from organic usage. Let us know your intended use when you reach out.
                 </p>
               </div>
 
@@ -151,7 +151,7 @@ export default function About() {
                   What industries or niches do you work with?
                 </h3>
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.05rem', color: '#555', lineHeight: 1.6, margin: 0 }}>
-                  We work with brands across categories &mdash; we're not limited to any single industry or niche.
+                  We work with brands across categories we're not limited to any single industry or niche.
                 </p>
               </div>
             </div>
@@ -163,11 +163,16 @@ export default function About() {
             </Link>
           </div>
 
-          <div className="fade-up" style={{ marginTop: '8rem', paddingTop: '3rem', borderTop: '1px solid #eaeaea', opacity: 0.8 }}>
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: '#666', lineHeight: 1.8, margin: 0, maxWidth: '800px' }}>
-              "A note from the founder &mdash; I started VELURYN AGNECY after seeing the same problem from both sides: brands burning time and budget chasing creators who flake or overcharge, and creators doing great work but never getting paid reliably or on time. Before this, I built a verification service to help brands and founders figure out who they could trust &mdash; that experience shaped how I built this agency: a straightforward, accountable pipeline between brands and creators, built on trust from the start." <br /><br />
-              &mdash; <strong>Vivin Bharathi, Founder and Chairman</strong>
-            </p>
+          <div className="fade-up" style={{ marginTop: '8rem', paddingTop: '3rem', borderTop: '1px solid #eaeaea', opacity: 0.9 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', maxWidth: '800px', flexWrap: 'wrap' }}>
+              <img src="/images/CE.jpeg" alt="Vivin Bharathi" style={{ width: '150px', height: '150px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }} />
+              <div style={{ flex: 1, minWidth: '250px' }}>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: '#666', lineHeight: 1.8, margin: 0 }}>
+                  "A note from the founder I started VELURYN AGNECY after seeing the same problem from both sides: brands burning time and budget chasing creators who flake or overcharge, and creators doing great work but never getting paid reliably or on time. Before this, I built a verification service to help brands and founders figure out who they could trust that experience shaped how I built this agency: a straightforward, accountable pipeline between brands and creators, built on trust from the start." <br /><br />
+                  <strong>Vivin Bharathi, Founder and Chairman</strong>
+                </p>
+              </div>
+            </div>
           </div>
 
         </div>

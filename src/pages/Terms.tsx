@@ -19,7 +19,7 @@ export default function Terms() {
           
           <div>
             <h2 style={{ fontFamily: 'var(--font-headlines)', fontSize: '1.5rem', marginBottom: '1rem', color: '#111' }}>1. Agency Relationship</h2>
-            <p>VELURYN AGNECY ("the Agency") acts as a brokerage connecting direct-response brands ("Brands") with User-Generated Content creators ("Creators"). By engaging our services, both Brands and Creators agree to adhere to the workflow and payment terms outlined herein.</p>
+            <p>VELURYN AGNECY ("the Agency") acts as a brokerage connecting direct response brands ("Brands") with user generated Content creators ("Creators"). By engaging our services, both Brands and Creators agree to adhere to the workflow and payment terms outlined herein.</p>
           </div>
 
           <div>

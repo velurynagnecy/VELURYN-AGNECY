@@ -37,7 +37,7 @@ export default function UGCCampaigns() {
     <div ref={containerRef} style={{ backgroundColor: 'var(--color-white)', color: 'var(--color-black)' }}>
       <Helmet>
         <title>UGC Campaigns | VELURYN AGNECY</title>
-        <meta name="description" content="Authentic UGC video packages for direct-response brands." />
+        <meta name="description" content="Authentic UGC video packages for direct response brands." />
       </Helmet>
 
       {/* Hero Section */}
@@ -63,7 +63,7 @@ export default function UGCCampaigns() {
             UGC Campaigns tailored for brand growth.
         </h1>
         <p className="fade-up" style={{ fontFamily: 'var(--font-body)', fontSize: '1.25rem', color: '#ccc', maxWidth: '600px', lineHeight: 1.6 }}>
-          We bundle vetted creators into high-volume video packages, managing the entire pipeline from brief to final delivery. Stop hunting for creators &mdash; start scaling your acquisition.
+          We bundle vetted creators into high-volume video packages, managing the entire pipeline from brief to final delivery. Stop hunting for creators start scaling your acquisition.
         </p>
         </div>
       </section>
@@ -109,7 +109,7 @@ export default function UGCCampaigns() {
 
           <BentoInfoCard title="Custom Packages" dark={true}>
              <p style={{ marginBottom: '2.5rem' }}>
-               Every brand is different. We custom-build bundles (e.g., 2 creators &times; 3 videos) based on your exact volume needs, target audience, and required usage rights. 
+               Every brand is different. We custom build bundles (e.g., 2 creators &times; 3 videos) based on your exact volume needs, target audience, and required usage rights. 
                Reach out for a custom quote tailored to your next campaign.
              </p>
              
