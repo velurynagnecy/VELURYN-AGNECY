@@ -44,20 +44,18 @@ export default function HowWeWork() {
   }, []);
 
   const steps = [
-    { num: '01', title: 'Campaign Brief', desc: 'The brand submits a campaign brief detailing their brand vertical, target audience, and required video volume.' },
-    { num: '02', title: 'Creator Match', desc: 'We tap our vetted roster and pair the campaign with creators whose niches and styles align perfectly with the brief.' },
-    { num: '03', title: 'Deposit Secured', desc: 'A deposit invoice is sent to the brand and collected, securing the commitment before production begins.' },
-    { num: '04', title: 'Production Begins', desc: 'Creators receive their portion of the deposit and begin scripting and filming the UGC content.' },
-    { num: '05', title: 'Watermarked Review', desc: 'A watermarked draft of the video is delivered to the brand for review and approval.' },
-    { num: '06', title: 'Final Invoice', desc: 'Once the brand approves the draft, the final invoice is issued for the remaining balance.' },
-    { num: '07', title: 'Delivery & Release', desc: 'Upon final payment, the unwatermarked video is released to the brand, and the remaining payment is sent to the creator.' }
+    { num: '01', title: 'Strategy', desc: 'Understand the brand, audience, objectives and campaign requirements.' },
+    { num: '02', title: 'Talent', desc: 'Identify the right creators, models and talent for the project.' },
+    { num: '03', title: 'Creative', desc: 'Develop the content direction and campaign creative.' },
+    { num: '04', title: 'Execute', desc: 'Manage partnerships, production and campaign delivery.' },
+    { num: '05', title: 'Grow', desc: 'Analyze performance and build the next opportunity.' }
   ];
 
   return (
     <div ref={containerRef} style={{ backgroundColor: 'var(--color-white)', color: 'var(--color-black)' }}>
       <Helmet>
         <title>How We Work | VELURYN AGNECY</title>
-        <meta name="description" content="Our transparent, secure 7-step process for managing UGC campaigns." />
+        <meta name="description" content="Our transparent, secure 5-step process for managing campaigns and talent." />
       </Helmet>
 
       {/* Hero Section */}
@@ -70,7 +68,7 @@ export default function HowWeWork() {
             left: 0,
             width: '100%',
             height: '100vh',
-            backgroundImage: 'linear-gradient(100deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 100%), url(/images/how-we-work-hero.webp)',
+            backgroundImage: 'linear-gradient(100deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 100%), url("/images/How%20we%20work.webp")',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             zIndex: -1,
@@ -83,7 +81,7 @@ export default function HowWeWork() {
             Transparent, secure, and built for scale.
           </h1>
           <p className="fade-up" style={{ fontFamily: 'var(--font-body)', fontSize: '1.25rem', color: '#ccc', maxWidth: '600px', lineHeight: 1.6 }}>
-            We remove the friction from UGC creation. Our process protects creators' time and guarantees brands get exactly what they pay for.
+            Our process works the same whether it's an influencer campaign, UGC production, content creation or talent management.
           </p>
         </div>
       </section>
@@ -111,7 +109,7 @@ export default function HowWeWork() {
                   I'm a Brand <span style={{ fontSize: '1.2rem' }}>&rarr;</span>
                </Link>
                <Link to="/contact?type=creator" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', backgroundColor: 'transparent', color: 'var(--color-black)', border: '1px solid #ddd', padding: '1rem 2rem', borderRadius: '30px', fontFamily: 'var(--font-body)', textDecoration: 'none', transition: 'all 0.2s' }} onMouseOver={(e) => { e.currentTarget.style.borderColor = 'var(--color-black)'; }} onMouseOut={(e) => { e.currentTarget.style.borderColor = '#ddd'; }}>
-                  I'm a Creator <span style={{ fontSize: '1.2rem' }}>&rarr;</span>
+                  I'm Talent <span style={{ fontSize: '1.2rem' }}>&rarr;</span>
                </Link>
              </div>
           </div>

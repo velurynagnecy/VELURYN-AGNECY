@@ -9,7 +9,7 @@ import { BentoInfoCard } from '../components/ui/BentoInfoCard';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function UGCCampaigns() {
+export default function InfluencerMarketing() {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
@@ -36,8 +36,8 @@ export default function UGCCampaigns() {
   return (
     <div ref={containerRef} style={{ backgroundColor: 'var(--color-white)', color: 'var(--color-black)' }}>
       <Helmet>
-        <title>UGC Campaigns | VELURYN AGNECY</title>
-        <meta name="description" content="UGC campaigns by VELURYN AGNECY. Social first content produced through vetted creators." />
+        <title>Influencer Marketing | VELURYN AGNECY</title>
+        <meta name="description" content="Strategic creator campaigns built around the right audience and talent." />
       </Helmet>
 
       {/* Hero Section */}
@@ -50,7 +50,7 @@ export default function UGCCampaigns() {
             left: 0,
             width: '100%',
             height: '100vh',
-            backgroundImage: 'linear-gradient(100deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 100%), url("/images/UGC%20campaigns.webp")',
+            backgroundImage: 'linear-gradient(100deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 100%), url("/images/Influencer Marketing.webp")',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             zIndex: -1,
@@ -58,36 +58,41 @@ export default function UGCCampaigns() {
           }}
         />
         <div style={{ maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-          <p className="fade-up" style={{ fontFamily: 'var(--font-labels)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '2rem', opacity: 0.7 }}>Marketing / UGC</p>
+          <p className="fade-up" style={{ fontFamily: 'var(--font-labels)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '2rem', opacity: 0.7 }}>Marketing Services</p>
           <h1 className="fade-up" style={{ fontFamily: 'var(--font-headlines)', fontSize: 'clamp(3rem, 7vw, 6rem)', lineHeight: 1.1, fontWeight: 'normal', marginBottom: '3rem', maxWidth: '1000px' }}>
-            UGC Campaigns tailored for brand growth.
-        </h1>
-        <p className="fade-up" style={{ fontFamily: 'var(--font-body)', fontSize: '1.25rem', color: '#ccc', maxWidth: '600px', lineHeight: 1.6 }}>
-          Social first content produced through carefully selected creators. UGC is one part of how VELURYN helps brands grow.
-        </p>
+            Influencer Marketing
+          </h1>
+          <p className="fade-up" style={{ fontFamily: 'var(--font-body)', fontSize: '1.25rem', color: '#ccc', maxWidth: '600px', lineHeight: 1.6 }}>
+            Strategic creator campaigns built around the right audience and talent.
+          </p>
         </div>
       </section>
 
       {/* Workflow Section */}
       <section style={{ padding: '8rem 4rem', backgroundColor: '#f5f5f5' }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
-          <h2 className="fade-up" style={{ fontFamily: 'var(--font-headlines)', fontSize: 'clamp(2.5rem, 4vw, 4rem)', marginBottom: '4rem', fontWeight: 'normal' }}>The Pipeline</h2>
+          <h2 className="fade-up" style={{ fontFamily: 'var(--font-headlines)', fontSize: 'clamp(2.5rem, 4vw, 4rem)', marginBottom: '4rem', fontWeight: 'normal' }}>How We Execute</h2>
           
           <div className="fade-up" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem' }}>
             <StepperCard 
               num="01"
-              title="Brief & Match"
-              description="You submit your campaign goals and brand verticals. We tap our roster and match you with the perfect creators for your niche."
+              title="Strategy"
+              description="Understand your brand, audience, and campaign objectives before we identify any talent."
             />
             <StepperCard 
               num="02"
-              title="Watermarked Drafts"
-              description="Creators script and film the content. We deliver watermarked drafts to you for review and approval."
+              title="Discovery"
+              description="Source and vet the right creators for your vertical, ensuring authentic alignment with your brand."
             />
             <StepperCard 
               num="03"
-              title="Invoice & Release"
-              description="Once approved, we issue the final invoice. Upon payment, the watermark is removed and high-res files are released to you."
+              title="Negotiation"
+              description="Secure talent, align on deliverables, and negotiate terms and usage rights on your behalf."
+            />
+            <StepperCard 
+              num="04"
+              title="Production"
+              description="Manage the creative process from brief to delivery, ensuring content hits performance goals."
             />
           </div>
         </div>
@@ -97,24 +102,25 @@ export default function UGCCampaigns() {
       <section style={{ padding: '8rem 4rem', maxWidth: '1400px', margin: '0 auto' }}>
         <div className="fade-up" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '4rem' }}>
           
-          <BentoInfoCard title="Usage Rights">
+          <BentoInfoCard title="What This Includes">
             <p style={{ marginBottom: '1.5rem' }}>
-              We understand brands need content for performance marketing. That's why we structure usage rights clearly from the start:
+              We handle the end-to-end influencer pipeline so your team doesn't have to:
             </p>
             <ul style={{ paddingLeft: '1.5rem' }}>
-              <li style={{ marginBottom: '0.75rem' }}><strong>Organic Rights:</strong> Standard inclusion for posting on your owned social channels.</li>
-              <li><strong>Paid / Whitelisting:</strong> Priced separately to allow scaling across paid acquisition channels (Meta, TikTok, etc.) with explicit creator permission.</li>
+              <li style={{ marginBottom: '0.75rem' }}><strong>Influencer Strategy:</strong> Aligning creators with your business goals.</li>
+              <li style={{ marginBottom: '0.75rem' }}><strong>Creator Sourcing &amp; Selection:</strong> Vetting talent for authentic audience overlap.</li>
+              <li style={{ marginBottom: '0.75rem' }}><strong>Campaign Management:</strong> Handling briefs, timelines, and deliverables.</li>
+              <li><strong>Reporting:</strong> Analyzing campaign performance and ROI.</li>
             </ul>
           </BentoInfoCard>
 
-          <BentoInfoCard title="Custom Packages" dark={true}>
+          <BentoInfoCard title="Start a Campaign" dark={true}>
              <p style={{ marginBottom: '2.5rem' }}>
-               Every brand is different. We custom build bundles (e.g., 2 creators &times; 3 videos) based on your exact volume needs, target audience, and required usage rights. 
-               Reach out for a custom quote tailored to your next campaign.
+               Ready to scale your brand through targeted influencer partnerships? Reach out to discuss your objectives and budget.
              </p>
              
              <Link to="/contact?type=brand" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', backgroundColor: 'var(--color-white)', color: 'var(--color-black)', padding: '1rem 2rem', borderRadius: '30px', fontFamily: 'var(--font-body)', textDecoration: 'none', transition: 'background-color 0.2s', fontWeight: 600 }} onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f0f0f0'} onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'var(--color-white)'}>
-                Start a Project <span style={{ fontSize: '1.2rem' }}>&rarr;</span>
+                Get in Touch <span style={{ fontSize: '1.2rem' }}>&rarr;</span>
              </Link>
           </BentoInfoCard>
 

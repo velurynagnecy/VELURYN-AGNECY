@@ -1,99 +1,69 @@
 import { Helmet } from 'react-helmet-async';
-import { useState, useRef } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { useParallax } from '../hooks/useParallax';
+import { useState } from 'react';
 
 export default function Contact() {
-  const [searchParams] = useSearchParams();
-  const initialType = searchParams.get('type') || 'other';
-  const [inquiryType, setInquiryType] = useState(initialType);
-  const [submitted, setSubmitted] = useState(false);
-  const bannerRef = useRef<HTMLDivElement>(null);
-  const bgRef = useRef<HTMLDivElement>(null);
-  
-  useParallax(bannerRef, bgRef);
+  const [formType, setFormType] = useState<'brand' | 'creator' | 'other'>('brand');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const formEndpoint = import.meta.env.VITE_FORM_ENDPOINT || 'https://formsubmit.co/vivin.b@velurynagnecy.com';
+  // Read URL parameters to set initial state if we linked here via ?type=brand etc
+  useState(() => {
+    const params = new URLSearchParams(window.location.search);
+    const typeParam = params.get('type');
+    if (typeParam === 'brand' || typeParam === 'creator' || typeParam === 'other') {
+      setFormType(typeParam);
+    }
+  });
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const form = e.currentTarget;
-    fetch(formEndpoint, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: {
-        'Accept': 'application/json'
-      }
-    }).then(() => {
-      setSubmitted(true);
-    }).catch(error => {
-      console.error(error);
-      alert('There was an error submitting the form.');
-    });
+    setIsSubmitting(true);
+    
+    // The form action handles the actual submission to FormSubmit.co
+    // We just simulate the UI state change here if we wanted to intercept,
+    // but standard form submission will redirect to their success page.
+    // To keep the user on site, we can let the native form submit happen.
+    const form = e.target as HTMLFormElement;
+    form.submit();
   };
 
   return (
-    <div style={{ backgroundColor: 'var(--color-white)', color: 'var(--color-black)', minHeight: '100vh', paddingBottom: '4rem' }}>
+    <div style={{ backgroundColor: 'var(--color-bg)', minHeight: '100vh', paddingTop: '100px' }}>
       <Helmet>
         <title>Contact | VELURYN AGNECY</title>
-        <meta name="description" content="Get in touch with VELURYN AGNECY." />
+        <meta name="description" content="Get in touch with VELURYN AGNECY for brand campaigns, talent representation, or general inquiries." />
       </Helmet>
 
-      {/* Banner Section */}
-      <div style={{ padding: '100px 2rem 0 2rem', maxWidth: '1400px', margin: '0 auto' }}>
-         <div ref={bannerRef} style={{
-            position: 'relative',
+      {/* Hero Section */}
+      <section style={{ position: 'relative', overflow: 'hidden', isolation: 'isolate', paddingTop: '160px', paddingBottom: '120px', paddingLeft: '4rem', paddingRight: '4rem', color: '#fff' }}>
+        <div 
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
             width: '100%',
-            height: '400px',
-            borderRadius: '16px',
-            overflow: 'hidden',
-            isolation: 'isolate'
-         }}>
-            {/* Parallax Background Layer */}
-            <div 
-              ref={bgRef}
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 'calc(-50vw + 50%)',
-                width: '100vw',
-                height: '100vh',
-                backgroundImage: 'url(/images/contact-hero.webp)',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                zIndex: -1,
-                willChange: 'transform'
-              }}
-            />
-            
-            <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(23,23,23,0.2)', zIndex: -1 }}></div>
-            
-            {/* Outline vertical text */}
-            <div style={{
-              position: 'absolute',
-              right: '40px',
-              top: '50%',
-              transform: 'translateY(-50%) rotate(180deg)',
-              writingMode: 'vertical-rl',
-              color: 'transparent',
-              WebkitTextStroke: '2px rgba(255,255,255,0.25)',
-              fontFamily: 'var(--font-headlines)',
-              fontSize: '8rem',
-              fontWeight: 'normal',
-              letterSpacing: '0.05em',
-              pointerEvents: 'none',
-              userSelect: 'none'
-            }}>
-              Connect
-            </div>
+            height: '100vh',
+            backgroundImage: 'linear-gradient(100deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 100%), url("/images/Contract.webp")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            zIndex: -1,
+          }}
+        />
+        <div style={{ maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+          <p style={{ fontFamily: 'var(--font-labels)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '2rem', opacity: 0.7 }}>Let's Talk</p>
+          <h1 style={{ fontFamily: 'var(--font-headlines)', fontSize: 'clamp(3rem, 7vw, 6rem)', lineHeight: 1.1, fontWeight: 'normal', marginBottom: '3rem', maxWidth: '1000px' }}>
+            Work with us.
+          </h1>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.25rem', color: '#ccc', maxWidth: '600px', lineHeight: 1.6 }}>
+            Whether you're a brand looking to start a campaign, or a creator or model interested in representation, we're ready to work.
+          </p>
+        </div>
+      </section>
 
-            <h1 style={{ position: 'absolute', bottom: '40px', left: '40px', color: 'var(--color-white)', fontFamily: 'var(--font-headlines)', fontSize: 'clamp(3rem, 6vw, 5rem)', fontWeight: 400, margin: 0 }}>
-              Connect
-            </h1>
-         </div>
+      {/* Banner */}
+      <div style={{ backgroundColor: '#000', color: '#fff', padding: '1rem', textAlign: 'center', fontFamily: 'var(--font-labels)', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '0.85rem' }}>
+        Currently accepting Q4 campaign briefs.
       </div>
 
-      {/* Main Content */}
       <div style={{ 
         maxWidth: '1400px', 
         margin: '0 auto', 
@@ -103,7 +73,7 @@ export default function Contact() {
         gap: '6rem',
         position: 'relative',
         backgroundImage: 'linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px)',
-        backgroundSize: '25% 100%' // Vertical grid lines
+        backgroundSize: '25% 100%'
       }}>
 
         {/* Left Col */}
@@ -113,7 +83,7 @@ export default function Contact() {
              Start the conversation.
            </h2>
            <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.1rem', color: '#666', marginBottom: '4rem', lineHeight: 1.6, maxWidth: '440px' }}>
-             Whether you're a brand looking for authentic UGC video pipelines or a creator wanting to join our roster, we're ready to get to work.
+             Whether you're a brand looking to start a campaign, or a creator or model interested in representation, we're ready to work.
            </p>
 
            <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
@@ -129,84 +99,150 @@ export default function Contact() {
                   </p>
                 </div>
              </div>
-
-             <div>
-                <h3 style={{ fontFamily: 'var(--font-headlines)', fontSize: '1.1rem', marginBottom: '1.25rem', fontWeight: 600 }}>Follow Us</h3>
-                <div style={{ display: 'flex', gap: '1.25rem', color: '#333' }}>
-                  <a href="https://instagram.com/velurynagnecy" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', transition: 'opacity 0.2s' }} onMouseOver={(e) => e.currentTarget.style.opacity = '0.6'} onMouseOut={(e) => e.currentTarget.style.opacity = '1'} aria-label="Instagram">
-                    <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                  </a>
-                  <a href="https://x.com/velurynagnecy" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', transition: 'opacity 0.2s' }} onMouseOver={(e) => e.currentTarget.style.opacity = '0.6'} onMouseOut={(e) => e.currentTarget.style.opacity = '1'} aria-label="X (Twitter)">
-                    <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
-                  </a>
-                  <a href="https://linkedin.com/company/veluryn-agnecy" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', transition: 'opacity 0.2s' }} onMouseOver={(e) => e.currentTarget.style.opacity = '0.6'} onMouseOut={(e) => e.currentTarget.style.opacity = '1'} aria-label="LinkedIn">
-                    <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                  </a>
-                  <a href="https://facebook.com/velurynagnecy" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', transition: 'opacity 0.2s' }} onMouseOver={(e) => e.currentTarget.style.opacity = '0.6'} onMouseOut={(e) => e.currentTarget.style.opacity = '1'} aria-label="Facebook">
-                    <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                  </a>
-                </div>
-             </div>
            </div>
         </div>
 
-        {/* Right Col */}
-        <div style={{ flex: '1 1 400px', position: 'relative', zIndex: 2 }}>
-           <div style={{ backgroundColor: '#f5f5f5', borderRadius: '16px', padding: 'clamp(2rem, 5vw, 4rem)', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-             
-             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
-                <button onClick={() => setInquiryType('brand')} style={{ padding: '0.5rem 1rem', borderRadius: '20px', border: '1px solid #ddd', backgroundColor: inquiryType === 'brand' ? '#222' : 'transparent', color: inquiryType === 'brand' ? '#fff' : '#666', cursor: 'pointer', fontFamily: 'var(--font-body)', fontSize: '0.9rem', transition: 'all 0.2s' }}>I'm a Brand</button>
-                <button onClick={() => setInquiryType('creator')} style={{ padding: '0.5rem 1rem', borderRadius: '20px', border: '1px solid #ddd', backgroundColor: inquiryType === 'creator' ? '#222' : 'transparent', color: inquiryType === 'creator' ? '#fff' : '#666', cursor: 'pointer', fontFamily: 'var(--font-body)', fontSize: '0.9rem', transition: 'all 0.2s' }}>I'm a Creator</button>
-                <button onClick={() => setInquiryType('other')} style={{ padding: '0.5rem 1rem', borderRadius: '20px', border: '1px solid #ddd', backgroundColor: inquiryType === 'other' ? '#222' : 'transparent', color: inquiryType === 'other' ? '#fff' : '#666', cursor: 'pointer', fontFamily: 'var(--font-body)', fontSize: '0.9rem', transition: 'all 0.2s' }}>Other</button>
-             </div>
+        {/* Right Col: Form */}
+        <div style={{ flex: '1.5 1 500px', position: 'relative', zIndex: 2 }}>
+          
+          <div style={{ display: 'flex', gap: '1rem', marginBottom: '3rem', flexWrap: 'wrap' }}>
+            <button 
+              onClick={() => setFormType('brand')}
+              style={{ 
+                padding: '0.75rem 1.5rem', 
+                borderRadius: '30px', 
+                fontFamily: 'var(--font-body)', 
+                fontSize: '1rem',
+                cursor: 'pointer',
+                border: '1px solid',
+                backgroundColor: formType === 'brand' ? 'var(--color-black)' : 'transparent',
+                color: formType === 'brand' ? 'var(--color-white)' : 'var(--color-black)',
+                borderColor: formType === 'brand' ? 'var(--color-black)' : '#ddd',
+                transition: 'all 0.2s'
+              }}
+            >
+              I'm a Brand
+            </button>
+            <button 
+              onClick={() => setFormType('creator')}
+              style={{ 
+                padding: '0.75rem 1.5rem', 
+                borderRadius: '30px', 
+                fontFamily: 'var(--font-body)', 
+                fontSize: '1rem',
+                cursor: 'pointer',
+                border: '1px solid',
+                backgroundColor: formType === 'creator' ? 'var(--color-black)' : 'transparent',
+                color: formType === 'creator' ? 'var(--color-white)' : 'var(--color-black)',
+                borderColor: formType === 'creator' ? 'var(--color-black)' : '#ddd',
+                transition: 'all 0.2s'
+              }}
+            >
+              I'm Talent
+            </button>
+            <button 
+              onClick={() => setFormType('other')}
+              style={{ 
+                padding: '0.75rem 1.5rem', 
+                borderRadius: '30px', 
+                fontFamily: 'var(--font-body)', 
+                fontSize: '1rem',
+                cursor: 'pointer',
+                border: '1px solid',
+                backgroundColor: formType === 'other' ? 'var(--color-black)' : 'transparent',
+                color: formType === 'other' ? 'var(--color-white)' : 'var(--color-black)',
+                borderColor: formType === 'other' ? 'var(--color-black)' : '#ddd',
+                transition: 'all 0.2s'
+              }}
+            >
+              Other
+            </button>
+          </div>
 
-             {submitted ? (
-               <div style={{ padding: '2rem', textAlign: 'center' }}>
-                 <h4 style={{ fontFamily: 'var(--font-headlines)', fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--color-burgundy)' }}>Received.</h4>
-                 <p style={{ color: '#666', fontFamily: 'var(--font-body)' }}>Your message has been sent successfully. We will be in touch shortly.</p>
-               </div>
-             ) : (
-               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
-                 <input type="hidden" name="_captcha" value="false" />
-                 <input type="hidden" name="_subject" value={`New ${inquiryType} Inquiry - VELURYN AGNECY`} />
-                 
-                 <input type="text" name="name" placeholder="Full name *" required style={{ border: 'none', borderBottom: '1px solid #ddd', padding: '0.5rem 0', backgroundColor: 'transparent', fontSize: '0.95rem', outline: 'none', fontFamily: 'var(--font-body)' }} />
-                 <input type="email" name="email" placeholder="Email *" required style={{ border: 'none', borderBottom: '1px solid #ddd', padding: '0.5rem 0', backgroundColor: 'transparent', fontSize: '0.95rem', outline: 'none', fontFamily: 'var(--font-body)' }} />
+          <form 
+            action="https://formsubmit.co/vivin.b@velurynagnecy.com" 
+            method="POST" 
+            onSubmit={handleSubmit}
+            style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}
+          >
+            {/* FormSubmit Configuration */}
+            <input type="hidden" name="_subject" value={`New ${formType} inquiry - VELURYN AGNECY`} />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="Inquiry Type" value={formType} />
+            <input type="hidden" name="_next" value="https://velurynagnecy.com" />
 
-                 <select name="location" required style={{ border: 'none', borderBottom: '1px solid #ddd', padding: '0.5rem 0', backgroundColor: 'transparent', fontSize: '0.95rem', outline: 'none', fontFamily: 'var(--font-body)', color: '#555', cursor: 'pointer' }}>
-                   <option value="" disabled selected>Location / Country *</option>
-                   <option value="US">United States</option>
-                   <option value="UK">United Kingdom</option>
-                   <option value="CA">Canada</option>
-                   <option value="AU">Australia</option>
-                   <option value="Other">Other (International)</option>
-                 </select>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                <label style={{ fontFamily: 'var(--font-labels)', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.05em' }}>First Name</label>
+                <input type="text" name="First Name" required style={{ border: 'none', borderBottom: '1px solid #ccc', padding: '0.5rem 0', fontFamily: 'var(--font-body)', fontSize: '1rem', outline: 'none', backgroundColor: 'transparent' }} />
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                <label style={{ fontFamily: 'var(--font-labels)', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.05em' }}>Last Name</label>
+                <input type="text" name="Last Name" required style={{ border: 'none', borderBottom: '1px solid #ccc', padding: '0.5rem 0', fontFamily: 'var(--font-body)', fontSize: '1rem', outline: 'none', backgroundColor: 'transparent' }} />
+              </div>
+            </div>
 
-                 {inquiryType === 'brand' && (
-                   <>
-                     <input type="text" name="app_type" placeholder="Brand Vertical / Niche *" required style={{ border: 'none', borderBottom: '1px solid #ddd', padding: '0.5rem 0', backgroundColor: 'transparent', fontSize: '0.95rem', outline: 'none', fontFamily: 'var(--font-body)' }} />
-                     <input type="text" name="campaign_size" placeholder="Estimated Campaign Size (e.g. 5 videos) *" required style={{ border: 'none', borderBottom: '1px solid #ddd', padding: '0.5rem 0', backgroundColor: 'transparent', fontSize: '0.95rem', outline: 'none', fontFamily: 'var(--font-body)' }} />
-                     <input type="text" name="budget" placeholder="Estimated Budget *" required style={{ border: 'none', borderBottom: '1px solid #ddd', padding: '0.5rem 0', backgroundColor: 'transparent', fontSize: '0.95rem', outline: 'none', fontFamily: 'var(--font-body)' }} />
-                   </>
-                 )}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <label style={{ fontFamily: 'var(--font-labels)', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.05em' }}>Email Address</label>
+              <input type="email" name="Email" required style={{ border: 'none', borderBottom: '1px solid #ccc', padding: '0.5rem 0', fontFamily: 'var(--font-body)', fontSize: '1rem', outline: 'none', backgroundColor: 'transparent' }} />
+            </div>
 
-                 {inquiryType === 'creator' && (
-                   <>
-                     <input type="url" name="portfolio" placeholder="Portfolio / Instagram Link *" required style={{ border: 'none', borderBottom: '1px solid #ddd', padding: '0.5rem 0', backgroundColor: 'transparent', fontSize: '0.95rem', outline: 'none', fontFamily: 'var(--font-body)' }} />
-                     <input type="text" name="niche" placeholder="Content Niche / Style *" required style={{ border: 'none', borderBottom: '1px solid #ddd', padding: '0.5rem 0', backgroundColor: 'transparent', fontSize: '0.95rem', outline: 'none', fontFamily: 'var(--font-body)' }} />
-                     <input type="text" name="rate" placeholder="Rate Expectations *" required style={{ border: 'none', borderBottom: '1px solid #ddd', padding: '0.5rem 0', backgroundColor: 'transparent', fontSize: '0.95rem', outline: 'none', fontFamily: 'var(--font-body)' }} />
-                     <input type="text" name="availability" placeholder="Current Availability *" required style={{ border: 'none', borderBottom: '1px solid #ddd', padding: '0.5rem 0', backgroundColor: 'transparent', fontSize: '0.95rem', outline: 'none', fontFamily: 'var(--font-body)' }} />
-                   </>
-                 )}
+            {formType === 'brand' && (
+              <>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                  <label style={{ fontFamily: 'var(--font-labels)', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.05em' }}>Company Name</label>
+                  <input type="text" name="Company" required style={{ border: 'none', borderBottom: '1px solid #ccc', padding: '0.5rem 0', fontFamily: 'var(--font-body)', fontSize: '1rem', outline: 'none', backgroundColor: 'transparent' }} />
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                  <label style={{ fontFamily: 'var(--font-labels)', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.05em' }}>Brand Vertical / Niche</label>
+                  <input type="text" name="Brand Vertical" placeholder="e.g. Health, Fashion, Tech" style={{ border: 'none', borderBottom: '1px solid #ccc', padding: '0.5rem 0', fontFamily: 'var(--font-body)', fontSize: '1rem', outline: 'none', backgroundColor: 'transparent' }} />
+                </div>
+              </>
+            )}
 
-                 <textarea name="message" rows={2} placeholder="Additional Details..." required={inquiryType === 'other'} style={{ border: 'none', borderBottom: '1px solid #ddd', padding: '0.5rem 0', backgroundColor: 'transparent', fontSize: '0.95rem', outline: 'none', resize: 'none', fontFamily: 'var(--font-body)' }}></textarea>
-                 
-                 <button type="submit" style={{ marginTop: '1rem', alignSelf: 'flex-start', backgroundColor: '#222', color: 'white', border: 'none', borderRadius: '30px', padding: '1rem 2rem', fontFamily: 'var(--font-body)', fontSize: '0.9rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem', transition: 'background-color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'var(--color-burgundy)'} onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#222'}>
-                   <span style={{ fontSize: '1rem' }}>&#9656;</span> Submit Inquiry
-                 </button>
-               </form>
-             )}
-           </div>
+            {formType === 'creator' && (
+              <>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                  <label style={{ fontFamily: 'var(--font-labels)', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.05em' }}>Portfolio / Social Link</label>
+                  <input type="url" name="Portfolio" required placeholder="TikTok, IG, or Portfolio link" style={{ border: 'none', borderBottom: '1px solid #ccc', padding: '0.5rem 0', fontFamily: 'var(--font-body)', fontSize: '1rem', outline: 'none', backgroundColor: 'transparent' }} />
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                  <label style={{ fontFamily: 'var(--font-labels)', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.05em' }}>Primary Focus</label>
+                  <input type="text" name="Focus" placeholder="e.g. UGC Creator, Fashion Model, Tech Reviewer" required style={{ border: 'none', borderBottom: '1px solid #ccc', padding: '0.5rem 0', fontFamily: 'var(--font-body)', fontSize: '1rem', outline: 'none', backgroundColor: 'transparent' }} />
+                </div>
+              </>
+            )}
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <label style={{ fontFamily: 'var(--font-labels)', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.05em' }}>Message</label>
+              <textarea name="Message" required rows={4} style={{ border: 'none', borderBottom: '1px solid #ccc', padding: '0.5rem 0', fontFamily: 'var(--font-body)', fontSize: '1rem', outline: 'none', backgroundColor: 'transparent', resize: 'vertical' }}></textarea>
+            </div>
+
+            <button 
+              type="submit" 
+              disabled={isSubmitting}
+              style={{ 
+                marginTop: '1rem',
+                backgroundColor: 'var(--color-black)', 
+                color: 'var(--color-white)', 
+                padding: '1rem 2rem', 
+                border: 'none', 
+                borderRadius: '30px', 
+                fontFamily: 'var(--font-body)',
+                fontSize: '1rem',
+                cursor: isSubmitting ? 'wait' : 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.75rem',
+                width: 'fit-content',
+                transition: 'background-color 0.2s',
+                opacity: isSubmitting ? 0.7 : 1
+              }}
+            >
+              {isSubmitting ? 'Sending...' : 'Submit Inquiry'} <span style={{ fontSize: '1.2rem' }}>&rarr;</span>
+            </button>
+          </form>
+
         </div>
       </div>
     </div>

@@ -11,6 +11,10 @@ import CreatorPipeline from './pages/CreatorPipeline';
 import UGCCampaigns from './pages/UGCCampaigns';
 import HowWeWork from './pages/HowWeWork';
 import Articles from './pages/Articles';
+import Services from './pages/Services';
+import InfluencerMarketing from './pages/InfluencerMarketing';
+import ContentCreative from './pages/ContentCreative';
+import TalentManagement from './pages/TalentManagement';
 
 function App() {
   return (
@@ -27,6 +31,11 @@ function App() {
           <Route path="ugc-campaigns" element={<UGCCampaigns />} />
           <Route path="how-we-work" element={<HowWeWork />} />
           <Route path="articles" element={<Articles />} />
+          
+          <Route path="services" element={<Services />} />
+          <Route path="services/influencer-marketing" element={<InfluencerMarketing />} />
+          <Route path="services/content-creative" element={<ContentCreative />} />
+          <Route path="talent-management" element={<TalentManagement />} />
 
           <Route path="*" element={<NotFound />} />
         </Route>

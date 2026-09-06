@@ -50,7 +50,7 @@ export default function CreatorPipeline() {
             left: 0,
             width: '100%',
             height: '100vh',
-            backgroundImage: 'linear-gradient(100deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 100%), url(/images/creator-pipeline-hero.webp)',
+            backgroundImage: 'linear-gradient(100deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 100%), url("/images/creator%20pipeline.webp")',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             zIndex: -1,
@@ -58,12 +58,12 @@ export default function CreatorPipeline() {
           }}
         />
         <div style={{ maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-          <p className="fade-up" style={{ fontFamily: 'var(--font-labels)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '2rem', opacity: 0.7 }}>For Creators</p>
+          <p className="fade-up" style={{ fontFamily: 'var(--font-labels)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '2rem', opacity: 0.7 }}>Talent</p>
           <h1 className="fade-up" style={{ fontFamily: 'var(--font-headlines)', fontSize: 'clamp(3rem, 7vw, 6rem)', lineHeight: 1.1, fontWeight: 'normal', marginBottom: '3rem', maxWidth: '1000px' }}>
-            Get paid to create native video content for brands.
+            Join our talent network.
           </h1>
           <p className="fade-up" style={{ fontFamily: 'var(--font-body)', fontSize: '1.25rem', color: '#ccc', maxWidth: '600px', lineHeight: 1.6 }}>
-            We broker deals between talented UGC creators and direct response brands. Stop pitching brands endlessly join our roster and let the campaigns come to you.
+            We identify, vet and connect relevant talent with brands and campaigns. Join our roster and let the opportunities come to you.
           </p>
         </div>
       </section>
@@ -76,7 +76,7 @@ export default function CreatorPipeline() {
           <div className="fade-up" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem' }}>
             <BentoFeatureCard 
               title="The Niches"
-              description="We primarily serve performance brands in E-Commerce, Tech, Health, and Lifestyle. If you know how to hook an audience in these verticals, we want you."
+              description="We serve brands across E-Commerce, Tech, Health, Fashion, and Lifestyle. Whether you're a creator who hooks an audience or a model for lifestyle shoots, we want you."
               icon={<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>}
               delay={0}
             />

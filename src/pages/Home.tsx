@@ -47,8 +47,8 @@ export default function Home() {
   return (
     <div ref={containerRef} style={{ backgroundColor: 'var(--color-black)', color: 'var(--color-white)', overflowX: 'hidden' }}>
       <Helmet>
-        <title>VELURYN AGNECY | Connecting Brands with Creators</title>
-        <meta name="description" content="An international UGC creator brokerage focused on the US, UK, Canada, and Australia. We connect talented creators with direct response brands for high performing video campaigns." />
+        <title>VELURYN AGNECY | Marketing &amp; Management Agency</title>
+        <meta name="description" content="Marketing, content and talent management for brands that move culture. We represent creators and models and connect them with brands." />
       </Helmet>
 
       {/* Hero Section */}
@@ -95,11 +95,11 @@ export default function Home() {
         <div className="content">
           <h1>An Agnetic Shot that Really Draws.</h1>
           <p className="hero-subhead">
-            UGC video pipelines for direct response brands  built on conversion, not follower count.
+            Marketing, content and talent management for brands that move culture.
           </p>
           <div className="actions">
-            <Link className="btn btn-primary" to="/ugc-campaigns">Brands <span aria-hidden="true">&rarr;</span></Link>
-            <Link className="btn btn-secondary" to="/creator-pipeline">Join <span aria-hidden="true">&rarr;</span></Link>
+            <Link className="btn btn-primary" to="/services">Our Services <span aria-hidden="true">&rarr;</span></Link>
+            <Link className="btn btn-secondary" to="/talent-management">Join Us <span aria-hidden="true">&rarr;</span></Link>
           </div>
         </div>
 
@@ -131,10 +131,10 @@ export default function Home() {
             <CardHoverRevealContent>
               <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.1rem', color: 'rgba(255,255,255,0.85)', lineHeight: 1.6, marginBottom: '2rem', flexGrow: 1 }}>
-                  Stop hunting for unreliable freelancers. We curate high performing creators tailored to your brand vertical and manage the entire workflow. You get watermarked drafts, unlimited usage rights, and a steady stream of converting assets.
+                  From influencer campaigns and UGC to creative strategy and content, we build and manage the marketing that drives your brand forward.
                 </p>
-                <Link to="/ugc-campaigns" className="btn btn-primary" style={{ display: 'inline-flex', width: 'fit-content' }}>
-                  View Campaigns <span aria-hidden="true">&rarr;</span>
+                <Link to="/services" className="btn btn-primary" style={{ display: 'inline-flex', width: 'fit-content' }}>
+                  View Services <span aria-hidden="true">&rarr;</span>
                 </Link>
               </div>
             </CardHoverRevealContent>
@@ -144,23 +144,23 @@ export default function Home() {
             <CardHoverRevealMain>
               <img
                 src="/images/creators.webp"
-                alt="For Creators"
+                alt="For Talent"
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />
               <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.3)' }} />
             </CardHoverRevealMain>
 
             <CardHoverRevealTitle>
-              <h2 style={{ fontFamily: 'var(--font-headlines)', fontSize: '3rem', color: '#fff', fontWeight: 'normal', margin: 0, textShadow: '0 4px 12px rgba(0,0,0,0.5)' }}>For Creators</h2>
+              <h2 style={{ fontFamily: 'var(--font-headlines)', fontSize: '3rem', color: '#fff', fontWeight: 'normal', margin: 0, textShadow: '0 4px 12px rgba(0,0,0,0.5)' }}>For Talent</h2>
             </CardHoverRevealTitle>
 
             <CardHoverRevealContent>
               <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.1rem', color: 'rgba(255,255,255,0.85)', lineHeight: 1.6, marginBottom: '2rem', flexGrow: 1 }}>
-                  Tired of chasing payments and pitching brands? Join our roster. We connect you with top-tier brands, secure your deposits upfront, and protect your content with our watermark-release workflow. You create. We handle the business.
+                  We represent creators and models, connecting them with brands, campaigns and commercial opportunities. You create. We handle the business.
                 </p>
-                <Link to="/creator-pipeline" className="btn btn-primary" style={{ display: 'inline-flex', width: 'fit-content', background: 'linear-gradient(180deg, #10b981 0%, #059669 100%)', boxShadow: '0 8px 24px rgba(16,185,129,0.28)' }}>
-                  Apply to Roster <span aria-hidden="true">&rarr;</span>
+                <Link to="/talent-management" className="btn btn-primary" style={{ display: 'inline-flex', width: 'fit-content', background: 'linear-gradient(180deg, #10b981 0%, #059669 100%)', boxShadow: '0 8px 24px rgba(16,185,129,0.28)' }}>
+                  Talent Management <span aria-hidden="true">&rarr;</span>
                 </Link>
               </div>
             </CardHoverRevealContent>
@@ -169,12 +169,37 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Services Overview */}
+      <section style={{ padding: '8rem 4rem', backgroundColor: '#f5f5f5', color: '#000' }}>
+        <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4rem', justifyContent: 'space-between' }}>
+            <div style={{ flex: '1 1 400px' }}>
+              <h2 className="fade-up" style={{ fontFamily: 'var(--font-headlines)', fontSize: '3rem', marginBottom: '2rem', fontWeight: 'normal' }}>Marketing</h2>
+              <ul className="fade-up" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-body)', lineHeight: 2 }}>
+                <li><Link to="/services/influencer-marketing" style={{ color: 'inherit', textDecoration: 'none', borderBottom: '1px solid #ccc' }}>Influencer Marketing</Link></li>
+                <li><Link to="/ugc-campaigns" style={{ color: 'inherit', textDecoration: 'none', borderBottom: '1px solid #ccc' }}>UGC Campaigns</Link></li>
+                <li><Link to="/services/content-creative" style={{ color: 'inherit', textDecoration: 'none', borderBottom: '1px solid #ccc' }}>Content &amp; Creative</Link></li>
+                <li>Campaign Management</li>
+              </ul>
+            </div>
+            <div style={{ flex: '1 1 400px' }}>
+              <h2 className="fade-up" style={{ fontFamily: 'var(--font-headlines)', fontSize: '3rem', marginBottom: '2rem', fontWeight: 'normal' }}>Management</h2>
+              <ul className="fade-up" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-body)', lineHeight: 2 }}>
+                <li><Link to="/talent-management" style={{ color: 'inherit', textDecoration: 'none', borderBottom: '1px solid #ccc' }}>Creator Management</Link></li>
+                <li><Link to="/talent-management" style={{ color: 'inherit', textDecoration: 'none', borderBottom: '1px solid #ccc' }}>Model Management</Link></li>
+                <li>Talent Representation</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Proof / Placeholder Section */}
       <section style={{ padding: '8rem 4rem', backgroundColor: 'var(--color-black)' }}>
         <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
           <h2 style={{ fontFamily: 'var(--font-headlines)', fontSize: '2.5rem', marginBottom: '2rem', fontWeight: 'normal', color: '#fff' }}>Proven Performance</h2>
           <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.2rem', color: '#888', lineHeight: 1.6 }}>
-            Our creators are currently fueling user acquisition for fast growing brands across E-Commerce, Health, and Tech. 
+            Selected campaigns and creative produced through VELURYN AGNECY.
             <br/><br/>
             <span style={{ opacity: 0.5, fontStyle: 'italic', fontSize: '1rem' }}>[Case studies and performance metrics will be published here as campaign data matures.]</span>
           </p>

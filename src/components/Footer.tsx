@@ -38,7 +38,7 @@ export default function Footer() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
           <div style={{ fontSize: '0.85rem', color: '#888', lineHeight: 1.6, fontFamily: 'var(--font-body)' }}>
             VELURYN AGNECY<br/>
-            Connecting brands with creators.<br/>
+            Marketing &amp; Management Agency.<br/>
             Global Remote
           </div>
 
@@ -61,7 +61,14 @@ export default function Footer() {
         {/* Links Columns */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <h4 style={{ color: '#fff', fontSize: '0.9rem', marginBottom: '0.5rem', fontWeight: 500, fontFamily: 'var(--font-body)' }}>Services</h4>
+          <Link to="/services/influencer-marketing" className="nav-link" style={{ color: '#888', fontSize: '0.85rem', textDecoration: 'none', fontFamily: 'var(--font-body)' }}>Influencer Marketing</Link>
           <Link to="/ugc-campaigns" className="nav-link" style={{ color: '#888', fontSize: '0.85rem', textDecoration: 'none', fontFamily: 'var(--font-body)' }}>UGC Campaigns</Link>
+          <Link to="/services/content-creative" className="nav-link" style={{ color: '#888', fontSize: '0.85rem', textDecoration: 'none', fontFamily: 'var(--font-body)' }}>Content &amp; Creative</Link>
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <h4 style={{ color: '#fff', fontSize: '0.9rem', marginBottom: '0.5rem', fontWeight: 500, fontFamily: 'var(--font-body)' }}>Talent</h4>
+          <Link to="/talent-management" className="nav-link" style={{ color: '#888', fontSize: '0.85rem', textDecoration: 'none', fontFamily: 'var(--font-body)' }}>Talent Management</Link>
           <Link to="/creator-pipeline" className="nav-link" style={{ color: '#888', fontSize: '0.85rem', textDecoration: 'none', fontFamily: 'var(--font-body)' }}>Creator Pipeline</Link>
         </div>
 
