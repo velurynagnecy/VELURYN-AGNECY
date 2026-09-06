@@ -68,6 +68,7 @@ export default function Footer() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <h4 style={{ color: '#fff', fontSize: '0.9rem', marginBottom: '0.5rem', fontWeight: 500, fontFamily: 'var(--font-body)' }}>Resources</h4>
           <Link to="/how-we-work" className="nav-link" style={{ color: '#888', fontSize: '0.85rem', textDecoration: 'none', fontFamily: 'var(--font-body)' }}>How We Work</Link>
+          <Link to="/articles" className="nav-link" style={{ color: '#888', fontSize: '0.85rem', textDecoration: 'none', fontFamily: 'var(--font-body)' }}>Articles</Link>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>

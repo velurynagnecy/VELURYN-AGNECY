@@ -10,6 +10,7 @@ import NotFound from './pages/NotFound';
 import CreatorPipeline from './pages/CreatorPipeline';
 import UGCCampaigns from './pages/UGCCampaigns';
 import HowWeWork from './pages/HowWeWork';
+import Articles from './pages/Articles';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="creator-pipeline" element={<CreatorPipeline />} />
           <Route path="ugc-campaigns" element={<UGCCampaigns />} />
           <Route path="how-we-work" element={<HowWeWork />} />
+          <Route path="articles" element={<Articles />} />
 
           <Route path="*" element={<NotFound />} />
         </Route>

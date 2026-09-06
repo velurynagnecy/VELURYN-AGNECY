@@ -34,6 +34,7 @@ export default function Header() {
           <li><Link to="/creator-pipeline">Creator Pipeline</Link></li>
           <li><Link to="/how-we-work">How We Work</Link></li>
           <li><Link to="/about">About</Link></li>
+          <li><Link to="/articles">Articles</Link></li>
         </ul>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
@@ -59,6 +60,7 @@ export default function Header() {
         <Link to="/creator-pipeline">Creator Pipeline</Link>
         <Link to="/how-we-work">How We Work</Link>
         <Link to="/about">About</Link>
+        <Link to="/articles">Articles</Link>
         <Link to="/contact" style={{ marginTop: '1rem', padding: '1rem 2rem', backgroundColor: 'var(--color-white)', color: 'var(--color-black)', borderRadius: '99px' }}>Contact Us</Link>
       </div>
     </>
