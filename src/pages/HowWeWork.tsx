@@ -70,7 +70,7 @@ export default function HowWeWork() {
             left: 0,
             width: '100%',
             height: '100vh',
-            backgroundImage: 'linear-gradient(100deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 100%), url(/images/how-we-work-hero.jpg)',
+            backgroundImage: 'linear-gradient(100deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 100%), url(/images/how-we-work-hero.webp)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             zIndex: -1,

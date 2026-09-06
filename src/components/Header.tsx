@@ -24,7 +24,7 @@ export default function Header() {
       <nav className="nav-hero">
         <Link className="brand" to="/" aria-label="VELURYN AGNECY home">
           <div style={{ width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginRight: '4px' }}>
-            <img src="/images/logo-transparent.png" alt="Veluryn V" style={{ width: '100%', height: '100%', objectFit: 'contain', transform: 'scale(2.5)' }} />
+            <img src="/images/logo-transparent.webp" alt="Veluryn V" style={{ width: '100%', height: '100%', objectFit: 'contain', transform: 'scale(2.5)' }} />
           </div>
           <span style={{ fontSize: '1.15rem' }}>AGNECY</span>
         </Link>

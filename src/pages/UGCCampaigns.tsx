@@ -50,7 +50,7 @@ export default function UGCCampaigns() {
             left: 0,
             width: '100%',
             height: '100vh',
-            backgroundImage: 'linear-gradient(100deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 100%), url(/images/ugc-campaigns-hero.jpg)',
+            backgroundImage: 'linear-gradient(100deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 100%), url(/images/ugc-campaigns-hero.webp)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             zIndex: -1,

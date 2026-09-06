@@ -63,7 +63,7 @@ export default function Home() {
             left: 0,
             width: '100%',
             height: '100vh',
-            backgroundImage: 'linear-gradient(100deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 45%, rgba(0,0,0,0.05) 75%), url(/images/home-hero.jpg)',
+            backgroundImage: 'linear-gradient(100deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 45%, rgba(0,0,0,0.05) 75%), url(/images/home-hero.webp)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             zIndex: -1,
@@ -117,7 +117,7 @@ export default function Home() {
           <CardHoverReveal className="split-box" style={{ height: '600px', width: '100%' }}>
             <CardHoverRevealMain>
               <img
-                src="/images/brands.jpg"
+                src="/images/brands.webp"
                 alt="For Brands"
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />
@@ -143,7 +143,7 @@ export default function Home() {
           <CardHoverReveal className="split-box" style={{ height: '600px', width: '100%' }}>
             <CardHoverRevealMain>
               <img
-                src="/images/creators.jpg"
+                src="/images/creators.webp"
                 alt="For Creators"
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />

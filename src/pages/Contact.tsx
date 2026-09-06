@@ -58,7 +58,7 @@ export default function Contact() {
                 left: 'calc(-50vw + 50%)',
                 width: '100vw',
                 height: '100vh',
-                backgroundImage: 'url(/images/contact-hero.jpg)',
+                backgroundImage: 'url(/images/contact-hero.webp)',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 zIndex: -1,
