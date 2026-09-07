@@ -11,6 +11,7 @@ import CreatorPipeline from './pages/CreatorPipeline';
 import UGCCampaigns from './pages/UGCCampaigns';
 import HowWeWork from './pages/HowWeWork';
 import Articles from './pages/Articles';
+import ArticleView from './pages/ArticleView';
 import Services from './pages/Services';
 import InfluencerMarketing from './pages/InfluencerMarketing';
 import ContentCreative from './pages/ContentCreative';
@@ -31,6 +32,7 @@ function App() {
           <Route path="ugc-campaigns" element={<UGCCampaigns />} />
           <Route path="how-we-work" element={<HowWeWork />} />
           <Route path="articles" element={<Articles />} />
+          <Route path="articles/:slug" element={<ArticleView />} />
           
           <Route path="services" element={<Services />} />
           <Route path="services/influencer-marketing" element={<InfluencerMarketing />} />
