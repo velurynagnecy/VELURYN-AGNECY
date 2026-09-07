@@ -5,7 +5,6 @@ export default function Privacy() {
     <div style={{ backgroundColor: 'var(--color-white)', color: 'var(--color-black)', minHeight: '100vh', paddingTop: '150px' }}>
       <Helmet>
         <title>Privacy Policy | VELURYN AGNECY</title>
-        <meta name="robots" content="noindex" />
       </Helmet>
 
       <section style={{ padding: '4rem 4rem', maxWidth: '900px', margin: '0 auto' }}>

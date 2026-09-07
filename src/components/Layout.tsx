@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import Header from './Header';
 import Footer from './Footer';
 import gsap from 'gsap';
@@ -12,6 +13,7 @@ import CookieConsent from './CookieConsent';
 
 export default function Layout() {
   const location = useLocation();
+  const canonicalUrl = `https://velurynagnecy.com${location.pathname === '/' ? '' : location.pathname}`;
 
   useEffect(() => {
     // Initialize Lenis
@@ -52,6 +54,9 @@ export default function Layout() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <Helmet>
+        <link rel="canonical" href={canonicalUrl} />
+      </Helmet>
       <Header />
       <main style={{ flex: 1 }}>
         <Outlet />

@@ -5,7 +5,6 @@ export default function Terms() {
     <div style={{ backgroundColor: 'var(--color-white)', color: 'var(--color-black)', minHeight: '100vh', paddingTop: '150px' }}>
       <Helmet>
         <title>Terms of Service | VELURYN AGNECY</title>
-        <meta name="robots" content="noindex" />
       </Helmet>
 
       <section style={{ padding: '4rem 4rem', maxWidth: '900px', margin: '0 auto' }}>
