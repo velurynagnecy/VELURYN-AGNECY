@@ -246,9 +246,52 @@ export const FAQ: { q: string; a: string }[] = [
   { q: 'How do you select your creators?', a: 'Creators apply to join our roster and undergo a vetting process where we review their portfolio, on-camera presence, and past performance metrics. We only onboard talent that meets our quality standards.' },
   { q: 'Do you guarantee campaign performance?', a: 'While we cannot guarantee specific ROAS or CPA outcomes due to variables in media buying and product-market fit, we do guarantee the delivery of high-quality, brief-compliant creative that is engineered based on proven performance principles.' },
   { q: 'How are creators paid?', a: 'We secure deposits upfront from brands. Creators are paid according to the terms of their specific campaign or management agreement, ensuring secure and reliable compensation.' },
-  { q: 'How does payment work for brands?', a: 'A 50% deposit starts the campaign. The remaining 50% is invoiced once you approve the watermarked drafts and is due within fourteen days. Prices are quoted in US dollars unless stated otherwise.' },
-  { q: 'How many revisions are included?', a: 'Each package includes one round of minor revisions per video. Re-shoots or large changes to the approved brief are charged separately and agreed with you first.' },
+  { q: 'How does payment work for brands?', a: '50% advance starts production, and the remaining 50% is due on delivery. We quote transparently in both INR (₹) and USD ($).' },
+  { q: 'How many revisions are included?', a: 'Two revision rounds are included with every project. Extra revision rounds are billed at 20% of the project price. Raw footage and unlimited usage rights are available as paid add-ons.' },
   { q: 'What do you do with VELURYN STUDIO and ICA?', a: 'VELURYN STUDIO is our AI visuals and UGC ads studio, and its work is on the Studio page. ICA, the International Contract Agency, is our cyber security division. Organizations and individuals may apply. Both are part of VELURYN AGNECY. VELURYN STUDIO lives on this site and ICA has its own site.' },
+];
+
+export const PRICING_PER_PROJECT = [
+  { item: 'Short form ad (15 to 30 sec)', inr: '₹6,000', usd: '$130' },
+  { item: 'Pack of 5 short ads', inr: '₹25,000', usd: '$550' },
+  { item: 'Long form ad (60 to 90 sec)', inr: '₹30,000 to ₹45,000', usd: '$450 to $900' },
+  { item: 'UGC ad (20 to 30 sec)', inr: '₹4,000', usd: '$70' },
+  { item: 'Pack of 3 UGC ads', inr: '₹10,000', usd: '$180' },
+  { item: 'Poster', inr: '₹800', usd: '$20' },
+  { item: 'Pack of 10 posters', inr: '₹6,500', usd: '$150' },
+];
+
+export const PRICING_RETAINERS = [
+  {
+    tier: 'Starter',
+    inr: '₹30,000',
+    usd: '$450',
+    period: '/ month',
+    deliverables: ['4 short ads', '2 UGC videos', '8 posters'],
+    featured: false,
+  },
+  {
+    tier: 'Growth',
+    inr: '₹65,000',
+    usd: '$950',
+    period: '/ month',
+    deliverables: ['8 short ads', '1 long ad', '4 UGC videos', '16 posters'],
+    featured: true,
+  },
+  {
+    tier: 'Scale',
+    inr: '₹1,20,000',
+    usd: '$1,800',
+    period: '/ month',
+    deliverables: ['15 short ads', '2 long ads', '8 UGC videos', '30 posters', 'Priority turnaround'],
+    featured: false,
+  },
+];
+
+export const PRICING_TERMS = [
+  { title: '50% advance, 50% on delivery', desc: 'Production begins once the 50% advance is received, with the remaining 50% settled upon final delivery.' },
+  { title: 'Two revision rounds included', desc: 'Every project includes two rounds of revisions. Extra revision rounds are billed at 20% of the project price.' },
+  { title: 'Raw footage & unlimited usage rights', desc: 'Raw footage files and unlimited paid usage rights are available as paid add-ons.' },
 ];
 
 export const FILLER_WORDS = ['Influencer marketing', 'UGC campaigns', 'Content & creative', 'Talent management', 'Social media', 'Performance ads', 'SEO', 'Branding & design', 'Web design', 'AI visuals'];

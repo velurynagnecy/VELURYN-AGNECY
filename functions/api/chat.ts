@@ -50,7 +50,7 @@ function edgeFallbackReply(query: string): string {
     return 'We represent high-caliber creators, models, and AI talent, managing commercial contracts, brand partnerships, and career growth. Creators can apply directly on our Creator Pipeline page.';
   }
   if (/price|pricing|cost|rate|quote|package|retainer|how much/.test(q)) {
-    return 'Pricing is tailored to your campaign scope, deliverable volume, and usage rights. Production starts with a 50% deposit, with the remaining 50% invoiced after you approve watermarked drafts. Contact vivin.b@velurynagnecy.com for a custom quote.';
+    return 'Per Project Rates:\n• Short form ad (15-30s): ₹6,000 / $130 (Pack of 5: ₹25,000 / $550)\n• Long form ad (60-90s): ₹30,000 to ₹45,000 / $450 to $900\n• UGC ad (20-30s): ₹4,000 / $70 (Pack of 3: ₹10,000 / $180)\n• Poster: ₹800 / $20 (Pack of 10: ₹6,500 / $150)\n\nMonthly Retainers:\n• Starter: ₹30,000 / $450 (4 short ads, 2 UGC videos, 8 posters)\n• Growth: ₹65,000 / $950 (8 short ads, 1 long ad, 4 UGC videos, 16 posters)\n• Scale: ₹1,20,000 / $1,800 (15 short ads, 2 long ads, 8 UGC videos, 30 posters, priority turnaround)\n\nTerms: 50% advance, 50% on delivery. 2 revision rounds included (extra rounds at 20%). Raw footage and unlimited usage rights are paid add-ons.';
   }
   if (/contract|brief|hire|book|start|work with|proposal|get started/.test(q)) {
     return 'To submit a contract or project brief, use the live contract compose form on our Contact page, or email director Vivin B directly at vivin.b@velurynagnecy.com. We review every brief and respond within 24 hours.';

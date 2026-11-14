@@ -62,7 +62,7 @@ function getClientFallbackReply(text: string): string {
     q.includes('how much') ||
     q.includes('fee')
   ) {
-    return 'Pricing is tailored to your campaign scope, deliverable volume, and usage rights. We offer transparent monthly retainers, agile sprint packages, and custom enterprise production models. Contact our team at vivin.b@velurynagnecy.com for a tailored proposal.';
+    return 'Per Project Rates:\n• Short form ad (15-30s): ₹6,000 / $130 (Pack of 5: ₹25,000 / $550)\n• Long form ad (60-90s): ₹30,000 to ₹45,000 / $450 to $900\n• UGC ad (20-30s): ₹4,000 / $70 (Pack of 3: ₹10,000 / $180)\n• Poster: ₹800 / $20 (Pack of 10: ₹6,500 / $150)\n\nMonthly Retainers:\n• Starter: ₹30,000 / $450 (4 short ads, 2 UGC videos, 8 posters)\n• Growth: ₹65,000 / $950 (8 short ads, 1 long ad, 4 UGC videos, 16 posters)\n• Scale: ₹1,20,000 / $1,800 (15 short ads, 2 long ads, 8 UGC videos, 30 posters, priority turnaround)\n\nTerms: 50% advance, 50% on delivery. 2 revision rounds included (extra rounds at 20%). Raw footage and unlimited usage rights are paid add-ons.';
   }
 
   // 5. Contracts, Briefs & Booking

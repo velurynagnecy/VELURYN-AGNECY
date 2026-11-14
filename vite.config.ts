@@ -93,6 +93,7 @@ Talent division: Represents creators, models, and AI talent, managing commercial
 VELURYN STUDIO division: Produces AI-generated video ads and posters using Google Flow.
 Cyber Security: ICA (International Contract Agency) private security in Rust (ica.velurynagnecy.com).
 Contact: vivin.b@velurynagnecy.com | Phone: +91 96775 33281 (India).
+Pricing: Short form ad (15-30s): ₹6,000 / $130 (Pack of 5: ₹25,000 / $550) | Long form ad (60-90s): ₹30,000-₹45,000 / $450-$900 | UGC ad (20-30s): ₹4,000 / $70 (Pack of 3: ₹10,000 / $180) | Poster: ₹800 / $20 (Pack of 10: ₹6,500 / $150). Retainers: Starter ₹30,000 / $450, Growth ₹65,000 / $950, Scale ₹1,20,000 / $1,800. Terms: 50% advance, 50% on delivery, 2 revisions included.
 Rules: Keep answers concise (2-4 sentences).`;
 
             let response = await fetch(targetUrl, {

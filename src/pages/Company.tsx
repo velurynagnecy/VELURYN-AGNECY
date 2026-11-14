@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { FAQ, SHORT_ADS, SITE, STEPS, STUDIO_POSTERS, UGC_ADS } from '../data/site';
+import { FAQ, PRICING_PER_PROJECT, PRICING_RETAINERS, PRICING_TERMS, SHORT_ADS, SITE, STEPS, STUDIO_POSTERS, UGC_ADS } from '../data/site';
 import { Button, ContactBand, Media, PageHero, Reveal, SectionHead } from '../components/ui';
 import { Form } from '../components/Form';
 import VideoCard from '../components/VideoCard';
@@ -261,41 +261,139 @@ export function Pricing() {
     <>
       <Helmet>
         <title>Pricing | VELURYN AGNECY</title>
-        <meta name="description" content="Every brand is different. Packages are custom built around volume, audience and usage rights." />
+        <meta
+          name="description"
+          content="Transparent per-project rates and monthly retainers in INR and USD for short-form ads, long-form ads, UGC videos, and campaign posters."
+        />
       </Helmet>
-      <PageHero eyebrow="Pricing" lines={['Priced to', 'the brief']} lead="Every brand is different. We custom build packages and quote each one." img="pricing-hero.jpg" />
+      <PageHero
+        eyebrow="Pricing"
+        lines={['Transparent rates,', 'per project or retainer']}
+        lead="Clear pricing in INR (₹) and USD ($) for short form ads, long form ads, UGC campaigns, and posters."
+        img="pricing-hero.jpg"
+      >
+        <Button to="/contact?type=brand" variant="primary">
+          Book a campaign
+        </Button>
+        <Button to="/studio" variant="ghost">
+          Explore Studio
+        </Button>
+      </PageHero>
+
       <section className="sec">
         <div className="wrap">
-          <SectionHead eyebrow="What shapes a quote" title={<>Three things set the <em>price.</em></>} />
+          <SectionHead
+            eyebrow="Per project"
+            title={<>On-demand <em>production rates.</em></>}
+            subtitle="Order individual deliverables or bundled packs in INR or USD."
+          />
           <div className="steps">
-            {[
-              ['Volume', 'How much content you need, for example 2 creators × 3 videos.'],
-              ['Audience', 'The niche and the creators who fit it.'],
-              ['Usage rights', 'Organic rights are standard. Paid and whitelisting rights are priced separately.'],
-            ].map(([h, t], i) => (
-              <Reveal key={h} className="step" delay={i * 0.06}>
+            {PRICING_PER_PROJECT.map((row, i) => (
+              <Reveal key={row.item} className="step" delay={i * 0.04}>
                 <span className="n">{String(i + 1).padStart(2, '0')}</span>
-                <h3>{h}</h3>
-                <p>{t}</p>
+                <h3>{row.item}</h3>
+                <p style={{ fontWeight: 700, fontSize: '1.1rem', color: 'var(--ink)' }}>
+                  {row.inr} <span style={{ color: 'var(--muted)', fontWeight: 500 }}>/</span> {row.usd}
+                </p>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
+
       <section className="sec tint">
         <div className="wrap">
-          <SectionHead eyebrow="Payment terms" title={<>Clear terms from <em>day one.</em></>} />
+          <SectionHead
+            eyebrow="Monthly retainers"
+            title={<>Consistent creative <em>at scale.</em></>}
+            subtitle="Dedicated monthly output for brands running always-on social and performance campaigns."
+          />
+          <div className="grid-3">
+            {PRICING_RETAINERS.map((plan, i) => (
+              <Reveal key={plan.tier} delay={i * 0.08}>
+                <div
+                  className="card"
+                  style={{
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    border: plan.featured ? '2px solid var(--brand-blue)' : undefined,
+                  }}
+                >
+                  <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
+                      <span className="kicker-clean" style={{ margin: 0 }}>{plan.tier}</span>
+                      {plan.featured && (
+                        <span
+                          style={{
+                            fontSize: '0.72rem',
+                            fontWeight: 700,
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.06em',
+                            padding: '0.25rem 0.65rem',
+                            borderRadius: '999px',
+                            background: 'var(--lime)',
+                            color: '#061340',
+                          }}
+                        >
+                          Most Popular
+                        </span>
+                      )}
+                    </div>
+                    <h3 className="h-lg" style={{ margin: '0.25rem 0 0.2rem' }}>
+                      {plan.inr} <span style={{ color: 'var(--muted)', fontWeight: 500 }}>/</span> {plan.usd}
+                    </h3>
+                    <p style={{ fontSize: '0.85rem', color: 'var(--muted)', marginBottom: '1.25rem' }}>Per month</p>
+
+                    <ul style={{ display: 'grid', gap: '0.65rem', margin: '1rem 0 1.75rem', padding: 0, listStyle: 'none' }}>
+                      {plan.deliverables.map((d) => (
+                        <li
+                          key={d}
+                          style={{
+                            borderTop: '1px solid var(--line)',
+                            paddingTop: '0.65rem',
+                            color: 'var(--ink)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.6rem',
+                            fontSize: '0.94rem',
+                          }}
+                        >
+                          <span
+                            style={{
+                              width: '6px',
+                              height: '6px',
+                              borderRadius: '50%',
+                              background: 'var(--lime)',
+                              flexShrink: 0,
+                            }}
+                          />
+                          <span>{d}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <Button to={`/contact?type=brand&plan=${plan.tier.toLowerCase()}`} variant={plan.featured ? 'primary' : 'ghost'}>
+                    Select {plan.tier}
+                  </Button>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="sec">
+        <div className="wrap">
+          <SectionHead eyebrow="Terms for both currencies" title={<>Clear terms from <em>day one.</em></>} />
           <div className="steps">
-            {[
-              ['50% deposit', 'Production starts once the deposit is paid.'],
-              ['50% on approval', 'The final invoice is issued after you approve the watermarked drafts and is due within fourteen days.'],
-              ['Currency', 'Quoted in US dollars unless a campaign agreement says otherwise.'],
-              ['Revisions', 'One round of minor revisions per video is included.'],
-            ].map(([h, t], i) => (
-              <Reveal key={h} className="step" delay={i * 0.05}>
+            {PRICING_TERMS.map((term, i) => (
+              <Reveal key={term.title} className="step" delay={i * 0.05}>
                 <span className="n">{String(i + 1).padStart(2, '0')}</span>
-                <h3>{h}</h3>
-                <p>{t}</p>
+                <h3>{term.title}</h3>
+                <p>{term.desc}</p>
               </Reveal>
             ))}
           </div>
@@ -304,7 +402,7 @@ export function Pricing() {
               Full terms are in our <Link to="/terms" style={{ color: 'var(--blue)', textDecoration: 'underline' }}>Terms of Service</Link>.
             </p>
             <div style={{ marginTop: '1.5rem' }}>
-              <Button to="/contact?type=brand">Get a quote</Button>
+              <Button to="/contact?type=brand">Start a project</Button>
             </div>
           </Reveal>
         </div>
