@@ -1,113 +1,130 @@
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useEffect, useRef } from 'react';
-import { useParallax } from '../hooks/useParallax';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import { articles } from '../data/articles';
+import { Arrow, Button, ContactBand, Media, PageHero, Reveal } from '../components/ui';
 
-gsap.registerPlugin(ScrollTrigger);
-
-export default function Articles() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const heroRef = useRef<HTMLElement>(null);
-  const bgRef = useRef<HTMLDivElement>(null);
-
-  useParallax(heroRef, bgRef);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from('.fade-up', {
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '.fade-up',
-          start: 'top 85%'
-        }
-      });
-    }, containerRef);
-    return () => ctx.revert();
-  }, []);
-
+export function Articles() {
   return (
-    <div ref={containerRef} style={{ backgroundColor: 'var(--color-white)', color: 'var(--color-black)' }}>
+    <>
       <Helmet>
         <title>Articles | VELURYN AGNECY</title>
-        <meta name="description" content="Perspectives on marketing, talent, content and culture from VELURYN AGNECY." />
+        <meta name="description" content="Thinking on culture, creators and marketing from VELURYN AGNECY." />
       </Helmet>
+      <PageHero
+        eyebrow="Articles &amp; Thought Leadership"
+        lines={['Thinking on', 'culture and craft']}
+        lead="Analysis, theory and commentary on social media psychology, the creator economy, and artificial intelligence in modern business."
+        img="articles-hero.jpg"
+      />
 
-      {/* Hero Section */}
-      <section ref={heroRef} style={{ position: 'relative', overflow: 'hidden', isolation: 'isolate', paddingTop: '160px', paddingBottom: '120px', paddingLeft: '4rem', paddingRight: '4rem', color: '#fff' }}>
-        <div 
-          ref={bgRef}
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100vh',
-            backgroundImage: 'linear-gradient(100deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 100%), url(/images/about-hero.webp)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            zIndex: -1,
-            willChange: 'transform'
-          }}
-        />
-        <div style={{ maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-          <p className="fade-up" style={{ fontFamily: 'var(--font-labels)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '2rem', opacity: 0.7 }}>From the Agnecy</p>
-          <h1 className="fade-up" style={{ fontFamily: 'var(--font-headlines)', fontSize: 'clamp(3rem, 7vw, 6rem)', lineHeight: 1.1, fontWeight: 'normal', marginBottom: '3rem', maxWidth: '1000px' }}>
-            Articles
-          </h1>
-          <p className="fade-up" style={{ fontFamily: 'var(--font-body)', fontSize: '1.25rem', color: '#ccc', maxWidth: '600px', lineHeight: 1.6 }}>
-            Our perspective on marketing, talent, content and the way we work.
-          </p>
-        </div>
-      </section>
-
-      {/* Articles List */}
-      <section style={{ padding: '4rem 4rem 8rem 4rem', backgroundColor: '#f5f5f5' }}>
-        <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-
-          {articles.length === 0 ? (
-            <div className="fade-up" style={{ textAlign: 'center', padding: '6rem 2rem' }}>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.1rem', color: '#888', lineHeight: 1.8 }}>
-                New articles are on the way. Check back soon.
-              </p>
-              <Link to="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', backgroundColor: 'var(--color-black)', color: 'var(--color-white)', padding: '1rem 2rem', borderRadius: '30px', fontFamily: 'var(--font-body)', textDecoration: 'none', transition: 'background-color 0.2s', marginTop: '2rem' }} onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'var(--color-burgundy)'} onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'var(--color-black)'}>
-                Get in touch <span style={{ fontSize: '1.2rem' }}>&rarr;</span>
-              </Link>
-            </div>
-          ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
-              {articles.map((article) => (
-                <article key={article.id} className="fade-up" style={{ backgroundColor: '#fff', borderRadius: '12px', border: '1px solid #eaeaea', overflow: 'hidden' }}>
-                  <div style={{ padding: '3.5rem' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.25rem' }}>
-                      <span style={{ fontFamily: 'var(--font-labels)', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '0.75rem', color: '#888' }}>{article.tag}</span>
-                      <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.8rem', color: '#aaa' }}>{article.date}</span>
-                    </div>
-                    <h2 style={{ fontFamily: 'var(--font-headlines)', fontSize: '2rem', fontWeight: 600, marginBottom: '1.5rem', lineHeight: 1.3 }}>
-                      {article.title}
-                    </h2>
-                    
-                    <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.1rem', color: '#555', lineHeight: 1.8, marginBottom: '2.5rem' }}>
-                      {article.excerpt}
-                    </p>
-
-                    <Link to={`/articles/${article.id}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', backgroundColor: 'var(--color-black)', color: 'var(--color-white)', padding: '0.8rem 1.8rem', borderRadius: '30px', fontFamily: 'var(--font-body)', textDecoration: 'none', transition: 'background-color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'var(--color-burgundy)'} onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'var(--color-black)'}>
-                      Read Article <span style={{ fontSize: '1.2rem' }}>&rarr;</span>
-                    </Link>
+      <section className="sec">
+        <div className="wrap">
+          <div className="insights-grid">
+            {articles.map((a, i) => (
+              <Reveal key={a.id} delay={(i % 2) * 0.08} className="insight-card">
+                <Link to={`/articles/${a.id}`} className="insight-card-inner">
+                  <div className="insight-media">
+                    <Media img={`article-${i + 1}.jpg`} label={a.title} />
                   </div>
-                </article>
-              ))}
-            </div>
-          )}
-
+                  <div className="insight-info">
+                    <div className="insight-meta">
+                      <span className="insight-chip">{a.tag}</span>
+                      <span className="insight-date">{a.date}</span>
+                    </div>
+                    <h4>{a.title}</h4>
+                    <p>{a.excerpt}</p>
+                    <div className="insight-link">
+                      <span>Read article</span>
+                      <span className="insight-arrow">
+                        <Arrow size={13} />
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
-    </div>
+
+      <ContactBand title="Want to collaborate or discuss an idea?" />
+    </>
+  );
+}
+
+const inline = (t: string) => ({
+  __html: t.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\*(.*?)\*/g, '<em>$1</em>'),
+});
+
+export function ArticleView() {
+  const { slug } = useParams<{ slug: string }>();
+  const a = articles.find((x) => x.id === slug);
+  if (!a) return <Navigate to="/articles" replace />;
+
+  return (
+    <>
+      <Helmet>
+        <title>{a.title} | VELURYN AGNECY</title>
+        <meta name="description" content={a.excerpt} />
+      </Helmet>
+      <PageHero
+        eyebrow={`${a.tag} · ${a.date}`}
+        lines={[a.title]}
+        lead={a.excerpt}
+        img="articles-hero.jpg"
+      >
+        <div style={{ marginTop: '0.8rem' }}>
+          <Button to="/articles" variant="ghost">
+            ← Back to all articles
+          </Button>
+        </div>
+      </PageHero>
+      <article className="article" style={{ paddingTop: '4rem', paddingBottom: '5rem' }}>
+        <div className="wrap" style={{ maxWidth: '54rem' }}>
+          <div className="prose" style={{ paddingTop: '1rem' }}>
+            {a.body.map((p, i) =>
+              p.startsWith('## ') ? (
+                <h2 key={i} style={{ marginTop: '2.5rem', marginBottom: '0.8rem', color: 'var(--ink)' }}>
+                  {p.replace(/^##\s+/, '')}
+                </h2>
+              ) : p.startsWith('#') ? (
+                <h3 key={i} style={{ marginTop: '2.2rem', marginBottom: '0.75rem', color: 'var(--ink)' }}>
+                  {p.replace(/^#+\s+/, '')}
+                </h3>
+              ) : (
+                <p key={i} dangerouslySetInnerHTML={inline(p)} style={{ marginBottom: '1.25rem' }} />
+              ),
+            )}
+          </div>
+
+          <div
+            style={{
+              marginTop: '3.5rem',
+              padding: '2.5rem',
+              background: 'var(--surface)',
+              border: '1px solid var(--line)',
+              borderRadius: 'var(--r-lg)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: '1.5rem',
+              flexWrap: 'wrap',
+            }}
+          >
+            <div>
+              <b style={{ display: 'block', fontSize: '1.2rem', color: 'var(--ink)' }}>
+                Partner with VELURYN AGNECY
+              </b>
+              <span style={{ color: 'var(--muted)', fontSize: '0.94rem' }}>
+                Marketing, content and talent management for brands that move culture.
+              </span>
+            </div>
+            <Button to="/contact" variant="primary">
+              Work with us
+            </Button>
+          </div>
+        </div>
+      </article>
+    </>
   );
 }

@@ -1,68 +1,102 @@
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import Lenis from 'lenis';
 import Header from './Header';
 import Footer from './Footer';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
-import Lenis from 'lenis';
-
-gsap.registerPlugin(ScrollTrigger);
-
 import CookieConsent from './CookieConsent';
+import { StudioBand } from './ui';
+
+const StudioChat = lazy(() => import('./StudioChat'));
+const SmoothCursor = lazy(() => import('./SmoothCursor'));
 
 export default function Layout() {
-  const location = useLocation();
-  const canonicalUrl = `https://velurynagnecy.com${location.pathname === '/' ? '' : location.pathname}`;
+  const { pathname } = useLocation();
+  const canonical = `https://velurynagnecy.com${pathname === '/' ? '' : pathname}`;
 
+  // Smooth scroll (Lenis) and light parallax on desktop devices only.
+  // Mobile/touch devices use native hardware-accelerated scrolling for zero main-thread lag.
   useEffect(() => {
-    // Initialize Lenis
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // standard lenis easing
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-      touchMultiplier: 2,
-    });
+    const skipSmoothScroll = window.matchMedia(
+      '(prefers-reduced-motion: reduce), (max-width: 768px), (pointer: coarse)'
+    ).matches;
+    if (skipSmoothScroll) return;
 
-    // Sync GSAP ScrollTrigger with Lenis
-    lenis.on('scroll', ScrollTrigger.update);
-
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
-    
-    gsap.ticker.lagSmoothing(0);
-
-    // Ensure ScrollTrigger refreshes on route change
-    ScrollTrigger.refresh();
-
-    return () => {
-      lenis.destroy();
-      gsap.ticker.remove((time) => lenis.raf(time * 1000));
+    const lenis = new Lenis({ duration: 1.05, smoothWheel: true });
+    let frame = 0;
+    const raf = (t: number) => {
+      lenis.raf(t);
+      frame = requestAnimationFrame(raf);
     };
-  }, [location.pathname]); // Re-initialize or refresh on route change if needed, but destroying lenis on unmount of Layout works well since Layout mounts once. Wait, Layout mounts once, so it doesn't need to re-init. Let's just refresh ScrollTrigger on location change.
+    frame = requestAnimationFrame(raf);
 
-  // Separate effect for route changes to refresh scrolltrigger and scroll to top
+    const parallax = () => {
+      const vh = window.innerHeight;
+      document.querySelectorAll<HTMLElement>('.media[data-parallax] img').forEach((img) => {
+        const parent = img.parentElement;
+        if (!parent) return;
+        const r = parent.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > vh) return;
+        const p = (r.top + r.height / 2 - vh / 2) / vh;
+        img.style.transform = `translate3d(0, ${(-p * 6).toFixed(2)}%, 0)`;
+      });
+    };
+    lenis.on('scroll', parallax);
+    return () => {
+      cancelAnimationFrame(frame);
+      lenis.destroy();
+    };
+  }, []);
+
+  // Reveal on scroll. Re-scan after each route change.
   useEffect(() => {
     window.scrollTo(0, 0);
-    setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 100);
-  }, [location.pathname]);
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        }
+      },
+      { rootMargin: '0px 0px -6% 0px', threshold: 0.06 },
+    );
+    const scan = () => {
+      const vh = window.innerHeight || 900;
+      document.querySelectorAll<HTMLElement>('.reveal:not(.in)').forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < vh * 0.98 && rect.bottom > 0) {
+          el.classList.add('in');
+        } else {
+          io.observe(el);
+        }
+      });
+    };
+    scan();
+    const t = setTimeout(scan, 220);
+    return () => {
+      clearTimeout(t);
+      io.disconnect();
+    };
+  }, [pathname]);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+    <>
       <Helmet>
-        <link rel="canonical" href={canonicalUrl} />
+        <link rel="canonical" href={canonical} />
       </Helmet>
       <Header />
-      <main style={{ flex: 1 }}>
+      <main>
         <Outlet />
       </main>
+      <StudioBand />
       <Footer />
       <CookieConsent />
-    </div>
+      <Suspense fallback={null}>
+        <StudioChat />
+        <SmoothCursor />
+      </Suspense>
+    </>
   );
 }

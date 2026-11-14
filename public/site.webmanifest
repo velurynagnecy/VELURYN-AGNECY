@@ -1,0 +1,22 @@
+{
+  "name": "VELURYN AGNECY",
+  "short_name": "VELURYN",
+  "description": "Marketing, creator campaigns and talent management for brands that move culture.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fafafa",
+  "theme_color": "#061340",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

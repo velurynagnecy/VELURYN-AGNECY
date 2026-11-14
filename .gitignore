@@ -7,12 +7,42 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Diagnostic and testing artifacts
+.system_generated
+coverage
+*.lcov
+.nyc_output
+
+# Dependencies
 node_modules
+.pnp
+.pnp.js
+
+# Production build outputs
 dist
 dist-ssr
+build
+.cloudflare
+.wrangler
+
+# Local environment files (NEVER commit secrets or API keys)
+.env
+**/.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 *.local
 
-# Editor directories and files
+# Rust backend build artifacts and runtime lead logs
+backend/target
+backend/data
+backend/.cargo/config.toml
+
+# Keep the example env file tracked
+!.env.example
+
+# Editor and OS directories
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -22,3 +52,4 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+Thumbs.db

@@ -1,3 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+
 Sitemap: https://velurynagnecy.com/sitemap.xml
+Host: https://velurynagnecy.com

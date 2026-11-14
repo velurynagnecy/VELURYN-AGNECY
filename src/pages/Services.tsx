@@ -1,108 +1,224 @@
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useEffect, useRef } from 'react';
-import { useParallax } from '../hooks/useParallax';
-import { BentoFeatureCard } from '../components/ui/BentoCards';
+import { Link, Navigate, useParams } from 'react-router-dom';
+import { SERVICES, SITE, type Service } from '../data/site';
+import { InteractiveTravelCard } from '@/components/ui/3d-card';
+import { Arrow, Button, ContactBand, Media, PageHero, Reveal, SectionHead } from '../components/ui';
 
-gsap.registerPlugin(ScrollTrigger);
+const SERVICE_3D_METADATA: Record<string, { image: string; action: string; sub: string }> = {
+  'influencer-marketing': {
+    image: '/images/site/influencer-marketing.jpg',
+    action: 'Explore campaigns',
+    sub: 'Talent & Reach Strategy',
+  },
+  'ugc-campaigns': {
+    image: '/images/site/ugc-campaigns.jpg',
+    action: 'Launch UGC',
+    sub: 'Vetted Creator Production',
+  },
+  'content-creative': {
+    image: '/images/site/content-creative.jpg',
+    action: 'View creative',
+    sub: 'Platform-Native Storytelling',
+  },
+  'performance-ads': {
+    image: '/images/site/performance-ads.jpg',
+    action: 'Explore ads',
+    sub: 'Paid Media Conversion',
+  },
+  'social-media-marketing': {
+    image: '/images/site/social-media.jpg',
+    action: 'Explore social',
+    sub: 'Social Growth Strategy',
+  },
+  'branding-design': {
+    image: '/images/site/branding.jpg',
+    action: 'Explore branding',
+    sub: 'Identity & Systems',
+  },
+  'seo': {
+    image: '/images/site/seo.jpg',
+    action: 'Explore search',
+    sub: 'Technical & Organic SEO',
+  },
+  'web-design': {
+    image: '/images/site/web-design.jpg',
+    action: 'Explore web',
+    sub: 'High-Converting Web',
+  },
+};
 
-export default function Services() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const heroRef = useRef<HTMLElement>(null);
-  const bgRef = useRef<HTMLDivElement>(null);
-
-  useParallax(heroRef, bgRef);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from('.fade-up', {
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '.fade-up',
-          start: 'top 85%'
-        }
-      });
-    }, containerRef);
-    return () => ctx.revert();
-  }, []);
-
+export function ServicesHub() {
   return (
-    <div ref={containerRef} style={{ backgroundColor: 'var(--color-white)', color: 'var(--color-black)' }}>
+    <>
       <Helmet>
         <title>Services | VELURYN AGNECY</title>
         <meta name="description" content="Marketing services built around creators, content and culture." />
       </Helmet>
+      <PageHero
+        eyebrow="What we do"
+        lines={['Marketing services', 'built for culture']}
+        lead="We help brands scale through high performing creator content, targeted influencer campaigns, and AI-driven creative."
+        img="services-hero.jpg"
+      />
 
-      {/* Hero Section */}
-      <section ref={heroRef} style={{ position: 'relative', overflow: 'hidden', isolation: 'isolate', paddingTop: '160px', paddingBottom: '120px', paddingLeft: '4rem', paddingRight: '4rem', color: '#fff' }}>
-        <div 
-          ref={bgRef}
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100vh',
-            backgroundImage: 'linear-gradient(100deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 100%), url(/images/home-hero.webp)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            zIndex: -1,
-            willChange: 'transform'
-          }}
-        />
-        <div style={{ maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-          <p className="fade-up" style={{ fontFamily: 'var(--font-labels)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '2rem', opacity: 0.7 }}>What We Do</p>
-          <h1 className="fade-up" style={{ fontFamily: 'var(--font-headlines)', fontSize: 'clamp(3rem, 7vw, 6rem)', lineHeight: 1.1, fontWeight: 'normal', marginBottom: '3rem', maxWidth: '1000px' }}>
-            Marketing services built around creators, content and culture.
-          </h1>
-          <p className="fade-up" style={{ fontFamily: 'var(--font-body)', fontSize: '1.25rem', color: '#ccc', maxWidth: '600px', lineHeight: 1.6 }}>
-            We help brands scale through high performing creator content and targeted influencer campaigns.
-          </p>
-        </div>
-      </section>
+      {/* Finovate 4-Column Showcase (Interactive 3D Cards) */}
+      <section className="sec">
+        <div className="wrap">
+          <SectionHead
+            eyebrow="CORE OFFERINGS"
+            title="We Champion the Bold to Achieve the Extraordinary"
+          />
 
-      {/* Services Grid */}
-      <section style={{ padding: '8rem 4rem', backgroundColor: '#f5f5f5' }}>
-        <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
-          
-          <div className="fade-up" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '3rem' }}>
-            
-            <Link to="/services/influencer-marketing" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
-              <BentoFeatureCard 
-                title="Influencer Marketing"
-                description="Strategic creator campaigns built around the right audience and talent. We manage sourcing, negotiation, and execution."
-                icon={<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M16 16s-1.5-2-4-2-4 2-4 2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>}
-                delay={0}
-              />
-            </Link>
-
-            <Link to="/ugc-campaigns" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
-              <BentoFeatureCard 
-                title="UGC Campaigns"
-                description="Social first content produced through carefully selected creators. Scale your paid acquisition with authentic video."
-                icon={<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>}
-                delay={0.1}
-              />
-            </Link>
-
-            <Link to="/services/content-creative" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
-              <BentoFeatureCard 
-                title="Content &amp; Creative"
-                description="Creator led and branded content built for attention. From creative direction to campaign assets."
-                icon={<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20v-6M6 20V10M18 20V4"></path></svg>}
-                delay={0.2}
-              />
-            </Link>
-
+          <div className="services-showcase-grid" style={{ marginTop: '2.5rem' }}>
+            {SERVICES.slice(0, 4).map((s, i) => {
+              const meta = SERVICE_3D_METADATA[s.slug] || {
+                image: '',
+                action: 'Explore',
+                sub: s.short,
+              };
+              return (
+                <Reveal key={s.slug} delay={i * 0.08} className="w-full flex justify-center">
+                  <div style={{ perspective: '1000px' }} className="w-full flex justify-center">
+                    <InteractiveTravelCard
+                      title={s.title}
+                      subtitle={meta.sub}
+                      imageUrl={meta.image}
+                      actionText={meta.action}
+                      href={s.path}
+                    />
+                  </div>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
-    </div>
+
+      {/* Detailed Full Service Catalog */}
+      <section className="sec tint">
+        <div className="wrap">
+          <SectionHead
+            eyebrow="FULL SPECTRUM"
+            title="Complete Agency Capabilities"
+            subtitle="Select a practice below to inspect deliverables, production pipeline, and usage rights."
+          />
+          <div>
+            {SERVICES.map((s, i) => (
+              <Reveal key={s.slug} delay={i * 0.03}>
+                <Link to={s.path} className="svc">
+                  <span className="n">{String(i + 1).padStart(2, '0')}</span>
+                  <div>
+                    <h3>{s.title}</h3>
+                    <p>{s.short}</p>
+                  </div>
+                  <span className="go">
+                    <Arrow size={14} />
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
+            <Reveal delay={SERVICES.length * 0.03}>
+              <Link to={SITE.studioPath} className="svc">
+                <span className="n">{String(SERVICES.length + 1).padStart(2, '0')}</span>
+                <div>
+                  <h3>AI Visuals &amp; UGC Ads</h3>
+                  <p>Short form ads, long form ads, UGC ads and posters, made at VELURYN STUDIO. {SITE.studioCta}</p>
+                </div>
+                <span className="go">
+                  <Arrow size={14} />
+                </span>
+              </Link>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <ContactBand title="Ready to launch a campaign?" />
+    </>
   );
+}
+
+function Detail({ s }: { s: Service }) {
+  const idx = SERVICES.findIndex((x) => x.slug === s.slug);
+  const next = SERVICES[(idx + 1) % SERVICES.length];
+
+  return (
+    <>
+      <Helmet>
+        <title>{s.title} | VELURYN AGNECY</title>
+        <meta name="description" content={s.short} />
+      </Helmet>
+      <PageHero
+        eyebrow="Services"
+        lines={s.title.split(' & ').length > 1 ? [s.title.split(' & ')[0] + ' &', s.title.split(' & ')[1]] : [s.title]}
+        lead={s.lead}
+        img={`hero-${s.img}`}
+      >
+        <Button to="/contact?type=brand" variant="primary">
+          {s.cta}
+        </Button>
+        <Button to="/services" variant="ghost">
+          All services
+        </Button>
+      </PageHero>
+
+      <section className="sec">
+        <div className="wrap split top">
+          <Reveal>
+            <span className="kicker-clean">{s.pointsTitle}</span>
+            <div className="points">
+              {s.points.map((p) => (
+                <div className="point" key={p.h}>
+                  <b>{p.h}</b>
+                  <span>{p.t}</span>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <Media img={s.img} label={s.title} parallax />
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="sec tint">
+        <div className="wrap">
+          <SectionHead eyebrow="How it works" title={s.stepsTitle} />
+          <div className="steps">
+            {s.steps.map((st, i) => (
+              <Reveal key={st.h} delay={i * 0.05} className="step">
+                <span className="n">{String(i + 1).padStart(2, '0')}</span>
+                <h3>{st.h}</h3>
+                <p>{st.t}</p>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal>
+            <p className="lead" style={{ marginTop: '2.5rem' }}>
+              {s.closing}
+            </p>
+            <div style={{ display: 'flex', gap: '.85rem', flexWrap: 'wrap', marginTop: '1.5rem' }}>
+              <Button to="/contact?type=brand" variant="primary">
+                {s.cta}
+              </Button>
+              <Button to={next.path} variant="ghost">
+                Next: {next.title}
+              </Button>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <ContactBand />
+    </>
+  );
+}
+
+/** One component serves every service route. */
+export default function ServicePage({ slug }: { slug?: string }) {
+  const params = useParams();
+  const key = slug ?? params.slug;
+  const s = SERVICES.find((x) => x.slug === key);
+  if (!s) return <Navigate to="/services" replace />;
+  return <Detail s={s} />;
 }

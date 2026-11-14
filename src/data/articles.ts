@@ -179,7 +179,7 @@ export const articles: Article[] = [
       "That's when the serious market begins.",
       "The winners won't necessarily be the people shouting the loudest about AI. They will be the people who understand business well enough to use AI without making AI the entire business.",
       "At VELURYN AGNECY, that distinction matters.",
-      "We don't believe the future belongs to businesses that simply attach 'AI' to everything they sell. It belongs to businesses that understand where technology creates real leverage - and where it doesn't.",
+      "We don't believe the future belongs to businesses that simply attach 'AI' to everything they sell. It belongs to businesses that understand where technology creates real leverage, and where it doesn't.",
       "Because AI isn't going away. But the hype around it eventually will.",
       "And when it does, a lot of people who built their business around the hype will discover that they were never actually building a business. They were riding a trend."
     ]

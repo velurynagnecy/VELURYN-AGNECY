@@ -1,211 +1,624 @@
+import { useState, type FormEvent } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useEffect, useRef } from 'react';
+import { SITE } from '../data/site';
+import { articles } from '../data/articles';
+import SocialCards, { type CardItem as HeroCardItem } from '@/components/ui/card-fan-carousel';
+import HoverRevealCards, { type CardItem as RevealCardItem } from '@/components/ui/cards';
+import { InteractiveTravelCard } from '@/components/ui/3d-card';
+import { InteractiveAccordion, type AccordionServiceItem } from '@/components/ui/interactive-accordion';
+import { PerformanceMatrix } from '@/components/ui/performance-matrix';
+import {
+  Arrow,
+  Button,
+  Media,
+  Reveal,
+  SectionHead,
+} from '../components/ui';
 
-gsap.registerPlugin(ScrollTrigger);
+const SERVICES_3D_CARDS = [
+  {
+    title: 'Influencer Marketing',
+    subtitle: 'Strategic Creator Campaigns',
+    imageUrl: '/images/site/influencer-marketing.jpg',
+    actionText: 'Explore campaigns',
+    href: '/services/influencer-marketing',
+  },
+  {
+    title: 'UGC Campaigns',
+    subtitle: 'Vetted Creator Native Ads',
+    imageUrl: '/images/site/ugc-campaigns.jpg',
+    actionText: 'Launch UGC',
+    href: '/ugc-campaigns',
+  },
+  {
+    title: 'Content & Creative',
+    subtitle: 'High Production Storytelling',
+    imageUrl: '/images/site/content-creative.jpg',
+    actionText: 'View creative',
+    href: '/services/content-creative',
+  },
+  {
+    title: 'Performance Ads',
+    subtitle: 'Paid Conversion & Analytics',
+    imageUrl: '/images/site/performance-ads.jpg',
+    actionText: 'Explore ads',
+    href: '/services/performance-ads',
+  },
+];
 
-import { useParallax } from '../hooks/useParallax';
-import { CardHoverReveal, CardHoverRevealMain, CardHoverRevealTitle, CardHoverRevealContent } from '../components/ui/HoverRevealCard';
+const BENTO_3D_CARDS = [
+  {
+    title: 'Who We Are',
+    subtitle: 'Creator Campaigns & Talent Management',
+    imageUrl: '/images/site/about.jpg',
+    actionText: 'Our story',
+    href: '/about',
+  },
+  {
+    title: 'Veluryn Studio',
+    subtitle: 'AI Visuals & High-Impact Ads',
+    imageUrl: '/images/site/bento-studio.jpg',
+    actionText: 'Enter Studio',
+    href: SITE.studioPath,
+  },
+  {
+    title: 'Web & Digital Craft',
+    subtitle: 'Web Design & Brand Systems',
+    imageUrl: '/images/site/web-design.jpg',
+    actionText: 'Explore design',
+    href: '/services/web-design',
+  },
+];
+
+const HERO_FAN_CARDS: HeroCardItem[] = [
+  { imgUrl: '/images/cards/card-1.webp', alt: 'Short Form Ads', linkUrl: '/studio#short-ads' },
+  { imgUrl: '/images/cards/card-2.webp', alt: 'AI Studio', linkUrl: '/studio' },
+  { imgUrl: '/images/cards/card-3.webp', alt: 'Content & Creative', linkUrl: '/services/content-creative' },
+  { imgUrl: '/images/cards/card-4.webp', alt: 'Flagship Campaigns', linkUrl: '/services' },
+  { imgUrl: '/images/cards/card-5.webp', alt: 'Talent Roster', linkUrl: '/talent-management' },
+  { imgUrl: '/images/cards/card-6.webp', alt: 'UGC Native Ads', linkUrl: '/ugc-campaigns' },
+  { imgUrl: '/images/cards/card-7.webp', alt: 'Performance Media', linkUrl: '/services/performance-ads' },
+];
+
+const PHILOSOPHY_REVEAL_ITEMS: RevealCardItem[] = [
+  {
+    id: 1,
+    title: 'Deep expertise',
+    subtitle: 'Technologies & Ecosystems',
+    imageUrl: '/images/philosophy/pillar-1.webp',
+  },
+  {
+    id: 2,
+    title: 'Collaborative approach',
+    subtitle: 'Creator & Brand Co-Development',
+    imageUrl: '/images/philosophy/pillar-2.webp',
+  },
+  {
+    id: 3,
+    title: 'Philosophy of evidence',
+    subtitle: 'Data-Driven Conversion Testing',
+    imageUrl: '/images/philosophy/pillar-3.webp',
+  },
+  {
+    id: 4,
+    title: 'The know-how',
+    subtitle: 'Removing Production Bottlenecks',
+    imageUrl: '/images/philosophy/pillar-4.webp',
+  },
+];
 
 export default function Home() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const heroRef = useRef<HTMLElement>(null);
-  const bgRef = useRef<HTMLDivElement>(null);
+  const [activeCapabilityId, setActiveCapabilityId] = useState<string | null>('influencer');
 
-  useParallax(heroRef, bgRef);
+  // Quick form state for "Let's Connect" section
+  const [formType, setFormType] = useState<'brand' | 'creator' | 'other'>('brand');
+  const [formState, setFormState] = useState<'idle' | 'sending' | 'ok' | 'err'>('idle');
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Fade in hero elements
-      gsap.from('.content h1, .hero-subhead, .actions', {
-        y: 30,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.15,
-        ease: 'power3.out',
-        delay: 0.2
+  async function handleConnectSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    if (data.get('_honey')) return;
+    data.append('_subject', `New ${formType} connection from homepage: VELURYN AGNECY`);
+    data.append('_captcha', 'false');
+    data.append('_template', 'table');
+    data.append('Inquiry Type', formType);
+
+    setFormState('sending');
+    try {
+      const res = await fetch(SITE.formEndpoint, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: data,
       });
+      if (!res.ok) throw new Error(String(res.status));
+      form.reset();
+      setFormState('ok');
+    } catch {
+      setFormState('err');
+    }
+  }
 
-      // Split section animations
-      gsap.from('.split-box', {
-        y: 60,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '.split-container',
-          start: 'top 80%'
-        }
-      });
-    }, containerRef);
-    return () => ctx.revert();
-  }, []);
+  const CAPABILITIES_ITEMS: AccordionServiceItem[] = [
+    {
+      id: 'influencer',
+      number: '01',
+      title: 'Influencer Marketing',
+      desc: 'Strategic creator campaigns built around the right audience and talent. We manage sourcing, negotiation, and execution.',
+      link: '/services/influencer-marketing',
+      tag: 'High Reach',
+    },
+    {
+      id: 'ugc',
+      number: '02',
+      title: 'UGC Campaigns',
+      desc: 'Social first content produced through vetted creators. Guaranteed with 50% upfront deposits and watermark review.',
+      link: '/ugc-campaigns',
+      tag: 'Conversion',
+    },
+    {
+      id: 'ai',
+      number: '03',
+      title: 'Content & Creative',
+      desc: 'Short form, platform native content and high production brand storytelling built for modern attention.',
+      link: '/services/content-creative',
+      tag: 'Storytelling',
+    },
+    {
+      id: 'performance',
+      number: '04',
+      title: 'Performance Ads',
+      desc: 'Paid media on Meta, Google and TikTok where creative and targeting are planned together with direct numbers.',
+      link: '/services/performance-ads',
+      tag: 'Paid Media',
+    },
+    {
+      id: 'talent',
+      number: '05',
+      title: 'Social Media Marketing',
+      desc: 'Planning, posting, and community care across your owned channels with on brand consistency.',
+      link: '/services/social-media-marketing',
+      tag: 'Organic Growth',
+    },
+    {
+      id: 'brand',
+      number: '06',
+      title: 'SEO & Web Design',
+      desc: 'Search foundations that earn traffic paired with fast, clear websites engineered to turn visitors into enquiries.',
+      link: '/services/web-design',
+      tag: 'Search & Code',
+    },
+  ];
 
   return (
-    <div ref={containerRef} style={{ backgroundColor: 'var(--color-black)', color: 'var(--color-white)', overflowX: 'hidden' }}>
+    <>
       <Helmet>
         <title>VELURYN AGNECY | Marketing &amp; Management Agency</title>
-        <meta name="description" content="Marketing, content and talent management for brands that move culture. We represent creators and models and connect them with brands." />
+        <meta
+          name="description"
+          content="Marketing, content and talent management for brands that move culture. Influencer marketing, UGC, creative, social, ads, SEO, branding and web design."
+        />
       </Helmet>
 
-      {/* Hero Section */}
-      <section ref={heroRef} className="hero" style={{ overflow: 'hidden', isolation: 'isolate' }}>
-        
-        {/* Parallax / Fixed Background for iOS Safari compatibility */}
-        <div 
-          ref={bgRef}
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100vh',
-            backgroundImage: 'linear-gradient(100deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 45%, rgba(0,0,0,0.05) 75%), url(/images/home-hero.webp)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            zIndex: -1,
-            willChange: 'transform'
-          }}
-        />
-        
-        <div className="color-grade"></div>
-        
-        <svg className="field" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <path d="M1300,60 C 950,140 620,260 300,420" strokeWidth="2" opacity="0.5" fill="none" stroke="currentColor"></path>
-          <path d="M1300,140 C 980,210 660,330 340,480" strokeWidth="2" opacity="0.35" fill="none" stroke="currentColor"></path>
-          <path d="M1300,220 C 1000,280 700,390 400,540" strokeWidth="2.4" opacity="0.55" fill="none" stroke="currentColor"></path>
-          <path d="M1300,300 C 1020,350 740,440 460,590" strokeWidth="2" opacity="0.3" fill="none" stroke="currentColor"></path>
-          <path d="M1300,380 C 1040,420 780,490 520,630" strokeWidth="2.8" opacity="0.6" fill="none" stroke="currentColor"></path>
-          <path d="M1300,460 C 1060,490 820,540 580,660" strokeWidth="2" opacity="0.28" fill="none" stroke="currentColor"></path>
-          <path d="M1300,540 C 1080,560 860,590 640,690" strokeWidth="2" opacity="0.4" fill="none" stroke="currentColor"></path>
-          <path d="M1300,-20 C 900,90 520,230 180,380" strokeWidth="2" opacity="0.22" fill="none" stroke="currentColor"></path>
-        </svg>
+      {/* ==============================================================
+          1. PALLET ROSS STYLE HERO WITH FULL-BLEED BG & CARD PLACEHOLDERS
+      =============================================================== */}
+      <section className="hero-masterpiece">
+        {/* Full-Bleed Background Layer */}
+        <div className="hero-masterpiece-bg" aria-hidden="true">
+          <img
+            src="/images/hero/hero-bg.webp"
+            alt=""
+            fetchPriority="high"
+            decoding="async"
+            className="hero-bg-media-img"
+            onError={(e) => {
+              (e.currentTarget as HTMLElement).style.display = 'none';
+            }}
+          />
+          <div className="hero-masterpiece-overlay" />
+        </div>
 
-        <svg className="grain" aria-hidden="true">
-          <filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"></feTurbulence></filter>
-          <rect width="100%" height="100%" filter="url(#n)"></rect>
-        </svg>
-
-        <div className="vignette"></div>
-        <div className="text-protection"></div>
-
-        <div className="content">
-          <h1>An Agnetic Shot that Really Draws.</h1>
-          <p className="hero-subhead">
-            Marketing, content and talent management for brands that move culture.
-          </p>
-          <div className="actions">
-            <Link className="btn btn-primary" to="/services">Our Services <span aria-hidden="true">&rarr;</span></Link>
-            <Link className="btn btn-secondary" to="/talent-management">Join Us <span aria-hidden="true">&rarr;</span></Link>
+        <div className="wrap hero-masterpiece-inner">
+          {/* Centered Headline */}
+          <div className="hero-masterpiece-header">
+            <Reveal>
+              <h1 className="hero-masterpiece-title">
+                Creator campaigns &amp; AI visuals <br className="hide-mobile" />
+                built to <em>convert.</em>
+              </h1>
+            </Reveal>
           </div>
-        </div>
 
-        <div className="scroll">
-          <span>SCROLL</span>
-          <div className="stem"></div>
-        </div>
+          {/* Fanned Cards Deck with GSAP CardFanCarousel */}
+          <div className="hero-fan-container">
+            <SocialCards cards={HERO_FAN_CARDS} />
+          </div>
 
-      </section>
+          {/* Centered Subtitle & CTA Actions */}
+          <div className="hero-masterpiece-footer">
+            <Reveal delay={0.25}>
+              <p className="hero-masterpiece-sub">
+                Marketing, content and talent management for brands that move culture. Influencer campaigns, UGC, and AI visuals built for modern attention.
+              </p>
+            </Reveal>
 
-      {/* Split Intent Section */}
-      <section className="split-container" style={{ padding: '8rem 4rem', backgroundColor: '#fff', color: '#000' }}>
-        <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '2rem' }}>
-          
-          <CardHoverReveal className="split-box" style={{ height: '600px', width: '100%' }}>
-            <CardHoverRevealMain>
-              <img
-                src="/images/brands.webp"
-                alt="For Brands"
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-              <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.3)' }} />
-            </CardHoverRevealMain>
-
-            <CardHoverRevealTitle>
-              <h2 style={{ fontFamily: 'var(--font-headlines)', fontSize: '3rem', color: '#fff', fontWeight: 'normal', margin: 0, textShadow: '0 4px 12px rgba(0,0,0,0.5)' }}>For Brands</h2>
-            </CardHoverRevealTitle>
-
-            <CardHoverRevealContent>
-              <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.1rem', color: 'rgba(255,255,255,0.85)', lineHeight: 1.6, marginBottom: '2rem', flexGrow: 1 }}>
-                  From influencer campaigns and UGC to creative strategy and content, we build and manage the marketing that drives your brand forward.
-                </p>
-                <Link to="/services" className="btn btn-primary" style={{ display: 'inline-flex', width: 'fit-content' }}>
-                  View Services <span aria-hidden="true">&rarr;</span>
-                </Link>
+            <Reveal delay={0.35}>
+              <div className="hero-masterpiece-actions">
+                <Button to="/services" variant="primary">
+                  Our services
+                </Button>
+                <Button to="/talent-management" variant="ghost">
+                  Join our roster
+                </Button>
               </div>
-            </CardHoverRevealContent>
-          </CardHoverReveal>
-
-          <CardHoverReveal className="split-box" style={{ height: '600px', width: '100%' }}>
-            <CardHoverRevealMain>
-              <img
-                src="/images/creators.webp"
-                alt="For Talent"
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-              <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.3)' }} />
-            </CardHoverRevealMain>
-
-            <CardHoverRevealTitle>
-              <h2 style={{ fontFamily: 'var(--font-headlines)', fontSize: '3rem', color: '#fff', fontWeight: 'normal', margin: 0, textShadow: '0 4px 12px rgba(0,0,0,0.5)' }}>For Talent</h2>
-            </CardHoverRevealTitle>
-
-            <CardHoverRevealContent>
-              <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.1rem', color: 'rgba(255,255,255,0.85)', lineHeight: 1.6, marginBottom: '2rem', flexGrow: 1 }}>
-                  We represent creators and models, connecting them with brands, campaigns and commercial opportunities. You create. We handle the business.
-                </p>
-                <Link to="/talent-management" className="btn btn-primary" style={{ display: 'inline-flex', width: 'fit-content', background: 'linear-gradient(180deg, #10b981 0%, #059669 100%)', boxShadow: '0 8px 24px rgba(16,185,129,0.28)' }}>
-                  Talent Management <span aria-hidden="true">&rarr;</span>
-                </Link>
-              </div>
-            </CardHoverRevealContent>
-          </CardHoverReveal>
-
-        </div>
-      </section>
-
-      {/* Services Overview */}
-      <section style={{ padding: '8rem 4rem', backgroundColor: '#f5f5f5', color: '#000' }}>
-        <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4rem', justifyContent: 'space-between' }}>
-            <div style={{ flex: '1 1 400px' }}>
-              <h2 className="fade-up" style={{ fontFamily: 'var(--font-headlines)', fontSize: '3rem', marginBottom: '2rem', fontWeight: 'normal' }}>Marketing</h2>
-              <ul className="fade-up" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-body)', lineHeight: 2 }}>
-                <li><Link to="/services/influencer-marketing" style={{ color: 'inherit', textDecoration: 'none', borderBottom: '1px solid #ccc' }}>Influencer Marketing</Link></li>
-                <li><Link to="/ugc-campaigns" style={{ color: 'inherit', textDecoration: 'none', borderBottom: '1px solid #ccc' }}>UGC Campaigns</Link></li>
-                <li><Link to="/services/content-creative" style={{ color: 'inherit', textDecoration: 'none', borderBottom: '1px solid #ccc' }}>Content &amp; Creative</Link></li>
-                <li>Campaign Management</li>
-              </ul>
-            </div>
-            <div style={{ flex: '1 1 400px' }}>
-              <h2 className="fade-up" style={{ fontFamily: 'var(--font-headlines)', fontSize: '3rem', marginBottom: '2rem', fontWeight: 'normal' }}>Management</h2>
-              <ul className="fade-up" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.25rem', fontFamily: 'var(--font-body)', lineHeight: 2 }}>
-                <li><Link to="/talent-management" style={{ color: 'inherit', textDecoration: 'none', borderBottom: '1px solid #ccc' }}>Creator Management</Link></li>
-                <li><Link to="/talent-management" style={{ color: 'inherit', textDecoration: 'none', borderBottom: '1px solid #ccc' }}>Model Management</Link></li>
-                <li>Talent Representation</li>
-              </ul>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      {/* Proof / Placeholder Section */}
-      <section style={{ padding: '8rem 4rem', backgroundColor: 'var(--color-black)' }}>
-        <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
-          <h2 style={{ fontFamily: 'var(--font-headlines)', fontSize: '2.5rem', marginBottom: '2rem', fontWeight: 'normal', color: '#fff' }}>Proven Performance</h2>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.2rem', color: '#888', lineHeight: 1.6 }}>
-            Selected campaigns and creative produced through VELURYN AGNECY.
-            <br/><br/>
-            <span style={{ opacity: 0.5, fontStyle: 'italic', fontSize: '1rem' }}>[Case studies and performance metrics will be published here as campaign data matures.]</span>
-          </p>
+      {/* ==============================================================
+          2. SHOWCASE (Interactive 3D Bento Cards)
+      =============================================================== */}
+      <section className="sec-finovate">
+        <div className="wrap">
+          <div className="bento-grid-3">
+            {BENTO_3D_CARDS.map((card, i) => (
+              <Reveal key={card.title} delay={i * 0.08} className="w-full flex justify-center">
+                <div style={{ perspective: "1000px" }} className="w-full flex justify-center">
+                  <InteractiveTravelCard
+                    title={card.title}
+                    subtitle={card.subtitle}
+                    imageUrl={card.imageUrl}
+                    actionText={card.actionText}
+                    href={card.href}
+                    className="h-[27rem] max-w-[24rem]"
+                  />
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
-    </div>
+      {/* ==============================================================
+          3. SERVICES 4-COLUMN GRID (Interactive 3D Cards)
+      =============================================================== */}
+      <section className="sec-finovate sec-services-showcase">
+        <div className="wrap">
+          <SectionHead
+            eyebrow="SERVICES"
+            title="We Champion the Bold to Achieve the Extraordinary"
+            center
+          />
+
+          <div className="services-showcase-grid">
+            {SERVICES_3D_CARDS.map((card, i) => (
+              <Reveal key={card.title} delay={i * 0.08} className="w-full flex justify-center">
+                <div style={{ perspective: "1000px" }} className="w-full flex justify-center">
+                  <InteractiveTravelCard
+                    title={card.title}
+                    subtitle={card.subtitle}
+                    imageUrl={card.imageUrl}
+                    actionText={card.actionText}
+                    href={card.href}
+                  />
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <div className="services-showcase-cta">
+            <Button to="/services" variant="primary">
+              View All Services
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* ==============================================================
+          4. PHILOSOPHY SECTION (HoverRevealCards from @/components/ui/cards)
+      =============================================================== */}
+      <section className="sec-philosophy-wrap">
+        <div className="wrap forest-philosophy-inner">
+          <div className="forest-philosophy-header">
+            <Reveal>
+              <span className="kicker-clean">OUR PHILOSOPHY</span>
+            </Reveal>
+            <Reveal delay={0.08}>
+              <h2 className="forest-philosophy-title">
+                Strategic Interventions that Transform our Clients' Business Trajectory
+              </h2>
+            </Reveal>
+          </div>
+
+          <div className="w-full flex justify-center">
+            <HoverRevealCards items={PHILOSOPHY_REVEAL_ITEMS} className="max-w-7xl p-0" />
+          </div>
+        </div>
+      </section>
+
+      {/* ==============================================================
+          5. FAST-MOVING BRANDS BANNER
+      =============================================================== */}
+      <section className="sec-finovate sec-mid-banner">
+        <div className="wrap">
+          <div className="mid-banner-card">
+            <div className="mid-banner-bg">
+              <Media img="branding.jpg" label="Creative systems at work" parallax />
+              <div className="mid-banner-overlay" />
+            </div>
+            <div className="mid-banner-content">
+              <h2>Helping fast-moving brands scale with purpose.</h2>
+              <p>
+                From direct-response UGC to AI-crafted visuals, we build creative that commands attention and converts.
+              </p>
+              <Button to={SITE.studioPath} variant="white">
+                Explore Studio Work
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ==============================================================
+          7. CAPABILITIES RADAR & ACCORDION + BENTO HIGHLIGHT
+      =============================================================== */}
+      <section className="sec-finovate sec-capabilities-wrap">
+        <div className="wrap">
+          <SectionHead
+            eyebrow="CAPABILITIES &amp; VERTICALS"
+            title="Our Experience Spans Every Creative &amp; Cultural Challenge"
+          />
+
+          <div className="capabilities-top-split">
+            {/* Left: Next-Gen Animated Performance Matrix */}
+            <Reveal className="w-full">
+              <PerformanceMatrix
+                activeId={activeCapabilityId}
+                onSelectMetric={(id) => setActiveCapabilityId(id)}
+              />
+            </Reveal>
+
+            {/* Right: 21st.dev Interactive Spring Accordion */}
+            <Reveal delay={0.1} className="w-full">
+              <InteractiveAccordion
+                items={CAPABILITIES_ITEMS}
+                activeId={activeCapabilityId}
+                onItemChange={(id) => setActiveCapabilityId(id)}
+              />
+            </Reveal>
+          </div>
+
+          {/* Bottom Split Card: Quote & Highlight Bento */}
+          <div className="capabilities-bottom-split">
+            {/* Left: Founder's Quote */}
+            <div className="quote-bento-card">
+              <div className="quote-mark">“</div>
+              <p className="quote-text">
+                At VELURYN, we don&apos;t believe in generic marketing. We believe in content that connects, creators who care, and brands that understand the value of authenticity. We built this agency to strip away the inefficiency and deliver results for both the brands we service and the talent we represent.
+              </p>
+              <div className="quote-author">
+                <b>Vivin Bharathi</b>
+                <span>Founder &amp; Chairman, VELURYN AGNECY</span>
+              </div>
+            </div>
+
+            {/* Right: Monochrome Highlight Bento */}
+            <div className="highlight-bento-card">
+              <h3>Creator Pipeline Generates Authentic Engagement Across Every Vertical</h3>
+              <p>
+                Vetted creators, 50% deposit security, watermark delivery, and guaranteed high-res release.
+              </p>
+              <div className="highlight-bento-stat">
+                <b>100%</b>
+                <span>Transparent Delivery Terms</span>
+              </div>
+              <Link to="/how-we-work" className="highlight-bento-btn">
+                <span>Read Full Process</span>
+                <Arrow size={14} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ==============================================================
+          8. LATEST INSIGHTS / ARTICLES
+      =============================================================== */}
+      <section className="sec-finovate sec-insights-wrap">
+        <div className="wrap">
+          <SectionHead
+            eyebrow="THOUGHT LEADERSHIP"
+            title="Read Our Articles"
+            subtitle="Discover the truth, no BS."
+            center
+          />
+
+          <div className="insights-grid">
+            {articles.slice(0, 2).map((a, idx) => (
+              <Reveal key={a.id} delay={idx * 0.1} className="insight-card">
+                <Link to={`/articles/${a.id}`} className="insight-card-inner">
+                  <div className="insight-media">
+                    <Media img={`article-${idx + 1}.jpg`} label={a.title} />
+                  </div>
+                  <div className="insight-info">
+                    <div className="insight-meta">
+                      <span className="insight-chip">{a.tag}</span>
+                      <span className="insight-date">{a.date}</span>
+                    </div>
+                    <h4>{a.title}</h4>
+                    <p>{a.excerpt}</p>
+                    <div className="insight-link">
+                      <span>Read article</span>
+                      <span className="insight-arrow">
+                        <Arrow size={13} />
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+
+          <div className="insights-cta">
+            <Button to="/articles" variant="primary">
+              View All Insights
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* ==============================================================
+          9. LET'S CONNECT FORM
+      =============================================================== */}
+      <section className="sec-finovate sec-connect-wrap">
+        <div className="wrap">
+          <div className="connect-split-container">
+            {/* Left: Form */}
+            <div className="connect-form-side">
+              <span className="kicker-clean">GET IN TOUCH</span>
+              <h2>Let's Connect</h2>
+              <p className="connect-form-sub">
+                Connect with our team to discuss campaign objectives, custom bundles, or talent representation.
+              </p>
+
+              {/* Segmented type switcher */}
+              <div className="connect-tabs" role="tablist">
+                <button
+                  type="button"
+                  className={formType === 'brand' ? 'active' : ''}
+                  onClick={() => setFormType('brand')}
+                >
+                  I'm a brand
+                </button>
+                <button
+                  type="button"
+                  className={formType === 'creator' ? 'active' : ''}
+                  onClick={() => setFormType('creator')}
+                >
+                  I'm talent
+                </button>
+                <button
+                  type="button"
+                  className={formType === 'other' ? 'active' : ''}
+                  onClick={() => setFormType('other')}
+                >
+                  General inquiry
+                </button>
+              </div>
+
+              <form className="connect-form" onSubmit={handleConnectSubmit}>
+                <input className="hp" type="text" name="_honey" tabIndex={-1} autoComplete="off" aria-hidden="true" />
+
+                <div className="form-fields-row">
+                  <div className="form-field">
+                    <label htmlFor="c-fname">First name</label>
+                    <input id="c-fname" name="First Name" type="text" required placeholder="Jane" />
+                  </div>
+                  <div className="form-field">
+                    <label htmlFor="c-lname">Last name</label>
+                    <input id="c-lname" name="Last Name" type="text" required placeholder="Doe" />
+                  </div>
+                </div>
+
+                <div className="form-fields-row">
+                  <div className="form-field">
+                    <label htmlFor="c-email">Email address</label>
+                    <input id="c-email" name="Email" type="email" required placeholder="jane@company.com" />
+                  </div>
+                  <div className="form-field">
+                    <label htmlFor="c-brand">
+                      {formType === 'brand' ? 'Company / Brand' : formType === 'creator' ? 'Portfolio / Handle' : 'Subject'}
+                    </label>
+                    <input
+                      id="c-brand"
+                      name={formType === 'brand' ? 'Company' : formType === 'creator' ? 'Portfolio' : 'Subject'}
+                      type="text"
+                      required
+                      placeholder={formType === 'brand' ? 'Acme Inc' : formType === 'creator' ? '@handle or URL' : 'Partnership'}
+                    />
+                  </div>
+                </div>
+
+                <div className="form-field">
+                  <label htmlFor="c-msg">Message</label>
+                  <textarea
+                    id="c-msg"
+                    name="Message"
+                    rows={4}
+                    required
+                    placeholder={
+                      formType === 'brand'
+                        ? 'Tell us about your campaign, goals, timeline and budget...'
+                        : formType === 'creator'
+                        ? 'Tell us about your niche, rates and availability...'
+                        : 'How can we help you?'
+                    }
+                  />
+                </div>
+
+                <button type="submit" className="btn primary connect-submit-btn" disabled={formState === 'sending'}>
+                  <span>{formState === 'sending' ? 'Sending...' : 'Schedule a Call / Submit'}</span>
+                  <span className="dot">
+                    <Arrow size={12} />
+                  </span>
+                </button>
+
+                {formState === 'ok' && (
+                  <div className="status ok" role="status">
+                    ✓ Thank you. We have received your message and will respond promptly.
+                  </div>
+                )}
+                {formState === 'err' && (
+                  <div className="status err" role="alert">
+                    Something went wrong. Please email us directly at {SITE.email}.
+                  </div>
+                )}
+              </form>
+            </div>
+
+            {/* Right: Direct Access & Executive Contact Card */}
+            <div className="connect-info-side">
+              <div className="connect-direct-card">
+                <div className="connect-direct-top">
+                  <h3 className="connect-direct-title">Executive Communication</h3>
+                  <p className="connect-direct-sub">
+                    Direct channel for brands, creators, and partners. All inquiries are reviewed directly by our leadership team.
+                  </p>
+                </div>
+
+                <div className="connect-direct-details">
+                  <div className="connect-detail-block">
+                    <span className="connect-detail-label">Direct Email</span>
+                    <a href={`mailto:${SITE.email}`} className="connect-detail-val">
+                      {SITE.email}
+                    </a>
+                  </div>
+
+                  <div className="connect-detail-block">
+                    <span className="connect-detail-label">Direct Line ({SITE.phoneNote})</span>
+                    <a href={SITE.phoneHref} className="connect-detail-val">
+                      {SITE.phone}
+                    </a>
+                  </div>
+
+                  <div className="connect-detail-block">
+                    <span className="connect-detail-label">Headquarters</span>
+                    <span className="connect-detail-val">Global Remote</span>
+                  </div>
+
+                  <div className="connect-detail-block">
+                    <span className="connect-detail-label">Response Time</span>
+                    <span className="connect-detail-val">Within 24 Hours</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
