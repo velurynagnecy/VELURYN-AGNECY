@@ -1,0 +1,46 @@
+name: Daily Content Release (1 Rust Tool + 1 Google Flow Prompt + 1 Article)
+
+on:
+  schedule:
+    # Runs automatically every day at 03:30 UTC (09:00 AM IST)
+    - cron: '30 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish-daily:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate 1 Rust Tool, 1 Google Flow Prompt & 1 SEO Article
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: npm run daily:publish
+
+      - name: Verify production build
+        run: npm run build
+
+      - name: Commit and push daily release
+        run: |
+          git config user.name "VELURYN Auto-Publisher"
+          git config user.email "velurynandco@gmail.com"
+          git add src/data/daily-releases.json public/sitemap.xml
+          if git diff --staged --quiet; then
+            echo "No new daily release changes to commit."
+          else
+            git commit -m "chore(daily): publish daily Rust tool, Google Flow prompt, and article"
+            git push origin HEAD:main
+          fi

@@ -5,6 +5,8 @@
  * Until a file exists the page shows a blue placeholder.
  */
 
+import dailyReleases from './daily-releases.json';
+
 export const SITE = {
   name: 'VELURYN AGNECY',
   email: 'vivin.b@velurynagnecy.com',
@@ -439,6 +441,7 @@ export type VisualPromptProduct = {
 };
 
 export const DEVELOPER_PRODUCTS: DeveloperProduct[] = [
+  ...(dailyReleases.developerProducts as DeveloperProduct[]),
   {
     id: 'veluryn-mail-engine',
     name: 'Veluryn MailEngine',
@@ -498,6 +501,7 @@ export const DEVELOPER_PRODUCTS: DeveloperProduct[] = [
 ];
 
 export const VISUAL_PRODUCTS: VisualPromptProduct[] = [
+  ...(dailyReleases.visualPrompts as VisualPromptProduct[]),
   {
     id: 'flow-luxury-jewellery',
     title: 'Luxury Retail & Fine Jewellery Commercial Prompts',

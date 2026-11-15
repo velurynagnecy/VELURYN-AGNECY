@@ -3,6 +3,15 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import { articles } from '../data/articles';
 import { Arrow, Button, ContactBand, Media, PageHero, Reveal } from '../components/ui';
 
+const ARTICLE_THUMBS = [
+  'article-1.jpg',
+  'article-2.jpg',
+  'content-creative.jpg',
+  'branding.jpg',
+  'seo.jpg',
+  'performance-ads.jpg',
+];
+
 export function Articles() {
   return (
     <>
@@ -24,7 +33,7 @@ export function Articles() {
               <Reveal key={a.id} delay={(i % 2) * 0.08} className="insight-card">
                 <Link to={`/articles/${a.id}`} className="insight-card-inner">
                   <div className="insight-media">
-                    <Media img={`article-${i + 1}.jpg`} label={a.title} />
+                    <Media img={ARTICLE_THUMBS[i % ARTICLE_THUMBS.length]} label={a.title} />
                   </div>
                   <div className="insight-info">
                     <div className="insight-meta">

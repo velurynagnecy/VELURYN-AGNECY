@@ -1,3 +1,5 @@
+import dailyReleases from './daily-releases.json';
+
 export interface Article {
   id: string;
   title: string;
@@ -8,6 +10,7 @@ export interface Article {
 }
 
 export const articles: Article[] = [
+  ...(dailyReleases.articles as Article[]),
   {
     id: "highly-influenced-generation",
     title: "THE HIGHLY INFLUENCED GENERATION",

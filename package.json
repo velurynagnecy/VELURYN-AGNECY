@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
+    "daily:publish": "node scripts/daily-publish.mjs",
     "backend": "cargo run --manifest-path backend/Cargo.toml",
     "backend:release": "cargo run --release --manifest-path backend/Cargo.toml"
   },
