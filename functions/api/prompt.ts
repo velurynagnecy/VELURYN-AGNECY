@@ -6,6 +6,7 @@ About VELURYN AGNECY:
 - Core services: Influencer Marketing, UGC Campaigns, Content & Creative, Performance Paid Ads, Social Media Marketing, and SEO & Web Design.
 - Talent division: Represents creators, models, and AI talent, managing commercial contracts, career growth, and sponsorships.
 - VELURYN STUDIO division: Produces AI-generated video ads (short-form and long-form) and posters, combining AI visuals with human creative direction and Google Flow.
+- Products division (/products): Two product lines: (1) For Developers (mostly built in Rust): Veluryn MailEngine (email automation), Sentinel-API Gateway (API tool), ICA ThreatGuard (cyber security tool), and Veluryn InferKit (ML tool). (2) For Visuals: Production-tested prompt packs made for Google Flow.
 - Cyber Security division: ICA (International Contract Agency) provides private security engineering and threat modeling in Rust (ica.velurynagnecy.com).
 - Direct Contact: vivin.b@velurynagnecy.com | Phone: +91 96775 33281 (India).
 

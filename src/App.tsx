@@ -5,6 +5,7 @@ import Home from './pages/Home';
 
 const ServicesHub = lazy(() => import('./pages/Services').then((m) => ({ default: m.ServicesHub })));
 const ServicePage = lazy(() => import('./pages/Services'));
+const Products = lazy(() => import('./pages/Products'));
 const Studio = lazy(() => import('./pages/Studio'));
 const AiTalentList = lazy(() => import('./pages/AiTalent').then((m) => ({ default: m.AiTalentList })));
 const AiTalentProfile = lazy(() => import('./pages/AiTalent').then((m) => ({ default: m.AiTalentProfile })));
@@ -33,6 +34,9 @@ export default function App() {
             <Route index element={<Home />} />
             <Route path="services" element={<ServicesHub />} />
             <Route path="services/:slug" element={<ServicePage />} />
+            <Route path="products" element={<Products />} />
+            <Route path="products/developers" element={<Products initialTrack="developers" />} />
+            <Route path="products/visuals" element={<Products initialTrack="visuals" />} />
             <Route path="ugc-campaigns" element={<ServicePage slug="ugc-campaigns" />} />
             <Route path="studio" element={<Studio />} />
             <Route path="ai-talent" element={<AiTalentList />} />

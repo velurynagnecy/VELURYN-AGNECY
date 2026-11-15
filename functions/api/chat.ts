@@ -55,6 +55,9 @@ function edgeFallbackReply(query: string): string {
   if (/contract|brief|hire|book|start|work with|proposal|get started/.test(q)) {
     return 'To submit a contract or project brief, use the live contract compose form on our Contact page, or email director Vivin B directly at vivin.b@velurynagnecy.com. We review every brief and respond within 24 hours.';
   }
+  if (/product|developer|prompt|email automation|api tool|ml tool/.test(q)) {
+    return 'Our Products page (/products) features two tracks:\n1. For Developers (Built in Rust): Veluryn MailEngine (email automation), Sentinel-API Gateway (API tool), ICA ThreatGuard (cyber security), and Veluryn InferKit (ML tools).\n2. For Visuals (Made for Google Flow): Production-tested Google Flow prompt packs for Luxury Retail, UGC Skincare, Bridal Fashion, and Tabletop Product ads.';
+  }
   if (/studio|ai ad|video|poster|flow/.test(q)) {
     return 'VELURYN STUDIO produces AI commercial video ads (short-form vertical ads and creator-style UGC) and campaign posters with human art direction using Google Flow. Explore our reel on the Studio page.';
   }

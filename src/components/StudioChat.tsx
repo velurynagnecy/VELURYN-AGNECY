@@ -77,7 +77,18 @@ function getClientFallbackReply(text: string): string {
     return 'To submit a contract or project brief, you can use the live contract compose form on our Contact page, or email director Vivin B directly at vivin.b@velurynagnecy.com. We review every brief and respond within 24 hours.';
   }
 
-  // 6. Studio & AI Video Production
+  // 6. Studio, Products & AI Video Production
+  if (
+    q.includes('product') ||
+    q.includes('developer') ||
+    q.includes('prompt') ||
+    q.includes('email automation') ||
+    q.includes('api tool') ||
+    q.includes('ml tool')
+  ) {
+    return 'Our Products page features two divisions:\n\n1. For Developers (Built in Rust): Veluryn MailEngine (email automation), Sentinel-API Gateway (API security & rate limiting), ICA ThreatGuard (cyber security), and Veluryn InferKit (ML inference).\n2. For Visuals (Made for Google Flow): Ready-to-use Google Flow prompt systems for Luxury Jewellery, UGC Skincare, Bridal Editorial, and Tabletop Product ads.';
+  }
+
   if (
     q.includes('studio') ||
     q.includes('video') ||

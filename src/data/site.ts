@@ -413,3 +413,135 @@ export const STUDIO_SERVICES = [
 export type AiTalent = { slug: string; name: string; img: string };
 export const AI_TALENT: AiTalent[] = [{ slug: 'maya-bennett', name: 'Maya Bennett', img: 'ai-maya-bennett.jpg' }];
 
+/* ------------------------------------------------------------------
+   PRODUCTS: Developer Tools (Built in Rust) & Visuals (Google Flow Prompts)
+------------------------------------------------------------------- */
+export type DeveloperProduct = {
+  id: string;
+  name: string;
+  category: 'Email Automation' | 'API Tool' | 'Cyber Security' | 'ML Tools';
+  engine: string;
+  status: string;
+  summary: string;
+  specs: string[];
+  cliSnippet: string;
+};
+
+export type VisualPromptProduct = {
+  id: string;
+  title: string;
+  tool: 'Google Flow';
+  ratio: '9:16' | '16:9' | '4:5';
+  category: string;
+  summary: string;
+  samplePrompt: string;
+  deliverables: string[];
+};
+
+export const DEVELOPER_PRODUCTS: DeveloperProduct[] = [
+  {
+    id: 'veluryn-mail-engine',
+    name: 'Veluryn MailEngine',
+    category: 'Email Automation',
+    engine: 'Rust · Axum + Tokio + Lettre',
+    status: 'v1.4 Ready',
+    summary: 'High-throughput cold outreach and transactional email automation engine with domain warm-up scheduling, bounce protection, and webhook tracking.',
+    specs: [
+      'Sub-millisecond queue dispatch with zero-allocation template rendering',
+      'Automated inbox rotation, SPF/DKIM/DMARC pre-flight verification, and rate pacing',
+      'Built-in JSONL lead state machine and instant webhook callbacks',
+    ],
+    cliSnippet: 'cargo run --release --bin veluryn-mail -- --campaign d2c-q4.toml',
+  },
+  {
+    id: 'sentinel-api-gateway',
+    name: 'Sentinel-API Gateway',
+    category: 'API Tool',
+    engine: 'Rust · Hyper + Tower',
+    status: 'v2.1 Ready',
+    summary: 'Zero-trust API proxy and key vault that shields upstream LLM, payment, and internal REST endpoints with per-IP sliding-window rate limits.',
+    specs: [
+      'Hides upstream Gemini, Groq, and OpenAI keys behind scoped bearer tokens',
+      'Sliding-window per-IP rate limiting, automatic model failover, and timeout guards',
+      'Cross-origin CSRF blocking and structured audit logging out of the box',
+    ],
+    cliSnippet: 'sentinel-gateway --config policy.toml --bind 0.0.0.0:8080',
+  },
+  {
+    id: 'ica-threat-guard',
+    name: 'ICA ThreatGuard',
+    category: 'Cyber Security',
+    engine: 'Rust · Ring + Rustls',
+    status: 'ICA Division',
+    summary: 'Private cyber security auditing, automated HTTP/TLS surface hardening, and cryptographic payload verification engineered by our ICA division.',
+    specs: [
+      'Automated HSTS, COOP, CSP, and Permissions-Policy compliance scanner',
+      'Memory-safe packet and webhook signature verification with zero C dependencies',
+      'Real-time anomaly detection for credential stuffing and bot scraping',
+    ],
+    cliSnippet: 'ica-guard scan --target https://velurynagnecy.com --strict',
+  },
+  {
+    id: 'veluryn-infer-kit',
+    name: 'Veluryn InferKit',
+    category: 'ML Tools',
+    engine: 'Rust · Candle + ONNX Runtime',
+    status: 'v1.2 Ready',
+    summary: 'Lightweight machine learning inference toolkit for D2C lead scoring, semantic prompt routing, and short-form video hook retention prediction.',
+    specs: [
+      'Runs quantized text embeddings and classification models on CPU without Python overhead',
+      'Scores incoming brand briefs and classifies customer intent in under 8ms',
+      'Single static binary deployment for edge workers and bare-metal Linux/Windows servers',
+    ],
+    cliSnippet: 'veluryn-infer score --model hook-retention-v2.onnx --input brief.json',
+  },
+];
+
+export const VISUAL_PRODUCTS: VisualPromptProduct[] = [
+  {
+    id: 'flow-luxury-jewellery',
+    title: 'Luxury Retail & Fine Jewellery Commercial Prompts',
+    tool: 'Google Flow',
+    ratio: '9:16',
+    category: 'Commercial Visuals',
+    summary: 'Production-tested Google Flow prompt pack for high-retention vertical luxury ads with macro gemstone reflections, velvet lighting, and smooth dolly movement.',
+    samplePrompt:
+      'Macro 85mm anamorphic push-in on a handcrafted 22k gold necklace resting on deep navy silk, warm golden-hour rim light catching diamond facets, shallow depth of field f/1.8, slow cinematic camera glide, photorealistic commercial film grain, 9:16 vertical.',
+    deliverables: ['25 multi-scene Google Flow prompts', 'Camera movement & lens cheat sheet', 'Lighting & color-grade tokens'],
+  },
+  {
+    id: 'flow-ugc-skincare',
+    title: 'Hyper-Real UGC Creator & Skincare Routine Prompts',
+    tool: 'Google Flow',
+    ratio: '9:16',
+    category: 'UGC & Beauty',
+    summary: 'Natural creator-style Google Flow prompts engineered for beauty, skincare, and beverage D2C hooks with authentic morning sunlight and handheld framing.',
+    samplePrompt:
+      'Handheld iPhone 15 Pro vertical shot in a sunlit minimalist bathroom, a 23-year-old creator applying a glass-dropper hyaluronic serum to glowing skin, natural window key light, subtle mirror reflection, authentic UGC pacing, 9:16 vertical.',
+    deliverables: ['30 UGC hook & product demo prompts', 'Character consistency seed guide', 'Direct-response script templates'],
+  },
+  {
+    id: 'flow-bridal-editorial',
+    title: 'Bridal & Editorial Fashion Motion Prompts',
+    tool: 'Google Flow',
+    ratio: '9:16',
+    category: 'Fashion & Apparel',
+    summary: 'Cinematic Google Flow prompt collection for bridal couture, silk sarees, and editorial lookbooks with fluid fabric physics and studio tungsten lighting.',
+    samplePrompt:
+      'Slow-motion 50mm portrait tracking shot of a bridal model in an embroidered crimson silk saree turning gently under warm studio tungsten spotlights, delicate zari gold thread shimmer, soft atmospheric haze, luxury editorial aesthetic, 9:16 vertical.',
+    deliverables: ['20 couture & textile physics prompts', 'Studio lighting setup modifiers', 'Scene transition continuity guide'],
+  },
+  {
+    id: 'flow-tabletop-product',
+    title: 'D2C Product Hero & Liquid Physics Prompts',
+    tool: 'Google Flow',
+    ratio: '16:9',
+    category: 'Product Tabletop',
+    summary: 'High-speed tabletop commercial prompts for beverages, perfumes, and electronics featuring crisp water splashes, botanical props, and studio rim lighting.',
+    samplePrompt:
+      'High-speed 120fps tabletop macro shot of a frosted botanical sunscreen bottle emerging through crystal-clear water ripples on a sunlit travertine stone podium, crisp water droplets suspended mid-air, vibrant summer backlight, commercial packshot.',
+    deliverables: ['25 tabletop physics & packshot prompts', 'Material & surface texture tokens', 'Aspect-ratio framing presets'],
+  },
+];
+
+

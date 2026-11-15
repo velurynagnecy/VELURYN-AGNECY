@@ -252,10 +252,19 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Column 5: Cyber Security */}
+            {/* Column 5: Products & Cyber Security */}
             <div>
-              <h4>Cyber Security</h4>
+              <h4>Products</h4>
               <ul>
+                <li>
+                  <Link to="/products">All Products</Link>
+                </li>
+                <li>
+                  <Link to="/products/developers">Developer Tools (Rust)</Link>
+                </li>
+                <li>
+                  <Link to="/products/visuals">Visual Prompts (Google Flow)</Link>
+                </li>
                 <li>
                   <a href={SITE.icaUrl} target="_blank" rel="noopener noreferrer">
                     ICA Division ↗

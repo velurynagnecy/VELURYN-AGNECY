@@ -310,6 +310,11 @@ fn rust_fallback_reply(query: &str) -> String {
             .to_string();
     }
 
+    if q.contains("product") || q.contains("developer") || q.contains("prompt") || q.contains("email automation") || q.contains("api tool") || q.contains("ml tool") {
+        return "Our Products page (/products) features two tracks:\n1. For Developers (Built in Rust): Veluryn MailEngine (email automation), Sentinel-API Gateway (API tool), ICA ThreatGuard (cyber security), and Veluryn InferKit (ML tools).\n2. For Visuals (Made for Google Flow): Production-tested Google Flow prompt packs for Luxury Retail, UGC Skincare, Bridal Fashion, and Tabletop Product ads."
+            .to_string();
+    }
+
     if q.contains("studio") || q.contains("video") || q.contains("poster") || q.contains("flow") {
         return "VELURYN STUDIO produces AI commercial video ads (short-form vertical ads and creator-style UGC) and campaign posters with human art direction using Google Flow. Explore our reel on the Studio page."
             .to_string();

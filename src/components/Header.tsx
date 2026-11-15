@@ -5,6 +5,7 @@ import { Arrow, LogoMark } from './ui';
 
 const LINKS = [
   { to: '/services', label: 'Services' },
+  { to: '/products', label: 'Products' },
   { to: '/studio', label: 'Studio' },
   { to: '/work', label: 'Work' },
   { to: '/talent-management', label: 'Talent' },
