@@ -37,7 +37,7 @@ jobs:
         run: |
           git config user.name "VELURYN Auto-Publisher"
           git config user.email "velurynandco@gmail.com"
-          git add src/data/daily-releases.json public/sitemap.xml
+          git add src/data/daily-releases.json public/sitemap.xml public/images/prompts
           if git diff --staged --quiet; then
             echo "No new daily release changes to commit."
           else

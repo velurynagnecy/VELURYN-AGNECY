@@ -435,6 +435,7 @@ export type VisualPromptProduct = {
   tool: 'Google Flow';
   ratio: '9:16' | '16:9' | '4:5';
   category: string;
+  img: string;
   summary: string;
   samplePrompt: string;
   deliverables: string[];
@@ -508,6 +509,7 @@ export const VISUAL_PRODUCTS: VisualPromptProduct[] = [
     tool: 'Google Flow',
     ratio: '9:16',
     category: 'Commercial Visuals',
+    img: '/images/prompts/flow-luxury-jewellery.webp',
     summary: 'Production-tested Google Flow prompt pack for high-retention vertical luxury ads with macro gemstone reflections, velvet lighting, and smooth dolly movement.',
     samplePrompt:
       'Macro 85mm anamorphic push-in on a handcrafted 22k gold necklace resting on deep navy silk, warm golden-hour rim light catching diamond facets, shallow depth of field f/1.8, slow cinematic camera glide, photorealistic commercial film grain, 9:16 vertical.',
@@ -519,6 +521,7 @@ export const VISUAL_PRODUCTS: VisualPromptProduct[] = [
     tool: 'Google Flow',
     ratio: '9:16',
     category: 'UGC & Beauty',
+    img: '/images/prompts/flow-ugc-skincare.webp',
     summary: 'Natural creator-style Google Flow prompts engineered for beauty, skincare, and beverage D2C hooks with authentic morning sunlight and handheld framing.',
     samplePrompt:
       'Handheld iPhone 15 Pro vertical shot in a sunlit minimalist bathroom, a 23-year-old creator applying a glass-dropper hyaluronic serum to glowing skin, natural window key light, subtle mirror reflection, authentic UGC pacing, 9:16 vertical.',
@@ -530,6 +533,7 @@ export const VISUAL_PRODUCTS: VisualPromptProduct[] = [
     tool: 'Google Flow',
     ratio: '9:16',
     category: 'Fashion & Apparel',
+    img: '/images/prompts/flow-bridal-editorial.webp',
     summary: 'Cinematic Google Flow prompt collection for bridal couture, silk sarees, and editorial lookbooks with fluid fabric physics and studio tungsten lighting.',
     samplePrompt:
       'Slow-motion 50mm portrait tracking shot of a bridal model in an embroidered crimson silk saree turning gently under warm studio tungsten spotlights, delicate zari gold thread shimmer, soft atmospheric haze, luxury editorial aesthetic, 9:16 vertical.',
@@ -541,6 +545,7 @@ export const VISUAL_PRODUCTS: VisualPromptProduct[] = [
     tool: 'Google Flow',
     ratio: '16:9',
     category: 'Product Tabletop',
+    img: '/images/prompts/flow-tabletop-product.webp',
     summary: 'High-speed tabletop commercial prompts for beverages, perfumes, and electronics featuring crisp water splashes, botanical props, and studio rim lighting.',
     samplePrompt:
       'High-speed 120fps tabletop macro shot of a frosted botanical sunscreen bottle emerging through crystal-clear water ripples on a sunlit travertine stone podium, crisp water droplets suspended mid-air, vibrant summer backlight, commercial packshot.',

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link, useLocation } from 'react-router-dom';
 import { DEVELOPER_PRODUCTS, SITE, VISUAL_PRODUCTS, type DeveloperProduct } from '../data/site';
-import { Arrow, Button, ContactBand, PageHero, Reveal, SectionHead } from '../components/ui';
+import { Arrow, Button, ContactBand, Media, PageHero, Reveal, SectionHead } from '../components/ui';
 
 type Track = 'all' | 'developers' | 'visuals';
 type DevCategory = 'All' | DeveloperProduct['category'];
@@ -370,6 +370,38 @@ export default function Products({ initialTrack }: { initialTrack?: Track }) {
 
                       <h3 className="h-lg" style={{ margin: '0 0 0.5rem' }}>{pack.title}</h3>
                       <p style={{ color: 'var(--muted)', marginBottom: '1rem' }}>{pack.summary}</p>
+
+                      {/* Sample Visual Output Showcase */}
+                      {pack.img && (
+                        <div
+                          style={{
+                            position: 'relative',
+                            borderRadius: '14px',
+                            overflow: 'hidden',
+                            marginBottom: '1rem',
+                            border: '1px solid var(--line)',
+                          }}
+                        >
+                          <Media img={pack.img} label={`${pack.title} sample output`} aspectRatio="16 / 10" />
+                          <span
+                            style={{
+                              position: 'absolute',
+                              bottom: '0.65rem',
+                              left: '0.65rem',
+                              background: 'rgba(6, 19, 64, 0.82)',
+                              backdropFilter: 'blur(8px)',
+                              color: '#ffffff',
+                              fontSize: '0.72rem',
+                              fontWeight: 600,
+                              padding: '0.25rem 0.65rem',
+                              borderRadius: '999px',
+                              border: '1px solid rgba(255, 213, 4, 0.35)',
+                            }}
+                          >
+                            Sample Output · {pack.tool}
+                          </span>
+                        </div>
+                      )}
 
                       {/* Copyable Sample Google Flow Prompt Box */}
                       <div

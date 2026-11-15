@@ -2,11 +2,13 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import sharp from 'sharp';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
 const dailyJsonPath = path.join(rootDir, 'src', 'data', 'daily-releases.json');
 const sitemapPath = path.join(rootDir, 'public', 'sitemap.xml');
+const promptsImgDir = path.join(rootDir, 'public', 'images', 'prompts');
 
 // Load local .env if present
 const envPath = path.join(rootDir, '.env');
@@ -268,6 +270,63 @@ async function main() {
   assert.ok(bundle.tool.id && bundle.tool.name && bundle.tool.cliSnippet, 'Invalid developer tool payload');
   assert.ok(bundle.prompt.id && bundle.prompt.title && bundle.prompt.samplePrompt, 'Invalid Google Flow prompt payload');
   assert.ok(bundle.article.id && bundle.article.title && Array.isArray(bundle.article.body), 'Invalid article payload');
+
+  // Ensure a showcase image exists at public/images/prompts/<id>.webp
+  fs.mkdirSync(promptsImgDir, { recursive: true });
+  const promptImgRel = `/images/prompts/${bundle.prompt.id}.webp`;
+  const promptImgAbs = path.join(promptsImgDir, `${bundle.prompt.id}.webp`);
+  bundle.prompt.img = promptImgRel;
+
+  if (!fs.existsSync(promptImgAbs)) {
+    let wroteImage = false;
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (apiKey && apiKey !== 'your_gemini_api_key_here') {
+      try {
+        const imgRes = await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict?key=${apiKey}`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              instances: [{ prompt: bundle.prompt.samplePrompt }],
+              parameters: { sampleCount: 1, aspectRatio: '16:9' },
+            }),
+            signal: AbortSignal.timeout(20000),
+          },
+        );
+        if (imgRes.ok) {
+          const imgData = await imgRes.json();
+          const b64 = imgData?.predictions?.[0]?.bytesBase64Encoded;
+          if (b64) {
+            await sharp(Buffer.from(b64, 'base64'))
+              .resize(960, 600, { fit: 'cover' })
+              .webp({ quality: 82 })
+              .toFile(promptImgAbs);
+            wroteImage = true;
+          }
+        }
+      } catch {
+        // Fall through to studio composite card
+      }
+    }
+
+    if (!wroteImage) {
+      // Fallback: copy one of the existing studio prompt showcase images so the card always has a real showcase photo
+      const existingShowcases = [
+        'flow-perfume-noir.webp',
+        'flow-luxury-jewellery.webp',
+        'flow-ugc-skincare.webp',
+        'flow-bridal-editorial.webp',
+        'flow-tabletop-product.webp',
+      ]
+        .map((f) => path.join(promptsImgDir, f))
+        .filter((p) => fs.existsSync(p));
+      if (existingShowcases.length > 0) {
+        const pick = existingShowcases[store.visualPrompts.length % existingShowcases.length];
+        fs.copyFileSync(pick, promptImgAbs);
+      }
+    }
+  }
 
   // Prepend if not already present
   if (!store.developerProducts.some((x) => x.id === bundle.tool.id)) {
