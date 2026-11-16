@@ -1,6 +1,20 @@
 {
-  "lastPublishedDate": "2026-11-15",
+  "lastPublishedDate": "2026-11-16",
   "developerProducts": [
+    {
+      "id": "sentinel-webhook-firewall",
+      "name": "Sentinel Webhook-Shield",
+      "category": "Cyber Security",
+      "engine": "Rust · Axum + Ring",
+      "status": "Daily Drop · November 16, 2026",
+      "summary": "Cryptographic webhook verifier and replay-attack firewall in Rust that validates Stripe, Razorpay, Shopify, and GitHub signatures at the edge.",
+      "specs": [
+        "Constant-time HMAC-SHA256 and Ed25519 signature verification using Ring",
+        "Sliding timestamp window blocks replay attacks and duplicate webhook deliveries",
+        "Forwards verified payloads to internal microservices with sub-millisecond overhead"
+      ],
+      "cliSnippet": "sentinel-webhook --listen 0.0.0.0:4000 --replay-window 300s"
+    },
     {
       "id": "veluryn-dkim-pulse",
       "name": "Veluryn DKIM-Pulse",
@@ -18,6 +32,21 @@
   ],
   "visualPrompts": [
     {
+      "id": "flow-streetwear-lookbook",
+      "title": "Urban Streetwear & Anamorphic Flash Prompts",
+      "tool": "Google Flow",
+      "ratio": "9:16",
+      "category": "Daily Drop · November 16, 2026",
+      "summary": "High-energy Google Flow prompt pack for streetwear drops and sneaker campaigns using 35mm anamorphic lenses, kinetic whip-pans, and tungsten streetlamp reflections.",
+      "samplePrompt": "Handheld 35mm anamorphic tracking shot following a streetwear model in an oversized heavyweight charcoal hoodie walking through rain-slicked Tokyo neon alleys at night, directpaparazzi flash burst, crisp fabric weave detail, kinetic whip-pan transition, 9:16 vertical.",
+      "deliverables": [
+        "25 streetwear & sneaker Google Flow prompts",
+        "Kinetic camera motion modifiers",
+        "Night neon color-grade tokens"
+      ],
+      "img": "/images/prompts/flow-streetwear-lookbook.webp"
+    },
+    {
       "id": "flow-perfume-noir",
       "title": "Artisanal Perfume & Glass Refraction Prompts",
       "tool": "Google Flow",
@@ -34,6 +63,25 @@
     }
   ],
   "articles": [
+    {
+      "id": "google-flow-prompt-engineering-for-vertical-ads",
+      "title": "How to Write Google Flow Prompts That Actually Convert on Reels and TikTok",
+      "date": "November 16, 2026",
+      "tag": "AI Studio",
+      "excerpt": "Why generic AI video prompts fail in paid social—and how specifying lens focal length, lighting physics, and first-second motion transforms retention.",
+      "body": [
+        "Most AI video prompts fail in paid social for a simple reason: they describe a **subject** instead of a **camera shot**.",
+        "When a viewer scrolls Instagram Reels or TikTok, their brain decides in under 1.2 seconds whether a video looks like a cheap AI generation or a commercial worth watching.",
+        "## Specify the Lens and Camera Physics First",
+        "In **Google Flow**, starting your prompt with the focal length (`85mm macro`, `35mm handheld`, `24mm low-angle`) and camera motion (`slow dolly push-in`, `subtle handheld micro-shake`) anchors the perspective immediately.",
+        "## Control Specular Highlights and Surface Texture",
+        "Flat lighting screams synthetic video. Always pair your subject with a directional key light and a surface interaction—such as warm tungsten rim light catching silk threads, or morning window sunlight reflecting off a glass serum dropper.",
+        "## Human Planning + AI Execution",
+        "At **VELURYN STUDIO**, AI generates the pixels, but human art directors write the shot list, pacing, and hook structure. You can test our free sample prompts directly on our **Products** page.",
+        "**VELURYN STUDIO**",
+        "*Words say nothing when visuals are everything.*"
+      ]
+    },
     {
       "id": "why-rust-powers-modern-marketing-infrastructure",
       "title": "Why We Build Our Marketing and Security Infrastructure in Rust",
