@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+:root {
+  --bg-gallery: #FFFFFF;
+  --bg-warm: #F5F5F4;
+  --bg-jet: #0D0D0D;
+  --text-jet: #0D0D0D;
+  --text-muted: #666666;
+  --border-hairline: rgba(0, 0, 0, 0.08);
+}
+
+@theme inline {
+  --color-gallery: #FFFFFF;
+  --color-warm: #F5F5F4;
+  --color-jet: #0D0D0D;
+  --color-muted: #666666;
+  --font-sans: var(--font-jakarta), var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-jakarta), var(--font-inter), system-ui, -apple-system, sans-serif;
+}
+
+html {
+  background-color: #FFFFFF;
+  color: #0D0D0D;
+  scroll-behavior: auto;
+}
+
+body {
+  background-color: #FFFFFF;
+  color: #0D0D0D;
+  font-family: var(--font-jakarta), var(--font-inter), system-ui, -apple-system, sans-serif;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: #0D0D0D;
+  color: #FFFFFF;
+}
+
+.font-display {
+  font-family: var(--font-jakarta), var(--font-inter), system-ui, -apple-system, sans-serif;
+  letter-spacing: -0.04em;
+}
+
+.font-serif-editorial {
+  font-family: var(--font-serif), Georgia, serif;
+  letter-spacing: -0.02em;
+}
+
+.font-mono-spec {
+  font-family: var(--font-mono), monospace;
+  letter-spacing: 0.12em;
+}
+
+/* Custom range slider for Estimate page */
+input[type="range"].vastu-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"].vastu-slider::-webkit-slider-runnable-track {
+  height: 2px;
+  background: rgba(13, 13, 13, 0.2);
+}
+
+input[type="range"].vastu-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -8px;
+  background-color: #0D0D0D;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  height: 18px;
+  width: 18px;
+  border-radius: 9999px;
+  transition: transform 0.2s ease;
+}
+
+input[type="range"].vastu-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+input[type="range"].vastu-slider::-moz-range-track {
+  height: 2px;
+  background: rgba(13, 13, 13, 0.2);
+}
+
+input[type="range"].vastu-slider::-moz-range-thumb {
+  background-color: #0D0D0D;
+  border: 2px solid #FFFFFF;
+  height: 18px;
+  width: 18px;
+  border-radius: 9999px;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor-ring {
+    display: none !important;
+  }
+}

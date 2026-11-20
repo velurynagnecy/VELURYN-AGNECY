@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Space Grotesk", "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: #f2f4f3;
+    color: #0a1112;
+  }
+
+  @media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    html,
+    body,
+    a,
+    button {
+      cursor: none !important;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-serif {
+    font-style: normal !important;
+    font-weight: 400;
+  }
+
+  *:focus-visible {
+    outline: 1px solid #1b5e63;
+    outline-offset: 2px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a1112;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #253436;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #1b5e63;
+  }
+}
+
+@keyframes slow-drift {
+  0% {
+    transform: scale(1.03) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.06) translate3d(-1%, -0.5%, 0);
+  }
+  100% {
+    transform: scale(1.03) translate3d(0, 0, 0);
+  }
+}
+
+.animate-water-drift {
+  animation: slow-drift 22s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-water-drift {
+    animation: none;
+  }
+}
