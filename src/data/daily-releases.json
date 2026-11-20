@@ -1,6 +1,20 @@
 {
-  "lastPublishedDate": "2026-11-19",
+  "lastPublishedDate": "2026-11-20",
   "developerProducts": [
+    {
+      "id": "veluryn-hook-ranker-2026-11-20",
+      "name": "Veluryn HookRanker-RS",
+      "category": "ML Tools",
+      "engine": "Rust · ONNX + Tokenizers",
+      "status": "Daily Drop · November 20, 2026",
+      "summary": "Fast CLI and HTTP microservice in Rust that scores short-form ad scripts and UGC opening hooks for 3-second thumbstop probability before production.",
+      "specs": [
+        "Tokenizes and scores 1,000+ ad script variations per second on a single CPU core",
+        "Flags weak opening verbs, passive phrasing, and delayed value propositions",
+        "Outputs ranked JSON tables ready for creative strategy teams"
+      ],
+      "cliSnippet": "hook-ranker eval --scripts campaign-hooks.csv --top 10"
+    },
     {
       "id": "sentinel-webhook-firewall-2026-11-19",
       "name": "Sentinel Webhook-Shield",
@@ -73,6 +87,21 @@
     }
   ],
   "visualPrompts": [
+    {
+      "id": "flow-coffee-beverage-macro-2026-11-20",
+      "title": "Specialty Coffee & Cold Brew Tabletop Prompts",
+      "tool": "Google Flow",
+      "ratio": "9:16",
+      "category": "Daily Drop · November 20, 2026",
+      "summary": "Mouth-watering Google Flow tabletop prompts for beverage, cafe, and FMCG brands featuring slow-motion oat milk swirls, ice condensation, and morning café sunbeams.",
+      "samplePrompt": "Phantom Flex4K 240fps macro close-up of chilled espresso pouring over crystal-clear artisan ice cubes into swirled oat milk inside a ribbed glass, golden morning sunbeams cutting through café steam, condensation droplets rolling down glass, 9:16 vertical.",
+      "deliverables": [
+        "25 beverage & liquid swirl Google Flow prompts",
+        "High-speed frame-rate tokens",
+        "Tabletop lighting recipes"
+      ],
+      "img": "/images/prompts/flow-coffee-beverage-macro-2026-11-20.webp"
+    },
     {
       "id": "flow-streetwear-lookbook-2026-11-19",
       "title": "Urban Streetwear & Anamorphic Flash Prompts",
@@ -150,6 +179,25 @@
     }
   ],
   "articles": [
+    {
+      "id": "the-3-second-ugc-hook-architecture-2026-11-20",
+      "title": "The 3-Second Hook Architecture Behind High-Converting UGC Ads",
+      "date": "November 20, 2026",
+      "tag": "Performance",
+      "excerpt": "Follower counts do not sell products on paid social. Here is how we engineer the first three seconds of every creator and AI talent reel.",
+      "body": [
+        "When brands waste money on creator campaigns, it is almost always because they paid for a follower count instead of a **hook architecture**.",
+        "On Meta and TikTok paid ads, the algorithm does not care how famous the creator is. It cares whether viewers stop scrolling in the first three seconds and watch through the value proposition.",
+        "## The Three Components of a Thumbstop Hook",
+        "1. **Visual Pattern Interrupt**: Motion in the very first frame—whisking matcha, applying serum, or unboxing a tactile product close to the lens.",
+        "2. **Direct Problem Callout**: A conversational opening line that names the exact friction the buyer feels.",
+        "3. **Immediate Proof**: Showing the texture, result, or mechanism before asking for attention.",
+        "## Combining Human Creators, AI Talent, and ML Scoring",
+        "At **VELURYN AGNECY**, we test multiple hook variations across both our vetted creator roster and AI talent like **Maya Bennett**, backed by 50% deposit security and two included revision rounds.",
+        "**VELURYN AGNECY**",
+        "*Hooks, not followers.*"
+      ]
+    },
     {
       "id": "google-flow-prompt-engineering-for-vertical-ads-2026-11-19",
       "title": "How to Write Google Flow Prompts That Actually Convert on Reels and TikTok",
