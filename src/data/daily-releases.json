@@ -1,6 +1,20 @@
 {
-  "lastPublishedDate": "2026-11-26",
+  "lastPublishedDate": "2026-11-27",
   "developerProducts": [
+    {
+      "id": "veluryn-dkim-pulse-2026-11-27",
+      "name": "Veluryn DKIM-Pulse",
+      "category": "Email Automation",
+      "engine": "Rust · Tokio + Hickory-DNS",
+      "status": "Daily Drop · November 27, 2026",
+      "summary": "Real-time DNS, SPF, DKIM, and DMARC deliverability verifier and inbox placement monitor built in Rust for high-volume cold email infrastructure.",
+      "specs": [
+        "Asynchronous DNS-over-HTTPS resolution across 500+ sending domains in under 120ms",
+        "Automated blacklist check and TLS certificate expiration alerts via webhook",
+        "Zero-dependency binary with JSONL output for CI/CD outreach pipelines"
+      ],
+      "cliSnippet": "dkim-pulse verify --domains domains.txt --out report.jsonl"
+    },
     {
       "id": "veluryn-hook-ranker-2026-11-26",
       "name": "Veluryn HookRanker-RS",
@@ -171,6 +185,21 @@
     }
   ],
   "visualPrompts": [
+    {
+      "id": "flow-perfume-noir-2026-11-27",
+      "title": "Artisanal Perfume & Glass Refraction Prompts",
+      "tool": "Google Flow",
+      "ratio": "9:16",
+      "category": "Daily Drop · November 27, 2026",
+      "summary": "Cinematic Google Flow prompt pack for luxury fragrance launches featuring caustic glass light refractions, slow-motion mist dispersion, and obsidian studio reflections.",
+      "samplePrompt": "Macro 100mm cinema lens shot of a heavy cut-crystal amber perfume flacon on wet black basalt stone, golden caustic light rays refracting through the liquid, ultra-fine atomized mist suspended in slow motion, moody chiaroscuro studio lighting, 9:16 vertical.",
+      "deliverables": [
+        "20 caustic glass & mist Google Flow prompts",
+        "Refraction lighting tokens",
+        "Luxury fragrance pacing guide"
+      ],
+      "img": "/images/prompts/flow-perfume-noir-2026-11-27.webp"
+    },
     {
       "id": "flow-coffee-beverage-macro-2026-11-26",
       "title": "Specialty Coffee & Cold Brew Tabletop Prompts",
@@ -353,6 +382,29 @@
     }
   ],
   "articles": [
+    {
+      "id": "why-rust-powers-modern-marketing-infrastructure-2026-11-27",
+      "title": "Why We Build Our Marketing and Security Infrastructure in Rust",
+      "date": "November 27, 2026",
+      "tag": "Engineering",
+      "excerpt": "How memory-safe, single-binary Rust tools give modern agencies an unfair speed and reliability edge over bloated SaaS stacks.",
+      "body": [
+        "Most marketing agencies run on a fragile patchwork of rented SaaS subscriptions, webhook glue, and slow scripting runtimes.",
+        "When a campaign scales or an API endpoint gets hammered by traffic, those layers break, leak credentials, or rack up unpredictable cloud bills.",
+        "## The Case for Rust in Agency Operations",
+        "At **VELURYN AGNECY**, we took a different path. From our **ICA** cyber security division to our internal email automation and API gateways, we build core infrastructure in **Rust**.",
+        "Rust compiles directly to native machine code with zero garbage-collection pauses. A service that requires gigabytes of RAM in Node or Python runs in a few megabytes in Rust.",
+        "## Four Areas Where Rust Changes the Game",
+        "1. **Email Automation**: High-throughput SMTP/API dispatch with deterministic rate pacing and zero dropped webhooks.",
+        "2. **API Gateways**: Protecting upstream LLM keys (like Gemini and Groq) behind sliding-window IP rate limiters and strict CORS policies.",
+        "3. **Cyber Security**: Memory-safe TLS auditing, header hardening, and bot mitigation with zero C/C++ buffer overflow risks.",
+        "4. **ML Inference**: Running local ONNX and Candle models to score leads and classify UGC hooks in single-digit milliseconds.",
+        "## Owning the Stack",
+        "When you own the underlying tools—and combine them with human-directed **Google Flow** visuals—you stop paying the SaaS tax and start shipping faster than competitors.",
+        "**VELURYN AGNECY**",
+        "*Engineered in Rust. Directed by humans.*"
+      ]
+    },
     {
       "id": "the-3-second-ugc-hook-architecture-2026-11-26",
       "title": "The 3-Second Hook Architecture Behind High-Converting UGC Ads",
